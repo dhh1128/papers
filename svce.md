@@ -1,6 +1,8 @@
 # Sentries, Confessionals, Vaults, and Envelopes
 Daniel Hardman &mdash; 18 Jan 2023 &mdash; [medium.com](https://daniel-hardman.medium.com/sentries-confessionals-vaults-and-envelopes-4a58cf4f8a5a)
 
+<hr>
+
 The decentralized identity / SSI space is troubled by persistent misunderstandings about the overlaps between important technologies: [OpenID Connect](https://openid.net/connect/) (OIDC), [CHAPI](https://chapi.io/), [Decentralized Web Nodes](https://identity.foundation/decentralized-web-node/spec/) (DWNs) [and similar members of the secure storage family], and [DIDComm](https://identity.foundation/didcomm-messaging/spec/).
 
 Sometimes these are described as competing solutions. I think that’s unhelpful. They do compete for our time and attention, I suppose, but they solve different problems for different reasons — and a clear understanding of these differences would go a long way to resolving contention in our community. So I’d like to offer an extended metaphor to make sense of it all. The metaphor will draw upon these 4 pictures:

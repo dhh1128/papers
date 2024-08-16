@@ -1,6 +1,8 @@
 # Actors, Objects, and Linked Data
 Daniel Hardman &mdash; 16 Nov 2022 &mdash; [medium.com](https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd)
 
+<hr>
+
 ### (TL;DR)
 
 Data about individual people is special — not in raw computation, but in the ethical implications it carries. The current W3C data model for credentials grafts such data into the Semantic Web in a way that I consider dangerous. When this is ignored, people are objectified. This is not just troubling, but downright dangerous. We can do better…

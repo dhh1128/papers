@@ -2,6 +2,8 @@
 ### A Simplified Look At a Complex Topic
 Daniel Hardman and Jason Law &mdash; 29 Jan 2019 &mdash; Evernym and [medium.com](https://medium.com/evernym/three-dimensions-of-identity-bc06ae4aec1c) 
 
+<hr>
+
 We all know that identity matters. We hear about cybersecurity breaches, GDPR, refugees, deep fakes, and election fraud. Each headline highlights a new way that identity impacts us.
 
 Yet we may be accepting naive assertions about what identity actually means. Some equate identity with authentication. Others map it to accounts and credentials. Still others think of it as a personal data and metadata issue. Such mindsets may feel reasonable, but each simplifies too much. Identity manifests in several dimensions. Identity solutions must model all of these dimensions to be complete.
