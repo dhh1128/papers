@@ -164,6 +164,9 @@ Interoperability isn’t measured in code paths. It’s predicted by good will/h
 
 Doing what I’m proposing here wouldn’t make VCs incompatible with the semantic web; it would just make them independent from it, with bridging work falling on the shoulders of those who passionately believe in the LD value proposition and passionately disbelieve my argument. The rest of us can focus elsewhere but we can all get along.
 
+<br>
+<br>
+<hr>
 ## Endnotes
 [<a id="note1">1</a>] In the github repo for the W3C VC spec, see Issue 947 about making `@context` optional, Issue 948 about limiting JSON-LD optionality, and Issue 957 about VC subjects. For a previous round of debate, see Issue 184 in DID Core.
 
