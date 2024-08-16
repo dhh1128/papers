@@ -1,5 +1,6 @@
 # Sentries, Confessionals, Vaults, and Envelopes
 Daniel Hardman &mdash; 18 Jan 2023 &mdash; [medium.com](https://daniel-hardman.medium.com/sentries-confessionals-vaults-and-envelopes-4a58cf4f8a5a)
+
 <span class="hash">#identity #architecture #didcomm #tutorial</span>
 
 <hr>
