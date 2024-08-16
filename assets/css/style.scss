@@ -31,10 +31,11 @@ h3 {
 }
 a:hover {
     font-weight: inherit;
-    border-bottom: dashed 1px #cccccc;
+    border-bottom: solid 1px #cccccc;
 }
-#hash {
-    font-family: Barlow Condensed;
+.hash {
+    font-family: 'Courier New', Courier, monospace;
     font-weight: 300;
-    color: #666666;
+    font-size: 80%;
+    color: #aaaaaa;
 }

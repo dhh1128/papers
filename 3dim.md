@@ -1,6 +1,7 @@
 # Three Dimensions of Identity
 ### A Simplified Look At a Complex Topic
 Daniel Hardman and Jason Law &mdash; 29 Jan 2019 &mdash; Evernym and [medium.com](https://medium.com/evernym/three-dimensions-of-identity-bc06ae4aec1c)
+
 <span class="hash">#identity #ssi #agents #relationships #data #tutorial</span> 
 
 <hr>
