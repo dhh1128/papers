@@ -1,5 +1,6 @@
 # Actors, Objects, and Linked Data
 Daniel Hardman &mdash; 16 Nov 2022 &mdash; [medium.com](https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd)
+<span class="hash">#identity #ssi #empowerment #data #advocacy</span>
 
 <hr>
 
