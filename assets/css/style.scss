@@ -13,7 +13,7 @@ body {
     color: black;
 }
 h1, h2, h3 {
-    font-family: Barlow Condensed;
+    font-family: 'Barlow Condensed';
 }
 h1 {
     font-weight: 500;
@@ -34,8 +34,7 @@ a:hover {
     border-bottom: solid 1px #cccccc;
 }
 .hash {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Barlow Condensed';
     font-weight: 300;
-    font-size: 92%;
-    color: #808080;
+    color: #491705;
 }
