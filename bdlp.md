@@ -9,7 +9,7 @@ All of us know that trust is broken on the internet because of problems with aut
 But if our summary of the problem ends with ACP, we’re still neglecting something crucial. Trust is also broken because of a pervasive, asymmetrical interaction pattern that I call “big desks and little people.” We are addicted to infrastructure that systematizes and normalizes a power imbalance between institutions and individuals. This addiction creates ideal conditions for abuse, and it interacts with ACP issues (and AI, BTW) in a vicious cycle.
 
 <figure>
-  <img src="../assets/man-for-all-seasons.webp" alt="Thomas More pleads his case">
+  <img src="assets/man-for-all-seasons.webp" alt="Thomas More pleads his case">
   <figcaption>Big desks and little Thomas More in <cite>A Man For All Seasons</cite> (1966). Fair use.</figcaption>
 </figure>
 
@@ -30,12 +30,12 @@ The fundamental offense of the pigs in Animal Farm was not that they betrayed th
 Something deep in our psyche knows that this risk can bite us. We reference it in some of our most resonant mythologies:
 
 <figure>
-  <img src="../assets/george-bailey.webp" alt="George Bailey at Potter's desk">
+  <img src="assets/george-bailey.webp" alt="George Bailey at Potter's desk">
   <figcaption>Big Mr. Potter’s desk, little George Bailey in <cite>It’s a Wonderful Life</cite> (1946). <a href="https://slate.com/news-and-politics/1999/12/why-wonderful-life-comes-but-once-a-year.html">Fair use</a>.</figcaption>
 </figure>
 
 <figure>
-  <img src="../assets/potter-goblin.webp" alt="A big desk at Gringotts">
+  <img src="assets/potter-goblin.webp" alt="A big desk at Gringotts">
   <figcaption>A goblin intimidating Harry from behind a big desk at Gringotts. Fair use.</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ Fast forward to 2023. In February I got an email from this firm, inviting me to 
 But I kept getting nagged anyway. Here is an actual screenshot from their 10th nag message about this:
 
 <figure>
-  <img src="../assets/nag-message.webp" alt="A nag message">
+  <img src="assets/nag-message.webp" alt="A nag message">
 </figure>
 
 Notice the red marks. *Remember my question about which direction terms and conditions always flow?*
