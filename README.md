@@ -1,4 +1,6 @@
-[SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). June 2023. <span class="hash">#keri #verifiable-data</span>
+[Bytewise and Externalized SAIDs](bes.pdf). August 2024. <span class="hash">#keri #verifiable-data</span>
+
+[SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). June 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
 
 [Big Desks and Little People](bdlp.md). 1 May 2023. <span class="hash">#identity #ssi #empowerment #advocacy</span>
 
