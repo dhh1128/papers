@@ -3,5 +3,5 @@ A version history for each paper is maintained in the [github repo](https://gith
 * Daniel Hardman. June 2023. [SADs and SAIDs for Opaquely Structured Data](ssosd.pdf).
 * Daniel Hardman. 1 May 2023. [Big Desks and Little People](bdlp.md).
 * Daniel Hardman. 18 Jan 2023. [Sentries, Confessionals, Vaults, and Envelopes](svce.md).
-* Daniel Hardman. May 2023. [Big Desks and Little People](bdlp.md). Also published on medium.com.
+* Daniel Hardman. 16 Nov 2022. [Actors, Objects, and Linked Data](aold.md).
 * Daniel Hardman. May 2023. [Big Desks and Little People](bdlp.md). Also published on medium.com.

@@ -167,39 +167,39 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 ## Endnotes
 [<a id="note1">1</a>] In the github repo for the W3C VC spec, see Issue 947 about making `@context` optional, Issue 948 about limiting JSON-LD optionality, and Issue 957 about VC subjects. For a previous round of debate, see Issue 184 in DID Core.
 
-[<a id="note2">2</a>] The father was discussing issues of choice and personal responsibility in the Garden of Eden story that is familiar to several of the world’s great religions. See https://bit.ly/3FnYFhU.
+[<a id="note2">2</a>] The father was discussing issues of choice and personal responsibility in the Garden of Eden story that is familiar to several of the world’s great religions. See [https://bit.ly/3FnYFhU](https://bit.ly/3FnYFhU).
 
-[<a id="note3">3</a>] https://bit.ly/3FrrLNi
+[<a id="note3">3</a>] [https://bit.ly/3FrrLNi](https://bit.ly/3FrrLNi)
 
-[<a id="note4">4</a>] https://bit.ly/3gXvHvf
+[<a id="note4">4</a>] [https://bit.ly/3gXvHvf](https://bit.ly/3gXvHvf)
 
-[<a id="note5">5</a>] https://bit.ly/3WqL9jI
+[<a id="note5">5</a>] [https://bit.ly/3WqL9jI](https://bit.ly/3WqL9jI)
 
-[<a id="note6">6</a>] See this doctor’s meditation about the benefits of appreciating otherness: https://doi.org/10.7202/1058265ar. And consider G. K. Chesterton’s observation: “How much larger your life would be if your self could become smaller in it; if you could really look at other men with common curiosity and pleasure; if you could see them walking as they are in their sunny selfishness and their virile indifference! You would begin to be interested in them, because they are not interested in you. You would break out of this tiny and tawdry theatre in which your own little plot is always played, and you would find yourself under a freer sky, in a street full of splendid strangers.” (In Orthodoxy, 1959, p. 20–21).
+[<a id="note6">6</a>] See this doctor’s meditation about the benefits of appreciating otherness: [https://doi.org/10.7202/1058265ar](https://doi.org/10.7202/1058265ar). And consider G. K. Chesterton’s observation: “How much larger your life would be if your self could become smaller in it; if you could really look at other men with common curiosity and pleasure; if you could see them walking as they are in their sunny selfishness and their virile indifference! You would begin to be interested in them, because they are not interested in you. You would break out of this tiny and tawdry theatre in which your own little plot is always played, and you would find yourself under a freer sky, in a street full of splendid strangers.” (In <cite>Orthodoxy</cite>, 1959, p. 20–21).
 
-[<a id="note7">7</a>] https://doi.org/10.1037/tra0000452
+[<a id="note7">7</a>] [https://doi.org/10.1037/tra0000452](https://doi.org/10.1037/tra0000452)
 
-[<a id="note8">8</a>] https://bit.ly/3WdxKv6, https://www.bl.uk/world-war-one/articles/depicting-the-enemy
+[<a id="note8">8</a>] [https://bit.ly/3WdxKv6](https://bit.ly/3WdxKv6), [https://www.bl.uk/world-war-one/articles/depicting-the-enemy](https://www.bl.uk/world-war-one/articles/depicting-the-enemy)
 
-[<a id="note8">9</a>] https://doi.org/10.1177/0011000015591287, https://bit.ly/3DIWAf6
+[<a id="note8">9</a>] [https://doi.org/10.1177/0011000015591287](https://doi.org/10.1177/0011000015591287), [https://bit.ly/3DIWAf6](https://bit.ly/3DIWAf6)
 
-[<a id="note10">10</a>] See, for example, https://doi.org/10.1080/1068316X.2016.1269902, https://bit.ly/3DIFw8V, https://doi.org/10.1177/104398629601200204, and https://www.genderit.org/articles/trafficking-women-female-objectification.
+[<a id="note10">10</a>] See, for example, [https://doi.org/10.1080/1068316X.2016.1269902](https://doi.org/10.1080/1068316X.2016.1269902), [https://bit.ly/3DIFw8V](https://bit.ly/3DIFw8V), [https://doi.org/10.1177/104398629601200204](https://doi.org/10.1177/104398629601200204), and [https://www.genderit.org/articles/trafficking-women-female-objectification](https://www.genderit.org/articles/trafficking-women-female-objectification).
 
-[<a id="note11">11</a>] https://dx.doi.org/10.2139/ssrn.1032263, https://nyti.ms/3znLg5p
+[<a id="note11">11</a>] [https://dx.doi.org/10.2139/ssrn.1032263](https://dx.doi.org/10.2139/ssrn.1032263), [https://nyti.ms/3znLg5p](https://nyti.ms/3znLg5p)
 
-[<a id="note12">12</a>] https://doi.org/10.1002%2Fhpm.3008, https://bit.ly/3gQiu7g
+[<a id="note12">12</a>] [https://doi.org/10.1002%2Fhpm.3008](https://doi.org/10.1002%2Fhpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
 
-[<a id="note13">13</a>] https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/, https://cnn.it/3fkGXRM
+[<a id="note13">13</a>] [https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/](https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/), [https://cnn.it/3fkGXRM](https://cnn.it/3fkGXRM)
 
-[<a id="note14">14</a>] https://plato.stanford.edu/entries/turing-test/
+[<a id="note14">14</a>] [https://plato.stanford.edu/entries/turing-test/](https://plato.stanford.edu/entries/turing-test/)
 
-[<a id="note15">15</a>] https://dataprot.net/statistics/spam-statistics/
+[<a id="note15">15</a>] [https://dataprot.net/statistics/spam-statistics/](https://dataprot.net/statistics/spam-statistics/)
 
-[<a id="note16">16</a>] https://codecraft.co/2015/04/08/a-grumble-about-buckets/
+[<a id="note16">16</a>] [https://codecraft.co/2015/04/08/a-grumble-about-buckets/](https://codecraft.co/2015/04/08/a-grumble-about-buckets/)
 
-[<a id="note17">17</a>] https://www.viktorfrankl.org/quote_stimulus.html
+[<a id="note17">17</a>] [https://www.viktorfrankl.org/quote_stimulus.html](https://www.viktorfrankl.org/quote_stimulus.html)
 
-[<a id="note18">18</a>] https://plato.stanford.edu/entries/agency/
+[<a id="note18">18</a>] [https://plato.stanford.edu/entries/agency/](https://plato.stanford.edu/entries/agency/)
 
 [<a id="note19">19</a>] Claims in VCs consist of data fields for subject, predicate, and object (Jane’s DID, birthdate, 25 Oct). These map directly to subject, predicate, and object in RDF triples. The subject is (typically) a DID, which is a URI. The predicate must be a URI. The object of the triple can be a literal or another URI. In their natural form, VD data structures tend to have field names that are more human-friendly than URLs (e.g., the VC has a field named “birthDate”). By adding an LD `@context`, we explain to the semantic web how human-friendly values convert into URIs (e.g., “birthDate” becomes `https://schema.org/birthDate`). This guarantees that they are unambiguous and resolvable.
 
