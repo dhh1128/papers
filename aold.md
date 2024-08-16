@@ -25,7 +25,7 @@ Years ago I was impressed by wisdom from an ancient prophet-philosopher during a
 The older I get, the more I find this mental model profound. Although humans can be modeled as objects in some contexts, it’s crucial that we view them primarily as actors. Objectifying people — treating them as things to be manipulated or processed, rather than as action-capable others[[6](#note6)] with boundaries around an independently worthwhile reality of their own — is a theme running through many tragedies in micro and macro human history.
 
 <figure>
-  <img src="assets/4-metaphors.webp" alt="I can't breathe">
+  <img src="assets/cant-breathe.webp" alt="I can't breathe">
   <figcaption>Photo by <a href="https://unsplash.com/@obionyeador">Obi - @pixel6propix</a> on <a href="https://unsplash.com/">Unsplash</a></figcaption>
 </figure>
 
