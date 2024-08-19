@@ -15,4 +15,4 @@ jobs:
       - name: Lychee link checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose
+          args: --verbose *.md
