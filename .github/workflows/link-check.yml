@@ -1,14 +1,6 @@
 name: check links in markdown files
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
