@@ -194,7 +194,7 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note11">11</a>] [https://dx.doi.org/10.2139/ssrn.1032263](https://dx.doi.org/10.2139/ssrn.1032263), [https://nyti.ms/3znLg5p](https://nyti.ms/3znLg5p)
 
-[<a id="note12">12</a>] [https://doi.org/10.1002%2Fhpm.3008](https://doi.org/10.1002%2Fhpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
+[<a id="note12">12</a>] [https://onlinelibrary.wiley.com/doi/10.1002/hpm.3008](https://onlinelibrary.wiley.com/doi/10.1002/hpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
 
 [<a id="note13">13</a>] [https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/](https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/), [https://cnn.it/3fkGXRM](https://cnn.it/3fkGXRM)
 

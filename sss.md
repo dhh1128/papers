@@ -12,10 +12,10 @@ One adjustment on my to-do list was Signal. I use Signal on my phone to chat sec
 
 <figure>
   <img src="assets/signal-app.webp" alt="using Signal">
-  <figcaption>Photo derived from one by <a href="https://unsplash.com/@7shifts">7shifts</a> on Unsplash</a>.</figcaption>
+  <figcaption>Photo derived from one by 7shifts on Unsplash</a>.</figcaption>
 </figure>
 
-Well, it turns out that’s much trickier than it sounds. Signal installs on new devices just fine, but its account security is tied to control of a phone number — a new identifier that is rented by my employer rather than owned by me — and [Signal is unwilling to let me transfer the binding](https://support.signal.org/hc/en-us/articles/360007062012-New-Number-or-New-Phone). I have to start over from scratch.
+Well, it turns out that’s much trickier than it sounds. Signal installs on new devices just fine, but its account security is tied to control of a phone number — a new identifier that is rented by my employer rather than owned by me — and [Signal is unwilling to let me transfer the binding](https://web.archive.org/web/20200227005300/https://support.signal.org/hc/en-us/articles/360007062012-New-Number-or-New-Phone). I have to start over from scratch.
 
 This is not a rant against Signal (I understand their rationale). Nor is it an exploration of clever workarounds (which may exist). Rather, this is a meditation on a lesson that the Signal friction taught me. I should have understood it long ago, perhaps — but the epiphany was slow in coming. I’m slapping my forehead.
 
