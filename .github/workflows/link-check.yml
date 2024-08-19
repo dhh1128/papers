@@ -8,14 +8,19 @@ on:
     branches:
       - main
 
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 18 * * *"
+
 jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Run Lychee link checker
-        uses: lycheeverse/lychee-action@v2
+      - name: Lychee link checker
+        uses: lycheeverse/lychee-action@v1
         with:
           args: --verbose
