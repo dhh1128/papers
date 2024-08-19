@@ -1,0 +1,29 @@
+name: check links in markdown files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Run markdown-link-check
+        run: |
+          find . -name "*.md" | xargs markdown-link-check -q
