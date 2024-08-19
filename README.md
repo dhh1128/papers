@@ -8,4 +8,6 @@
 
 [Actors, Objects, and Linked Data](aold.md). 16 Nov 2022. <span class="hash">#identity #ssi #empowerment #data #advocacy</span>
 
+[Security, Silos, and Sovereignty][sss.md]. 12 Mar 2021. <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
+
 [Three Dimensions of Identity](3dim.md). Daniel Hardman and Jason Law. 29 Jan 2019. <span class="hash">#identity #ssi #agents #relationships #data #tutorial</span>
