@@ -15,4 +15,4 @@ jobs:
       - name: Lychee link checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --exclude doi\.org|genderit\.org *.md
+          args: --verbose --exclude '(doi|genderit)\.org' *.md
