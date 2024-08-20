@@ -14,7 +14,7 @@ With correlating credentials, any two credentials can be linked because they sha
 
 Non-correlating credentials help a holder to prove control over a credential in a way that reveals neither a public identifier nor a signature; contexts are harder to stitch together. The claim of proponents is that this improves privacy, and that there are better ways to discourage fraud than always revealing a perfect correlator.
 
-[Noncorrelating credentials discourage fraud by making it harder to link distinct contexts](assets/noncorrelating-credentials.png)
+![Noncorrelating credentials discourage fraud by making it harder to link distinct contexts](assets/noncorrelating-credentials.png)
 
 Evernym has built and deployed a non-correlating credentials ecosystem. We regularly receive pushback from fans of the opposite approach. The debate is passionate and involved; exploring it in full would take more word count than any blog can handle, but today I’d like to explore just one point of contention more deeply.
 
@@ -55,7 +55,7 @@ It’s common for online subscriptions to offer a free trial with no credit card
 
 Today, some conventions in the financial industry militate against ratcheting. We may be forced to disclose name and tax ID number, as well as debt and income details, before a bank will commit to an interest rate in a potential loan. But given a choice as we borrow, we prefer to disclose intrusive details later. Responding to that demand, some innovative lenders advertise prequalification on the basis of streamlined questions. Wouldn’t it be nice to take this further? What if we could prove credit worthiness (credit score, income bracket, debt-to-income ratio) to discover the best available rates, without disclosing our name or the exact income number from last year’s taxes? This is the value proposition of businesses that match lenders and borrowers — except without the privacy risks. It doesn’t eliminate the correlation that a lender will eventually do, if we choose them, but it does change when that correlation happens, and it means all the other lenders we approach don’t get to build a profile on us.
 
-[Even if some level of correlation is inevitable, the use of noncorrelating credentials significantly delays this concern](assets/privacy-concessions.png)
+![Even if some level of correlation is inevitable, the use of noncorrelating credentials significantly delays this concern](assets/privacy-concessions.png)
 
 With correlating credentials, all the trust is up-front, because you give away a perfect correlator with your first use of credentials. With non-correlating credentials, it is theoretically possible to defer correlation until you’re ready. I am not claiming that this difference will have immediate benefit in every industry in every jurisdiction; the capabilities of non-correlating credentials are not yet familiar to lawmakers. But this difference does have value. I predict it will matter immediately in some contexts, and over the long haul, it will be acknowledged and even relied upon in regulation and industry best practice.
 
