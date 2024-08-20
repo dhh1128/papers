@@ -12,7 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Lychee link checker
+      - name: Get list of changed files
+        id: changed-files
+        run: echo "::set-output name=files::$(git diff --name-only ${{ github.sha }}^ ${{ github.sha }} | tr '\n' ' ')"
+
+      - name: Run lychee link checker if any files changed
         uses: lycheeverse/lychee-action@v1
+        if: steps.changed-files.outputs.files != ''
         with:
-          args: --verbose --exclude '(doi|genderit)\.org' --exit 1 *.md
+          args: --verbose --exclude '(doi|genderit)\.org' --exit 1 ${{ steps.changed-files.outputs.files }}
