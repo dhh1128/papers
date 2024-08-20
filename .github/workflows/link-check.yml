@@ -4,20 +4,24 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-    - cron: "00 18 */3 * *"
+    - cron: "00 18 */7 * *"
 
 jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Get code, last 2 commits
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
 
       - name: Get list of changed files
         id: changed-files
-        run: echo "::set-output name=files::$(git diff --name-only ${{ github.sha }}^ ${{ github.sha }} | tr '\n' ' ')"
-
+        run: |
+          echo "files=$(git diff --name-only --diff-filter=ACMRT HEAD~1 HEAD | tr '\n' ' ')" >> $GITHUB_ENV
+        
       - name: Run lychee link checker if any files changed
         uses: lycheeverse/lychee-action@v1
-        if: steps.changed-files.outputs.files != ''
+        if: env.files != ''
         with:
-          args: --verbose --exclude '(doi|genderit)\.org' --exit 1 ${{ steps.changed-files.outputs.files }}
+          args: --verbose --exclude '(doi|genderit)\.org' --exit 1 ${{ env.files }}
