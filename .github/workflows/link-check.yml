@@ -20,6 +20,9 @@ jobs:
         run: |
           echo "files=$(git diff --name-only --diff-filter=ACMRT HEAD~1 HEAD | tr '\n' ' ')" >> $GITHUB_ENV
         
+      - run: |
+          echo "${{ env.files }}"
+
       - name: Run lychee link checker if any files changed
         uses: lycheeverse/lychee-action@v1
         if: env.files != ''
