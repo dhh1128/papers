@@ -178,7 +178,7 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note3">3</a>] [https://bit.ly/3FrrLNi](https://bit.ly/3FrrLNi)
 
-[<a id="note4">4</a>] [https://bit.ly/3gXvHvf](https://bit.ly/3gXvHvf)
+[<a id="note4">4</a>] [https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/](https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/)
 
 [<a id="note5">5</a>] [https://bit.ly/3WqL9jI](https://bit.ly/3WqL9jI)
 
@@ -186,7 +186,7 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note7">7</a>] [https://doi.org/10.1037/tra0000452](https://doi.org/10.1037/tra0000452)
 
-[<a id="note8">8</a>] [https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/](https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/), [https://en.wikipedia.org/wiki/Propaganda_in_World_War_I](https://en.wikipedia.org/wiki/Propaganda_in_World_War_I)
+[<a id="note8">8</a>] [https://en.wikipedia.org/wiki/Propaganda_in_World_War_I](https://en.wikipedia.org/wiki/Propaganda_in_World_War_I)
 
 [<a id="note8">9</a>] [https://doi.org/10.1177/0011000015591287](https://doi.org/10.1177/0011000015591287), [https://bit.ly/3DIWAf6](https://bit.ly/3DIWAf6)
 
