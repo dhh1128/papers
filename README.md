@@ -10,6 +10,6 @@
 
 [Security, Silos, and Sovereignty](sss.md). 12 Mar 2021. <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
 
-[The Dangerous Half-Truth of “We’ll Be Correlated Anyway”][wbca.md]. 5 Apr 2020. <span class="hash">#privacy #credentials</span> 
+[The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md). 5 Apr 2020. <span class="hash">#privacy #credentials</span> 
 
 [Three Dimensions of Identity](3dim.md). Daniel Hardman and Jason Law. 29 Jan 2019. <span class="hash">#identity #ssi #agents #relationships #data #tutorial</span>
