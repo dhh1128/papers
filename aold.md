@@ -184,17 +184,17 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note6">6</a>] See this doctor’s meditation about the benefits of appreciating otherness: [https://doi.org/10.7202/1058265ar](https://doi.org/10.7202/1058265ar). And consider G. K. Chesterton’s observation: “How much larger your life would be if your self could become smaller in it; if you could really look at other men with common curiosity and pleasure; if you could see them walking as they are in their sunny selfishness and their virile indifference! You would begin to be interested in them, because they are not interested in you. You would break out of this tiny and tawdry theatre in which your own little plot is always played, and you would find yourself under a freer sky, in a street full of splendid strangers.” (In <cite>Orthodoxy</cite>, 1959, p. 20–21).
 
-[<a id="note7">7</a>] [https://doi.org/10.1037/tra0000452](https://psycnet.apa.org/doiLanding?doi=10.1037%2Ftra0000452)
+[<a id="note7">7</a>] [https://doi.org/10.1037/tra0000452](https://doi.org/10.1037/tra0000452)
 
-[<a id="note8">8</a>] [https://bit.ly/3WdxKv6](https://bit.ly/3WdxKv6), [https://www.bl.uk/world-war-one/articles/depicting-the-enemy](https://www.bl.uk/world-war-one/articles/depicting-the-enemy)
+[<a id="note8">8</a>] [https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/](https://en.dialektika.org/philosophy/emmanuel-levinas-other-responsibility/), [https://en.wikipedia.org/wiki/Propaganda_in_World_War_I](https://en.wikipedia.org/wiki/Propaganda_in_World_War_I)
 
-[<a id="note8">9</a>] [https://doi.org/10.1177/0011000015591287](https://journals.sagepub.com/doi/10.1177/0011000015591287), [https://bit.ly/3DIWAf6](https://bit.ly/3DIWAf6)
+[<a id="note8">9</a>] [https://doi.org/10.1177/0011000015591287](https://doi.org/10.1177/0011000015591287), [https://bit.ly/3DIWAf6](https://bit.ly/3DIWAf6)
 
-[<a id="note10">10</a>] See, for example, [https://doi.org/10.1080/1068316X.2016.1269902](https://www.tandfonline.com/doi/full/10.1080/1068316X.2016.1269902), [https://bit.ly/3DIFw8V](https://bit.ly/3DIFw8V), [https://doi.org/10.1177/104398629601200204](https://journals.sagepub.com/doi/10.1177/104398629601200204), and [https://www.genderit.org/articles/trafficking-women-female-objectification](https://www.genderit.org/articles/trafficking-women-female-objectification).
+[<a id="note10">10</a>] See, for example, [https://doi.org/10.1080/1068316X.2016.1269902](https://doi.org/10.1080/1068316X.2016.1269902), [https://bit.ly/3DIFw8V](https://bit.ly/3DIFw8V), [https://doi.org/10.1177/104398629601200204](https://doi.org/10.1177/104398629601200204), and [https://www.genderit.org/articles/trafficking-women-female-objectification](https://www.genderit.org/articles/trafficking-women-female-objectification).
 
-[<a id="note11">11</a>] [https://doi.org/10.2139/ssrn.1032263](https://dx.doi.org/10.2139/ssrn.1032263), [https://nyti.ms/3znLg5p](https://nyti.ms/3znLg5p)
+[<a id="note11">11</a>] [https://doi.org/10.2139/ssrn.1032263](https://doi.org/10.2139/ssrn.1032263), [https://nyti.ms/3znLg5p](https://nyti.ms/3znLg5p)
 
-[<a id="note12">12</a>] [https://doi.org/10.1002/hpm.3008](https://onlinelibrary.wiley.com/doi/10.1002/hpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
+[<a id="note12">12</a>] [https://doi.org/10.1002/hpm.3008]([https://doi.org/10.1002/hpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
 
 [<a id="note13">13</a>] [https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/](https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/), [https://cnn.it/3fkGXRM](https://cnn.it/3fkGXRM)
 
