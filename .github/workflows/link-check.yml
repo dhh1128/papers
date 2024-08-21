@@ -14,4 +14,5 @@ jobs:
       - name: Run lychee link checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --exit-status --exclude '(doi|genderit)\.org' *.md
+          args: --verbose --exclude '(doi|genderit)\.org' *.md
+          fail: true
