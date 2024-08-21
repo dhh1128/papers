@@ -3,28 +3,15 @@ name: check links in markdown files
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: "00 18 */7 * *"
-
+  push:
+    
 jobs:
   link-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Get code, last 2 commits
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
+      - uses: actions/checkout@v3
 
-      - name: Get list of changed files
-        id: changed-files
-        run: |
-          echo "files=$(git diff --name-only --diff-filter=ACMRT HEAD~1 HEAD | tr '\n' ' ')" >> $GITHUB_ENV
-        
-      - run: |
-          echo "${{ env.files }}"
-
-      - name: Run lychee link checker if any files changed
+      - name: Run lychee link checker
         uses: lycheeverse/lychee-action@v1
-        if: env.files != ''
         with:
           args: --verbose --exit-status --exclude '(doi|genderit)\.org' *.md
