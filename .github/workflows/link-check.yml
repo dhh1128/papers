@@ -27,4 +27,4 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         if: env.files != ''
         with:
-          args: --verbose --exit 1 --exclude '(doi|genderit)\.org' *.md
+          args: --verbose --exit-status --exclude '(doi|genderit)\.org' *.md
