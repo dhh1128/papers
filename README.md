@@ -10,6 +10,8 @@
 
 [Actors, Objects, and Linked Data](aold.md). 16 Nov 2022. <span class="hash">#identity #ssi #empowerment #data #advocacy</span>
 
+[Cross-File Associations](https://dhh1128.github.io/cfa). Sep 2022. <span class="hash">#data #hypertext #semantics</span>
+
 [Security, Silos, and Sovereignty](sss.md). 12 Mar 2021. <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
 
 [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md). 5 Apr 2020. <span class="hash">#privacy #credentials</span> 
