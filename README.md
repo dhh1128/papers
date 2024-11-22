@@ -1,3 +1,7 @@
+[Why X509 Certs are Flawed as Evidence of Org Identity](x509-prob.md). 15 Nov 2024. <span class="hash">#identity #certs #orgid #verifiable-data</span>
+
+[How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>
+
 [Bytewise and Externalized SAIDs](bes.pdf). August 2024. <span class="hash">#keri #verifiable-data</span>
 
 [SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). June 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
