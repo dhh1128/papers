@@ -1,4 +1,4 @@
-[Why X509 Certs are Flawed as Evidence of Org Identity](x509-prob.md). 15 Nov 2024. <span class="hash">#identity #certs #orgid #verifiable-data</span>
+[Why X509 Certs are Problematic as Evidence of Org Identity](x509-prob.md). 15 Nov 2024. <span class="hash">#identity #certs #orgid #verifiable-data</span>
 
 [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>
 
