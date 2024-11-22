@@ -1,6 +1,6 @@
 # Why X509 Certs are Problematic as Evidence of Org Identity
 
-Provenant is advocating that [ACDCs](https://trustoverip.github.io/tswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as evidence in foundational use cases in telco, banking, supply chain, and similar contexts. Why would we do this, when SSL runs on PKI/X509, and that tech has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography? Here are some concrete reasons.
+*Provenant is advocating that [ACDCs](https://trustoverip.github.io/tswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as evidence in foundational use cases in telco, banking, supply chain, and similar contexts. Why would we do this, when SSL runs on PKI/X509, and that tech has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography? Here are some concrete reasons.*
 
 ## 1. Governance is opaque, centralized, and expensive
 A cert is protected by a cryptographic key. This sounds fancy, but it boils down to a single secret. How the secret was created or how it is managed on an ongoing basis is undefined. All we know, from the key binding in a cert, is that someone provided a public key before the certificate was created.

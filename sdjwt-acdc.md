@@ -1,6 +1,6 @@
 # How SD-JWT and ACDC are similar and different
 
-Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?
+*Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*
 
 >Disclaimer: this information embodies what I believe to be true based on study and personal experience with the technologies. I see virtues in both technologies. I have consulted to help an SD-JWT-based initiative and I am actively involved in several ACDC-based projects at my day job. I am attempting to be fair, and I am happy to update what I say here if anybody wants me to correct an inaccuracy. However, I am more enthused about ACDCs, so I am not a perfectly unbiased source.
 
