@@ -202,7 +202,7 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note15">15</a>] [https://dataprot.net/statistics/spam-statistics/](https://dataprot.net/statistics/spam-statistics/)
 
-[<a id="note16">16</a>] [https://codecraft.co/2015/04/08/a-grumble-about-buckets/](https://codecraft.co/2015/04/08/a-grumble-about-buckets/)
+[<a id="note16">16</a>] [https://codecraft.co/a-grumble-about-buckets](https://codecraft.co/a-grumble-about-buckets)
 
 [<a id="note17">17</a>] [https://www.viktorfrankl.org/quote_stimulus.html](https://www.viktorfrankl.org/quote_stimulus.html)
 
