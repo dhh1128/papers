@@ -1,6 +1,6 @@
 # Security, Silos, and Sovereignty
 ### Why portable security is the sleeper — but killer — feature for SSI
-Daniel Hardman &mdash; 12 Mar 2021 &mdash;[medium.com](https://daniel-hardman.medium.com/security-silos-and-sovereignty-522e30bb8eb4)
+Daniel Hardman &mdash; 12 Mar 2021 &mdash; [medium.com](https://daniel-hardman.medium.com/security-silos-and-sovereignty-522e30bb8eb4)
 
 <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
 

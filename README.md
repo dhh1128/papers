@@ -8,6 +8,8 @@
 
 [Canonical Quoted Text spec](https://dhh1128.github.io/canonical-quoted-text). June 2023. <span class="hash">#keri #verifiable-data</span>
 
+[AI User Code of Conduct](ai-coca.md). June 2023. <span class="hash">#ai #trust #ethics</span>
+
 [The Coming Tsunami of Falsehood](ctf.pdf). June 2023. <span class="hash">#ai #verifiable-data #advocacy</span>
 
 [Big Desks and Little People](bdlp.md). 1 May 2023. <span class="hash">#identity #ssi #empowerment #advocacy</span>
