@@ -96,7 +96,7 @@ One of the fundamental challenges with current cert-based organizational securit
 
 Proposals to improve this are on the table, and Provenant strongly supports the general idea. Signing must be done not by phone companies, but by holders of telephone numbers.
 
-Unfortunately, with certs, this means delegate certs, and this creates a huge scaling challenge. All of the preceding concerns become more acute if the number of signers and certificate holders changes from hundreds of PhonesRUs companies, to millions of enterprises and small businesses. Shall we increase the maintenance burden by 52x (certs rotate weekly), AND multiply the number of certificate holders by 10,000?
+But picking the right signer isn't the only ingredient in a fix; [signing based on the right evidence is also vital](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Having enterprises sign with certs means delegate certs are needed, and this creates a huge scaling challenge. All of the preceding concerns become more acute if the number of signers and certificate holders changes from hundreds of PhonesRUs companies, to millions of enterprises and small businesses. Shall we increase the maintenance burden by 52x (certs rotate weekly), AND multiply the number of certificate holders by 10,000?
 
 At such scales, performance also decreases (or cache latency goes up, a lot).
 
@@ -127,4 +127,4 @@ ACDCs and their related underpinnings have been codified by the Trust Over IP Fo
 
 For more details, you may want to read [this comparison of ACDCs and SD-JWTs](sdjwt-acdc.md).
 
-Identity is hard. Getting the evidence right is crucial. We've had X509 and PKI for four decades, and they've served us well. I'm glad my TLS sessions are secure. However, certs aren't the right building block for major new identity infrastructure. It's high time for an upgrade.
+Identity is hard. Getting the evidence right is crucial. We've had X509 and PKI for four decades, and they've served us well. We're all glad our TLS sessions are pretty safe. However, certs aren't the right building block for major new identity infrastructure. It's high time for an upgrade.
