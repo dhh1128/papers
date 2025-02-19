@@ -1,3 +1,5 @@
+[Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Feb 2025. <span class="hash">#identity #telco #sip #communication</span>
+
 [Why X509 Certs are Problematic as Evidence of Org Identity](x509-prob.md). 15 Nov 2024. <span class="hash">#identity #certs #orgid #verifiable-data</span>
 
 [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>

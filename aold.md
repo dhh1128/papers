@@ -50,7 +50,7 @@ SEO and clickbait optimize for “eyeballs” and “impressions” rather than 
 * Chat bots, fake social media accounts, touchtone phone menus, and automated email responses connect people to technological projections of an identity that lacks empathy and human insight. Often the hard-coded features of these systems presents people with unrealistic or unhelpful choices that dehumanize them even as they optimize support costs.[[16](#note16)]
 
 ## III. Agency
-As I think about objectification, my thoughts go to Viktor Frankl’s important book, Man’s Search for Meaning. Frankl, a formally trained psychiatrist, describes his dehumanizing experiences in a concentration camp during World War II. He suffered, and so did so many others. But he tells how his suffering triggered an important epiphany about humans as actors. It informed his personal and professional activities for the rest of his life. Another author, summarizing Frankl’s life work, distilled the idea in a way that’s become a popular meme on the internet: “Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.”[[17](#note17)]
+As I think about objectification, my thoughts go to Viktor Frankl’s important book, <cite>Man’s Search for Meaning</cite>. Frankl, a formally trained psychiatrist, describes his dehumanizing experiences in a concentration camp during World War II. He suffered, and so did so many others. But he tells how his suffering triggered an important epiphany about humans as actors. It informed his personal and professional activities for the rest of his life. Another author, summarizing Frankl’s life work, distilled the idea in a way that’s become a popular meme on the internet: “Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.”[[17](#note17)]
 
 Philosophers call this deeply human trait “agency.”[[18](#note18)] It is the defining characteristic of things that act, and I believe it deserves our reverence and advocacy. This is because, although agency cannot be pried out of us, systems can deny agency its outward expression.
 
@@ -93,7 +93,7 @@ Please note that that list isn’t privacy-centric. I’ve been known as a priva
 *I claim that when we build data processing systems that do not account adequately for ways that data about humans is unique, we are on dangerous ground as far as objectification is concerned.*
 
 ## VI. Identity Data as Semantic Web Data
-Semantic web proponents are another community that loves the word data. A [W3C vision statement about it, dating all the way back to 2001](https://www.w3.org/2001/sw/), says (emphasis mine):
+Semantic web proponents are another community that loves the word data. A [W3C vision statement about it, dating all the way back to 2001](https://www.w3.org/2001/sw/), says:
 
 >The Semantic Web is about two things. It is about common formats for integration and combination of *data* drawn from diverse sources, where on the original Web mainly concentrated on the interchange of documents. It is also about language for recording how the *data* relates to real world objects. That allows a person, or a machine, to start off in one *data*base, and then move through an unending set of *data*bases which are connected not by wires but by being about the same thing.
 
