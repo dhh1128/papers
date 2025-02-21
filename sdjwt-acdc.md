@@ -1,4 +1,5 @@
 # How SD-JWT and ACDC are similar and different
+15 Nov 2024
 
 *Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*
 
