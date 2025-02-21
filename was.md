@@ -1,7 +1,7 @@
 # Why Anchored Signatures?
 20 Feb 2025
 
-By themselves, digital signatures are much weaker evidence than casual thinkers might imagine. The reason is that the secret upon which they depend (a private key) can be lost or revoked, but *simple signatures are difficult to sequence relative to the loss or revocation event*. An inability to reason about sequence enables retrograde attacks.
+By themselves, digital signatures are much weaker evidence than casual thinkers might imagine. The reason is that the secret upon which they depend (a private key) can be compromised or revoked, but *simple signatures are difficult to sequence relative to a compromise or revocation event*. An inability to reason about sequence enables retrograde attacks.
 
 Here's how a retrograde attack works:
 
