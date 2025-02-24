@@ -53,7 +53,7 @@ I am not trying to diss JWTs or OIDC or VCs across the board. Sometimes they can
 
 ## Solution
 
-If obvious mitigations for retrograde attacks aren't satisfying, what would a real solution look like? The formula, which I'll call *anchored signatures* is actually simple:
+If obvious mitigations for retrograde attacks aren't satisfying, what would a real solution look like? The formula, which I'll call *anchored signatures* in line with [KERI](https://trustoverip.github.io/tswg-keri-specification) terminology, is actually simple:
 
 >Keep tamper-evident records that can prove how a given signing event relates in time to changes in the associated key state.
 
