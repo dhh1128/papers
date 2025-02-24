@@ -24,7 +24,7 @@ Both technologies can create digital credentials (signed artifacts that confer e
 ### 2.2 Identifiers
 SD-JWTs allow an issuer and a holder to be identified with a DID, a URL, a URN, or some other identifier scheme. ACDCs are stricter: issuers MUST be identified with an AID, and issuees, if present, MUST also be identified with an AID.
 
->Note: AIDs (autonomic identifiers) are a [KERI](https://trustoverip.github.io/tswg-keri-specification/) construct. They provide numerous security guarantees that are not true of identifier schemes in general, or of popular DID schemes, in particular. These include versioned and anchored key state, witnesses, prerotation, weighted multisig, postquantum migration path, self-certification, etc. AIDs can be transformed to DIDs, but the opposite transformation is typically impossible.
+>Note: AIDs (autonomic identifiers) are a [KERI](https://trustoverip.github.io/tswg-keri-specification/) construct. They provide numerous security guarantees that are not true of identifier schemes in general, or of popular DID schemes, in particular. These include versioned and [anchored](was.md) key state, witnesses, prerotation, weighted multisig, postquantum migration path, self-certification, etc. AIDs can be transformed to DIDs, but the opposite transformation is typically impossible.
 
 Flexibility in this dimension is a tradeoff. On one hand, it lets parties with many different security approaches, and many different ways to reference participants, use the same data structure; on the other, it makes it much more difficult to predict or enforce security properties, and it makes tooling less useful because theoretical and practical interop diverge.
 
