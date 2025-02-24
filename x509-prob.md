@@ -69,14 +69,17 @@ Prerotation isn't just a recovery issue. Lacking prerotation, certificate rotati
 
 An X509 extension could be designed for prerotation, perhaps using Certificate Transparency. However, such a mechanism would need to be developed, standardized, and adopted before it is accurate to claim it as a cert feature. Cert technology in its general deployment doesn't support this crucial feature.
 
-### 2.3 Maintenance challenges
+### 2.3 Signatures aren't sequenced
+The binding between a private key, its public complement, and an X509 certificate is [inherently subject to retrograde attacks](was.md), because there is only a crude way to evaluate the timing of the event relative to the timing of a revocation or key rotation. This means that certificate-based identity solutions cannot provide a solid audit trail or answer historical questions; they can only be evaluated in real-time. Yet many implementers assume otherwise, and make serious security mistakes as a result.
+
+### 2.4 Maintenance challenges
 Question: What work is necessary if the issuee has to rotate their key?
 
 Answer: the old certificate has to be revoked, and a new one has to be issued.
 
 This is painful, even with certificate management automation. It means that reissuance, redeployment, reconfiguration, and rebuilding of caches is a constant task. CRLs are useful, but complex. They can be inconvenient when connectivity is imperfect. OCSP and Certificate Transparency are also clever tools, but each has its own complications and challenges. (See [1](https://x509errors.org/guides/openssl-crl), [2](https://github.com/openssl/openssl/issues/26079), [3](https://www.fastly.com/blog/addressing-challenges-tls-revocation-and-ocsp), [4](https://letsencrypt.org/2024/07/23/replacing-ocsp-with-crls/), [5](https://www.ibm.com/docs/en/sdk-java-technology/8?topic=provider-determine-x509-certificate-revocation-status-ocsp), [6](https://educatedguesswork.org/posts/transparency-part-2/), [7](https://bit.ly/41k4ojw), [8](https://dl.acm.org/doi/10.1145/3278532.3278562), [9](https://javanexus.com/blog/common-pitfalls-certificate-transparency-java), [10](https://bit.ly/3VkMl99), [11](https://research.cloudflare.com/publications/Stark2019/), [12](https://www.encryptionconsulting.com/the-hidden-risks-of-expired-certificate-revocation-lists-crl/), [13](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/sosnowski2024certificates.pdf), [14](https://www.portnox.com/cybersecurity-101/certificate-revocation-list/)). The tools that do maintenance aren't free to buy, deploy, operate, or develop, and they [don't guarantee perfect outcomes](https://community.letsencrypt.org/t/sometimes-its-required-to-break-the-rules-and-to-change-these/115567). Gaps can and do occur, even with sophisticated and well funded orgs — and they are painful, as embarrassed admins from Cisco, Microsoft, Google, Spotify, LinkedIn, Ericsson, Equifax, AWS, and Apple [have admitted](https://www.encryptionconsulting.com/10-cases-of-certificate-outages-involving-human-error/).
 
-### 2.4 Disincentives to be secure
+### 2.5 Disincentives to be secure
 
 When conditions change, timely revocation is vital. However, the cost and effort to maintain a fabric of certs creates a strong [incentive](https://www.pkisolutions.com/blog/to-revoke-or-not-to-revoke-balancing-security-with-performance-and-operational-complexity/) to [avoid revocation](https://link.springer.com/chapter/10.1007/978-3-031-56252-5_14).
 
