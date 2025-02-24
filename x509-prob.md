@@ -70,7 +70,7 @@ Prerotation isn't just a recovery issue. Lacking prerotation, certificate rotati
 An X509 extension could be designed for prerotation, perhaps using Certificate Transparency. However, such a mechanism would need to be developed, standardized, and adopted before it is accurate to claim it as a cert feature. Cert technology in its general deployment doesn't support this crucial feature.
 
 ### 2.3 Signatures aren't sequenced
-The binding between a private key, its public complement, and an X509 certificate is [inherently subject to retrograde attacks](was.md), because there is only a crude way to evaluate the timing of the event relative to the timing of a revocation or key rotation. This means that certificate-based identity solutions cannot provide a solid audit trail or answer historical questions; they can only be evaluated in real-time. Yet many implementers assume otherwise, and make serious security mistakes as a result.
+The binding between a private key, its public complement, and an X509 certificate is [inherently subject to retrograde attacks](was.md), because there is only a crude, unreliable way to guess at the timing of the event relative to the timing of a revocation or key rotation. This means that certificate-based identity solutions cannot provide a solid audit trail or answer historical questions; they can only be evaluated in real-time. Yet many implementers assume otherwise, and make serious security mistakes as a result.
 
 ### 2.4 Maintenance challenges
 Question: What work is necessary if the issuee has to rotate their key?
