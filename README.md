@@ -6,17 +6,17 @@
 
 [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>
 
-[Bytewise and Externalized SAIDs](bes.pdf). August 2024. <span class="hash">#keri #verifiable-data</span>
+[Bytewise and Externalized SAIDs](bes.pdf). Aug 2024. <span class="hash">#keri #verifiable-data</span>
 
-[SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). June 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
+[SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). Jun 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
 
-[Canonical Quoted Text spec](https://dhh1128.github.io/canonical-quoted-text). June 2023. <span class="hash">#keri #verifiable-data</span>
+[Canonical Quoted Text spec](https://dhh1128.github.io/canonical-quoted-text). Jun 2023. <span class="hash">#keri #verifiable-data</span>
 
-[AI User Code of Conduct](ai-coca.md). June 2023. <span class="hash">#ai #trust #ethics</span>
+[AI User Code of Conduct](ai-coca.md). Jun 2023. <span class="hash">#ai #trust #ethics</span>
 
-[The Coming Tsunami of Falsehood](ctf.pdf). June 2023. <span class="hash">#ai #verifiable-data #advocacy</span>
+[The Coming Tsunami of Falsehood](ctf.pdf). Jun 2023. <span class="hash">#ai #verifiable-data #advocacy</span>
 
-[Advice About Cybersecurity and Privacy](acp.md). 6 June 2023. <span class="hash">#cybersecurity #privacy</span>
+[Advice About Cybersecurity and Privacy](acp.md). 6 Jun 2023. <span class="hash">#cybersecurity #privacy</span>
 
 [Big Desks and Little People](bdlp.md). 1 May 2023. <span class="hash">#identity #ssi #empowerment #advocacy</span>
 
