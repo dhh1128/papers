@@ -16,6 +16,8 @@
 
 [The Coming Tsunami of Falsehood](ctf.pdf). June 2023. <span class="hash">#ai #verifiable-data #advocacy</span>
 
+[Advice About Cybersecurity and Privacy](acp.md). 6 June 2023. <span class="hash">#cybersecurity #privacy</span>
+
 [Big Desks and Little People](bdlp.md). 1 May 2023. <span class="hash">#identity #ssi #empowerment #advocacy</span>
 
 [Sentries, Confessionals, Vaults, and Envelopes](svce.md). 18 Jan 2023. <span class="hash">#identity #architecture #didcomm #tutorial</span>
