@@ -50,10 +50,10 @@ We could go on...
 
 Perhaps the policy administrator enforces good answers to some of these questions, but they are not quickly available in public documentation. Furthermore, using delegated certs &mdash; a feature pressure that's inevitable, if you want to do org identity right &mdash; makes the opacity even worse, and the governance challenges far harder.
 
-## 2. Binding is to keys, not identifiers
-As already mentioned, an X509 certificate is bound to its issuee by an embedded public key. If the party claiming a cert-based identity can produce a digital signature that verifies with that public key, then we can conclude with *some assurance* that they're the issuee.
+## 2. Control is direct via key, not indirect via identifier
+In X509, the control mechanism that's bound to identity attributes (an org name, a domain, arbitrary identifiers or metadata) is a single public key. If the party claiming a cert-based identity can produce a digital signature that verifies with that public key, then we can conclude with *some assurance* that they're the issuee. In contrast, the control mechanism of ACDCs is a permanent identifier with arbitrarily complex, layered protections. 
 
-This mechanism might achieve its theoretical, cryptographic goal of binding the cert to its owner with *X* bits of security. However, setting aside the "single secret guards the front door" argument made above, this has numerous additional problems from a practical, human standpoint. This is why certs give only *some assurance* about the identity of an issuee.
+The X509 mechanism might achieve its theoretical, cryptographic goal of binding the cert to its owner with *X* bits of security. However, setting aside the "single secret guards the front door" argument made above, this has numerous additional problems from a practical, human standpoint. This is why certs give only *some assurance* about the identity of an issuee.
 
 ### 2.1 One key isn't realistic
 A huge body of practical experience tells us that organizations need nuanced signing policies to spend large amounts, authorize a merger or fire a CEO. Almost 3800 years ago, the <cite>Code of Hammurabi</cite> required more than one attestation of certain high-stakes transactions (see, for example, [law 7](https://www.gutenberg.org/files/17150/17150-h/17150-h.htm)). The law of Moses had similar requirements (see, for example, [Deuteronomy 19:15](https://www.sefaria.org/Deuteronomy.19.15?lang=bi&aliyot=0)). Double-entry accounting was [invented in medieval Italy](https://monily.com/blog/double-entry-accounting-explained) to formalize such checks and balances, and is an accepted best practice for all modern bookkeeping.
