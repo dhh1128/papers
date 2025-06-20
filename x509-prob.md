@@ -10,6 +10,11 @@ A cert is a bit like a business license. Renewing a business license makes sense
 
 People renew driver's licenses and passports, but these are proof of privilege. People don't renew birth certificates, and there's a good reason for that. Similarly, businesses don't renew their articles of incorporation. These artifacts establish identity, not privileges granted by registration.
 
+<figure>
+  <img src="lifespans.png" alt="scale drawing of lifespans of org vs. cert" style="width:100%">
+  <figcaption>A scale drawing of the lifespans of a 20-year org and a 3-month cert.</figcaption>
+</figure>
+
 Certs &mdash; artifacts with lifespans measured in weeks or months &mdash; shouldn't be used to prove the identity of something with a lifespan measured in decades.
 
 ## 1. Governance is opaque, centralized, and expensive
