@@ -19,7 +19,7 @@ Upgrading was not my intent when I clicked the *Watch* button. (In the web versi
 
 As builders of software, we have to handle intent better.
 
-Thinkers have explored intent in various disciplines, including law, philosophy, religion, organizational behavior, cybersecurity, and human-computer interaction. In my experience, user intent is also discussed regularly by dev and product teams in software. Nonetheless, our industry is often careless, naive, inefficient, or downright disrespectful of the intent of those who use what we build. My story is just one example. Check out [darkpatterns.org](https://darkpatterns.org) for many more. (And by the way, AI is going to raise the stakes dramatically.)
+Thinkers have explored intent in various disciplines, including law, philosophy, religion, organizational behavior, cybersecurity, and human-computer interaction. In my experience, user intent is also discussed regularly by dev and product teams in software. Nonetheless, our industry is often careless, naive, inefficient, or downright disrespectful of the intent of those who use what we build. My story is just one example. Check out [darkpatterns.org](https://darkpatterns.org) for many more.
 
 I'd like to raise the bar by introducing some concepts that I think our industry lacks, and then proposing some associated principles. I believe these principles are foundational to smooth and intuitive UX, efficient and safe agentic UI, and ethical and empowering identity systems.
 
@@ -28,7 +28,7 @@ I'd like to raise the bar by introducing some concepts that I think our industry
 ### Intent
 Various definitions of this word are valid. (If you want to explore, I recommend G. E. M. Anscombe's monograph, <cite>Intention</cite>). But here, I define it as follows:
 
->*Intent* is a mental stance that explains a choice of action as contributing to a specific purpose: "When Alice clicked the button, her intent was to watch, not subscribe."
+><u>Intent</u> is a mental stance that explains a choice of action as contributing to a specific purpose: "When Alice clicked the button, her intent was to watch, not subscribe."
 
 * *Purpose is required.* If we ask Alice why she clicked, and she truthfully says, "I don't know; just because?", our definition requires us to say that she didn't have intent. (Yes, we might still say "she clicked *intentionally*..." but see the last bullet in this list.)
 * *Action is required.* If the action is undertaken, then the intent is *actual*. If the action is only contemplated, the intent is *potential*. But if no action is even imagined, we have an idle wish, not intent as defined above.
@@ -46,20 +46,20 @@ Given this definition, consider the following:
 * Because intent (plus its constraints and its narrow-broad-ness and proximate-remote-ness) is a mental stance, only an intender can say definitively what intent they have. (And they can forget, lie, or make mistakes in self-analysis.)
 * Notwithstanding the internal nature of intent, reality imposes some logic on an intender. Alice can't intend with actions or purposes that she can't conceive, and she can't link actions to purposes where she imagines no causal relationship. Thus, a rational Alice might have many intents when she clicks a *Watch* button, but getting the pizza out of the oven or submitting her vote in an election probably aren't in the set. Alice probably can't intend to subscribe only if the price is less than -50 quadrillion twinkies. And she probably can't click a *Watch* button with the intent of NOT watching.
 * Choices about actions have consequences. Some consequences are foreseeable by any rational actor, and when they are, they attach naturally to an intent: *intending to step into a pouring rain without an umbrella is also intending to get wet*. However, many consequences are not as predictable or as well known.
-* It is possible (and often, desirable and reasonable) for outsiders to guess about intent. Sometimes clues are abundant, and guesses can be quite accurate. Sometimes guesses can also be made mostly harmless, either by giving them a more narrow and proximate framing, or by making them relatively easy to correct.
-* It is also possible for outsiders to get an explicit clarification of intent from the intender, and to hold the intender accountable for what they say.
+* It is possible (and often, desirable and reasonable) for outsiders to guess about intent. Sometimes clues are abundant, and guesses can be quite accurate. Sometimes guesses can also be made mostly harmless, either by giving them a more narrow and proximate framing, or by making them relatively easy to correct. Context can make some guesses about FAR more appropriate than others.
+* Outsiders can request an explicit confirmation of intent from the intender, and hold the intender accountable for what they say. Often, this is vital to the correctness, the trustworthiness, or the ethical soundness of software. 
 
 ### Boundaries
 
 We can now introduce another useful concept:
 
->An *intent boundary* is a place where what is known about an intender's intent, by an external party, becomes inadequate. It is a boundary to the external party, because it prevents them from confidently characterizing the intent on the other side. An external party that faces an intent boundary is called a *facer*.
+>An <u>intent boundary</u> is a place where what is known about an intender's intent by an external party becomes inadequate. It is a boundary to the external party, because it prevents them from confidently characterizing the intent on the other side.
 
 * Each external party may have different knowledge, and each decides what is "adequate" on the basis of context plus practical, financial, legal, ethical, and technical considerations. Thus, different parties may face intent boundaries in different places.
 * Places may be points in time, steps in a workflow, locations in a UI, physical locations, conditions, circumstances, or similar.
 
 ## Principles
-Now that we've built a mental model, let's discuss some ethical, UX, and security principles that relate to intent and intent boundaries. (I distill these particular principles based on my own experience, but I expect that readers with deep backgrounds in psychology, ethics, HCI, and software architecture will perceive deep resonance with acknowledged best practice in their respective fields.)  
+Now that we've built a mental model, let's discuss some ethical, UX, and security principles that relate to intent and intent boundaries. (I assert these particular principles based on my own experience, but I expect that readers with deep backgrounds in psychology, ethics, HCI, and software architecture will perceive deep resonance with acknowledged best practice in their respective fields.)  
 
 ### 1. Recognize boundaries
 This is more than just noticing boundaries when we trip over them. "Recognize" implies that we proactively seek to understand what boundaries exist, and where, and why &mdash; and that we accept them and acknowledge to ourselves and others what we discover. Pretending that boundaries do not exist, or being casual and careless about them, can be dangerous, unethical, inefficient, or downright stupid. [Related: [Principle of Least Astonishment](https://usertimes.io/2018/12/07/the-principle-of-least-astonishment/) | [Principle of Least Privilege](https://www.cloudflare.com/learning/access-management/principle-of-least-privilege/) | [Boundaries in Personal Relationships](https://thementalmastery.com/the-psychology-of-boundaries-how-to-define-communicate-and-maintain-them-3-steps/) | [#MeToo and Consent Boundaries](https://www.ipu-berlin.de/en/crossing-sexual-boundaries-and-drawing-moral-boundaries-metoo/) | [Understood and Informed Consent in Bioethics](https://pmc.ncbi.nlm.nih.gov/articles/PMC5718441/) | [Privacy by Design](https://digitalprivacy.ieee.org/publications/topics/what-is-privacy-by-design-and-why-it-s-important/) | [Cognitive Load Theory](https://www.sciencedirect.com/science/article/abs/pii/0364021388900237) | [Proportionality Principle in Law](https://lawforeverything.com/doctrine-of-proportionality-in-law/)]
