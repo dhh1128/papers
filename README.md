@@ -1,3 +1,5 @@
+[Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics</span>
+
 [Why Anchored Signatures](was.md). 20 Feb 2025. <span class="hash">#cybersecurity #identity #verifiable-data</span>
 
 [Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Feb 2025. <span class="hash">#identity #telco #sip #communication</span>

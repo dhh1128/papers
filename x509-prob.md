@@ -6,14 +6,14 @@
 ## 0. Lifespans don't match
 Identity is stable, whereas privileges are dynamic. Certs are designed to be dynamic, and both tooling and tribal knowledge about them encourages short lifespans. Using certs to prove a permanent characteristic rather than a temporary condition means that evidence churns, and it creates nagging problems that will never be resolved.
 
-A cert is a bit like a business license. Renewing a business license makes sense, just like renewing proof that a business owns an internet domain makes sense. But renewing an *identity* is a non-sequitur; if evidence needs renewal, then that evidence must be a derivative characteristic of an identity that has greater span than the current record in the registry. Unstable registration in the governance scheme of a certificate-rooted ecosystem should not be confused with an identity defined elsewhere.
-
-People renew driver's licenses and passports, but these are proof of privilege. People don't renew birth certificates, and there's a good reason for that. Similarly, businesses don't renew their articles of incorporation. These artifacts establish identity, not privileges granted by registration.
-
 <figure>
   <img src="assets/lifespans.png" alt="scale drawing of lifespans of org vs. cert" style="width:100%">
   <figcaption>A scale drawing of the lifespans of a 20-year org and a 3-month cert.</figcaption>
 </figure>
+
+A cert is a bit like a business license. Renewing a business license makes sense, just like renewing proof that a business owns an internet domain makes sense. But renewing an *identity* is a non-sequitur; if evidence needs renewal, then that evidence must be a derivative characteristic of an identity that has greater span than the current record in the registry. Unstable registration in the governance scheme of a certificate-rooted ecosystem should not be confused with an identity defined elsewhere.
+
+People renew driver's licenses and passports, but these are proof of privilege. People don't renew birth certificates, and there's a good reason for that. Similarly, businesses don't renew their articles of incorporation. These artifacts establish identity, not privileges granted by registration.
 
 Certs &mdash; artifacts with lifespans measured in weeks or months &mdash; shouldn't be used to prove the identity of something with a lifespan measured in decades.
 
