@@ -1,5 +1,5 @@
 # Intent and Boundaries
-Daniel Hardman &mdash; 10 June 2025
+Daniel Hardman &mdash; 20 June 2025
 
 <span class="hash">#ux #ssi #agents #ethics</span> 
 
@@ -10,7 +10,7 @@ Recently I helped a visiting friend who was unfamiliar with our smart TV's remot
 
 <figure>
 <img src="assets/watch-show.jpg">
-<figcaption>(The interface I navigated was like this, although I captured this later, using a different show as an example, to protect the guilty.)
+<figcaption>(The interface I navigated was like this, although I captured this later, using a different show as an example, to protect the guilty.)</figcaption>
 </figure>
 
 Five minutes later, I noticed an email from the content provider, thanking me for agreeing to an upgraded subscription. Apparently, what I was watching required a fancier membership, and by streaming, I had agreed to new terms, conditions, and a bigger monthly bill.
