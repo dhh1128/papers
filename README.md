@@ -2,8 +2,6 @@
 
 [Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics</span>
 
-[Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics</span>
-
 [Why Anchored Signatures](was.md). 20 Feb 2025. <span class="hash">#cybersecurity #identity #verifiable-data</span>
 
 [Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Feb 2025. <span class="hash">#identity #telco #sip #communication</span>
@@ -13,6 +11,8 @@
 [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>
 
 [Bytewise and Externalized SAIDs](bes.pdf). Aug 2024. <span class="hash">#keri #verifiable-data</span>
+
+[Zooko and Houdini: A Flatland Parable](zh.md). 20 June 2024. <span class="hash">#identity #ux</span>
 
 [SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). Jun 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
 
