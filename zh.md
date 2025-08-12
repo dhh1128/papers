@@ -63,5 +63,7 @@ Not every human that needs friendliness will need, or want, the same solution, b
 
 ## Commonalities in friendly names
 
-This is not to say that totally unfettered variation is optimal. A convention about how to choose friendly names would be very helpful &mdash; not as a constraint imposed from above, but as a teaching aid. It might eliminate some important cybersecurity risks and help people make choices that set them up for success, before they understand the complexities they'll face on the digital identity landscape. That is the subject of a different essay.
+This is not to say that totally unfettered variation is optimal. A convention about how to choose friendly names would be very helpful &mdash; not as a constraint imposed from above, but as a teaching aid. It might teach a correct mental model, eliminating some important cybersecurity risks and helping people make choices that set them up for success, before they understand the complexities they'll eventually face on the digital identity landscape.
+
+Such a convention is the subject of a different essay.
 
