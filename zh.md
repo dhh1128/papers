@@ -39,7 +39,7 @@ The person that I call "Regina Q. Public", you might call "Reggie P" or "Mom" or
 
 This might seem like cheating. After all, Zooko's triangle was formulated in terms of a *network protocol*. Wouldn't everybody who interacts over a network protocol want to use the same human-friendly identifier, to eliminate ambiguity?
 
-# Thinking more carefully about friendliness
+## Thinking more carefully about friendliness
 
 I claim that the answer is an emphatic "No". Humans don't speak network protocols, so making human-friendliness a success criterion of network protocols is a mistake.
 
