@@ -59,9 +59,9 @@ Real friendliness adapts itself to the needs of the user. The user's context is 
 * losslessness across transcription and font changes
 * cultural sensitivity (an innocent word in one language might be offensive in another)
 
-Not every human that needs friendliness will need, or want, the same solution, because each human imputes meaning differently. Given this variety, it's impossible to make friendly to all the humans who use them. We exit the trilemma, and we achieve far better friendliness anyway, if we let humans look up identifiers using discoverable attributes, including their own chosen friendly names, and then convert them to an identifier that's secure and decentralized.
+Not every human that needs friendliness will need, or want, the same solution, because each human imputes meaning differently. Given this variety, it's impossible to make identifiers globally friendly to all the humans who might ever use them. We exit the trilemma, and we achieve far better friendliness anyway, if we let humans look up identifiers using discoverable attributes, *including friendly names they choose themselves*, and then convert to an identifier that's secure and decentralized when they want to use actual protocols.
 
 ## Commonalities in friendly names
 
-This is not to say that totally unfettered variation is optimal. A convention about how to choose friendly names would be very helpful &mdash; not as a constraint imposed from above, but as a teaching aid to help people make choices that set them up for success, before they understand the complexities they'll face on the digital identity landscape. That is the subject of a different essay.
+This is not to say that totally unfettered variation is optimal. A convention about how to choose friendly names would be very helpful &mdash; not as a constraint imposed from above, but as a teaching aid. It might eliminate some important cybersecurity risks and help people make choices that set them up for success, before they understand the complexities they'll face on the digital identity landscape. That is the subject of a different essay.
 
