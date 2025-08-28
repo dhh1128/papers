@@ -23,7 +23,7 @@ Once upon a time there was a [flatlander](https://www.gutenberg.org/ebooks/45506
 
 However, this flatlander was named Houdini, and he was a clever escape artist. He had spent many years thinking about how to do things that looked impossible to his peers.
 
-Houdini realized that *each human has their own definition of what makes an identifier "friendly"* &mdash; and that this meant that one corner of the triangle projected into a third dimension. Since he couldn't take the perspective of anyone else, Houdini couldn't see this other dimension, but if he could conceive it, it would let him step out of prison.
+Houdini realized that *each human has their own definition of what makes an identifier "friendly"* &mdash; and that this meant that one corner of the triangle projected into a third dimension (the eye of the beholder). Since he couldn't take the perspective of anyone else, Houdini couldn't see this other dimension, but if he could conceive it, it would let him step out of prison.
 
 ![Houdini steps out](assets/h-steps-out.png)
 
