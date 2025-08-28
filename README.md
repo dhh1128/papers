@@ -1,3 +1,5 @@
+[Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia). 28 Aug 2025. <span class="hash">#ux #identity</span>
+
 [The Evidence Lifecycle in Telco](ev-life.md). 7 Aug 2025. <span class="hash">#telco #evidence #credentials #identity</span>
 
 [Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics</span>

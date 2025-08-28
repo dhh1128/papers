@@ -31,7 +31,7 @@ When Houdini stopped assuming that an identifier needed to be human-friendly in 
 
 ## No fancy math needed
 
-Houdini can pull off this trick without fancy equations to impress Einstein. In fact, all of us already take advantage of his trick, every single day. Have a look at your address book:
+Houdini can pull off this trick without equations to impress Einstein. In fact, all of us already take advantage of his trick, every single day. Have a look at your address book:
 
 ![We name our contacts](assets/named-contact.png)
 
