@@ -80,7 +80,7 @@ So how can Bob be sure such a key is not abused?
 
 Well, Bob and Alice can agree on terms of service, and embed in the plaintext of their messages a tamper-evident watermark like the one I described earlier. It might say something like this:
 
->I agree to let law enforcement decrypt this message if all of the conditions in this legal agreement are met: https://fisa.courts.gov/section-702-2008-agreement.html.
+>I agree to let law enforcement decrypt this message if all of the conditions in this legal agreement are met: https://www.congress.gov/crs-product/R48592.
 
 Adding such a watermark guarantees that any time the plaintext of the message is seen, the legal constraints governing its decryption are also revealed. Such a decrypted message could not be used as evidence without the constraints being known to all parties. And the constraints cannot be modified or substituted.
 

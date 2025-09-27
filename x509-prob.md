@@ -86,7 +86,7 @@ This is painful, even with certificate management automation. It means that reis
 
 ### 2.5 Disincentives to be secure
 
-When conditions change, timely revocation is vital. However, the cost and effort to maintain a fabric of certs creates a strong [incentive](https://www.pkisolutions.com/blog/to-revoke-or-not-to-revoke-balancing-security-with-performance-and-operational-complexity/) to [avoid revocation](https://link.springer.com/chapter/10.1007/978-3-031-56252-5_14).
+When conditions change, timely revocation is vital. However, the cost and effort to maintain a fabric of certs creates a strong [incentive](https://www.pkisolutions.com/blog/to-revoke-or-not-to-revoke-balancing-security-with-performance-and-operational-complexity/) to [avoid revocation](https://doi.org/10.1007/978-3-031-56252-5_14).
 
 To alleviate the tension, the thinking is: *Let's make certs expire often, and delay revocation or key rotation until a new cert is issued on a natural expiration boundary.*
 
