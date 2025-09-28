@@ -36,7 +36,7 @@
 
 [Security, Silos, and Sovereignty](sss.md). 12 Mar 2021. <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
 
-[a Call for Reciprocal Negotiated Accountability](crna.md). 15 Jan 2021. <span class="hash">#identity #ssi #privacy #regulation</span> 
+[A Call for Reciprocal Negotiated Accountability](crna.md). 15 Jan 2021. <span class="hash">#identity #ssi #privacy #regulation</span> 
 
 [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md). 5 Apr 2020. <span class="hash">#privacy #credentials</span> 
 
