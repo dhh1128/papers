@@ -60,7 +60,7 @@ We could go on...
 Perhaps the policy administrator enforces good answers to some of these questions, but they are not quickly available in public documentation. Furthermore, using delegated certs &mdash; a feature pressure that's inevitable, if you want to do org identity right &mdash; makes the opacity even worse, and the governance challenges far harder.
 
 ## 2. Control is direct via key, not indirect via identifier
-In X509, the control mechanism that's bound to identity attributes (an org name, a domain, arbitrary identifiers or metadata) is a single public key. If the party claiming a cert-based identity can produce a digital signature that verifies with that public key, then we can conclude with *some assurance* that they're the issuee. In contrast, the control mechanism of ACDCs is a permanent identifier with arbitrarily complex, layered protections. 
+In X509, the control mechanism that's bound to identity attributes (an org name, a domain, arbitrary identifiers or metadata) is a single, static public key. If the party claiming a cert-based identity can produce a digital signature that verifies with that public key, then we can conclude with *some assurance* that they're the issuee. In contrast, the control mechanism of ACDCs is a permanent identifier with arbitrarily complex, layered, dynamic protections. 
 
 The X509 mechanism might achieve its theoretical, cryptographic goal of binding the cert to its owner with *X* bits of security. However, setting aside the "single secret guards the front door" argument made above, this has numerous additional problems from a practical, human standpoint. This is why certs give only *some assurance* about the identity of an issuee.
 
