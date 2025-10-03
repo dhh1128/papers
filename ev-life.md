@@ -3,6 +3,8 @@ Daniel Hardman &mdash; 7 Aug 2025 &mdash; [linkedin.com](https://www.linkedin.co
 
 <span class="hash">#telco #evidence #credentials #identity</span>
 
+>This article is a guest post in a [larger series](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/) by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The earlier posts are recommended; they provide important context.
+
 <hr>
 
 >This is a guest article that I wrote in a colleague's newsletter about how to use hard evidence to revolutionize assurance in telco. It describes some concepts we are using in [Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html).
