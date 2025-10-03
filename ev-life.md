@@ -3,11 +3,9 @@ Daniel Hardman &mdash; 7 Aug 2025 &mdash; [linkedin.com](https://www.linkedin.co
 
 <span class="hash">#telco #evidence #credentials #identity</span>
 
->This article is a guest post in a [larger series](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/) by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The earlier posts are recommended; they provide important context.
+>This article is a guest post in [The Evidence Advantage](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/), a series by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The series, plus the [Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html) and the [Verifiable Dossier spec](https://trustoverip.github.io/kswg-dossier-specification) are recommended as important context. 
 
 <hr>
-
->This is a guest article that I wrote in a colleague's newsletter about how to use hard evidence to revolutionize assurance in telco. It describes some concepts we are using in [Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html).
 
 ## What is "evidence"?
 
@@ -20,6 +18,7 @@ Context matters. Evidence is only noteworthy in relation to controversial assert
 ## What evidence does telco need?
 
 So what assertions of fact are controversial in telco?
+
 Vishing, smishing, SIM swap fraud, caller ID spoofing, Wangiri fraud, OTT account hijacking, interconnect bypass, call center impersonation, international revenue share fraud, conference call trolling, and most other known patterns of abuse in telco all have a common ingredient: the fraudster uses an identity that belongs to someone with different access or reputation.
 
 When we communicate in person, the speaker is obvious. When we use technology instead, the context shifts, and the evidence needs to shift, too. The first and most foundational assertion that needs proving is *who's on the other end* of a remote connection.
