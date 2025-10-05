@@ -1,6 +1,8 @@
 # A Call for Reciprocal Negotiated Accountability
 Daniel Hardman &mdash; 15 Jan 2021 &mdash; [evernym.com](https://web.archive.org/web/20210127150914/https:/www.evernym.com/blog/a-call-for-reciprocal-negotiated-accountability/)
 
+>Thanks to [John Phillips](https://github.com/JohnOnGH) for some helpful feedback. 
+
 <span class="hash">#identity #ssi #privacy #regulation</span> 
 
 Am I crazy if I am a privacy hawk, but I’m opposed to unfettered anonymity?
@@ -16,7 +18,7 @@ Today, most perspectives on these issues seem to fall into one of three position
 ![privacy - oversight continuum](assets/privacy-oversight-continuum.png)
 
 ### 1. Privacy zealots
-These folks worry (wisely!) about the erosion of personal privacy. They advocate strong encryption and mix networks and anonymous payments and other tools that hide everything they do. They use blockchains that are censorship resistant. If they acknowledge problems like the one in my child pornography story, they tend to take a very libertarian view: potential abuse is the inevitable and acceptable consequence of our need to guarantee freedom.
+These folks worry (wisely!) about the erosion of personal privacy. They advocate strong encryption and mix networks and anonymous payments and other tools that hide everything they do. If they acknowledge problems like the one in my child pornography story, they tend to take a very libertarian view: potential abuse is the inevitable and acceptable consequence of our need to guarantee freedom.
 
 ### 2. Watchdogs
 These folks worry (wisely!) about the rising tide of cybercrime and fraud. Unable to outlaw strong encryption by individuals, they advocate laws that require back doors in encryption, strong identification of parties moving money, and cooperation with a pervasive deployment of monitors and closed-circuit cameras. If they acknowledge problems with surveillance, they tend to take a paternalistic view: some entity must be trusted with oversight, and the government is the only logical answer.
@@ -52,6 +54,8 @@ What if I always included the equivalent of a watermark with every digital artif
 
 Now, since digital signatures can only be verified against unmodified data, the data can only be shared in signed form if the watermark is also shared. This turns every person who sees my signed data into a potential enforcer of my terms of service. Plus, the identity of the party who received the data, and my identifier for that data (here, a URL where violations can be reported) become searchable content in any data corpus. The signer has a way of holding the recipient more accountable, without decreasing privacy in any way.
 
+Watermarks get a lot more valuable if we use governance to enforce the constraint that only watermarked data &mdash; data that reveals where it came from, and with what terms and conditions &mdash; is legal to persist. I'd like to see a future GDPR or CCPA that says that anyone who has data about a data subject, but who can't show the associated watermark, must delete it because it's assumed to have an illegal origin...
+
 This sort of watermark could be included with every presentation of verifiable credentials (VCs), raising the level of accountability in the entire ecosystem. But even without VCs, simple variants on watermarks are doable today. Gmail supports a convention where email addresses can include optional identifiers: bob.q.public@gmail.com and bob.q.public+some-other-identifier@gmail.com are always delivered to the same mailbox, though only the short form is registered. When you sign up for an online service, if you give your email using the second form (e.g., bob.q.public+the-service-youre-using@gmail.com), you can then monitor spam to see whether your contact information is leaking from that service.
 
 ### 2. Provisional anonymity
@@ -68,7 +72,7 @@ And yet, this anonymity is conditional, because it enables genuine oversight, to
 ### 3. Opt-in Front Door Keys
 Building on the previous two ideas, it is possible to create a system that secures communication with strong encryption and no back doors, but that allows carefully constrained oversight. Governments, for example, can catch criminals and prove their misdeeds — but law-abiding citizens can also limit surveillance overreach and hold law enforcement accountable. This is not a mediocre compromise between the ideals of a privacy hawk and the practical realities of law enforcement; it is the best of both worlds. If this sounds like science fiction, read on.
 
-In a properly secured agent-oriented SSI ecosystem, each device owned by a private individual has its own encryption keys. These keys are declared in a DID document. When Alice wants to send a private message to Bob, she looks up Bob’s DID document, finds all the keys that he says should have his decryption privilege, and encrypts in a way that any of those keys can decrypt. This lets Bob read Alice’s message with equal ease on his iPhone or his Android tablet or his laptop (keys 1, 2, or 3 in the diagram below), without breaking the security guideline to never copy or share keys.
+In a properly secured agent-oriented SSI ecosystem, each device owned by a private individual has its own asymmetric encryption key pairs. The public half of these keys are declared in a DID document. When Alice wants to send a private message to Bob, she looks up Bob’s DID document, finds all the public keys that he says should have his decryption privilege, and encrypts in a way that any of his private keys can decrypt. This lets Bob read Alice’s message with equal ease on his iPhone or his Android tablet or his laptop (keys 1, 2, or 3 in the diagram below), without breaking the security guideline to never copy or share keys.
 
 ![wire message](assets/wiremessage-1024x436.png)
 
