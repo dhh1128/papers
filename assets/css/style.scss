@@ -55,7 +55,8 @@ figcaption {
     font-style: italic;
     color: #777777;
 }
-div.wrapper { width: 664px; }
+section { width: 664px; }
+div.wrapper { width: 1024px;}
 @media print, screen and (max-width: 1124px) {
     div.wrapper {
         width:auto;
