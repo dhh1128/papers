@@ -1,7 +1,7 @@
 # Why X509 Certs are Problematic as Evidence of Org Identity
 15 Nov 2024
 
-*Provenant is advocating that [ACDCs](https://trustoverip.github.io/tswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity instead of X509 certs in protocol-based interactions in telco, banking, supply chain, and similar contexts. Yet we like PKI/X509, and we're grateful for the value it delivers on the web, every day. The tech has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. We're not proposing to get abandon certs &mdash; only to use them in more limited, ephemeral ways. So why a hybrid strategy instead of just using certs everywhere? Here are some concrete reasons.*
+*Provenant is advocating that [ACDCs](https://trustoverip.github.io/tswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity instead of X509 certs in protocol-based interactions in telco, banking, supply chain, and similar contexts. Yet we like PKI/X509, and we're grateful for the value it delivers on the web, every day. The tech has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. We're not proposing to abandon certs &mdash; only to use them in more limited, ephemeral ways. So why a hybrid strategy instead of just using certs everywhere? Here are some concrete reasons.*
 
 ## 0. Lifespans don't match
 How often do you renew your birth certificate?
