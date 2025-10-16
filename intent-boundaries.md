@@ -33,7 +33,7 @@ Various definitions of this word are valid. (If you want to explore, I recommend
 * *Purpose is required.* If we ask Alice why she clicked, and she truthfully says, "I don't know; just because?", our definition requires us to say that she didn't have intent. (Yes, we might still say "she clicked *intentionally*..." but see the last bullet in this list.)
 * *Action is required.* If the action is undertaken, then the intent is *actual*. If the action is only contemplated, the intent is *potential*. But if no action is even imagined, we have an idle wish, not intent as defined above.
 * *The action must be chosen.* If Alice clicks due to a fumble of her mouse, we can't ascribe intent.
-* *An explanation to self is required, and it must have certain qualities.* In her self-talk, Alice must posit that the choice contributes to her purpose. (It doesn't matter if her supposition is correct or not.)
+* *An explanation to self is required, and it must have certain qualities.* In her self-talk, Alice must posit that the choice contributes to her purpose. (It doesn't matter to our definition if her supposition is correct or not.)
 * To avoid confusion, this term is more laden with semantics than its general-purpose cousins "intentional" and "intentionally". Those words imply deliberateness, but not a self-explanation about contribution to purpose.
 
 ### Observations about intent
@@ -68,13 +68,13 @@ The designers of the streaming service app on my smart TV faced an intent bounda
 
 Those designers might push back: "We have limited space on the screen, and remotes are terrible for fancy user input. You could easily undo the upgrade. You wanted content fast, and you knew that your service sold various levels of access to the content. It was better to guess than to ask you for confirmation." This sounds like self-serving blame-the-user rationalization to me. Let's not be that way. Remember the observations above about who is the authority on the user's intent, and about how consequences of actions are not always obvious? Bundling intended and unintended consequences together and falling back on *caveat emptor* when pushed is straight out of the playbook of a sleazy used car salesman. 
 
-Skilled doctors work hard to capture and identify symptoms, and to account for them wisely in a diagnosis. Skilled software pros work hard to recognize boundaries, becuase this helps them write ethical, effective, and pleasing software.
+Skilled doctors work hard to capture and identify symptoms, and to account for them wisely in a diagnosis. Skilled software pros work hard to recognize boundaries, because this helps them write ethical, effective, and pleasing software.
 
 A corollary to this principle is also worth mentioning: *Don't imagine boundaries where they don't actually exist.* Pretending that we don't know the user's intent can add annoying and unnessary friction. If we know, let's make it so, ASAP. [Related: [DRY Principle](https://medium.com/design-bootcamp/dry-vs-wet-patterns-in-ux-design-e0ff4d1fd2ac) : [Single Source of Truth](https://martinfowler.com/articles/design-token-based-ui-architecture.html) : [Frustration Aggression Hypothesis](https://www.simplypsychology.org/frustration-aggression-hypothesis.html) : [Cognitive Friction](https://www.interaction-design.org/literature/topics/cognitive-friction)]
 
 Of course there are times when confirmation is appropriate; unintended consequences are a risk. I appreciate having to click a final *Pay Now* button to book a $2000 plane ticket, and I'm glad GitHub asks me to type the name of a repo before I delete it. But how many times have you clicked an *Unsubscribe* link in email, only to arrive at a screen that asks you to re-enter your email address or confirm again? There is no legitimate intent boundary between clicking *Unsubscribe* and unsubscribing...
 
-The [#NoPhoneHome movement in decentralized identity](https://nophonehome.com/) is all about how some identity technolgies silently violate the privacy intent of credential holders. [EFF](https://www.eff.org/) exists to fight similar problems.
+The [#NoPhoneHome movement in decentralized identity](https://nophonehome.com/) is all about how some identity technologies silently violate the privacy intent of credential holders. [EFF](https://www.eff.org/) exists to fight similar problems.
 
 Trustworthy AI agents can only exist if they recognize and scrupulously honor the intent boundaries of their owners. 
 
@@ -107,7 +107,7 @@ Sneaking across a boundary might mean:
 
 * Giving users a *Watch* button that automatically and silently upgrades a subscription.
 
-* Failing to disclose that software has multiple stakeholders, and that that the software is optimizing for some of their intents at the expense of others.
+* Failing to disclose that software has multiple stakeholders, and that the software is optimizing for some stakeholders' intents at the expense of other stakeholders.
 
 * Burying your plans to reuse customer data behind vague phrases or dozens of pages of legalese.
   
