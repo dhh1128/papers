@@ -1,3 +1,5 @@
+[KERI's Strategy for Post-Quantum Security](kspqs.pdf). 21 Oct 2025. <span class="hash">#post-quantum #keri #cryptography</span>
+
 [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia). 28 Aug 2025. <span class="hash">#ux #identity</span>
 
 [The Evidence Lifecycle in Telco](ev-life.md). 7 Aug 2025. <span class="hash">#telco #evidence #credentials #identity</span>
