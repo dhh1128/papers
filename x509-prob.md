@@ -11,7 +11,7 @@ Again, this is not a critique of certs. In low-security, ephemeral contexts wher
 
 Let's explore the details.
 
-## 0. Lifespans don't match
+## Lifespans don't match
 How often do you renew your birth certificate?
 
 Identity is stable. In fact, identity means *sameness*; it's what holds constant across contexts. On the other hand, privileges are dynamic. 
@@ -29,7 +29,7 @@ People renew driver's licenses and passports. These are intended to prove privil
 
 Dynamic privilege is not stable identity. Certs &mdash; artifacts with a dynamic sweet spot and lifespans measured in weeks or months &mdash; shouldn't be used to prove the identity of something with a lifespan measured in decades.
 
-## 1. Governance is opaque, centralized, and expensive
+## Governance is opaque, centralized, and inconsistent
 A cert is protected by a cryptographic key. This sounds fancy, but it boils down to a single secret. How the secret was created and how it is managed on an ongoing basis are undefined. All the tech guarantees, from the key binding in a cert, is that someone provided a public key before the certificate was created.
 
 Suppose I told you that a ballistic missile silo was safe from unauthorized access because, at the time of construction, its builders had configured a secret to guard the unlocking of the front door. Suppose the silo's location appeared publicly on GPS, and I cheerfully admitted that there were no guards, fences, surveillance, deadbolts, or other safeguards. Suppose I provided no further details about this solitary secret or its management, except that the lock was replaced every few months. How confident would you be of adequate security? Would you be impressed with the planning of the builders?
@@ -44,11 +44,11 @@ Typically, cert ecosystems implement policies to compensate for key management v
 
 >The challenge "token-authority" parameter is only used in cases where the VoIP telephone network requires the CA to identify the Token Authority. This is currently not the case for the Signature-based Handling of Asserted information using toKENs (SHAKEN) [ATIS-1000080] certificate framework governance but may be used by other frameworks. If a "token-authority" parameter is present, then the ACME client MAY use the "token-authority" value to identify the URL representing the Token Authority that will provide the TNAuthList Authority Token response to the challenge. *If the "token-authority" parameter is not present, then the ACME client MUST identify the Token Authority based on locally configured information or local policies.*
 
-Here is a certificate ecosystem purpose-built to achieve high assurance of "identity" in telco, and one of its foundational protections is abdicated to undefined local judgment. (Compare section 6 of [ATIS1000080](https://access.atis.org/higherlogic/ws/public/download/69428), which documents other, higher-level SHAKEN requirements. Can we be sure the ecosystem's dam will retain a resevoir of trust?)
+Here is a certificate ecosystem purpose-built to achieve high assurance of "identity" in telco, and one of its foundational protections is abdicated to undefined local judgment. (Compare section 6 of [ATIS1000080](https://access.atis.org/higherlogic/ws/public/download/69428), which documents other, higher-level SHAKEN requirements. Can we reason confidently about trust?
 
 In most analyses, we assume that certs are issued by certificate authorities. These are vetted orgs, earnest about security. Having carefully qualified certificate authorities (like eIDAS enforces with QTSPs) should help, right?
 
-We are all for strong CA vetting, but this still focuses in the wrong place. *Certificate authorities aren't the ones that choose or manage the keys in certs.* Holders of certs do that. It's the key management of *holders* that's the ubiquitous locus of the risk, and extra protections that ignore it are inadequate by definition. Focusing on CAs is like insisting that the control panel on our missile silo door must have its wiring and programming inspected by a master electrician who's careful and cautious &mdash; but allowing that electrician to input the governing secret for the door based on advice from any employee of the construction company. Is that employee truly representing the construction company's intent? Does he write passwords down on post-it notes and leave them on his lunchbox? Does she text the secret to her boss over SMS? The problem is not just that protections on this secret might be *weak* &mdash; it's that *nothing is known about the risks and protections on that secret*. Knowing nothing about the root of ecosystem security is not a good basis for trust.
+I am all for strong CA vetting, but this still focuses in the wrong place. *Certificate authorities aren't the ones that choose or manage the keys in certs.* Holders of certs do that. It's the key management of *holders* that's the ubiquitous locus of the risk, and extra protections that ignore it are inadequate by definition. Focusing on CAs is like insisting that the control panel on our missile silo door must have its wiring and programming inspected by a master electrician who's careful and cautious &mdash; but allowing that electrician to input the governing secret for the door based on advice from any employee of the construction company. Is that employee truly representing the construction company's intent? Does he write passwords down on post-it notes and leave them on his lunchbox? Does she text the secret to her boss over SMS? The problem is not just that protections on this secret might be *weak* &mdash; it's that *nothing is known about the risks and protections on that secret*. Knowing nothing about the root of ecosystem security is not a good basis for trust.
 
 >Extended validation certificates do address some of the concerns we're addressing here, but they are costly to generate. If certs had longer lifespans, that cost could be amortized &mdash; but they have to be rotated regularly, just like any other cert. As a result, nobody is seriously proposing mass EV certs in contexts I'm familiar with. 
 
@@ -65,39 +65,44 @@ How many of the following issues, unspecified (or at least, not having transpare
 * What IT practices protect the keys of the certificate holder?
 * What guarantees does the certificate holder make about transparency in the event of key compromise?
 
-We could go on...
+I could go on...
 
 Perhaps the policy administrator enforces good answers to some of these questions, but in my experience they're not quickly available in public documentation. Furthermore, using delegated certs &mdash; a feature pressure that's inevitable, if you want to do org identity right &mdash; makes the opacity even worse, and the governance challenges far harder.
 
-## 2. Control is direct via static key, not indirect via dynamic identifier
-The X509 mechanism might achieve its theoretical, cryptographic goal of binding the cert to its owner with *X* bits of security. However, setting aside the "single secret guards the front door" argument made above, this has numerous additional problems from a practical, human standpoint. This is why certs give only *some assurance* about the identity of an issuee.
+## Path to post-quantum is slow
+Even though quantum computers aren't commercially available yet, part 1 of many quantum hacks is [already unfolding](https://www.paloaltonetworks.com/cyberpedia/what-is-quantum-computings-threat-to-cybersecurity). Today, clever adversaries are saving encrypted, Diffie Hellman sessions driven by certs &mdash; knowing that tomorrow's quantum computers will enable part 2. Soon they'll crack the sessions, reveal the robust symmetric keys inside, and use them to access encrypted insider secrets, IP, M&amp;A plans, sensitive HR data, and more. Vast numbers of companies are already compromised; only the eventual date of the exploit is unknown.
 
-### 2.1 One key isn't realistic
+And harvest-now-decrypt later is just one aspect of post-quantum risk. There are others, such as surprise control attacks.
+
+This is a scary enough issue that [NIST](https://csrc.nist.gov/projects/post-quantum-cryptography), [ENISA](https://enisa.europa.eu/sites/default/files/2024-11/2024%20Report%20on%20the%20State%20of%20Cybersecurity%20in%20the%20Union%20-%20Condensed%20version.pdf), and [other authorities](https://www.tec.gov.in/pdf/TR/Final%20technical%20report%20on%20migration%20to%20PQC%2028-03-25.pdf) have issued strongly worded guidance about beginning post-quantum transitions *now*. Governments are beginning to impose deadlines. 
+
+RFC 9881 tells how X509 certificates may be adapted to use post-quantum primitives. However, the standard was just released in October 2025; So far it has only limited adoption. Given the inertia and variety in the world's cert technologies, upgrades are sure to be slow, expensive, and inconsistent, with the need to accommodate a long tail of late adopters. This means certs are already inadequate to protect identities that must stay safe into the post-quantum era.
+
+## One key isn't realistic
 A huge body of practical experience tells us that organizations need nuanced signing policies to spend large amounts, authorize a merger or fire a CEO. Almost 3800 years ago, the <cite>Code of Hammurabi</cite> required more than one attestation of certain high-stakes transactions (see, for example, [law 7](https://www.gutenberg.org/files/17150/17150-h/17150-h.htm)). The law of Moses had similar requirements (see, for example, [Deuteronomy 19:15](https://www.sefaria.org/Deuteronomy.19.15?lang=bi&aliyot=0)). Double-entry accounting was [invented in medieval Italy](https://monily.com/blog/double-entry-accounting-explained) to formalize such checks and balances, and is an accepted best practice for all modern bookkeeping.
 
 So why are we imagining, millennia after adopting such protections, that it's safe to use the single-signature mechanism of X509 certs as the only gate on unlocking the entire reputation of modern corporations? Fraud certainly hasn't become less common, or slower. Leaked keys on certs have bitten large, sophisticated organizations like [Microsoft](https://www.wired.com/story/china-backed-hackers-steal-microsofts-signing-key-post-mortem/). Surely millions of less sophisticated organizations will be no safer.
 
 If we want our identity mechanism to reflect hard-won wisdom in the analog world, we need something where 3 out of 7 members of the board must sign if the stakes are at level X -- or an exec VP plus 2 out of 5 IT engineers must sign if the stakes are at level Y.
 
-### 2.2 There's no prerotation
+## Prerotation is missing
 The identity of an org should be guarded not just by an assertion about its current key, but by a cryptographic commitment to the next key (the one the owner will rotate to next). The next key is then managed in a different place, with independent protections. Such a scheme is called *prerotation*, and it drastically improves security, because even if a hacker can abuse a current key, they can't rotate to new keys and take permanent control without accomplishing a second hack somewhere else. The identity owner thus has a failsafe that they can use to take control back.
 
 Prerotation isn't just a recovery issue. Lacking prerotation, certificate rotation produces anemic cryptographic proof of continuity of control by the certificate holder. Without evidence, we must trust the assertion of the CA that the old cert holder and the new cert holder are the same party.
 
 An X509 extension could be designed for prerotation, perhaps using Certificate Transparency. However, such a mechanism would need to be developed, standardized, and adopted before it is accurate to claim it as a cert feature. Cert technology in its general deployment doesn't support this crucial feature.
 
-### 2.3 Signatures aren't sequenced
+## Signatures aren't sequenced
 The binding between a private key, its public complement, and an X509 certificate is [inherently subject to retrograde attacks](was.md), because there is only a crude, unreliable way to guess at the timing of the event relative to the timing of a revocation or key rotation. This means that certificate-based identity solutions cannot provide a solid audit trail or answer historical questions; they can only be evaluated in real-time. Yet many implementers assume otherwise, and make serious security mistakes as a result.
 
-### 2.4 Maintenance challenges
+## Maintenance is expensive
 Question: What work is necessary if the issuee has to rotate their key?
 
 Answer: the old certificate has to be revoked, and a new one has to be issued.
 
 This is painful, even with certificate management automation. It means that reissuance, redeployment, reconfiguration, and rebuilding of caches is a constant task. CRLs are useful, but complex. They can be inconvenient when connectivity is imperfect. OCSP and Certificate Transparency are also clever tools, but each has its own complications and challenges. (See [1](https://x509errors.org/guides/openssl-crl), [2](https://github.com/openssl/openssl/issues/26079), [3](https://www.fastly.com/blog/addressing-challenges-tls-revocation-and-ocsp), [4](https://letsencrypt.org/2024/07/23/replacing-ocsp-with-crls/), [5](https://www.ibm.com/docs/en/sdk-java-technology/8?topic=provider-determine-x509-certificate-revocation-status-ocsp), [6](https://educatedguesswork.org/posts/transparency-part-2/), [7](https://bit.ly/41k4ojw), [8](https://dl.acm.org/doi/10.1145/3278532.3278562), [9](https://javanexus.com/blog/common-pitfalls-certificate-transparency-java), [10](https://bit.ly/3VkMl99), [11](https://research.cloudflare.com/publications/Stark2019/), [12](https://www.encryptionconsulting.com/the-hidden-risks-of-expired-certificate-revocation-lists-crl/), [13](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/sosnowski2024certificates.pdf), [14](https://www.portnox.com/cybersecurity-101/certificate-revocation-list/)). The tools that do maintenance aren't free to buy, deploy, operate, or develop, and they [don't guarantee perfect outcomes](https://community.letsencrypt.org/t/sometimes-its-required-to-break-the-rules-and-to-change-these/115567). Gaps can and do occur, even with sophisticated and well funded orgs — and they are painful, as embarrassed admins from Cisco, Microsoft, Google, Spotify, LinkedIn, Ericsson, Equifax, AWS, and Apple [have admitted](https://www.encryptionconsulting.com/10-cases-of-certificate-outages-involving-human-error/).
 
-### 2.5 Disincentives to be secure
-
+## Security is disincented
 When conditions change, timely revocation is vital. However, the cost and effort to maintain a fabric of certs creates a strong [incentive](https://www.pkisolutions.com/blog/to-revoke-or-not-to-revoke-balancing-security-with-performance-and-operational-complexity/) to [avoid revocation](https://doi.org/10.1007/978-3-031-56252-5_14).
 
 To alleviate the tension, the thinking is: *Let's make certs expire often, and delay revocation or key rotation until a new cert is issued on a natural expiration boundary.*
@@ -114,19 +119,19 @@ Suppose we shrink the lifespans of certs far more aggressively — i.e., to a we
 
 What's possibly worse is that by obsessively pursuing short-lived evidence, we've created a strong incentive to take the insecure and easy path: if there's a risk of a compromised key, just wait until the cert expires. Because the management burden is already so high, nobody in such an ecosystem wants to do the secure thing: act immediately, be transparent, and cancel all the evidence that's in active use. It's just more management bother.
 
-## 3. Scale and performance are problematic
+## Scale and performance are constrained
 One of the fundamental challenges with current cert-based organizational security initiatives is that the signers and cert holders are often trusted third parties, because they are the ones with the certs. This is true of STIR/SHAKEN in secure voice, for example, where the signature on a call is affixed by an originating service provider, not by the enterprise that makes the call.
 
 Proposals to improve this are on the table, and Provenant strongly supports the general idea. Signing must be done not by phone companies, but by holders of telephone numbers.
 
-But picking the right signer isn't the only ingredient in a fix; [signing based on the right evidence is also vital](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Having enterprises sign with certs means delegate certs are needed, and this creates a huge scaling challenge. All of the preceding concerns become more acute if the number of signers and certificate holders changes from hundreds of PhonesRUs companies, to millions of enterprises and small businesses. Shall we increase the maintenance burden by 52x (certs rotate weekly), AND multiply the number of certificate holders by 10,000?
+But picking the right signer isn't the only ingredient in a fix; [signing based on the right evidence is also vital](ev-life). Having enterprises sign with certs means delegate certs are needed, and this creates a huge scaling challenge. All of the preceding concerns become more acute if the number of signers and certificate holders changes from hundreds of PhonesRUs companies, to millions of enterprises and small businesses. Shall we increase the maintenance burden by 52x (certs rotate weekly), AND multiply the number of certificate holders by 10,000?
 
 At such scales, performance also decreases (or cache latency goes up, a lot).
 
-## 4. Significantly better alternatives exist
+## Much better alternatives exist
 Since about 2016, the decentralized identity movement has been championing an upgrade to PKI's 40-year-old "issue to keys" paradigm. W3C's Decentralized Identifiers (DIDs), a standard since 2022, is a first wave of progress, and embodies much industry and cybersecurity wisdom. The Verifiable Credentials (VCs) standard, also released in 2022, builds atop DIDs and could be roughly characterized as next-generation X509. Conformant implementations now protect millions of identities, are in active exploration by big tech, and are the basis of citizen identity programs in many parts of Europe and Asia.
 
-DIDs and verifiable credentials solve the problems with key rotation by creating an indirection: evidence is *issued to* an identifier, and the issuee's identifier can update its key state without invalidating the evidence. I worked on both of these standards, and I remain proud of their virtues.
+DIDs and verifiable credentials solve the problems with key rotation by creating an indirection: evidence is issued to *an identifier, not a key*, so the issuee's identifier can update its key state without invalidating the evidence. I worked on both of these standards, and I remain proud of their virtues.
 
 But there's a hitch.
 
@@ -140,7 +145,9 @@ But there's good news.
 
 If DIDs and VCs are a second-generation solution, we've had identity evidence 3.0 since December 2022, when the first global-scale systems went to production with Authentic Chained Data Containers ([ACDCs](https://github.com/trustoverip/tswg-acdc-specification)).
 
-ACDCs are not just a format &mdash; they're a *methodology* for creating verifiable evidence. ACDCs are *issued by* and *issued to* autonomic identifiers (AIDs). These are like DIDs, but with far stronger security guarantees. They impose stringent requirements on the key management behaviors of issuers and issuees. They support weighted multisig, prerotation, and independent witnesses to detect compromise. They can be upgraded to postquantum algorithms without disruption. They don't require a blockchain, and thus have none of the challenges with scale, performance, or regulatory compliance across jurisdictions.
+ACDCs are not just a format &mdash; they're a *methodology* for creating verifiable evidence. ACDCs are *issued by* and *issued to* autonomic identifiers (AIDs). These are like DIDs, but with far stronger security guarantees. They impose stringent requirements on the key management behaviors of issuers and issuees. They support weighted multisig, prerotation, and transparent, independent witnesses to detect compromise. They can be upgraded to postquantum algorithms without disruption. They don't require a blockchain, and thus have none of the challenges with scale, performance, or regulatory compliance across jurisdictions.
+
+AIDs are [post-quantum ready](kspqs.pdf).
 
 The chaining in ACDCs is like X509 chaining on steroids. It is safer, more efficient, and more cacheable. It doesn't depend on certificate authorities. It eliminates the need for trust registries. Links in a chain can be weighted, and they can have a variety of semantic meanings.
 
