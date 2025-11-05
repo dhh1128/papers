@@ -5,7 +5,7 @@ The technology in PKI and X509 certificates delivers value on the web every day.
 
 Why not build on certs?
 
-Don't get me wrong. I am not down on certs. However, I am *up* on using the right tool for the job. They say that to a hammer, everything looks like a nail. The analog in cybersecurity might be that to PKI experts, every verification problem looks like a place for certs. And such experts aren't wrong to love certs. However, screws are drastically better than nails, for certain carpentry tasks. Likewise, ACDCs are drastically better than certs, as primary proof of organizational identity. They are more stable, more transparent, more scalable, safer, and cheaper in the long run. Plus, they don't require certificate authorities, which means they cross jurisdiction boundaries in ways that cert's just can't. This produces some important decentralization benefits.
+Don't get me wrong. I am not down on certs. However, I am *up* on using the right tool for the job. They say that to a hammer, everything looks like a nail. The analog in cybersecurity might be that to PKI experts, every verification problem looks like a place for certs. And such experts aren't wrong to love certs. However, screws are drastically better than nails, for certain carpentry tasks. Likewise, ACDCs are drastically better than certs, as primary proof of organizational identity. They are more stable, more transparent, more scalable, safer, and cheaper in the long run. Plus, they don't require certificate authorities, which means they cross jurisdiction boundaries in ways that certs just can't. This produces some important decentralization benefits.
 
 Again, this is not a critique of certs. In low-security, ephemeral contexts where costs can't be amortized and existing tools are the only option, certs can be a great choice. But given today's cybertrust issues, such contexts are becoming rarer, and certs should, too. It's time for newer tech to play a primary role.   
 
@@ -16,7 +16,7 @@ How often do you renew your birth certificate?
 
 Identity is stable. In fact, identity means *sameness*; it's what holds constant across contexts. On the other hand, privileges are dynamic. 
 
-Certs are designed to be dynamic, and both tooling and tribal knowledge about them encourages short lifespans. Using certs to prove a permanent characteristic rather than a temporary condition means that *evidence must turn over regularly*. This builds implicit maintenance costs into a solution, and it creates other nagging problems that will never be resolved.
+Certs are designed to be dynamic privilege mechanisms (that's why they're perfect for domains), and both tooling and tribal knowledge about them encourages short lifespans. Using certs to prove a permanent identity rather than a temporary privilege means that *evidence must turn over regularly*. This builds implicit maintenance costs into a solution, and it creates other nagging problems that will never be resolved.
 
 <figure>
   <img src="assets/lifespans.png" alt="scale drawing of lifespans of org vs. cert" style="width:100%">
