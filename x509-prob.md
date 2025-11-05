@@ -32,7 +32,7 @@ Dynamic privilege is not stable identity. Certs &mdash; artifacts with a dynamic
 ## Governance is opaque, centralized, and inconsistent
 A cert is protected by a cryptographic key. This sounds fancy, but it boils down to a single secret. How the secret was created and how it is managed on an ongoing basis are undefined. All the tech guarantees, from the key binding in a cert, is that someone provided a public key before the certificate was created.
 
-Suppose I told you that a ballistic missile silo was safe from unauthorized access because, at the time of construction, its builders had configured a secret to guard the unlocking of the front door. Suppose the silo's location appeared publicly on GPS, and I cheerfully admitted that there were no guards, fences, surveillance, deadbolts, or other safeguards. Suppose I provided no further details about this solitary secret or its management, except that the lock was replaced every few months. How confident would you be of adequate security? Would you be impressed with the planning of the builders?
+Suppose I told you that a ballistic missile silo was safe from unauthorized access because, at the time of construction, its builders had configured a secret to guard the unlocking of the front door. Suppose the silo's location appeared publicly on GPS, and I cheerfully admitted that there were no guards, fences, surveillance, deadbolts, or other safeguards. Suppose I provided no further details about this solitary secret or its management, except that the secret was replaced every few months. How confident would you be of adequate security? Would you be impressed with the planning of the builders?
 
 Certs are only guarded by one opaquely managed secret, just like the dangerous missile silo...
 
