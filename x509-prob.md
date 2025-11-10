@@ -1,7 +1,7 @@
 # Why X509 Certs Should Be Secondary Evidence of Org Identity
 15 Nov 2024; revised Nov 2025
 
-The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/tswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.
+The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.
 
 Why not build on certs?
 
@@ -143,7 +143,7 @@ Also, even if DIDs and VCs solve some problems in identity evidence 1.0, opaque 
 
 But there's good news.
 
-If DIDs and VCs are a second-generation solution, we've had identity evidence 3.0 since December 2022, when the first global-scale systems went to production with Authentic Chained Data Containers ([ACDCs](https://github.com/trustoverip/tswg-acdc-specification)).
+If DIDs and VCs are a second-generation solution, we've had identity evidence 3.0 since December 2022, when the first global-scale systems went to production with Authentic Chained Data Containers ([ACDCs](https://github.com/trustoverip/kswg-acdc-specification)).
 
 ACDCs are not just a format &mdash; they're a *methodology* for creating verifiable evidence. ACDCs are *issued by* and *issued to* autonomic identifiers (AIDs). These are like DIDs, but with far stronger security guarantees. They impose stringent requirements on the key management behaviors of issuers and issuees. They support weighted multisig, prerotation, and transparent, independent witnesses to detect compromise. They can be upgraded to postquantum algorithms without disruption. They don't require a blockchain, and thus have none of the challenges with scale, performance, or regulatory compliance across jurisdictions.
 
