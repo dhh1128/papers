@@ -2,6 +2,8 @@
 
 <span class="hash">#acdc #keri #verifiable-credentials #w3c</span>
 
+<p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>
+
 ## Lossless vs. Lossy: A Choice That Matters
 
 Ask a professional photographer which format they use for archival storage, and the answer is always RAW, never JPEG. Ask a music producer whether they master in FLAC or MP3, and you'll get the same pattern: lossless for the source of truth, lossy for distribution. The reason is simple. You can generate a JPEG from a RAW file whenever you need one, optimized for its context — web display, print, or thumbnail. But you cannot go the other direction. Once you've discarded information, it's gone.
@@ -26,7 +28,7 @@ Imagine an investigative journalist documenting sources for a story. She intervi
 
 ### Loss 2: Time
 
-W3C VCs are generally verifiable only in the present. Was this credential valid when the mortgage was signed three years ago? The VC format provides no reliable answer. The signature remains valid, but key state may have changed. The issuer might have rotated keys, revoked the credential, or gone offline. Verifiers can check current revocation lists or OCSP responders, but reconstructing the state of the world at a specific moment in the past is difficult or impossible.
+W3C VCs are generally verifiable only in the present. Was this credential valid when the mortgage was signed three years ago? The VC format provides no reliable answer. The signature remains valid, but [key state may have changed](was). The issuer might have rotated keys, revoked the credential, or gone offline. Verifiers can check current revocation lists or OCSP responders, but reconstructing the state of the world at a specific moment in the past is difficult or impossible.
 
 ACDCs, through the Key Event Receipt Infrastructure ([KERI](https://trustoverip.github.io/kswg-keri-specification/)), maintain a complete, cryptographically verifiable history of key states. Every key rotation, every delegation, every revocation is recorded in the Key Event Log (KEL). A verifier can query the KEL and determine with cryptographic certainty whether a credential was valid on a specific date in 2021, even if keys have rotated multiple times since. This is not a nice-to-have feature. It is essential for legal evidence, audit trails, and any system where "what was true then" matters as much as "what is true now."
 
@@ -73,7 +75,7 @@ The KEL also allows verifiers to appraise an issuer's actual track record. An au
 
 KERI also implements [pre-rotation](https://trustoverip.github.io/kswg-keri-specification/#pre-rotation). When an issuer rotates keys, they commit to the next key in advance (as a cryptographic hash). Even if an attacker compromises the current key, they cannot rotate to a new key they control, because they do not possess the pre-committed next key. The legitimate issuer retains a cryptographic failsafe to reclaim control.
 
-This is not theoretical. As quantum computing advances, "harvest now, decrypt later" attacks are already underway — adversaries save encrypted sessions today, knowing they can crack them later. NIST and ENISA have issued urgent guidance about post-quantum transitions. ACDCs are post-quantum ready by design. Pre-rotation allows identifiers to commit to quantum-resistant keys before they are needed, protecting long-lived credentials from future compromise.
+This is not theoretical. As quantum computing advances, "harvest now, decrypt later" attacks are already underway — adversaries save encrypted sessions today, knowing they can crack them later. NIST and ENISA have issued urgent guidance about post-quantum transitions. [ACDCs are post-quantum ready by design](kspqs.pdf). Pre-rotation allows identifiers to commit to quantum-resistant keys before they are needed, protecting long-lived credentials from future compromise.
 
 W3C VCs have no normative support for pre-rotation, witness-based compromise detection, or transparent key event logs. Some DID methods support key rotation, but protections vary widely and are not enforced. In a post-quantum world, this is a lossy model — you cannot recover security guarantees or accountability once they are gone.
 
