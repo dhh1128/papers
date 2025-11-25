@@ -16,7 +16,7 @@ Understanding this distinction matters because once you've chosen a lossy format
 
 ### Loss 1: The Trust Chain
 
-W3C VCs point to their proximate issuer. If a university issues you a diploma, the VC captures that single relationship: University → You. Any broader context — whether the university is accredited, whether its accreditor is recognized by a national authority, whether that authority participates in international agreements — becomes implicit. The VC itself contains no cryptographic link back through this chain. Verifiers must consult external trust registries or simply accept the university's signature as sufficient.
+W3C VCs point to their proximate issuer. If a university issues you a diploma, the VC captures that single relationship: University &larr; You. Any broader context — whether the university is accredited, whether its accreditor is recognized by a national authority, whether that authority participates in international agreements — becomes implicit. The VC itself contains no cryptographic link back through this chain. Verifiers must consult external trust registries or simply accept the university's signature as sufficient.
 
 This works fine when trust relationships are simple and widely known. But in complex ecosystems — multi-tier supply chains, delegated organizational authority, cross-border financial transactions — trust is not a binary fact. It is a graph with weighted edges, conditional logic, and paths that must be auditable back to a root.
 
@@ -54,7 +54,7 @@ Or consider a crime scene investigator documenting evidence. The photos, measure
 
 Or consider that investigative journalist again, documenting interviews and leaked documents as part of a chain of evidence for publication. She is not the "holder" of credentials about herself. She is creating a web of attestations that others will verify.
 
-ACDCs handle these cases naturally. They can represent attestations without requiring an issuer → holder relationship. A sensor on a shipping container issues ACDCs documenting temperature readings. A drone attests to its GPS coordinates when capturing an image. An auditor records findings without designating a "holder."
+ACDCs handle these cases naturally. They can represent attestations without requiring an issuer &larr; holder relationship. A sensor on a shipping container issues ACDCs documenting temperature readings. A drone attests to its GPS coordinates when capturing an image. An auditor records findings without designating a "holder."
 
 W3C VCs are structurally biased toward the credential model. Workarounds exist, but the format and tooling expect a holder who will selectively disclose. For pure attestation, VCs are the wrong shape.
 
