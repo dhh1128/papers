@@ -1,4 +1,4 @@
-[ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-comparison.md). 24 Nov 2025. <span class="hash">#acdc #keri #verifiable-credentials #w3c</span> 
+[ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md). 24 Nov 2025. <span class="hash">#acdc #keri #verifiable-credentials #w3c</span> 
 
 [KERI's Strategy for Post-Quantum Security](kspqs.pdf). Co-authored by Sam Smith. 21 Oct 2025. <span class="hash">#post-quantum #keri #cryptography</span>
 

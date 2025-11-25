@@ -6,7 +6,9 @@
 
 Ask a professional photographer which format they use for archival storage, and the answer is always RAW, never JPEG. Ask a music producer whether they master in FLAC or MP3, and you'll get the same pattern: lossless for the source of truth, lossy for distribution. The reason is simple. You can generate a JPEG from a RAW file whenever you need one, optimized for its context — web display, print, or thumbnail. But you cannot go the other direction. Once you've discarded information, it's gone.
 
-This same principle applies to digital identity and verifiable evidence, though the industry has been slow to recognize it. The dominant credential format today — the W3C Verifiable Credentials Data Model — is lossy. It discards information about trust chains, time, key history, relationship weights, and use cases outside the credential model. Authentic Chained Data Containers ([ACDCs](https://trustoverip.github.io/kswg-acdc-specification/)), by contrast, are lossless. They preserve the full fidelity of trust relationships and can be transformed into simpler formats when needed.
+![lossless and lossy](assets/lossless-lossy.jpg)
+
+This same principle applies to digital identity and verifiable evidence, though the industry has been slow to recognize it. One of the buzz-getting credential formats today — the W3C Verifiable Credentials Data Model — is lossy. It discards information about trust chains, time, key history, relationship weights, and use cases outside the credential model. (SD-JWTs and ISO mDL are also lossy, BTW. But that's a subject for another paper.) Authentic Chained Data Containers ([ACDCs](https://trustoverip.github.io/kswg-acdc-specification/)), by contrast, are lossless. They preserve the full fidelity of trust relationships and can be transformed into simpler formats when needed.
 
 Understanding this distinction matters because once you've chosen a lossy format as your primary evidence, you cannot reconstruct what you've lost. And in high-stakes systems — legal entity identity, supply chain provenance, investigative journalism, voice call authentication — what you lose matters a great deal.
 
