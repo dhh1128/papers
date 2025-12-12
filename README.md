@@ -1,3 +1,5 @@
+[Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md). 11 Dec 2025. <span class="hash">#ux #ai #intent</span> 
+
 [ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md). 24 Nov 2025. <span class="hash">#acdc #keri #verifiable-credentials #w3c</span> 
 
 [KERI's Strategy for Post-Quantum Security](kspqs.pdf). Co-authored by Sam Smith. 21 Oct 2025. <span class="hash">#post-quantum #keri #cryptography</span>
@@ -6,7 +8,7 @@
 
 [The Evidence Lifecycle in Telco](ev-life.md). 7 Aug 2025. <span class="hash">#telco #evidence #credentials #identity</span>
 
-[Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics</span>
+[Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics #intent</span>
 
 [Why Anchored Signatures](was.md). 20 Feb 2025. <span class="hash">#cybersecurity #identity #verifiable-data</span>
 
