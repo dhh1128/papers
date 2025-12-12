@@ -119,7 +119,7 @@ To build a robust taxonomy, we must rigorously define some concepts, drawing on 
 
 Interactions may be categorized in various ways — by size, frequency, cardinality, risk profile, and so forth. However, given that we're trying to enable purposeful decision-making, building root categories based on purpose feels like an appropriate starting point, with secondary considerations playing a role as granularity increases.
 
-Of course, the idea of root categories presupposes hierarchy. Not all taxonomies are hierarchical. It is possible to have a faceted taxonomy that models a directed acyclic graph (tag clouds, semantic proximity in a thesaurus, Amazon's product catalog). It is possible to have a bottoms-up taxonomy (folksonomies that cluster like items into progressively larger abstractions). However, top-down taxonomies have a compelling advantage with respect to processing intent: *they allow confident generalization*. If we know that a policy exists for intent /x/y/*, then we know it also applies to intent /x/y/z (unless overridden). This facilitates cascading models of consent and delegation. A user can approve or block a broad range of intents (/trade/*) or a specific slice (/trade/lend/*). [29]
+Of course, the idea of root categories presupposes hierarchy. Not all taxonomies are hierarchical. It is possible to have a faceted taxonomy that models a directed acyclic graph (tag clouds, semantic proximity in a thesaurus, Amazon's product catalog). It is possible to have a bottoms-up taxonomy (folksonomies that cluster like items into progressively larger abstractions). However, top-down taxonomies have a compelling advantage with respect to processing intent: *they allow confident generalization*. If we know that a policy exists for intent /x/y/*, then we know it also applies to intent /x/y/z (unless overridden). This facilitates cascading models of consent. A user can approve or block a broad range of intents (/trade/*) or a specific slice (/trade/lend/*), enforcing these choices via protocols like Aries Issue Credential [29] or IPEX [30].
 
 Taxonomies that proceed from generic to specific also force precision and reveal debatable assumptions. Other approaches tolerate overlaps and lacunas in ways we want to eliminate. Essentially, we want an analog for biology's cladistics — including the rigorous analysis and debate it implies — for the problem domain of digital interactions.
 
@@ -127,7 +127,7 @@ Finally, hierarchical taxonomies have learnability advantages, map nicely onto n
 
 ## 3.2 Motives vs. steps
 
-Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [30, 31] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
+Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [31, 32] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
 
 | Level | Definition | Digital Equivalent |
 | :---- | :---- | :---- |
@@ -145,7 +145,7 @@ When Alice clicks a "Watch" button, she simultaneously maintains intents at diff
 
 * ***Proximate Intent***: A purpose of a specific action that's characterized by direct, near-term context with minimal assumptions about causality. Referencing the introductory example where Alice streams a movie, she would be describing proximate intent if she says: "I clicked the Watch button so I could watch the movie."
 
-* ***Ultimate Intent***: A longer-term purpose that the action is imagined to serve because it is connected by a chain of time and causality. This is the end for which a proximate act is intended as the means, and is associated with Aristotle's *final cause* or τέλος (*telos*). [32] If Alice says, "I clicked the Watch button so I could (by watching the movie) improve my Brazilian samba skills", she is describing a more ultimate intent.
+* ***Ultimate Intent***: A longer-term purpose that the action is imagined to serve because it is connected by a chain of time and causality. This is the end for which a proximate act is intended as the means, and is associated with Aristotle's *final cause* or τέλος (*telos*). [33] If Alice says, "I clicked the Watch button so I could (by watching the movie) improve my Brazilian samba skills", she is describing a more ultimate intent.
 
 *Proximate* and *ultimate* are not binary distinctions, but rather opposite ends of a continuum with many intermediate possibilities. A given intent may be either *more or less proximate* (*less or more ultimate*) than another intent.
 
@@ -153,9 +153,9 @@ Our taxonomy should *make siblings out of categories that are roughly equivalent
 
 ## 3.4 Commitment protocols and social state
 
-In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [33]
+In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [34]
 
-A commitment is formalized as `$C(Debtor, Creditor, Antecedent, Consequent)$`. [34, 35]
+A commitment is formalized as `$C(Debtor, Creditor, Antecedent, Consequent)$`. [35, 36]
 
 In this formalism, `Debtor` refers generically to the agent making the commitment (the "committer"), and `Creditor` refers to the agent receiving it (the "beneficiary"), regardless of whether the commitment is financial, informational, or logistical.
 
@@ -171,7 +171,7 @@ It would be easy to say that categories must be bidirectional, but in fact we ca
 
 ## 3.6 Intent boundaries and trust
 
-The concept of ***intent boundaries*** further refines this by highlighting the ethical and UX implications of intent. [1] An intent boundary is a point where one party's knowledge of another party's intent becomes inadequate. Crossing such a boundary without confirmation (e.g., the "Watch" button upgrading a streaming subscription) is an unethical violation of agency. It opens opportunities for manipulation and abuse, and is thus likely to lead to diminished trust in the long run.
+The concept of ***intent boundaries*** further refines this by highlighting the ethical and UX implications of intent, a framework fully derived in [1]. For the purposes of this taxonomy, we define an intent boundary as a point where one party's knowledge of another party's intent becomes inadequate. Crossing such a boundary without confirmation (e.g., the "Watch" button upgrading a streaming subscription) is an unethical violation of agency. It opens opportunities for manipulation and abuse, and is thus likely to lead to diminished trust in the long run.
 
 Our taxonomy should therefore *draw lines at likely intent boundaries*, because they represent ideal points for consent and policy enforcement.
 
@@ -225,7 +225,7 @@ This distinction is vital for healthy *intent boundaries*. The taxonomy defines 
 
 The theory underpinning our taxonomy also needs to deal with activities that are complex or multidimensional in their substructure. When someone books a vacation, are they engaged in a purchasing interaction, or a schedule coordination interaction? When someone visits the doctor, are they receiving health care or paying a bill?
 
-This can be resolved without introducing hybrids into a taxonomy by asking the simple question, "What is the telos of the interaction proposed *at point in time T*?", and acknowledging that many interactions that look multidimensional actually have more than one point in time *T*. Most travel booking web sites begin the user experience (time T1) by exploring dates, times, places, and means of transport (telos = make decisions about travel), and introduce payment (telos = exchange money for services) only at the end (T2). Further, the interaction at T2 is dependent on successful completion of (or progress through) the interaction at T1. [36]
+This can be resolved without introducing hybrids into a taxonomy by asking the simple question, "What is the telos of the interaction proposed *at point in time T*?", and acknowledging that many interactions that look multidimensional actually have more than one point in time *T*. Most travel booking web sites begin the user experience (time T1) by exploring dates, times, places, and means of transport (telos = make decisions about travel), and introduce payment (telos = exchange money for services) only at the end (T2). Further, the interaction at T2 is dependent on successful completion of (or progress through) the interaction at T1. [37]
 
 Our taxonomy should *keep categories simple by decomposing them (e.g., using nesting and chaining) to deal with complex intents and their associated interactions*.
 
@@ -536,7 +536,7 @@ The Match: The Goal is identical. The roles are complementary. This simplifies t
 
 ## 6.4. Integration with MCP and Goal Codes
 
-This taxonomy is designed to plug directly into the Model Context Protocol (MCP) and Aries Goal Codes. [37]
+This taxonomy is designed to plug directly into the Model Context Protocol (MCP) and Aries Goal Codes. [38]
 
 * Aries RFC 0519 (Goal Codes): The taxonomy provides the standardized string values (e.g., aries.vc.issue becomes /govern/identify).
 
@@ -601,7 +601,7 @@ If a Scammer tries to use this channel to sell a loan consolidation service:
 
 ## 7.2 Case study: the DAO vote
 
-Scenario: A Decentralized Autonomous Organization (DAO) needs members to vote on a new budget. [38] New state:
+Scenario: A Decentralized Autonomous Organization (DAO) needs members to vote on a new budget. [39] New state:
 
 1. Proposer (DAO Smart Contract): Broadcasts intent.  
 Telos: /govern/vote  
@@ -636,7 +636,7 @@ This is not merely a classification system; it is the protocol for digital agenc
 
 # Works cited
 
-[1] Hardman, D. 2025. Intent and Boundaries. Retrieved December 8, 2025 from https://dhh1128.github.io/papers/intent-boundaries.html
+[1] Hardman, D. 2025. Intent and Boundaries: A Framework for Digital Agency. SSRN Electronic Journal.
 
 [2] Orosz, G. and Husain, H. 2025. A pragmatic guide to LLM evals for devs. The Pragmatic Engineer (Dec. 2, 2025). Retrieved December 3, 2025 from https://newsletter.pragmaticengineer.com/p/evals
 
@@ -694,20 +694,22 @@ This is not merely a classification system; it is the protocol for digital agenc
 
 [29] Hyperledger Aries. n.d. RFC 0453: Issue Credential Protocol 2.0. Retrieved December 1, 2025 from https://identity.foundation/aries-rfcs/latest/features/0453-issue-credential-v2/
 
-[30] Kaptelinin, V. 2014. Activity Theory. In The Encyclopedia of Human-Computer Interaction (2nd ed.). Interaction Design Foundation. Retrieved from https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/activity-theory
+[30] Trust over IP Foundation. n.d. Issuance and Presentation Exchange (IPEX) Protocol. KERI Suite Working Group. Retrieved from https://trustoverip.github.io/kswg-acdc-specification/#issuance-and-presentation-exchange-ipex
 
-[31] Leontiev, A. N. 1978. Activity, Consciousness, and Personality. Prentice-Hall.
+[31] Kaptelinin, V. 2014. Activity Theory. In The Encyclopedia of Human-Computer Interaction (2nd ed.). Interaction Design Foundation. Retrieved from https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/activity-theory
 
-[32] Falcon, A. 2023. Aristotle on Causality. Stanford Encyclopedia of Philosophy (Spring 2023 Edition). Metaphysics Research Lab, Stanford University. Retrieved from https://plato.stanford.edu/archives/spr2023/entries/aristotle-causality/
+[32] Leontiev, A. N. 1978. Activity, Consciousness, and Personality. Prentice-Hall.
 
-[33] Baldoni, M., Baroglio, C., and Marengo, E. 2011. Commitment-Based Protocols with Behavioral Rules and Correctness Properties of MAS. In Declarative Agent Languages and Technologies VIII (DALT 2010). Springer, Berlin, Heidelberg. DOI: https://doi.org/10.1007/978-3-642-20715-0_4
+[33] Falcon, A. 2023. Aristotle on Causality. Stanford Encyclopedia of Philosophy (Spring 2023 Edition). Metaphysics Research Lab, Stanford University. Retrieved from https://plato.stanford.edu/archives/spr2023/entries/aristotle-causality/
 
-[34] Mallya, A. U. and Singh, M. P. 2007. An algebra for commitment protocols. Autonomous Agents and Multi-Agent Systems 14, 2 (2007), 143–163. DOI: https://doi.org/10.1007/s10458-006-7232-1
+[34] Baldoni, M., Baroglio, C., and Marengo, E. 2011. Commitment-Based Protocols with Behavioral Rules and Correctness Properties of MAS. In Declarative Agent Languages and Technologies VIII (DALT 2010). Springer, Berlin, Heidelberg. DOI: https://doi.org/10.1007/978-3-642-20715-0_4
 
-[35] Singh, M. P. 1999. An Ontology for Commitments in Multiagent Systems. Artificial Intelligence and Law 7, 97–113. DOI: https://doi.org/10.1023/A:1008319631231
+[35] Mallya, A. U. and Singh, M. P. 2007. An algebra for commitment protocols. Autonomous Agents and Multi-Agent Systems 14, 2 (2007), 143–163. DOI: https://doi.org/10.1007/s10458-006-7232-1
 
-[36] Grosz, B. J. and Sidner, C. L. 1986. Attention, Intentions, and the Structure of Discourse. Computational Linguistics 12, 3 (1986), 175–204. Retrieved from https://aclanthology.org/J86-3001/
+[36] Singh, M. P. 1999. An Ontology for Commitments in Multiagent Systems. Artificial Intelligence and Law 7, 97–113. DOI: https://doi.org/10.1023/A:1008319631231
 
-[37] Hyperledger Aries. n.d. RFC 0519: Goal Codes. GitHub. Retrieved December 1, 2025 from https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0519-goal-codes/README.md
+[37] Grosz, B. J. and Sidner, C. L. 1986. Attention, Intentions, and the Structure of Discourse. Computational Linguistics 12, 3 (1986), 175–204. Retrieved from https://aclanthology.org/J86-3001/
 
-[38] Ziegler, C. and Welpe, I. 2022. A Taxonomy of Decentralized Autonomous Organizations. In Proceedings of the 43rd International Conference on Information Systems (ICIS 2022). Association for Information Systems. Retrieved from https://mediatum.ub.tum.de/doc/1709396/document.pdf
+[38] Hyperledger Aries. n.d. RFC 0519: Goal Codes. GitHub. Retrieved December 1, 2025 from https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0519-goal-codes/README.md
+
+[39] Ziegler, C. and Welpe, I. 2022. A Taxonomy of Decentralized Autonomous Organizations. In Proceedings of the 43rd International Conference on Information Systems (ICIS 2022). Association for Information Systems. Retrieved from https://mediatum.ub.tum.de/doc/1709396/document.pdf
