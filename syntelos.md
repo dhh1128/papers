@@ -4,7 +4,7 @@ Abstract — The transition from direct human-computer interaction to an economy
 
 Keywords — agentic AI, multi-agent systems, digital intent, human-agent interaction, semantic interoperability, decentralized identifiers, activity theory, commitment protocols, intention economy, policy engines, intent casting, goal codes, consent, model context protocol, intent boundaries
 
-# 1\. The unacknowledged gap in digital interactions
+# 1. The unacknowledged gap in digital interactions
 
 ## 1.1 Decoupled action and purpose
 
@@ -32,7 +32,7 @@ The need for a grammar of intent is further accelerated by an ongoing shift towa
 
 This paper explores important taxonomy work that already exists, pinpoints the specific gap that remains, and proposes some principles that should inform any approach. It then applies these principles to derive the basics of a taxonomy of intent in digital interactions, and describes how the taxonomy can be extended. The methodology and its base categories are named "Syntelos" for reasons that are clarified below. Syntelos is a rich, rigorous, machine-readable set of categories that can deliver significant value for agentic AI and ultimately, for all human stakeholders.
 
-# 2\. Current standards address different questions
+# 2. Current standards address different questions
 
 To design a successful taxonomy, we must first examine the catalog of existing classification systems. While rigorous and widely adopted, systems like NAICS, UNSPSC, FIPA ACL, and GDPR processing purposes do not cover the specific requirements of digital intent for distinct, structural reasons.
 
@@ -111,7 +111,7 @@ While W3C DPV offers a vocabulary for privacy purposes, IEEE 7012 (Standard for 
 
 *Utility*: IEEE 7012 solves the negotiation complexity in the Syntelos Commerce.Negotiation branch. Rather than inventing a new negotiation language, Syntelos agents can simply reference an IEEE 7012 URI to establish the legal ground rules before the economic transaction begins.
 
-# 3\. Theoretical foundations
+# 3. Theoretical foundations
 
 To build a robust taxonomy, we must rigorously define some concepts, drawing on philosophy, psychology, and computer science.
 
@@ -127,7 +127,7 @@ Finally, hierarchical taxonomies have learnability advantages, map nicely onto n
 
 ## 3.2 Motives vs. steps
 
-Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [30, 31, 32] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
+Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [30, 31] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
 
 | Level | Definition | Digital Equivalent |
 | :---- | :---- | :---- |
@@ -145,7 +145,7 @@ When Alice clicks a "Watch" button, she simultaneously maintains intents at diff
 
 * ***Proximate Intent***: A purpose of a specific action that's characterized by direct, near-term context with minimal assumptions about causality. Referencing the introductory example where Alice streams a movie, she would be describing proximate intent if she says: "I clicked the Watch button so I could watch the movie."
 
-* ***Ultimate Intent***: A longer-term purpose that the action is imagined to serve because it is connected by a chain of time and causality. This is the end for which a proximate act is intended as the means, and is associated with Aristotle's *final cause* or τέλος (*telos*). [33] If Alice says, "I clicked the Watch button so I could (by watching the movie) improve my Brazilian samba skills", she is describing a more ultimate intent.
+* ***Ultimate Intent***: A longer-term purpose that the action is imagined to serve because it is connected by a chain of time and causality. This is the end for which a proximate act is intended as the means, and is associated with Aristotle's *final cause* or τέλος (*telos*). [32] If Alice says, "I clicked the Watch button so I could (by watching the movie) improve my Brazilian samba skills", she is describing a more ultimate intent.
 
 *Proximate* and *ultimate* are not binary distinctions, but rather opposite ends of a continuum with many intermediate possibilities. A given intent may be either *more or less proximate* (*less or more ultimate*) than another intent.
 
@@ -153,9 +153,9 @@ Our taxonomy should *make siblings out of categories that are roughly equivalent
 
 ## 3.4 Commitment protocols and social state
 
-In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [34]
+In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [33]
 
-A commitment is formalized as `$C(Debtor, Creditor, Antecedent, Consequent)$`. [35, 36]
+A commitment is formalized as `$C(Debtor, Creditor, Antecedent, Consequent)$`. [34, 35]
 
 In this formalism, `Debtor` refers generically to the agent making the commitment (the "committer"), and `Creditor` refers to the agent receiving it (the "beneficiary"), regardless of whether the commitment is financial, informational, or logistical.
 
@@ -225,11 +225,11 @@ This distinction is vital for healthy *intent boundaries*. The taxonomy defines 
 
 The theory underpinning our taxonomy also needs to deal with activities that are complex or multidimensional in their substructure. When someone books a vacation, are they engaged in a purchasing interaction, or a schedule coordination interaction? When someone visits the doctor, are they receiving health care or paying a bill?
 
-This can be resolved without introducing hybrids into a taxonomy by asking the simple question, "What is the telos of the interaction proposed *at point in time T*?", and acknowledging that many interactions that look multidimensional actually have more than one point in time *T*. Most travel booking web sites begin the user experience (time T1) by exploring dates, times, places, and means of transport (telos = make decisions about travel), and introduce payment (telos = exchange money for services) only at the end (T2). Further, the interaction at T2 is dependent on successful completion of (or progress through) the interaction at T1. [37]
+This can be resolved without introducing hybrids into a taxonomy by asking the simple question, "What is the telos of the interaction proposed *at point in time T*?", and acknowledging that many interactions that look multidimensional actually have more than one point in time *T*. Most travel booking web sites begin the user experience (time T1) by exploring dates, times, places, and means of transport (telos = make decisions about travel), and introduce payment (telos = exchange money for services) only at the end (T2). Further, the interaction at T2 is dependent on successful completion of (or progress through) the interaction at T1. [36]
 
 Our taxonomy should *keep categories simple by decomposing them (e.g., using nesting and chaining) to deal with complex intents and their associated interactions*.
 
-# 4\. Conventions
+# 4. Conventions
 
 Establishing some conventions and notation will make human communication and programmatic processing of the taxonomy efficiently deterministic.
 
@@ -242,7 +242,7 @@ Establishing some conventions and notation will make human communication and pro
 7. Each category path may have one or more localized ***category descriptions*** that are friendly to typical human users of technology who speak the description's natural language. Category descriptions are informational, not normative.  
 8. The taxonomy may be extended in an adhoc way at any level by introducing a category name that begins with "x-" (a so-called ***x-cat***). A small group of interested parties may use such a category name without formal extension of the standard, but should propose the 
 
-# 5\. Proposed taxonomy
+# 5. Proposed taxonomy
 
 Below is a proposed taxonomy, rooted in a handful of fundamental domains of interactive digital activity. These domains cover the vast majority of agentic interactions while ensuring mutual exclusivity and clear scope narrowing. They are designed to support interactions involving businesses, consumers, and their agents (human or automated).
 
@@ -477,7 +477,7 @@ or consensus. This covers the spectrum from decentralized influence to strict en
     Telos: Impose order or ensure safety.  
     Example: Detaining a suspect; denying entry to a secure facility.
 
-# 6\. Operational dynamics: the policy engine and the handshake
+# 6. Operational dynamics: the policy engine and the handshake
 
 A taxonomy is useless without a mechanism to enforce it. We must define how these codes function within the "handshake" of a digital interaction, particularly in the context of Policy Engines and Agentic AI.
 
@@ -536,33 +536,33 @@ The Match: The Goal is identical. The roles are complementary. This simplifies t
 
 ## 6.4. Integration with MCP and Goal Codes
 
-This taxonomy is designed to plug directly into the Model Context Protocol (MCP) and Aries Goal Codes. [38]
+This taxonomy is designed to plug directly into the Model Context Protocol (MCP) and Aries Goal Codes. [37]
 
 * Aries RFC 0519 (Goal Codes): The taxonomy provides the standardized string values (e.g., aries.vc.issue becomes /govern/identify).
 
 * MCP: When an LLM agent needs to use a tool, it must understand the consequence of that tool. By tagging MCP tools with these Goal Codes (e.g., a Stripe API tool is tagged /trade/swap), the AI can reason about safety: "I am allowed to use /share/ask tools, but I am forbidden from using /trade/swap tools without human approval."
 
-# 7\. Case Studies in Application
+# 7. Case Studies in Application
 
 To validate the taxonomy, we apply it to diverse real-world scenarios.
 
 ## 7.1 Case study: the debt collection call
 
-1\. Proposer (Bank Agent): Sends invitation.  
+1. Proposer (Bank Agent): Sends invitation.  
 Telos: /trade/lend  
 Role: Creditor  
 Resource: Loan #12345
 
-2\. Recipient (User Agent): Checks policy.  
+2. Recipient (User Agent): Checks policy.  
 Policy: "Allow /trade/lend (when proposer role=Lender)."  
 Result: The call rings. The user sees: "Bank of America - Discussing Loan Repayment."
 
 If a Scammer tries to use this channel to sell a loan consolidation service:  
-1\. Proposer: Sends invitation.  
+1. Proposer: Sends invitation.  
 Telos: /trade/lend  
 Role: Lender
 
-2\. Recipient: Checks policy.  
+2. Recipient: Checks policy.  
 Policy: "Block /trade/lend (when proposer role=Lender)."  
 Result: The call is silently blocked.
 
@@ -601,13 +601,13 @@ If a Scammer tries to use this channel to sell a loan consolidation service:
 
 ## 7.2 Case study: the DAO vote
 
-Scenario: A Decentralized Autonomous Organization (DAO) needs members to vote on a new budget. [39] New state:
+Scenario: A Decentralized Autonomous Organization (DAO) needs members to vote on a new budget. [38] New state:
 
-1\. Proposer (DAO Smart Contract): Broadcasts intent.  
+1. Proposer (DAO Smart Contract): Broadcasts intent.  
 Telos: /govern/vote  
 Resource: Proposal #99 (Budget)
 
-2\. Recipient (Member Agent):  
+2. Recipient (Member Agent):  
 Policy: "Auto-vote 'Abstain' on /govern/vote IF Topic=Budget AND Amount < $1000."
 
 Result: The agent handles the low-stakes vote automatically, reducing cognitive load.
@@ -616,17 +616,17 @@ Result: The agent handles the low-stakes vote automatically, reducing cognitive 
 
 Scenario: Alice wants to learn guitar. New state:
 
-1\. Proposer (Alice): Broadcasts intent.  
+1. Proposer (Alice): Broadcasts intent.  
 Telos: /share/teach  
 Resource: Subject="Guitar"  
 Role: Student
 
-2\. Recipient (Tutor Agent): Scanning for /share/*.  
+2. Recipient (Tutor Agent): Scanning for /share/*.  
 Matches Goal. Checks Resource. Checks Role (Complementary).
 
 Result: The Tutor Agent sends a proposal: "I can teach guitar. Here is my rate."
 
-# 8\. Conclusion
+# 8. Conclusion
 
 The transition from an "Attention Economy" to an "Intention Economy" requires a new grammar. We cannot rely on the static nouns of industrial codes or the empty verbs of communication protocols. We must adopt a Taxonomy of Interactive Activity that categorizes the shared outcome of our digital engagements.
 
@@ -640,7 +640,7 @@ This is not merely a classification system; it is the protocol for digital agenc
 
 [2] Orosz, G. and Husain, H. 2025. A pragmatic guide to LLM evals for devs. The Pragmatic Engineer (Dec. 2, 2025). Retrieved December 3, 2025 from https://newsletter.pragmaticengineer.com/p/evals
 
-[3] Chang, Y., Wang, X., Wang, J., Wu, Y., Yang, L., Zhu, K., ... & Xie, X. 2023. A Survey on Evaluation of Large Language Models. arXiv preprint arXiv:2307.03109.
+[3] Chang, Y., Wang, X., Wang, J., Wu, Y., Yang, L., Zhu, K., ... & Xie, X. 2024. A Survey on Evaluation of Large Language Models. ACM Transactions on Intelligent Systems and Technology 15, 3 (March 2024), Article 39. DOI: https://doi.org/10.1145/3641289
 
 [4] CNN. 2025. Someone using artificial intelligence to impersonate Secretary of State Marco Rubio contacted at least five people, including foreign ministers report. CNN (July 8, 2025). Retrieved from https://www.cnn.com/2025/07/08/politics/marco-rubio-artificial-intelligence-impersonation
 
@@ -694,22 +694,20 @@ This is not merely a classification system; it is the protocol for digital agenc
 
 [29] Hyperledger Aries. n.d. RFC 0453: Issue Credential Protocol 2.0. Retrieved December 1, 2025 from https://identity.foundation/aries-rfcs/latest/features/0453-issue-credential-v2/
 
-[30] Martins, L. and Daltrini, B. 1999. Activity Theory: A Framework to Software Requirements Elicitation. In Proceedings of the Workshop on Requirements Engineering (WER). Retrieved from http://wer.inf.puc-rio.br/WERpapers/artigos/artigos_WER99/martins.pdf
+[30] Kaptelinin, V. 2014. Activity Theory. In The Encyclopedia of Human-Computer Interaction (2nd ed.). Interaction Design Foundation. Retrieved from https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/activity-theory
 
-[31] Kaptelinin, V. 2014. Activity Theory. In The Encyclopedia of Human-Computer Interaction (2nd ed.). Interaction Design Foundation. Retrieved from https://www.interaction-design.org/literature/book/the-encyclopedia-of-human-computer-interaction-2nd-ed/activity-theory
+[31] Leontiev, A. N. 1978. Activity, Consciousness, and Personality. Prentice-Hall.
 
-[32] Leontiev, A. N. 1978. Activity, Consciousness, and Personality. Prentice-Hall.
+[32] Falcon, A. 2023. Aristotle on Causality. Stanford Encyclopedia of Philosophy (Spring 2023 Edition). Metaphysics Research Lab, Stanford University. Retrieved from https://plato.stanford.edu/archives/spr2023/entries/aristotle-causality/
 
-[33] Falcon, A. 2023. Aristotle on Causality. Stanford Encyclopedia of Philosophy (Spring 2023 Edition). Metaphysics Research Lab, Stanford University. Retrieved from https://plato.stanford.edu/archives/spr2023/entries/aristotle-causality/
+[33] Baldoni, M., Baroglio, C., and Marengo, E. 2011. Commitment-Based Protocols with Behavioral Rules and Correctness Properties of MAS. In Declarative Agent Languages and Technologies VIII (DALT 2010). Springer, Berlin, Heidelberg. DOI: https://doi.org/10.1007/978-3-642-20715-0_4
 
-[34] Baldoni, M., Baroglio, C., and Marengo, E. 2011. Commitment-Based Protocols with Behavioral Rules and Correctness Properties of MAS. In Declarative Agent Languages and Technologies VIII (DALT 2010). Springer, Berlin, Heidelberg. DOI: https://doi.org/10.1007/978-3-642-20715-0_4
+[34] Mallya, A. U. and Singh, M. P. 2007. An algebra for commitment protocols. Autonomous Agents and Multi-Agent Systems 14, 2 (2007), 143–163. DOI: https://doi.org/10.1007/s10458-006-7232-1
 
-[35] Mallya, A. U. and Singh, M. P. 2007. An algebra for commitment protocols. Autonomous Agents and Multi-Agent Systems 14, 2 (2007), 143–163. DOI: https://doi.org/10.1007/s10458-006-7232-1
+[35] Singh, M. P. 1999. An Ontology for Commitments in Multiagent Systems. Artificial Intelligence and Law 7, 97–113. DOI: https://doi.org/10.1023/A:1008319631231
 
-[36] Kaur, H. and Kaur, H. 2015. Agent Commitments and Ranking of Commitment Protocols. International Journal of Advanced Research in Computer and Communication Engineering 4, 4 (April 2015). DOI: https://doi.org/10.17148/IJARCCE.2015.44137
+[36] Grosz, B. J. and Sidner, C. L. 1986. Attention, Intentions, and the Structure of Discourse. Computational Linguistics 12, 3 (1986), 175–204. Retrieved from https://aclanthology.org/J86-3001/
 
-[37] Grosz, B. J. and Sidner, C. L. 1986. Attention, Intentions, and the Structure of Discourse. Computational Linguistics 12, 3 (1986), 175–204. Retrieved from https://aclanthology.org/J86-3001/
+[37] Hyperledger Aries. n.d. RFC 0519: Goal Codes. GitHub. Retrieved December 1, 2025 from https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0519-goal-codes/README.md
 
-[38] Hyperledger Aries. n.d. RFC 0519: Goal Codes. GitHub. Retrieved December 1, 2025 from https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0519-goal-codes/README.md
-
-[39] Ziegler, C. and Welpe, I. 2022. A Taxonomy of Decentralized Autonomous Organizations. In Proceedings of the 43rd International Conference on Information Systems (ICIS 2022). Association for Information Systems. Retrieved from https://mediatum.ub.tum.de/doc/1709396/document.pdf
+[38] Ziegler, C. and Welpe, I. 2022. A Taxonomy of Decentralized Autonomous Organizations. In Proceedings of the 43rd International Conference on Information Systems (ICIS 2022). Association for Information Systems. Retrieved from https://mediatum.ub.tum.de/doc/1709396/document.pdf
