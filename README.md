@@ -1,3 +1,5 @@
+[Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md). 20 Dec 2025. <span class="hash">#keri #identifiers</span> 
+
 [A Primer on KERI, ACDCs, and CESR](keri-primer.md). 19 Dec 2025. <span class="hash">#keri #certs #verifiable-data #verifiable-credentials</span> 
 
 [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md). 11 Dec 2025. <span class="hash">#ux #ai #intent</span> 
