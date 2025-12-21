@@ -11,13 +11,18 @@ def complain(msg):
     complaints_found = True
 
 def parse_citations_and_refs(content):
-    acm_refs = re.findall(r'\[(\d+)\]', content)
+    # Match single or comma-separated numbers in brackets
+    acm_refs = re.findall(r'\[((?:\d+\s*,\s*)*\d+)\]', content)
+    # Flatten comma-separated lists
+    acm_refs_flat = []
+    for group in acm_refs:
+        acm_refs_flat.extend([n.strip() for n in group.split(',')])
     superscripts = re.findall(r'<sup>(\d+)</sup>', content)
     endnote_section = re.search(r'^(#+\s*Endnotes\s*$)', content, re.MULTILINE | re.IGNORECASE)
     style = None
-    if acm_refs and superscripts:
+    if acm_refs_flat and superscripts:
         style = "mixed"
-    elif acm_refs:
+    elif acm_refs_flat:
         style = "ACM bracketed inline refs"
     elif superscripts:
         style = "superscript inline refs"
@@ -25,15 +30,23 @@ def parse_citations_and_refs(content):
         style = "endnotes"
     else:
         style = "none"
-    return acm_refs, superscripts, endnote_section, style
+    return acm_refs_flat, superscripts, endnote_section, style
 
 def find_refs_section(content):
     return re.search(r'^(#+\s*(References|Works Cited|Endnotes)\s*$)', content, re.MULTILINE | re.IGNORECASE)
 
-def extract_ref_nums(refs_text):
-    endnote_entries = re.findall(r'^\s*\[(?:<a id="[^"]+">)?([0-9]+)(?:</a>)?\]', refs_text, re.MULTILINE)
-    ref_entries = re.findall(r'^\s*\[([0-9]+)\]', refs_text, re.MULTILINE)
-    return [int(n) for n in endnote_entries] if endnote_entries else [int(n) for n in ref_entries]
+def extract_ref_lines(refs_text):
+    # Returns a list of (original_num, line, content) for each reference line
+    ref_entry_pat = re.compile(r'^(\s*)\[(?:<a id="[^"]+">)?([0-9]+)(?:</a>)?\](.*)$')
+    ref_lines = refs_text.splitlines(keepends=True)
+    entries = []
+    for line in ref_lines:
+        m = ref_entry_pat.match(line)
+        if m:
+            old_num = int(m.group(2))
+            content = m.group(3).strip()
+            entries.append((old_num, line, content))
+    return entries, ref_lines
 
 def analyze(filename):
     with open(filename, encoding='utf-8') as f:
@@ -58,7 +71,8 @@ def analyze(filename):
     else:
         ref_start = ref_section.end()
         refs_text = content[ref_start:]
-        ref_nums = extract_ref_nums(refs_text)
+        ref_entries, _ = extract_ref_lines(refs_text)
+        ref_nums = [num for num, _, _ in ref_entries]
         max_ref = 0
         for n in ref_nums:
             if n > max_ref + 1:
@@ -82,51 +96,60 @@ def fix_citations_and_refs(filename):
         complain(f"Cannot fix: {filename} has style '{style}'")
         return
     print(f"{filename}: Detected style: {style} (fixing)")
-    refs = [int(n) for n in acm_refs] if acm_refs else [int(n) for n in superscripts]
-    # Build mapping from old to new numbers based on first appearance
-    mapping = {}
-    new_refs = []
-    next_num = 1
-    for n in refs:
-        if n not in mapping:
-            mapping[n] = next_num
-            next_num += 1
-        new_refs.append(mapping[n])
-    # Replace inline citations
-    if acm_refs:
-        def repl(match):
-            old = int(match.group(1))
-            return f"[{mapping[old]}]"
-        content = re.sub(r'\[(\d+)\]', repl, content)
-    elif superscripts:
-        def repl(match):
-            old = int(match.group(1))
-            return f"<sup>{mapping[old]}</sup>"
-        content = re.sub(r'<sup>(\d+)</sup>', repl, content)
-    # Fix references/endnotes section
+    # 1. Parse references section to build mapping from original number to reference content
     ref_section = find_refs_section(content)
     if not ref_section:
         complain(f"No References, Works Cited, or Endnotes section found in {filename}")
         return
     ref_start = ref_section.end()
     refs_text = content[ref_start:]
-    ref_lines = refs_text.splitlines(keepends=True)
-    # Parse and remap reference lines
-    ref_entry_pat = re.compile(r'^(\s*)\[(?:<a id="[^"]+">)?([0-9]+)(?:</a>)?\](.*)$')
-    ref_entries = []
-    for line in ref_lines:
-        m = ref_entry_pat.match(line)
-        if m:
-            old_num = int(m.group(2))
-            ref_entries.append((old_num, line))
-    # Resort and renumber
-    ref_entries_sorted = sorted(ref_entries, key=lambda x: refs.index(x[0]) if x[0] in refs else float('inf'))
+    ref_entries, ref_lines = extract_ref_lines(refs_text)
+    ref_dict = {num: (line, ref_content) for num, line, ref_content in ref_entries}
+    # 2. Scan inline citations in order, assign new numbers to unique sources by reference content
+    inline_pat = re.compile(r'\[((?:\d+\s*,\s*)*\d+)\]')
+    inline_nums = []
+    for m in inline_pat.finditer(content[:ref_start]):
+        nums = [int(n.strip()) for n in m.group(1).split(',')]
+        inline_nums.extend(nums)
+    content_to_newnum = {}
+    num_to_content = {num: ref_content for num, _, ref_content in ref_entries}
+    mapping = {}
+    new_order = []
+    next_num = 1
+    for n in inline_nums:
+        ref_content = num_to_content.get(n)
+        if ref_content is None:
+            complain(f"Inline citation [{n}] has no matching reference entry in {filename}")
+            continue
+        if ref_content not in content_to_newnum:
+            content_to_newnum[ref_content] = next_num
+            mapping[n] = next_num
+            new_order.append(ref_content)
+            next_num += 1
+        else:
+            mapping[n] = content_to_newnum[ref_content]
+    # 3. Replace all inline citations with new numbers (including lists)
+    def repl(match):
+        nums = [int(n.strip()) for n in match.group(1).split(',')]
+        newnums = [str(mapping.get(n, n)) for n in nums]
+        return f"[{', '.join(newnums)}]"
+    content = inline_pat.sub(repl, content[:ref_start]) + content[ref_start:]
+    # 4. Rebuild references section in new order, one entry per unique source
     new_ref_lines = []
-    for i, (old_num, line) in enumerate(ref_entries_sorted, 1):
-        new_line = re.sub(r'\[(?:<a id="[^"]+">)?([0-9]+)(?:</a>)?\]', f'[{i}]', line, count=1)
-        new_ref_lines.append(new_line)
-    # Replace old reference section with new one
-    new_refs_text = ''.join(new_ref_lines) + ''.join(ref_lines[len(ref_entries):])
+    for i, ref_content in enumerate(new_order, 1):
+        # Find the original line for this content
+        for num, line, c in ref_entries:
+            if c == ref_content:
+                # Replace the number in the line with the new number
+                new_line = re.sub(r'\[(?:<a id="[^"]+">)?([0-9]+)(?:</a>)?\]', f'[{i}]', line, count=1)
+                new_ref_lines.append(new_line)
+                break
+    # Add any non-reference lines after the last reference
+    last_ref_idx = 0
+    for i, line in enumerate(ref_lines):
+        if any(line == entry[1] for entry in ref_entries):
+            last_ref_idx = i
+    new_refs_text = ''.join(new_ref_lines) + ''.join(ref_lines[last_ref_idx+1:])
     content = content[:ref_start] + new_refs_text
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
@@ -153,8 +176,6 @@ def main():
     parser.add_argument('--no-fix', action='store_true', help='Only report problems, do not fix them')
     parser.add_argument('files', nargs='+', help='Markdown files or glob patterns to process')
     args = parser.parse_args()
-
-    # Expand globs if needed
     all_files = []
     for arg in args.files:
         expanded = glob.glob(arg)
@@ -162,10 +183,8 @@ def main():
             all_files.extend(expanded)
         else:
             all_files.append(arg)
-
     seen = set()
     unique_files = [f for f in all_files if not (f in seen or seen.add(f))]
-
     if args.no_fix:
         for filename in all_footnoted_files(unique_files):
             analyze(filename)
