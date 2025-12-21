@@ -3,8 +3,9 @@ name: check links in markdown files
 on:
   repository_dispatch:
   workflow_dispatch:
-  push:
-    
+  schedule:
+    - cron: '0 0 1 * *'
+
 jobs:
   link-check:
     runs-on: ubuntu-latest

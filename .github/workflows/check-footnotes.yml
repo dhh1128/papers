@@ -1,0 +1,13 @@
+name: check footnotes
+
+on:
+  push:
+
+jobs:
+  check-footnotes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run fixnotenums.py
+        run: |
+          python3 scripts/fixnotenums.py *.md
