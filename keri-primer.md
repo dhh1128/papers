@@ -29,11 +29,11 @@ If an entity cannot prove *on its own* that it is the same entity that acted in 
 ### 1.3 Requirements for a new stack
 
 To solve these problems, we require an architecture that shifts the root of trust from the administrator to the cryptographic controller. We need a system where:
-1.  **The identifier is the root of trust:** The binding between the ID and the key must be mathematical (and therefore, objectively provable and permanent), not administrative (and therefore, subjective, fragile, centralized, and temporary).
-2. **History is auditable**: The system must provide a mechanism to detect conflicting histories (duplicity) immediately. Trust must be derived from the ability to verify the log of events, not the reputation of the log's host.
-3.  **Identity survives key rotation:** The system must allow keys to change without resetting the identity's history and without having to trust a party who claims it's safe to ignore a gap.
-4.  **Revocation is immediate and safe:** The status of keys and credentials must be verifiable without privacy leaks or "fail open" risks.
-5.  **Recovery is robust:** The system must allow straightforward, self-service, provable recovery from key loss without central intervention.
+1.  *The identifier is the root of trust:* The binding between the ID and the key must be mathematical (and therefore, objectively provable and permanent), not administrative (and therefore, subjective, fragile, centralized, and temporary).
+2. *History is auditable*: The system must provide a mechanism to detect conflicting histories (duplicity) immediately. Trust must be derived from the ability to verify the log of events, not the reputation of the log's host.
+3.  *Identity survives key rotation:* The system must allow keys to change without resetting the identity's history and without having to trust a party who claims it's safe to ignore a gap.
+4.  *Revocation is immediate and safe:* The status of keys and credentials must be verifiable without privacy leaks or "fail open" risks.
+5.  *Recovery is robust:* The system must allow straightforward, self-service, provable recovery from key loss without central intervention.
 
 The technologies analyzed in this report—Key Event Receipt Infrastructure (KERI), Authentic Chained Data Containers (ACDC), and Composable Event Streaming Representation (CESR)—form a stack that meets these requirements. They replace administrative trust with cryptographic trust, enabling a Decentralized Key Management Infrastructure (DKMI) where the history of the identifier is the only authority required to verify it.
 
@@ -41,11 +41,11 @@ The technologies analyzed in this report—Key Event Receipt Infrastructure (KER
 
 KERI is a protocol for decentralized key management. It is sometimes associated with blockchain technology because it involves cryptographic records and immutable histories. However, KERI is distinct. Traditional blockchains rely on a global consensus model, where every node must agree on the total ordering of all transactions in the network. The network thus faces a scalability bottleneck; the network can only process as many transactions as its consensus algorithm allows [22, 23].
 
-KERI rejects the need for global consensus regarding identity. Instead, it uses microledgers called **key event logs** (KELs). Every identifier has its own independent KEL, with storage distributed and security enforced one identifier at a time. The ordering of events matters only relative to that specific identifier. Event 5 for Identifier A must come after Event 4 for Identifier A, but it has no required ordering relative to Event 5 for Identifier B. KERI naturally scales horizontally because there is no central choke point [24]. The lack of centralizing consensus and the lack of centralized storage also allow KERI to operate across jurisdictional boundaries with ease, and they change economics. Infrastructure gets cheaper because there's no massive system to maintain. Hacking incentives decay because any breach is likely to be limited in scope to a single identifier.
+KERI rejects the need for global consensus regarding identity. Instead, it uses microledgers called *key event logs* (KELs). Every identifier has its own independent KEL, with storage distributed and security enforced one identifier at a time. The ordering of events matters only relative to that specific identifier. Event 5 for Identifier A must come after Event 4 for Identifier A, but it has no required ordering relative to Event 5 for Identifier B. KERI naturally scales horizontally because there is no central choke point [24]. The lack of centralizing consensus and the lack of centralized storage also allow KERI to operate across jurisdictional boundaries with ease, and they change economics. Infrastructure gets cheaper because there's no massive system to maintain. Hacking incentives decay because any breach is likely to be limited in scope to a single identifier.
 
 ### 2.1 Autonomic identifiers (AIDs)
 
-The core primitive of KERI is the **autonomic identifier** (AID). Unlike a domain name, which is rent-seeking text, or a UUID, which is arbitrary entropy, an AID is a **self-certifying identifier** (SCID). The identifier derives cryptographically from the initial public key (or set of keys) that controls it.
+The core primitive of KERI is the *autonomic identifier* (AID). Unlike a domain name, which is rent-seeking text, or a UUID, which is arbitrary entropy, an AID is a *self-certifying identifier* (SCID). The identifier derives cryptographically from the initial public key (or set of keys) that controls it.
 
 To create an AID, the controller generates key material. They then choose a derivation code (defined in CESR) that specifies the cryptographic algorithm (e.g., Ed25519, ECDSA secp256k1) used to transform the public portion of the key material into the identifier string.
 
@@ -53,26 +53,26 @@ To create an AID, the controller generates key material. They then choose a deri
 
 KERI distinguishes between two modes of derivation: basic and transferable.
 
-**Basic derivation:** In this mode, the identifier is just a digest (hash) of a single public key. This is similar to how many cryptocurrency addresses work. While simple, it is brittle. If the private key is compromised or lost, the identifier must be abandoned. You cannot rotate the key because the identifier *is* the key digest; changing the key changes the identifier, which means you must abandon all reputation, credentials, and relationships associated with the original identifier. Basic AIDs are suitable only for ephemeral, short-lived use cases.
+*Basic derivation:* In this mode, the identifier is just a digest (hash) of a single public key. This is similar to how many cryptocurrency addresses work. While simple, it is brittle. If the private key is compromised or lost, the identifier must be abandoned. You cannot rotate the key because the identifier *is* the key digest; changing the key changes the identifier, which means you must abandon all reputation, credentials, and relationships associated with the original identifier. Basic AIDs are suitable only for ephemeral, short-lived use cases.
 
-**Transferable derivation:** This is KERI's primary innovation for persistent identity. In this mode, the identifier is derived not just from one or more public keys, but from the entire **inception event**. The inception event contains the initial public key material *and* a cryptographic commitment to the *next* key material (pre-rotation). The identifier string remains constant even as the keys change, because the root of trust is the inception event, which establishes the rules for how the keys are allowed to evolve. Identity survives key rotation [25].
+*Transferable derivation:* This is KERI's primary innovation for persistent identity. In this mode, the identifier is derived not just from one or more public keys, but from the entire *inception event*. The inception event contains the initial public key material *and* a cryptographic commitment to the *next* key material (pre-rotation). The identifier string remains constant even as the keys change, because the root of trust is the inception event, which establishes the rules for how the keys are allowed to evolve. Identity survives key rotation [25].
 
 ### 2.2 The key event log (KEL)
 
-The **key event log** (KEL) is the authoritative source of truth for an AID. It is an append-only chain of data structures (events) signed by the controller. When a verifier wants to know "Who controls this AID?" or "Is this signature valid?", they do not query a directory; they ingest the KEL.
+The *key event log* (KEL) is the authoritative source of truth for an AID. It is an append-only chain of data structures (events) signed by the controller. When a verifier wants to know "Who controls this AID?" or "Is this signature valid?", they do not query a directory; they ingest the KEL.
 
 The KEL is verified by replaying history to see if the currently claimed state derives correctly. The verifier starts at the inception event, verifies the signature, and then moves to the next event. Each subsequent event is cryptographically linked to the previous one via a hash of the predecessor, in an unbreakable chain of custody. If a single bit of a past event is altered, the hash links break, and the log is rejected as invalid.
 
 The KEL supports three primary event types:
-1.  **Inception (`icp`):** Birth of the identifier.
-2.  **Rotation (`rot`):** Update of keys or configuration.
-3.  **Interaction (`ixn`):** Anchoring of data (seals) without changing keys.
+1.  *Inception (`icp`):* Birth of the identifier.
+2.  *Rotation (`rot`):* Update of keys or configuration.
+3.  *Interaction (`ixn`):* Anchoring of data (seals) without changing keys.
 
 ### 2.3 Pre-rotation
 
 The hard problem of PKI is secure key rotation. If an attacker compromises your active private key, they can sign a transaction to rotate the key to one they control, effectively locking you out of your own identity. In standard PKI, there is no defense against this; a signature from the compromised key looks exactly like a signature from the legitimate owner.
 
-KERI solves this through **pre-rotation**.
+KERI solves this through *pre-rotation*.
 
 When a controller creates an event (say, the inception event), they must decide *now* what key they will use for the *next* rotation, and they must manage the next key differently from the current one (e.g., storing the next key offline or on a different device). Let's call the current key $K_1$ and the next key $K_2$. The controller includes the public key for $K_1$ in the event so they can sign it. However, they do not include the public key for $K_2$. Instead, they include a cryptographic hash (digest) of $K_2$.
 
@@ -80,7 +80,7 @@ The security comes from the asymmetry in knowledge: the controller knows or has 
 
 Pre-rotation establishes a firewall between day-to-day use and occasional governance. A controller can keep $K_1$ on a production server while generating $K_2$, hashing it, and immediately storing it in an air-gapped, cold wallet. If the server is breached, the attacker steals $K_1$ but cannot rotate to assume control of the identity. The legitimate owner can retrieve $K_2$, rotate the keys, and regain control [26].
 
-When the time comes to rotate, the controller creates a **rotation event**. In this event, they:
+When the time comes to rotate, the controller creates a *rotation event*. In this event, they:
 1.  Reveal the public key for $K_2$, thus proving that they know the governing secret that was committed to at a previous time via its hash.
 2.  Sign the event with the private key for $K_2$.
 3.  Commit to a *new* future key ($K_3$) by including its hash.
@@ -93,7 +93,7 @@ Many systems support basic multisig (e.g., "requires 2 of 3 keys"). However, in 
 
 KERI takes a different tack. It allows identifiers governed by a single key, but if multiple keys will be used, it requires a definition of the identifier's fractionally weighted thresholds directly in the public KEL. This makes governance rules explicit and auditable. Each signing event, each rotation, and each change to signing policy occurs only as enacted by publicly verifiable cryptographic proof that the predeclared threshold policy was satisfied.
 
-**Scenario: the corporate board**
+*Scenario: the corporate board*
 Imagine a startup with three Founders (Alice, Bob, Carol) and four Investors (Dave, Eve, Frank, Genevieve).
 * Alice, Bob, and Carol each hold their own founder keys.
 * Dave, Eve, Frank, and Genevieve each hold their own investor keys.
@@ -105,7 +105,7 @@ In KERI, such a policy is defined in parallel arrays of an event data structure 
 
 This sample array shows two subarrays or *clauses* (one for founders, one for investors) connected by OR logic. The weight of signers from at least one clause must sum to meet or exceed the threshold. Weights within each clause are summed, and the clause is satisfied if the sum of signing keys meets or exceeds 1.0. Thus, in the first subarray, any two founders provide enough weight to add up to 1.0; in the second subarray, any three investors can satisfy the threshold.
 
-**Scenario: break-glass recovery**
+*Scenario: break-glass recovery*
 A widely used pattern for individual users involves break-glass recovery.
 * Key A: Mobile Phone (Weight 0.5)
 * Key B: Laptop (Weight 0.5)
@@ -125,13 +125,13 @@ However, quantum computers are not magic; they cannot easily invert a cryptograp
 
 KERI takes advantage of these algorithm properties in two ways:
 
-1.  **Hiding the Target:** The rotation authority (the next key) is always hidden behind a hash. It is never exposed as a public key until the moment it is used and discarded. Therefore, even if a quantum attacker can crack the *active* key $K_1$, they cannot crack the *next* key $K_2$ because its public key is not yet visible to the network. By the time $K_2$ is revealed in a rotation event, the controller has already moved trust to $K_3$ (which is hashed). The root of control stays one step ahead of quantum analysis [26].
+1.  *Hiding the Target:* The rotation authority (the next key) is always hidden behind a hash. It is never exposed as a public key until the moment it is used and discarded. Therefore, even if a quantum attacker can crack the *active* key $K_1$, they cannot crack the *next* key $K_2$ because its public key is not yet visible to the network. By the time $K_2$ is revealed in a rotation event, the controller has already moved trust to $K_3$ (which is hashed). The root of control stays one step ahead of quantum analysis [26].
 
-2.  **Hybrid Governance:** Because KERI supports weighted multisig (see Section 2.4), a controller can employ a hybrid governance strategy. An identifier can be configured with a threshold that requires both a standard ECC signature (for efficiency and good tooling/interop today) and a post-quantum signature (for protections against surprise quantum advances). Even if the ECC key is broken, the attacker cannot satisfy the full threshold without also breaking the post-quantum key. Cryptographic agility lets KERI upgrade security postures without breaking the identifier's history [29].
+2.  *Hybrid Governance:* Because KERI supports weighted multisig (see Section 2.4), a controller can employ a hybrid governance strategy. An identifier can be configured with a threshold that requires both a standard ECC signature (for efficiency and good tooling/interop today) and a post-quantum signature (for protections against surprise quantum advances). Even if the ECC key is broken, the attacker cannot satisfy the full threshold without also breaking the post-quantum key. Cryptographic agility lets KERI upgrade security postures without breaking the identifier's history [29].
 
 ### 2.6 Witnesses and the watcher network
 
-Because KERI does not use a blockchain, it needs a mechanism to ensure availability and prevent **duplicity**. Duplicity is KERI's term for the double-spend problem in identity: a controller signing two different events with the same sequence number (e.g., rotating to Key A and also rotating to Key B at step 5).
+Because KERI does not use a blockchain, it needs a mechanism to ensure availability and prevent *duplicity*. Duplicity is KERI's term for the double-spend problem in identity: a controller signing two different events with the same sequence number (e.g., rotating to Key A and also rotating to Key B at step 5).
 
 Witnesses fill this role.
 
@@ -139,7 +139,7 @@ A witness is a server designated by the controller to store and serve the KEL. W
 
 Witnesses serve a fundamentally different role than CAs. A CA is trusted to attest to identity—to assert "this public key belongs to this entity." A witness makes no such assertion. A witness simply stores and serves events.
 
-The trust model is adversarial: witnesses are assumed to be potentially malicious. To counter this, KERI uses **watchers**. Watchers are entities (run by verifiers or auditors) that periodically poll the witnesses.
+The trust model is adversarial: witnesses are assumed to be potentially malicious. To counter this, KERI uses *watchers*. Watchers are entities (run by verifiers or auditors) that periodically poll the witnesses.
 * Watcher asks Witness A: "What is the head of the log for Identifier X?" -> Witness A returns Event 5 (Hash X).
 * Watcher asks Witness B: "What is the head of the log for Identifier X?" -> Witness B returns Event 5 (Hash Y).
 
@@ -154,17 +154,17 @@ While KERI handles the *identity* (the "Who"), ACDCs handle the *data* (the "Wha
 To understand how ACDCs are issued, let's step away from the abstract "Issuer/Holder" terminology and look at the engineering reality.
 
 When a company issues an ACDC, its individual staff members do not manually sign a digital file. Rather, the process is managed by an automated agent running under their control. This agent must manage its cryptographic keys as KERI expects.
-1.  **Construction:** The API triggers the agent. The agent assembles the data payload (the attributes).
-2.  **Structuring:** The agent formats this data into the strict ACDC schema (more on this below).
-3.  **Anchoring:** The agent does not just sign the data. It creates a cryptographic digest (hash) of the ACDC and inserts it into the issuer's KEL (or a specialized TEL). This is an **anchored signature**.
-4.  **Transport (IPEX):** The agent opens a secure channel to the holder's agent. It uses an issuance protocol like IPEX (**issuance protocol for exchanging credentials**). The issuer "offers" the credential. The holder "requests" it. The issuer "grants" it.
-5.  **Receipt:** The holder's agent receives the ACDC. The holder *also* anchors the receipt of the credential in their own KEL.
+1.  *Construction:* The API triggers the agent. The agent assembles the data payload (the attributes).
+2.  *Structuring:* The agent formats this data into the strict ACDC schema (more on this below).
+3.  *Anchoring:* The agent does not just sign the data. It creates a cryptographic digest (hash) of the ACDC and inserts it into the issuer's KEL (or a specialized TEL). This is an *anchored signature*.
+4.  *Transport (IPEX):* The agent opens a secure channel to the holder's agent. It uses an issuance protocol like IPEX (issuance protocol for exchanging credentials). The issuer "offers" the credential. The holder "requests" it. The issuer "grants" it.
+5.  *Receipt:* The holder's agent receives the ACDC. The holder *also* anchors the receipt of the credential in their own KEL.
 
 The issuer's log says "I issued Credential X at Sequence 50." The holder's log says "I accepted Credential X at Sequence 12." This mutual anchoring prevents spam (you can't force a credential into someone's wallet) and provides non-repudiation of receipt.
 
 ### 3.2 SAIDs: the mechanism of immutability
 
-ACDCs rely on a unique cryptographic primitive called the **self-addressing identifier** (SAID).
+ACDCs rely on a unique cryptographic primitive called the *self-addressing identifier* (SAID).
 
 In standard data handling, we often use UUIDs (random numbers) to identify records. The problem with a UUID is that it has no relationship to the data. If I change a field in the record, the UUID remains the same, but the data is different. Synchronization errors and version hell follow.
 
@@ -176,9 +176,9 @@ The identifier field matches the hash of the whole structure. If a single charac
 
 ### 3.3 Anchored vs. paired signatures
 
-Many forms of signed digital evidence use a signing pattern that might be called **paired signatures**. A data structure format defines a payload plus its paired signature; the two go together because the format says so. For example, in the W3C Data Model, the signature lives in the `proof` attribute of the VC. [31] A JWT consists of headers, payload, and signature in a bundle. An X509 cert contains `tbsCertificate`, `signatureAlgorithm`, and `signature` (over `tbsCertificate`). 
+Many forms of signed digital evidence use a signing pattern that might be called *paired signatures*. A data structure format defines a payload plus its paired signature; the two go together because the format says so. For example, in the W3C Data Model, the signature lives in the `proof` attribute of the VC. [31] A JWT consists of headers, payload, and signature in a bundle. An X509 cert contains `tbsCertificate`, `signatureAlgorithm`, and `signature` (over `tbsCertificate`). 
 
-In contrast, ACDCs use **anchored signatures**. The signature may travel as a sidecar attachment (and thus resemble pairing), but independent of any container context, there's a provable association between the two because of an anchoring association in the KEL.
+In contrast, ACDCs use *anchored signatures*. The signature may travel as a sidecar attachment (and thus resemble pairing), but independent of any container context, there's a provable association between the two because of an anchoring association in the KEL.
 
 When a verifier checks an ACDC:
 1.  They extract the issuer's AID.
@@ -194,16 +194,16 @@ The "C" in ACDC stands for "chained". In part, this refers to the ability to lin
 
 Consider how this could upgrade trust in a supply chain:
 
-1.  **Mine in Australia:** Produces raw columbite-tantalite ore. Issues ACDC 1, a "Raw Ore" credential (schema = A) identified by its SAID (hash) = X. It documents the batch number and extraction date. ACDC 1 has two edges. One points to a credential proving the legal identity of the corporation operating the mine. The other points to a certification from RMI, stating that it has certified the mine as an ethical source under strong governance.
-2.  **Refiner in Thailand:** Buys the ore and refines it into tantalum. Issues ACDC 2, a "Refined Metal" credential (schema = B), SAID = Y. It documents the provenance of the ore that was smelted. ACDC 2 has two edges. One points to a credential proving the legal identity of the refiner. The other points back to ACDC 1 (by its SAID, X), asserting that the refined metal came from ethically sourced raw ore.
-3.  **Manufacturer:** Buys the tantalum and uses it to make a capacitor and in turn, a cell phone. Issues ACDC 3, a "Part" credential (schema = C), SAID = Z. ACDC 3 has one edge pointing back to ACDC 2 (by its SAID, Y).
-4.  **Retailer:** Sells the product. Issues ACDC 4, an "Ethically Sourced Product" ACDC, that points back to ACDC 3.
+1.  *Mine in Australia:* Produces raw columbite-tantalite ore. Issues ACDC 1, a "Raw Ore" credential (schema = A) identified by its SAID (hash) = X. It documents the batch number and extraction date. ACDC 1 has two edges. One points to a credential proving the legal identity of the corporation operating the mine. The other points to a certification from RMI, stating that it has certified the mine as an ethical source under strong governance.
+2.  *Refiner in Thailand:* Buys the ore and refines it into tantalum. Issues ACDC 2, a "Refined Metal" credential (schema = B), SAID = Y. It documents the provenance of the ore that was smelted. ACDC 2 has two edges. One points to a credential proving the legal identity of the refiner. The other points back to ACDC 1 (by its SAID, X), asserting that the refined metal came from ethically sourced raw ore.
+3.  *Manufacturer:* Buys the tantalum and uses it to make a capacitor and in turn, a cell phone. Issues ACDC 3, a "Part" credential (schema = C), SAID = Z. ACDC 3 has one edge pointing back to ACDC 2 (by its SAID, Y).
+4.  *Retailer:* Sells the product. Issues ACDC 4, an "Ethically Sourced Product" ACDC, that points back to ACDC 3.
 
-When a consumer scans the QR code on the final product, they receive the "Ethically Sourced Product" ACDC. Their verification software does a shallow verification of that credential, but it does not stop there. It follows all edges in the entire evidence graph, verifying signatures, anchors, and non-revocation status of ACDCs 3, 2, and 1, plus the unnumbered identity credentials and the certification from RMI. The consumer gains **transitive trust**; they know that the metal in the phone actually came from a conflict-free mine, not because the manufacturer said so, but because the cryptographic chain leads back to the mine's original issuance and its certification from an international governing body. Because SAIDs are immutable, no party in the middle can swap out a bad component for a good one without breaking the chain [30].
+When a consumer scans the QR code on the final product, they receive the "Ethically Sourced Product" ACDC. Their verification software does a shallow verification of that credential, but it does not stop there. It follows all edges in the entire evidence graph, verifying signatures, anchors, and non-revocation status of ACDCs 3, 2, and 1, plus the unnumbered identity credentials and the certification from RMI. The consumer gains *transitive trust*; they know that the metal in the phone actually came from a conflict-free mine, not because the manufacturer said so, but because the cryptographic chain leads back to the mine's original issuance and its certification from an international governing body. Because SAIDs are immutable, no party in the middle can swap out a bad component for a good one without breaking the chain [30].
 
 ### 3.5 Privacy and selective disclosure
 
-Despite this rigidity, ACDCs support privacy compliance (GDPR) through **selective disclosure**.
+Despite this rigidity, ACDCs support privacy compliance (GDPR) through *selective disclosure*.
 
 A well-designed ACDC payload is not a monolithic block. It is structured into sections (e.g., "Personal Info," "Medical Info," "License Info"). When the issuer creates the ACDC, they generate a random salt and a digest for each section. When the holder presents the credential to a verifier, they can use a Merkle-proof style strategy that reveal only the "License Info," with other sections represented only by their hash.
 
@@ -218,8 +218,8 @@ The final pillar of the stack is CESR. While KERI provides the logic and ACDC pr
 ### 4.1 The engineering bottleneck: text vs. binary
 
 Engineers often face a choice between text formats (JSON, XML) and binary formats (Protobuf, ASN.1, CBOR).
-* **JSON:** Human-readable and easy to debug, but verbose and lacking native **canonicalization**. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [36].
-* **Binary:** Compact and efficient, but opaque. You cannot look at a raw binary stream and know what it means without an external schema.
+* *JSON:* Human-readable and easy to debug, but verbose and lacking native canonicalization. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [36].
+* *Binary:* Compact and efficient, but opaque. You cannot look at a raw binary stream and know what it means without an external schema.
 
 CESR bridges this gap using concatenation composability. It allows cryptographic primitives (keys, signatures, hashes) to be encoded in a text-safe way (Base64) that can be seamlessly converted to raw binary and back without breaking the signature.
 
@@ -242,7 +242,7 @@ Making CESR primitives self-describing enables pipelining. Imagine a high-speed 
 
 ### 4.3 Cryptographic agility
 
-CESR's master code table provides **crypto agility**. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [37, 38].
+CESR's master code table provides *crypto agility*. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [37, 38].
 
 In CESR, upgrading the ecosystem to post-quantum cryptography is as simple as associating new meaning to an unused prefix slot in an existing code table. Existing parsers will already know how many bytes this prefix consumes in the following stream, so they don't need to be re-released. A CESR implementation that predates the assignment of the `D` prefix to post-quantum Falcon-512 public keys will still handle the stream correctly: Read Code &rarr; Lookup Length &rarr; Read Bytes. Hybrid multisig can prevent surprise quantum attacks from assuming even temporary control of identifiers with some hackable key material. Witnesses and watchers guarantee that unauthorized usage is detected. Prerotation at a minimum guarantees that vulnerable identifiers have a recovery mechanism. The ecosystem has a straightforward, calm response to any quantum apocalypse [29].
 
@@ -251,18 +251,18 @@ In CESR, upgrading the ecosystem to post-quantum cryptography is as simple as as
 Requirements discussed in identity circles, by regulators, and by cybersecurity experts—resilience, transparency, revocability, and privacy—are not achievable with the legacy X.509 stack. The administrative model of trust creates single points of failure that are difficult to insure and impossible to fully secure.
 
 The KERI/ACDC/CESR stack offers a fundamental re-architecture:
-1.  **Resilience:** Pre-rotation and weighted multisig make the identity antifragile. It gets stronger with more keys, not more complex.
-2.  **Transparency:** The KEL provides a perfect, immutable audit trail. Duplicity is mathematically provable.
-3.  **Revocability:** ACDCs anchored in TELs allow for real-time status checks without privacy leaks.
-4.  **Efficiency:** CESR ensures this security model can run on constrained hardware with minimal overhead.
+1.  *Resilience:* Pre-rotation and weighted multisig make the identity antifragile. It gets stronger with more keys, not more complex.
+2.  *Transparency:* The KEL provides a perfect, immutable audit trail. Duplicity is mathematically provable.
+3.  *Revocability:* ACDCs anchored in TELs allow for real-time status checks without privacy leaks.
+4.  *Efficiency:* CESR ensures this security model can run on constrained hardware with minimal overhead.
 
-While verifying a KERI identifier theoretically has a cost relative to its history ($O(n)$), verification is highly efficient in practice due to **incremental verification**. Verifiers cache the state and only process new events since their last check ($O(\Delta n)$). For a decades-old identity that rotates quarterly, verifying history from any recent cache point is fast.
+While verifying a KERI identifier theoretically has a cost relative to its history ($O(n)$), verification is highly efficient in practice due to incremental verification. Verifiers cache the state and only process new events since their last check ($O(\Delta n)$). For a decades-old identity that rotates quarterly, verifying history from any recent cache point is fast.
 
 Adoption will likely proceed in parallel with the web PKI. KERI is positioned for domains where X.509's limitations are most acute: supply chain tracking, where provenance must survive across organizational boundaries; IoT and edge computing, where devices require autonomous, long-lived identities; and high-assurance credentialing.
 
 Engineers must shift their mental models. We stop thinking about certificates (static assertions) and start thinking about event streams (dynamic histories). We stop building admin panels for identity and start building agents that manage keys. Trust is not granted by a corporation or a government, but established by the mathematical consistency of the identifier itself.
 
-***
+----
 
 ## Works cited
 
