@@ -92,6 +92,7 @@ Many systems support basic multisig (e.g., "requires 2 of 3 keys"). However, in 
 KERI takes a different tack. It allows identifiers governed by a single key, but if multiple keys will be used, it requires a definition of the identifier's fractionally weighted thresholds directly in the public KEL. This makes governance rules explicit and auditable. Each signing event, each rotation, and each change to signing policy occurs only as enacted by publicly verifiable cryptographic proof that the predeclared threshold policy was satisfied.
 
 *Scenario: the corporate board*
+
 Imagine a startup with three Founders (Alice, Bob, Carol) and four Investors (Dave, Eve, Frank, Genevieve).
 * Alice, Bob, and Carol each hold their own founder keys.
 * Dave, Eve, Frank, and Genevieve each hold their own investor keys.
@@ -104,6 +105,7 @@ In KERI, such a policy is defined in parallel arrays of an event data structure 
 This sample array shows two subarrays or *clauses* (one for founders, one for investors) connected by OR logic. The weight of signers from at least one clause must sum to meet or exceed the threshold. Weights within each clause are summed, and the clause is satisfied if the sum of signing keys meets or exceeds 1.0. Thus, in the first subarray, any two founders provide enough weight to add up to 1.0; in the second subarray, any three investors can satisfy the threshold.
 
 *Scenario: break-glass recovery*
+
 A widely used pattern for individual users involves break-glass recovery.
 * Key A: Mobile Phone (Weight 0.5)
 * Key B: Laptop (Weight 0.5)
