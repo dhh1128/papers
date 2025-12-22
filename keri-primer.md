@@ -49,8 +49,6 @@ The core primitive of KERI is the *autonomic identifier* (AID). Unlike a domain 
 
 To create an AID, the controller generates key material. They then choose a derivation code (defined in CESR) that specifies the cryptographic algorithm (e.g., Ed25519, ECDSA secp256k1) used to transform the public portion of the key material into the identifier string.
 
-#### 2.1.1 Basic vs. transferable derivation
-
 KERI distinguishes between two modes of derivation: basic and transferable.
 
 *Basic derivation:* In this mode, the identifier is just a digest (hash) of a single public key. This is similar to how many cryptocurrency addresses work. While simple, it is brittle. If the private key is compromised or lost, the identifier must be abandoned. You cannot rotate the key because the identifier *is* the key digest; changing the key changes the identifier, which means you must abandon all reputation, credentials, and relationships associated with the original identifier. Basic AIDs are suitable only for ephemeral, short-lived use cases.
