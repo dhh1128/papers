@@ -37,13 +37,13 @@ To solve these problems, we require an architecture that shifts the root of trus
 
 The technologies analyzed in this report—Key Event Receipt Infrastructure (KERI), Authentic Chained Data Containers (ACDC), and Composable Event Streaming Representation (CESR)—form a stack that meets these requirements. They replace administrative trust with cryptographic trust, enabling a Decentralized Key Management Infrastructure (DKMI) where the history of the identifier is the only authority required to verify it.
 
-## 2. Key Event Receipt Infrastructure (KERI)
+## 2. KERI
 
-KERI is a protocol for decentralized key management. It is sometimes associated with blockchain technology because it involves cryptographic records and immutable histories. However, KERI is distinct. Traditional blockchains rely on a global consensus model, where every node must agree on the total ordering of all transactions in the network. The network thus faces a scalability bottleneck; the network can only process as many transactions as its consensus algorithm allows [22, 23].
+Key Event Receipt Infrastructure (KERI) is a protocol for decentralized key management. It is sometimes associated with blockchain technology because it involves cryptographic records and immutable histories. However, KERI is distinct. Traditional blockchains rely on a global consensus model, where every node must agree on the total ordering of all transactions in the network. The network thus faces a scalability bottleneck; the network can only process as many transactions as its consensus algorithm allows [22, 23].
 
 KERI rejects the need for global consensus regarding identity. Instead, it uses microledgers called *key event logs* (KELs). Every identifier has its own independent KEL, with storage distributed and security enforced one identifier at a time. The ordering of events matters only relative to that specific identifier. Event 5 for Identifier A must come after Event 4 for Identifier A, but it has no required ordering relative to Event 5 for Identifier B. KERI naturally scales horizontally because there is no central choke point [24]. The lack of centralizing consensus and the lack of centralized storage also allow KERI to operate across jurisdictional boundaries with ease, and they change economics. Infrastructure gets cheaper because there's no massive system to maintain. Hacking incentives decay because any breach is likely to be limited in scope to a single identifier.
 
-### 2.1 Autonomic identifiers (AIDs)
+### 2.1 Autonomic identifiers
 
 The core primitive of KERI is the *autonomic identifier* (AID). Unlike a domain name, which is rent-seeking text, or a UUID, which is arbitrary entropy, an AID is a *self-certifying identifier* (SCID). The identifier derives cryptographically from the initial public key (or set of keys) that controls it.
 
@@ -55,7 +55,7 @@ KERI distinguishes between two modes of derivation: basic and transferable.
 
 *Transferable derivation:* This is KERI's primary innovation for persistent identity. In this mode, the identifier is derived not just from one or more public keys, but from the entire *inception event*. The inception event contains the initial public key material *and* a cryptographic commitment to the *next* key material (pre-rotation). The identifier string remains constant even as the keys change, because the root of trust is the inception event, which establishes the rules for how the keys are allowed to evolve. Identity survives key rotation [25].
 
-### 2.2 The key event log (KEL)
+### 2.2 The key event log
 
 The *key event log* (KEL) is the authoritative source of truth for an AID. It is an append-only chain of data structures (events) signed by the controller. When a verifier wants to know "Who controls this AID?" or "Is this signature valid?", they do not query a directory; they ingest the KEL.
 
@@ -72,18 +72,18 @@ The hard problem of PKI is secure key rotation. If an attacker compromises your 
 
 KERI solves this through *pre-rotation*.
 
-When a controller creates an event (say, the inception event), they must decide *now* what key they will use for the *next* rotation, and they must manage the next key differently from the current one (e.g., storing the next key offline or on a different device). Let's call the current key $K_1$ and the next key $K_2$. The controller includes the public key for $K_1$ in the event so they can sign it. However, they do not include the public key for $K_2$. Instead, they include a cryptographic hash (digest) of $K_2$.
+When a controller creates an event (say, the inception event), they must decide *now* what key they will use for the *next* rotation, and they must manage the next key differently from the current one (e.g., storing the next key offline or on a different device). Let's call the current key K<sub>1</sub> and the next key K<sub>2</sub>. The controller includes the public key for K<sub>1</sub> in the event so they can sign it. However, they do not include the public key for K<sub>2</sub>. Instead, they include a cryptographic hash (digest) of K<sub>2</sub>.
 
-The security comes from the asymmetry in knowledge: the controller knows or has access to $K_2$, while the world only sees its hash. An attacker who compromises $K_1$ gains the ability to sign with that key, but cannot produce even the public key portion of $K_2$; all they know is that if they had that key, it would hash to the committed value.
+The security comes from the asymmetry in knowledge: the controller knows or has access to K<sub>2</sub>, while the world only sees its hash. An attacker who compromises K<sub>1</sub> gains the ability to sign with that key, but cannot produce even the public key portion of K<sub>2</sub>; all they know is that if they had that key, it would hash to the committed value.
 
-Pre-rotation establishes a firewall between day-to-day use and occasional governance. A controller can keep $K_1$ on a production server while generating $K_2$, hashing it, and immediately storing it in an air-gapped, cold wallet. If the server is breached, the attacker steals $K_1$ but cannot rotate to assume control of the identity. The legitimate owner can retrieve $K_2$, rotate the keys, and regain control [26].
+Pre-rotation establishes a firewall between day-to-day use and occasional governance. A controller can keep K<sub>1</sub> on a production server while generating K<sub>2</sub>, hashing it, and immediately storing it in an air-gapped, cold wallet. If the server is breached, the attacker steals K<sub>1</sub> but cannot rotate to assume control of the identity. The legitimate owner can retrieve K<sub>2</sub>, rotate the keys, and regain control [26].
 
 When the time comes to rotate, the controller creates a *rotation event*. In this event, they:
-1.  Reveal the public key for $K_2$, thus proving that they know the governing secret that was committed to at a previous time via its hash.
-2.  Sign the event with the private key for $K_2$.
-3.  Commit to a *new* future key ($K_3$) by including its hash.
+1.  Reveal the public key for K<sub>2</sub>, thus proving that they know the governing secret that was committed to at a previous time via its hash.
+2.  Sign the event with the private key for K<sub>2</sub>.
+3.  Commit to a *new* future key (K<sub>3</sub>) by including its hash.
 
-The verifier checks this logic: "Does the hash of this newly revealed key $K_2$ match the commitment `n` that was recorded in the previous event?"
+The verifier checks this logic: "Does the hash of this newly revealed key K<sub>2</sub> match the commitment `n` that was recorded in the previous event?"
 
 ### 2.4 Weighted multisig and transparent, granular governance
 
@@ -125,7 +125,7 @@ However, quantum computers are not magic; they cannot easily invert a cryptograp
 
 KERI takes advantage of these algorithm properties in two ways:
 
-1.  *Hiding the Target:* The rotation authority (the next key) is always hidden behind a hash. It is never exposed as a public key until the moment it is used and discarded. Therefore, even if a quantum attacker can crack the *active* key $K_1$, they cannot crack the *next* key $K_2$ because its public key is not yet visible to the network. By the time $K_2$ is revealed in a rotation event, the controller has already moved trust to $K_3$ (which is hashed). The root of control stays one step ahead of quantum analysis [26].
+1.  *Hiding the Target:* The rotation authority (the next key) is always hidden behind a hash. It is never exposed as a public key until the moment it is used and discarded. Therefore, even if a quantum attacker can crack the *active* key K<sub>1</sub>, they cannot crack the *next* key K<sub>2</sub> because its public key is not yet visible to the network. By the time K<sub>2</sub> is revealed in a rotation event, the controller has already moved trust to K<sub>3</sub> (which is hashed). The root of control stays one step ahead of quantum analysis [26].
 
 2.  *Hybrid Governance:* Because KERI supports weighted multisig (see Section 2.4), a controller can employ a hybrid governance strategy. An identifier can be configured with a threshold that requires both a standard ECC signature (for efficiency and good tooling/interop today) and a post-quantum signature (for protections against surprise quantum advances). Even if the ECC key is broken, the attacker cannot satisfy the full threshold without also breaking the post-quantum key. Cryptographic agility lets KERI upgrade security postures without breaking the identifier's history [29].
 
@@ -145,9 +145,9 @@ The trust model is adversarial: witnesses are assumed to be potentially maliciou
 
 If Hash X and Hash Y differ, the watcher has detected duplicity. The watcher can broadcast the conflicting events as cryptographic proof of fraud. In the KERI ecosystem, this proof is fatal to the reputation of the identifier. Detection (rather than prevention) allows KERI to operate with low latency while ensuring that any dishonesty is provable [27].
 
-## 3. Authentic Chained Data Containers (ACDC)
+## 3. ACDCs
 
-While KERI handles the *identity* (the "Who"), ACDCs handle the *data* (the "What"). ACDCs are a protocol for attestations and verifiable credentials (VCs) that prioritize security, compactness, and provenance. They are designed to fix the copy-paste vulnerability of standard digital documents by turning data into a rigid, verifiable graph [30].
+While KERI handles the *identity* (the "Who"), *authentic chained data containers* (ACDCs) handle the *data* (the "What"). ACDCs are a protocol for attestations and verifiable credentials (VCs) that prioritize security, compactness, and provenance. They are designed to fix the copy-paste vulnerability of standard digital documents by turning data into a rigid, verifiable graph [30].
 
 ### 3.1 Issuance model
 
@@ -162,7 +162,7 @@ When a company issues an ACDC, its individual staff members do not manually sign
 
 The issuer's log says "I issued Credential X at Sequence 50." The holder's log says "I accepted Credential X at Sequence 12." This mutual anchoring prevents spam (you can't force a credential into someone's wallet) and provides non-repudiation of receipt.
 
-### 3.2 SAIDs: the mechanism of immutability
+### 3.2 SAIDs
 
 ACDCs rely on a unique cryptographic primitive called the *self-addressing identifier* (SAID).
 
@@ -211,9 +211,9 @@ The KERI/ACDC architecture also resolves tensions with the right to be forgotten
 
 This topological difference offers a distinct compliance advantage over a global database or a blockchain-based identity. With a global database, conflicting regulatory constraints may make across-the-board compliance impossible. With a blockchain, data is replicated across all nodes; "forgetting" an identifier requires a hard fork of the entire chain. In KERI's micro-ledger architecture, an identifier is distinct from the network. A user can exercise the right to be forgotten by deleting their specific Key Event Log and revoking access at their witnesses, burning the identity without disrupting the global ecosystem.
 
-## 4. Composable Event Streaming Representation (CESR)
+## 4. CESR
 
-The final pillar of the stack is CESR. While KERI provides the logic and ACDC provides the container, CESR provides the language they speak. It is a serialization format designed specifically for the constraints of cryptographic transport.
+The final pillar of the stack is Composable Event Streaming Representation (CESR). While KERI provides the logic and ACDC provides the container, CESR provides the language they speak. It is a serialization format designed specifically for the constraints of cryptographic transport.
 
 ### 4.1 The engineering bottleneck: text vs. binary
 
@@ -256,7 +256,7 @@ The KERI/ACDC/CESR stack offers a fundamental re-architecture:
 3.  *Revocability:* ACDCs anchored in TELs allow for real-time status checks without privacy leaks.
 4.  *Efficiency:* CESR ensures this security model can run on constrained hardware with minimal overhead.
 
-While verifying a KERI identifier theoretically has a cost relative to its history ($O(n)$), verification is highly efficient in practice due to incremental verification. Verifiers cache the state and only process new events since their last check ($O(\Delta n)$). For a decades-old identity that rotates quarterly, verifying history from any recent cache point is fast.
+While verifying a KERI identifier theoretically has a cost relative to its history (O(n)), verification is highly efficient in practice due to incremental verification. Verifiers cache the state and only process new events since their last check (O(&Delta;n)). For a decades-old identity that rotates quarterly, verifying history from any recent cache point is fast.
 
 Adoption will likely proceed in parallel with the web PKI. KERI is positioned for domains where X.509's limitations are most acute: supply chain tracking, where provenance must survive across organizational boundaries; IoT and edge computing, where devices require autonomous, long-lived identities; and high-assurance credentialing.
 
