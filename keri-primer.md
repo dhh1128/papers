@@ -166,7 +166,7 @@ The issuer's log says "I issued Credential X at Sequence 50." The holder's log s
 
 ACDCs rely on a unique cryptographic primitive called the *self-addressing identifier* (SAID).
 
-In standard data handling, we often use UUIDs (random numbers) to identify records. The problem with a UUID is that it has no relationship to the data. If I change a field in the record, the UUID remains the same, but the data is different. Synchronization errors and version hell follow.
+In standard data handling, we often use UUIDs (random numbers) to identify records. The problem with a UUID is that it has no relationship to the data. If I change a field in the record, the UUID remains the same, but the data is different. Synchronization errors and version headaches follow.
 
 A SAID is a content-addressable identifier. It is the cryptographic hash of the data structure itself. But there is a paradox: How can you include the hash of a file *inside* the file? If you write the hash into a field, you change the file, which changes the hash.
 
