@@ -190,7 +190,7 @@ The credential was issued *during* the active window of a specific key. If the k
 
 ### 3.4 Chained evidence: the graph of trust
 
-The "C" in ACDC stands for "chained". In part, this refers to the ability to link credentials into a chain that traces derived authority to issue. X509s support this limited form of chaining. However, ACDC chaining allows any number of chains, with links expressing any type of connection with any desired weight. Thus, using ACDCs, you can build a directed acyclic graph (DAG) of arbitrarily rich semantics. The whole graph is verifiable and cacheable (modulo revocation tests) as a unit or in any desired subset. ACDCs even offer a path to include foreign evidence types such as signed PDFs, scientific measurements, W3C VCs, X509 certificates, biometric readings, and so forth. [TODO: REFERENCE TO EXTERNALIZED SAIDS paper]
+The "C" in ACDC stands for "chained". In part, this refers to the ability to link credentials into a chain that traces derived authority to issue. X509s support this limited form of chaining. However, ACDC chaining allows any number of chains, with links expressing any type of connection with any desired weight. Thus, using ACDCs, you can build a directed acyclic graph (DAG) of arbitrarily rich semantics. The whole graph is verifiable and cacheable (modulo revocation tests) as a unit or in any desired subset. ACDCs even offer a path to include foreign evidence types such as signed PDFs, scientific measurements, W3C VCs, X509 certificates, biometric readings, and so forth. [35]
 
 Consider how this could upgrade trust in a supply chain:
 
@@ -207,7 +207,7 @@ Despite this rigidity, ACDCs support privacy compliance (GDPR) through *selectiv
 
 A well-designed ACDC payload is not a monolithic block. It is structured into sections (e.g., "Personal Info," "Medical Info," "License Info"). When the issuer creates the ACDC, they generate a random salt and a digest for each section. When the holder presents the credential to a verifier, they can use a Merkle-proof style strategy that reveal only the "License Info," with other sections represented only by their hash.
 
-The KERI/ACDC architecture also resolves tensions with the right to be forgotten. In KERI, the KEL stores only the anchors (hashes) of the credentials. The actual data payload resides in the ACDC, which is held off-chain by the issuer and holder. When a user requests data deletion, the payload is destroyed. The hash remains in the log to preserve the integrity of the chain, but without the payload, the hash is irreversible. The identifier's history remains intact while the personal data is permanently removed [35].
+The KERI/ACDC architecture also resolves tensions with the right to be forgotten. In KERI, the KEL stores only the anchors (hashes) of the credentials. The actual data payload resides in the ACDC, which is held off-chain by the issuer and holder. When a user requests data deletion, the payload is destroyed. The hash remains in the log to preserve the integrity of the chain, but without the payload, the hash is irreversible. The identifier's history remains intact while the personal data is permanently removed [36].
 
 This topological difference offers a distinct compliance advantage over a global database or a blockchain-based identity. With a global database, conflicting regulatory constraints may make across-the-board compliance impossible. With a blockchain, data is replicated across all nodes; "forgetting" an identifier requires a hard fork of the entire chain. In KERI's micro-ledger architecture, an identifier is distinct from the network. A user can exercise the right to be forgotten by deleting their specific Key Event Log and revoking access at their witnesses, burning the identity without disrupting the global ecosystem.
 
@@ -218,7 +218,7 @@ The final pillar of the stack is Composable Event Streaming Representation (CESR
 ### 4.1 The engineering bottleneck: text vs. binary
 
 Engineers often face a choice between text formats (JSON, XML) and binary formats (Protobuf, ASN.1, CBOR).
-* *JSON:* Human-readable and easy to debug, but verbose and lacking native canonicalization. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [36].
+* *JSON:* Human-readable and easy to debug, but verbose and lacking native canonicalization. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [37].
 * *Binary:* Compact and efficient, but opaque. You cannot look at a raw binary stream and know what it means without an external schema.
 
 CESR bridges this gap using concatenation composability. It allows cryptographic primitives (keys, signatures, hashes) to be encoded in a text-safe way (Base64) that can be seamlessly converted to raw binary and back without breaking the signature.
@@ -242,7 +242,7 @@ Making CESR primitives self-describing enables pipelining. Imagine a high-speed 
 
 ### 4.3 Cryptographic agility
 
-CESR's master code table provides *crypto agility*. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [37, 38].
+CESR's master code table provides *crypto agility*. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [38, 39].
 
 In CESR, upgrading the ecosystem to post-quantum cryptography is as simple as associating new meaning to an unused prefix slot in an existing code table. Existing parsers will already know how many bytes this prefix consumes in the following stream, so they don't need to be re-released. A CESR implementation that predates the assignment of the `D` prefix to post-quantum Falcon-512 public keys will still handle the stream correctly: Read Code &rarr; Lookup Length &rarr; Read Bytes. Hybrid multisig can prevent surprise quantum attacks from assuming even temporary control of identifiers with some hackable key material. Witnesses and watchers guarantee that unauthorized usage is detected. Prerotation at a minimum guarantees that vulnerable identifiers have a recovery mechanism. The ecosystem has a straightforward, calm response to any quantum apocalypse [29].
 
@@ -265,7 +265,6 @@ Engineers must shift their mental models. We stop thinking about certificates (s
 ----
 
 ## Works cited
-
 [1] Fox-IT. 2011. Operation Black Tulip: Report of the investigation into the DigiNotar Certificate Authority breach. Fox-IT, Delft, Netherlands.
 
 [2] Sleevi, R. 2017. Chrome's Plan to Distrust Symantec Certificates. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2017/09/chromes-plan-to-distrust-symantec.html
@@ -334,10 +333,12 @@ Engineers must shift their mental models. We stop thinking about certificates (s
 
 [34] Hardman, D. 2025. Why Anchored Signatures? Daniel Hardman's Papers. Retrieved December 18, 2024 from https://dhh1128.github.io/papers/was.html
 
-[35] Hardman, D. 2022. ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts. Daniel Hardman's Papers. Retrieved December 18, 2024 from https://dhh1128.github.io/papers/acdc-vc-diff.html
+[35] Hardman, D. 2024. Bytewise and Externalized SAIDs. Daniel Hardman's Papers. Retrieved December 18, 2024 from https://dhh1128.github.io/papers/bes.pdf
 
-[36] W3C Verifiable Credentials Working Group. 2024. Multiple significant security vulnerabilities in the design of data integrity. Issue #272. GitHub. Retrieved December 18, 2024 from https://github.com/w3c/vc-data-integrity/issues/272
+[36] Hardman, D. 2025. ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts. Daniel Hardman's Papers. Retrieved December 18, 2024 from https://dhh1128.github.io/papers/acdc-vc-diff.html
 
-[37] Google. 2014. Gradually sunsetting SHA-1. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2014/09/gradually-sunsetting-sha-1.html
+[37] W3C Verifiable Credentials Working Group. 2024. Multiple significant security vulnerabilities in the design of data integrity. Issue #272. GitHub. Retrieved December 18, 2024 from https://github.com/w3c/vc-data-integrity/issues/272
 
-[38] Cobb, M. 2017. All you need to know about the move from SHA-1 to SHA-2 encryption. CSO Online. IDG Communications. Retrieved December 18, 2024 from https://www.csoonline.com/article/550478/all-you-need-to-know-about-the-move-from-sha1-to-sha2-encryption.html
+[38] Google. 2014. Gradually sunsetting SHA-1. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2014/09/gradually-sunsetting-sha-1.html
+
+[39] Cobb, M. 2017. All you need to know about the move from SHA-1 to SHA-2 encryption. CSO Online. IDG Communications. Retrieved December 18, 2024 from https://www.csoonline.com/article/550478/all-you-need-to-know-about-the-move-from-sha1-to-sha2-encryption.html
