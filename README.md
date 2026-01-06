@@ -1,4 +1,4 @@
-[Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mct.md). 6 Jan 2026. <span class="hash">#x509 #acdc #hashing</span> 
+[Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md). 6 Jan 2026. <span class="hash">#x509 #acdc #hashing</span> 
 
 [Authenticity vs. Veracity](authenticity-vs-veracity.md). 28 Dec 2025.
 
