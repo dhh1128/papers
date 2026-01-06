@@ -1,3 +1,5 @@
+[Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mct.md). 6 Jan 2026. <span class="hash">#x509 #acdc #hashing</span> 
+
 [Authenticity vs. Veracity](authenticity-vs-veracity.md). 28 Dec 2025.
 
 [Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md). 20 Dec 2025. <span class="hash">#keri #identifiers</span> 
