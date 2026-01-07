@@ -32,10 +32,8 @@ h3, details summary {
 details.abstract, details.keywords {
     padding-left: 2em;
 }
-details.keywords {
-    font-family: 'Barlow Condensed';
-    font-weight: 300;
-    color: #491705;
+section > details + p {
+  margin-top: 1.5em;
 }
 footer {
     font-size: 92%;
