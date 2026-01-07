@@ -10,15 +10,18 @@ def complain(msg):
     print(f"Error: {msg}", file=sys.stderr)
     complaints_found = True
 
+def find_refs_section(content):
+    return re.search(r'^(#+\s*(References|Works Cited|Endnotes)\s*$)', content, re.MULTILINE | re.IGNORECASE)
+
 def parse_citations_and_refs(content):
-    # Match single or comma-separated numbers in brackets
-    acm_refs = re.findall(r'\[((?:\d+\s*,\s*)*\d+)\]', content)
+    # Match single or comma-separated numbers in brackets, not followed by a parenthesis (not a markdown link)
+    acm_refs = re.findall(r'\[((?:\d+\s*,\s*)*\d+)\](?!\()', content)
     # Flatten comma-separated lists
     acm_refs_flat = []
     for group in acm_refs:
         acm_refs_flat.extend([n.strip() for n in group.split(',')])
     superscripts = re.findall(r'<sup>(\d+)</sup>', content)
-    endnote_section = re.search(r'^(#+\s*Endnotes\s*$)', content, re.MULTILINE | re.IGNORECASE)
+    ref_section = find_refs_section(content)
     style = None
     if acm_refs_flat and superscripts:
         style = "mixed"
@@ -26,14 +29,11 @@ def parse_citations_and_refs(content):
         style = "ACM bracketed inline refs"
     elif superscripts:
         style = "superscript inline refs"
-    elif endnote_section:
+    elif ref_section:
         style = "endnotes"
     else:
         style = "none"
-    return acm_refs_flat, superscripts, endnote_section, style
-
-def find_refs_section(content):
-    return re.search(r'^(#+\s*(References|Works Cited|Endnotes)\s*$)', content, re.MULTILINE | re.IGNORECASE)
+    return acm_refs_flat, superscripts, ref_section, style
 
 def extract_ref_lines(refs_text):
     # Returns a list of (original_num, line, content) for each reference line
@@ -175,6 +175,7 @@ def all_footnoted_files(filenames):
 def main():
     parser = argparse.ArgumentParser(description="Check/fix footnotes in markdown files.")
     parser.add_argument('--no-fix', action='store_true', help='Only report problems, do not fix them')
+    parser.add_argument('--except', dest='except_files', action='append', default=[], help='Filename or glob pattern to exclude (repeatable)')
     parser.add_argument('files', nargs='+', help='Markdown files or glob patterns to process')
     args = parser.parse_args()
     all_files = []
@@ -184,8 +185,12 @@ def main():
             all_files.extend(expanded)
         else:
             all_files.append(arg)
+    # Expand except patterns
+    exclude = set()
+    for pattern in args.except_files:
+        exclude.update(glob.glob(pattern))
     seen = set()
-    unique_files = [f for f in all_files if not (f in seen or seen.add(f))]
+    unique_files = [f for f in all_files if not (f in seen or seen.add(f)) and f not in exclude]
     if args.no_fix:
         for filename in all_footnoted_files(unique_files):
             analyze(filename)
