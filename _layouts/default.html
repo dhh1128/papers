@@ -20,10 +20,15 @@
       "@type": "ScholarlyArticle",
       "headline": "{{ page.title | escape }}",
       {% if page.author %}
-      "author": {
-        "@type": "Person",
-        "name": "{{ page.author | escape }}"
-      },
+      {% if page.author.size %}
+      "author": [
+        {% for a in page.author %}
+        { "@type": "Person", "name": "{{ a | escape }}" }{% if forloop.last == false %},{% endif %}
+        {% endfor %}
+      ],
+      {% else %}
+      "author": { "@type": "Person", "name": "{{ page.author | escape }}" },
+      {% endif %}
       {% endif %}
       {% if page.date %}
       "datePublished": "{{ page.date }}",
@@ -46,7 +51,13 @@
     <meta name="citation_title" content="{{ page.title | escape }}">
     {% endif %}
     {% if page.author %}
-    <meta name="citation_author" content="{{ page.author | escape }}">
+    {% if page.author.size %}
+      {% for a in page.author %}
+      <meta name="citation_author" content="{{ a | escape }}">
+      {% endfor %}
+    {% else %}
+      <meta name="citation_author" content="{{ page.author | escape }}">
+    {% endif %}
     {% endif %}
     {% if page.date %}
     <meta name="citation_publication_date" content="{{ page.date }}">
@@ -94,7 +105,7 @@
         <p>{{ page.abstract }}</p>
       </details>
       {% endif %}
-      {% if page.abstract %}
+      {% if page.keywords %}
       <details class="keywords" open>
         <summary>Keywords</summary>
         <p>{{ page.keywords }}</p>

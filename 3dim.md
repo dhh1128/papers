@@ -1,10 +1,16 @@
-# Three Dimensions of Identity
-### A Simplified Look At a Complex Topic
-Daniel Hardman and Jason Law &mdash; 29 Jan 2019 &mdash; Evernym and [medium.com](https://medium.com/evernym/three-dimensions-of-identity-bc06ae4aec1c)
-
-<span class="hash">#identity #ssi #agents #relationships #data #tutorial</span> 
-
-<hr>
+---
+title: "Three Dimensions of Identity"
+author:
+  - "Daniel Hardman"
+  - "Jason Law"
+date: 2019-01-29
+abstract: "This article explores the three fundamental dimensions of digital identity—relationships, attributes, and agents—showing how each contributes to privacy, trust, and security. It explains how identity models must account for these dimensions to be complete, and discusses the implications for key management, privacy, and user autonomy."
+keywords: "identity, SSI, agents, relationships, data, privacy, key management, digital identity"
+pdf_url: "https://dhh1128.github.io/papers/3dim.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+---
 
 We all know that identity matters. We hear about cybersecurity breaches, GDPR, refugees, deep fakes, and election fraud. Each headline highlights a new way that identity impacts us.
 
