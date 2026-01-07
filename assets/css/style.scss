@@ -24,12 +24,15 @@ h2 {
     font-weight: 400;
     font-size: 15pt;
 }
-h3 {
+h3, details summary {
     font-weight: 300;
     font-size: 13pt;
     color: #666666;
 }
-.hash {
+details.abstract, details.keywords {
+    padding-left: 2em;
+}
+details.keywords {
     font-family: 'Barlow Condensed';
     font-weight: 300;
     color: #491705;

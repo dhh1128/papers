@@ -89,10 +89,16 @@
       <h1>{{ page.title }}</h1>
       {% endif %}
       {% if page.abstract %}
-      <p class="abstract">{{ page.abstract }}</p>
+      <details class="abstract" open>
+        <summary>Abstract</summary>
+        <p>{{ page.abstract }}</p>
+      </details>
       {% endif %}
-      {% if page.keywords %}
-      <p class="keywords">Keywords: {{ page.keywords }}</p>
+      {% if page.abstract %}
+      <details class="keywords" open>
+        <summary>Keywords</summary>
+        <p>{{ page.keywords }}</p>
+      </details>
       {% endif %}
       {{ content }}
       </section>
