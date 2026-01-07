@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run fixnotenums.py
         run: |
-          python3 scripts/fixnotenums.py *.md
+          python3 scripts/fixnotenums.py --no-fix *.md

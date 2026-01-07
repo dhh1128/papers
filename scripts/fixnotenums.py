@@ -55,7 +55,8 @@ def analyze(filename):
     if style == "mixed":
         complain(f"Inconsistent footnote formats in {filename}")
     if style == "none":
-        complain(f"No footnotes found in {filename}")
+        print(f"NOTE: {filename} has no footnotes or references. Nothing to do.")
+        return
     print(f"{filename}: Detected style: {style}")
     refs = [int(n) for n in acm_refs] if acm_refs else [int(n) for n in superscripts]
     max_seen = 0
