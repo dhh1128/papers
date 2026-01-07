@@ -1,9 +1,10 @@
-# Big Desks and Little People
-Daniel Hardman &mdash; 1 May 2023 &mdash; [medium.com](https://daniel-hardman.medium.com/big-desks-and-little-people-e1b1b9e92d79)
-
-<span class="hash">#identity #ssi #empowerment #advocacy</span>
-
-<hr>
+---
+title: "Big Desks and Little People"
+author: "Daniel Hardman"
+date: 2023-05-01
+tags: [identity, ssi, empowerment, advocacy]
+original_publication: "https://daniel-hardman.medium.com/big-desks-and-little-people-e1b1b9e92d79"
+---
 
 *We are not paying enough attention to how our designs for high-trust interactions limit the autonomy of individuals. Familiar architectural patterns such as client-server APIs and business process workflows are useful, but they can empower orgs at the expense of people. Perhaps we can still use such building blocks, but we need to understand their risk and think about them differently.*
 

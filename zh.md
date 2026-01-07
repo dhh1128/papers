@@ -1,9 +1,10 @@
-# Zooko and Houdini: A Flatland Parable
-Daniel Hardman &mdash; 20 June 2024 &mdash; [DICE 2024](https://www.didas.swiss/2024/11/26/dice-2024-shaping-the-future-of-digital-trust/) &mdash; [slides](https://bit.ly/3VrSMpp)
-
-<span class="hash">#identity #ux</span>
-
-<hr>
+---
+title: "Zooko and Houdini: A Flatland Parable"
+author: "Daniel Hardman"
+date: 2024-06-20
+tags: [identity, ux]
+original_publication: "https://www.didas.swiss/2024/11/26/dice-2024-shaping-the-future-of-digital-trust/"
+---
 
 ## Pick 2 of 3
 

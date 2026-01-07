@@ -1,9 +1,10 @@
-# Actors, Objects, and Linked Data
-Daniel Hardman &mdash; 16 Nov 2022 &mdash; [medium.com](https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd)
-
-<span class="hash">#identity #ssi #empowerment #data #advocacy</span>
-
-<hr>
+---
+title: "Actors, Objects, and Linked Data"
+author: "Daniel Hardman"
+date: 2022-11-16
+tags: [identity, ssi, empowerment, data, advocacy]
+original_publication: "https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd"
+---
 
 ### (TL;DR)
 
@@ -210,4 +211,4 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note19">19</a>] Claims in VCs consist of data fields for subject, predicate, and object (Jane’s DID, birthdate, 25 Oct). These map directly to subject, predicate, and object in RDF triples. The subject is (typically) a DID, which is a URI. The predicate must be a URI. The object of the triple can be a literal or another URI. In their natural form, VD data structures tend to have field names that are more human-friendly than URLs (e.g., the VC has a field named “birthDate”). By adding an LD `@context`, we explain to the semantic web how human-friendly values convert into URIs (e.g., “birthDate” becomes `https://schema.org/birthDate`). This guarantees that they are unambiguous and resolvable.
 
-[<a id="note20">20</a>] This is the focus of DIDComm. There are philosophical reasons why I think DIDComm’s approach to standardized actions is better than the alternatives, and they have to do with objectification again. But that’s a topic for another essay. Here, I’m claiming that any focus on protocols, no matter how they’re architected, will pay off more than a focus on nailing down the last 1% of the data model’s formality.
+[<a id="note20">20</a>] This is the focus of DIDComm. There are philosophical reasons why I think DIDComm’s approach to standardized actions is better than the alternatives, and they have to do with objectification again. But that’s a topic for another essay. Here, I’m claiming that any focus on protocols, no matter how they’re architected, will pay off more than a focus on nailing the

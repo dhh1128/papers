@@ -1,6 +1,8 @@
-# Analysis of did:cel Heartbeat: Relevance to KERI
-
-**Date:** 20 December 2025
+---
+title: "Analysis of did:cel Heartbeat: Relevance to KERI"
+author: "Daniel Hardman"
+date: 2025-12-20
+---
 
 The `did:cel` method specification introduces a "heartbeat" mechanism designed to protect the integrity of the identifier's log [1]. This analysis examines the purpose of the heartbeat feature and evaluates its necessity within the Key Event Receipt Infrastructure (KERI) ecosystem.
 

@@ -1,9 +1,12 @@
-# A Call for Reciprocal Negotiated Accountability
-Daniel Hardman &mdash; 15 Jan 2021 &mdash; [evernym.com](https://web.archive.org/web/20210127150914/https:/www.evernym.com/blog/a-call-for-reciprocal-negotiated-accountability/)
+---
+title: "A Call for Reciprocal Negotiated Accountability"
+author: "Daniel Hardman"
+date: 2021-01-15
+tags: [identity, ssi, privacy, regulation]
+original_publication: "https://web.archive.org/web/20210127150914/https:/www.evernym.com/blog/a-call-for-reciprocal-negotiated-accountability/"
+---
 
 >Thanks to [John Phillips](https://github.com/JohnOnGH) for some helpful feedback. 
-
-<span class="hash">#identity #ssi #privacy #regulation</span> 
 
 Am I crazy if I am a privacy hawk, but I’m opposed to unfettered anonymity?
 

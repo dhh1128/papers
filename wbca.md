@@ -1,9 +1,10 @@
-# The Dangerous Half-Truth of “We’ll Be Correlated Anyway”
-Daniel Hardman &mdash; 5 Apr 2020 &mdash; [evernym.com](https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/)
-
-<span class="hash">#privacy #credentials</span> 
-
-<hr>
+---
+title: "The Dangerous Half-Truth of “We’ll Be Correlated Anyway”"
+author: "Daniel Hardman"
+date: 2020-04-05
+tags: [privacy, credentials]
+original_publication: "https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/"
+---
 
 In a previous post, I described how verifiable credentials differ in their approach to privacy:
 

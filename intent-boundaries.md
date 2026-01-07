@@ -1,9 +1,9 @@
-# Intent and Boundaries
-Daniel Hardman &mdash; 20 June 2025
-
-<span class="hash">#ux #ssi #agents #ethics</span> 
-
-<hr>
+---
+title: "Intent and Boundaries"
+author: "Daniel Hardman"
+date: 2025-06-20
+tags: [ux, ssi, agents, ethics]
+---
 
 ## Lip service
 Recently I helped a visiting friend who was unfamiliar with our smart TV's remote. While he sat on our couch, I skimmed the catalog of our streaming service, selected a show, and clicked the big blue *Watch* button.
@@ -119,4 +119,3 @@ Sneaking across a boundary might mean:
 Mishandled intent boundaries are at the heart of many trust problems and UX problems in software. I've now spent over a decade of my career on cybersecurity and identity technologies, and issues with intent boundaries pervade these domains. Intent is going to have to be handled with much greater sophistication as agentic AI matures. The best thinkers I've ever known in the discipline of UX were distinguished from more mediocre colleagues in large part by their understanding of and respect for intent principles.
 
 If you're in software, I invite you to seriously consider intent boundaries as part of your next design effort. The payoff will be significant.
-  

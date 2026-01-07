@@ -115,7 +115,27 @@ While W3C DPV offers a vocabulary for privacy purposes, IEEE 7012 (Standard for 
 
 To build a robust taxonomy, we must rigorously define some concepts, drawing on philosophy, psychology, and computer science.
 
-## 3.1 General to specific
+## 3.1 Scope: agentic interaction
+Not every digital signal constitutes an interaction that needs the power to categorize intent. To avoid misapplication of our taxonomy, we distinguish between a *tool* and an *agent*.
+
+Tools are largely passive and are directly manipulated or acted upon. They are deterministically obligated to react to their wielder, subject only to the scope of their defined features and to unpredictable problems like resource exhaustion or electrical failure. The behavior of a tool is thus best conceptualized as an extension of its wielder's intent.
+
+Actors have volition and constitute to one degree or another a black box with respect to other actors. Actors are not trivially controlled; they are incented. , and engage in interactions in cooperative ways, and to constraints in its interface definition.) These are acts of *direct manipulation of a tool*, not *agentic interaction*.
+restrict the scope of Syntelos to interactions that satisfy three criteria:
+
+1.  **Counterparty volition (the refusal test):** The interaction category must involve at least two actors with potentially unaligned motives that are not inherently knowable to others. Counterparties must be able to **reject, delay, or negotiate** the proposed interaction based on their agentic intent, not just on logistical constraints.
+    * *In Scope:* Asking a service agent to book a room. (It can say "No" for many reasons that the caller won't be able to predict, such as a preference to prioritize platinum customers when occupancy rates are high.)
+    * *Out of Scope:* Calling an API that unlocks a smart door or reads a file. (The called entity is deterministically obligated to execute valid commands, subject only to unpredictable problems like electrical failure, and to constraints in its interface definition.) These are acts of *direct manipulation of a tool*, not *agentic interaction*.
+
+2.  **Policy relevance:** The interaction must potentially cross an *intent boundary* where the request is subject to governance, consent, or routing rules.
+    * *In Scope:* A request for data that requires authorization (`/govern/permit`).
+    * *Out of Scope:* Mechanical "heartbeats," "keep-alives," or raw telemetry streams used solely to maintain channel hygiene. (Many of these scenarios fail the refusal test, too.)
+
+3.  **Semantic State Change:** The interaction must aim to resolve an informational or social deficit.
+    * *In Scope:* A search query (`/share/ask`) reduces informational asymmetry.
+    * *Out of Scope:* A "trust_ping" where the message content is irrelevant and only the *fact* of transmission matters.
+
+## 3.2 General to specific
 
 Interactions may be categorized in various ways — by size, frequency, cardinality, risk profile, and so forth. However, given that we're trying to enable purposeful decision-making, building root categories based on purpose feels like an appropriate starting point, with secondary considerations playing a role as granularity increases.
 
@@ -125,7 +145,7 @@ Taxonomies that proceed from generic to specific also force precision and reveal
 
 Finally, hierarchical taxonomies have learnability advantages, map nicely onto namespace and organizational behavior constructs, and are easy to adapt to certain algorithms. For all of these reasons, we assume that our goal should be to accurately and gracefully *organize intents from general to specific*.
 
-## 3.2 Motives vs. steps
+## 3.3 Motives vs. steps
 
 Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [31, 32] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
 
@@ -137,7 +157,7 @@ Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, rein
 
 A key insight of this framework is that an action (mappable to a granular intent) only makes sense (carries a full semantic payload) in the context of its containing activity (a higher-level intent). "Checking vitals" is meaningless—or arguably indistinguishable from "gathering information"—unless we know the motive is "treating a patient." This suggests that our taxonomy should *root itself in a shared motive that binds the participants and gives vital context to lower-level actions*.
 
-## 3.3 Proximate vs. ultimate continuum
+## 3.4 Proximate vs. ultimate continuum
 
 Actors may engage in interactions with many different intents, and our taxonomy should help us compare them. However, applying Activity Theory's distinctions, we observe that two intents may amount to the same thing or to very different things, depending on the assumptions about the causality horizon.
 
@@ -151,7 +171,7 @@ When Alice clicks a "Watch" button, she simultaneously maintains intents at diff
 
 Our taxonomy should *make siblings out of categories that are roughly equivalent on the proximate-ultimate causality continuum*.
 
-## 3.4 Commitment protocols and social state
+## 3.5 Commitment protocols and social state
 
 In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [34]
 
@@ -163,19 +183,19 @@ Example: "If you approve this pull request (Antecedent), I will deploy the code 
 
 The interaction is a process of creating, manipulating, and discharging these commitments. This perspective is vital for our taxonomy because it shifts the focus from conversation to a social contract of shared expectations. It is the latter that informs most of our digital interactions: the intent is to enter into a state where a specific commitment exists or is constructed or fulfilled. Where applicable, the taxonomy should therefore *reflect the types of commitments agents can make*.
 
-## 3.5 Multiple perspectives
+## 3.6 Multiple perspectives
 
 In the camera intentcasting example mentioned in section 1.2, if Carlos broadcasts an intent to "buy," and Deepa has an intent to "sell," we'd like to help them recognize that an interaction might make sense, despite their opposing perspectives. A viable taxonomy should therefore avoid categorizing in a way that describes only one perspective.
 
 It would be easy to say that categories must be bidirectional, but in fact we can't assume that two perspectives suffice, either. Many activities imply complex groups with a multiplicity of roles. Common examples include scheduling a surgery, conducting a parliamentary vote, brokering an introduction, and enacting an online auction. The taxonomy must *map an interaction to a category in such a way that all stakeholders recognize the category's applicability in a given context, despite their different perspectives*.
 
-## 3.6 Intent boundaries and trust
+## 3.7 Intent boundaries and trust
 
 The concept of ***intent boundaries*** further refines this by highlighting the ethical and UX implications of intent, a framework fully derived in [1]. For the purposes of this taxonomy, we define an intent boundary as a point where one party's knowledge of another party's intent becomes inadequate. Crossing such a boundary without confirmation (e.g., the "Watch" button upgrading a streaming subscription) is an unethical violation of agency. It opens opportunities for manipulation and abuse, and is thus likely to lead to diminished trust in the long run.
 
 Our taxonomy should therefore *draw lines at likely intent boundaries*, because they represent ideal points for consent and policy enforcement.
 
-## 3.7 Telos
+## 3.8 Telos
 
 Synthesizing the preceding principles, we might propose to root our taxonomy in *shared activities with clustered purposes*. This approaches the semantic we need. However, the wording is a bit loose. "Shared activities" could hide a distinction between doing something *parallel to* another party, and doing it *by interacting with them as a counterparty*. Friends might each use a language learning app to study French, and might describe their studies as a shared activity. Nevertheless, if their studies are independent and never intersect, they are just operating in parallel, not interacting. The proposed taxonomy is needed to enable decisions about interactions among counterparties, not just activities with a vaguely shared dimension.
 
@@ -199,7 +219,7 @@ In online dating:
 
 While the definition of *telos* is intended to support rigor and subtle distinctions, the basic question it addresses is straightforward: "What is the best mutually intelligible raison d'être for an interaction that someone proposes to start?"
 
-## 3.8 Parameterization
+## 3.9 Parameterization
 
 We must avoid the trap of enumerating the infinite. Given human limits on attention, decision-making, and configuration ability, a massive hierarchy is an antipattern, especially if all the leaf nodes are identical except for a specific attribute that changes decision criteria but nothing about the nature of an interaction. For example, we don't want separate categories in our taxonomy for buying blue shoes and red shoes; although an actor might make different decisions in these two cases, the character of the interaction is essentially the same. Instead, the taxonomy should leverage *parameters* for the "who" and the "what," utilizing existing standards like UNSPSC where they shine—at the leaf level.
 
@@ -213,7 +233,7 @@ The taxonomy should probably also leverage parameters for the "where" (platforms
 
 This keeps the taxonomy lean and maintainable while allowing for infinite specificity via external code sets from other standards.
 
-## 3.9 The consent distinguishability test
+## 3.10 The consent distinguishability test
 
 A proposed goal must provide enough information for a user to decide "Yes, I am interested in this kind of interaction" (a decision about category with a known telos) without yet agreeing to the specific terms (a decision about whether the telos remains desirable, given subsequently known attributes of a specific instance of the category).
 
@@ -221,7 +241,7 @@ Consent to a /gov/Identity.Verify interaction means "I agree to start a verifica
 
 This distinction is vital for healthy *intent boundaries*. The taxonomy defines the "room" we are entering; the subsequent protocol negotiation defines what happens inside that room, and whether the parties remain there.
 
-## 3.10 Decomposition
+## 3.11 Decomposition
 
 The theory underpinning our taxonomy also needs to deal with activities that are complex or multidimensional in their substructure. When someone books a vacation, are they engaged in a purchasing interaction, or a schedule coordination interaction? When someone visits the doctor, are they receiving health care or paying a bill?
 

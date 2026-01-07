@@ -1,9 +1,9 @@
-# Comparison: ACDCs and Merkle Tree Certificates
-Daniel Hardman &mdash; 6 Jan 2026
-
-<span class="hash">#x509 #acdc #hashing</span> 
-
-<hr>
+---
+title: "Comparison: ACDCs and Merkle Tree Certificates"
+author: "Daniel Hardman"
+date: 2026-01-06
+tags: [x509, acdc, hashing]
+---
 
 ## 1. Introduction and scope
 

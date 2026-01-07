@@ -1,9 +1,10 @@
-# Sentries, Confessionals, Vaults, and Envelopes
-Daniel Hardman &mdash; 18 Jan 2023 &mdash; [medium.com](https://daniel-hardman.medium.com/sentries-confessionals-vaults-and-envelopes-4a58cf4f8a5a)
-
-<span class="hash">#identity #architecture #didcomm #tutorial</span>
-
-<hr>
+---
+title: "Sentries, Confessionals, Vaults, and Envelopes"
+author: "Daniel Hardman"
+date: 2023-01-18
+tags: [identity, architecture, didcomm, tutorial]
+original_publication: "https://daniel-hardman.medium.com/sentries-confessionals-vaults-and-envelopes-4a58cf4f8a5a"
+---
 
 The decentralized identity / SSI space is troubled by persistent misunderstandings about the overlaps between important technologies: [OpenID Connect](https://openid.net/connect/) (OIDC), [CHAPI](https://chapi.io/), [Decentralized Web Nodes](https://identity.foundation/decentralized-web-node/spec/) (DWNs) [and similar members of the secure storage family], and [DIDComm](https://identity.foundation/didcomm-messaging/spec/).
 
