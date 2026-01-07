@@ -1,3 +1,15 @@
+---
+title: "AI User Code of Conduct"
+author: "Daniel Hardman"
+date: 2023-06-01
+abstract: "A personal code of conduct for responsible AI use, outlining principles of truthfulness, respect, responsibility, and safeguards to promote ethical and trustworthy AI interactions."
+keywords: "AI, ethics, trust, code of conduct, responsibility, transparency, human-AI interaction"
+pdf_url: "https://dhh1128.github.io/papers/ai-coca.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+---
+
 # AI User Code of Conduct
 
 <span class="hash">#ai #trust #ethics</span>

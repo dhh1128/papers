@@ -10,9 +10,9 @@ publisher: "Codecraft"
 journal_title: "Codecraft Papers"
 ---
 
-# 1. The unacknowledged gap in digital interactions
+## 1. The unacknowledged gap in digital interactions
 
-## 1.1 Decoupled action and purpose
+### 1.1 Decoupled action and purpose
 
 The ordinariness and ease of our digital interactions masks a profound semantic void. Alice browses content on a smart television and clicks "Watch". Her intent is straightforward and sensory: view a drama about a veterinarian in the Yorkshire Dales. To the media streaming service, however, that click might upgrade a subscription, alter billing terms, or consummate a commercial transaction. Alice intends to watch; the system intends to sell. Is there enough alignment to proceed?
 
@@ -26,7 +26,7 @@ Yet we continue to be vague. Rich Call Data (RCD) embodies telco's latest thinki
 
 If we are to interact confidently in the low-context environment of remote+digital, or if we are to delegate authority to human or AI agents that will interact there on our behalf, we must equip them with a grammar of purpose. This grammar should allow us to describe whether managing our calendar, negotiating purchases, accepting promotional offers, or filtering our interruptions aligns with our intent. In other words, we need a hierarchical taxonomy of reasons to interact that allows us to define boundaries with precision. Alice must be able to ask another party why they're proposing to interact, and understand the answer. Alice must be able to say to her agent, "You may negotiate *scheduling* on my behalf, but you may not engage in *high-value commerce* without my explicit approval."
 
-## 1.2 Intensifying need
+### 1.2 Intensifying need
 
 The need for this taxonomy is driven partly by globalization. Remoteness has decreased the context that's assumable from location, legal jurisdiction, and culture. It has also made redress harder.
 
@@ -34,15 +34,15 @@ Disintermediation reinforces the need. The web, search engines, mesh computing, 
 
 The need for a grammar of intent is further accelerated by an ongoing shift toward what Doc Searls calls the “Intention Economy.” In the older “Attention Economy,” vendors broadcast noise to capture fleeting consumer attention. In the Intention Economy, buyers broadcast specific intent (e.g., “I want to buy a Nikon D6 camera for under $300”), and sellers compete to fulfill it. [10, 11, 12] Intentcasting clearly requires a structured vocabulary. It already shapes markets such as ridesharing and peer-to-peer lodging, and it will likely expand as smart agents proliferate.
 
-## 1.3 Syntelos
+### 1.3 Syntelos
 
 This paper explores important taxonomy work that already exists, pinpoints the specific gap that remains, and proposes some principles that should inform any approach. It then applies these principles to derive the basics of a taxonomy of intent in digital interactions, and describes how the taxonomy can be extended. The methodology and its base categories are named "Syntelos" for reasons that are clarified below. Syntelos is a rich, rigorous, machine-readable set of categories that can deliver significant value for agentic AI and ultimately, for all human stakeholders.
 
-# 2. Current standards address different questions
+## 2. Current standards address different questions
 
 To design a successful taxonomy, we must first examine the catalog of existing classification systems. While rigorous and widely adopted, systems like NAICS, UNSPSC, FIPA ACL, and GDPR processing purposes do not cover the specific requirements of digital intent for distinct, structural reasons.
 
-## 2.1 Industrial codes: the who vs. the what
+### 2.1 Industrial codes: the who vs. the what
 
 The North American Industry Classification System (NAICS) and the Standard Industrial Classification (SIC) are ubiquitous in business. [13, 14] They provide a deep hierarchy for classifying economic activities. *Example*: 541511 corresponds to "Custom Computer Programming Services."
 
@@ -50,7 +50,7 @@ The North American Industry Classification System (NAICS) and the Standard Indus
 
 * *Utility*: NAICS is useful as a *parameter* (e.g., Proposer.Industry = 541511), but not as the root of the intent hierarchy.
 
-## 2.2 Commodity codes: the object vs. the activity
+### 2.2 Commodity codes: the object vs. the activity
 
 The United Nations Standard Products and Services Code (UNSPSC) is a granular taxonomy for products. [15]
 
@@ -65,7 +65,7 @@ The United Nations Standard Products and Services Code (UNSPSC) is a granular ta
 
 * *Utility*: Like NAICS, UNSPSC is an essential *parameter*. Our taxonomy should not reinvent the wheel by listing every product on earth. Instead, we should define the activity (/trade/swap) and use UNSPSC to define the subject (Resource: UNSPSC:43211602).
 
-## 2.3 Financial standards: domain-bound rigor
+### 2.3 Financial standards: domain-bound rigor
 
 ISO 20022 and the Financial Industry Business Ontology (FIBO) offer incredible semantic depth. [16, 17, 18, 19] They model complex interactions like "Securities Settlement" or "Credit Transfer" with rigorous precision.
 
@@ -73,7 +73,7 @@ ISO 20022 and the Financial Industry Business Ontology (FIBO) offer incredible s
 
 * *Utility*: We should adopt the structure of ISO 20022—specifically its separation of "Business Area" from "Message Definition"—but we must broaden the scope to cover the full spectrum of human interaction.
 
-## 2.4 Agent communication languages: the envelope vs. the letter
+### 2.4 Agent communication languages: the envelope vs. the letter
 
 FIPA ACL (Foundation for Intelligent Physical Agents Agent Communication Language) defines communicative acts like inform, request, propose, refuse. [20, 21]
 
@@ -81,7 +81,7 @@ FIPA ACL (Foundation for Intelligent Physical Agents Agent Communication Languag
 
 * *Utility*: FIPA ACL defines the *proximate action* (the message type), whereas our taxonomy categorizes goals.
 
-## 2.5 Schema.org: the fuzzy middle
+### 2.5 Schema.org: the fuzzy middle
 
 Schema.org provides a hierarchy of Action types, such as TradeAction, OrganizeAction, and InteractAction. [22, 23]
 
@@ -89,7 +89,7 @@ Schema.org provides a hierarchy of Action types, such as TradeAction, OrganizeAc
 
 * *Utility*: Schema.org serves as a valuable source of categories (e.g., the distinction between Consume and Create), but requires re-expression in a stricter and more omnidirectional structure.
 
-## 2.6 Mobile permissions: a primitive ancestor
+### 2.6 Mobile permissions: a primitive ancestor
 
 Android and iOS permission models (e.g., READ_CONTACTS, ACCESS_FINE_LOCATION) represent a primitive taxonomy of intent. [24, 25, 26] When an app requests permission, it is effectively declaring an intent to "use location data."
 
@@ -97,7 +97,7 @@ Android and iOS permission models (e.g., READ_CONTACTS, ACCESS_FINE_LOCATION) re
 
 * *Utility*: This highlights the need for our taxonomy to govern *high-level goals* (Why do you need contacts?) rather than just *low-level resources* (Can I access the database?).
 
-## 2.7 Data Privacy Vocabularies: The compliance vs. agency distinction
+### 2.7 Data Privacy Vocabularies: The compliance vs. agency distinction
 
 The W3C Data Privacy Vocabularies and Controls (DPV) group has developed a rich taxonomy for categorizing the purpose of data processing. It includes granular categories such as ServiceProvision, Marketing, IdentityVerification, and Security. [27]
 
@@ -107,7 +107,7 @@ For example, DPV might tag a dataset with the purpose Marketing. However, it can
 
 * *Utility*: DPV is the ideal standard for the parameters of a Syntelos interaction. Once two agents agree on a Syntelos intent (e.g., /govern/identify), they should use DPV codes to define the privacy constraints of the specific data exchanged (e.g., dpv:Purpose = ServiceRegistration).
 
-## 2.8 IEEE 7012 (MyTerms): The Terms of Engagement
+### 2.8 IEEE 7012 (MyTerms): The Terms of Engagement
 
 While W3C DPV offers a vocabulary for privacy purposes, IEEE 7012 (Standard for Machine Readable Personal Privacy Terms) offers a protocol for negotiating those terms. Often called "MyTerms," this standard reverses the "click-wrap" paradigm: instead of the user accepting the vendor's terms, the user's agent proffers its own terms to the vendor. [28]
 
@@ -117,11 +117,11 @@ While W3C DPV offers a vocabulary for privacy purposes, IEEE 7012 (Standard for 
 
 *Utility*: IEEE 7012 solves the negotiation complexity in the Syntelos Commerce.Negotiation branch. Rather than inventing a new negotiation language, Syntelos agents can simply reference an IEEE 7012 URI to establish the legal ground rules before the economic transaction begins.
 
-# 3. Theoretical foundations
+## 3. Theoretical foundations
 
 To build a robust taxonomy, we must rigorously define some concepts, drawing on philosophy, psychology, and computer science.
 
-## 3.1 Scope: agentic interaction
+### 3.1 Scope: agentic interaction
 Not every digital signal constitutes an interaction that needs the power to categorize intent. To avoid misapplication of our taxonomy, we distinguish between a *tool* and an *agent*.
 
 Tools are largely passive and are directly manipulated or acted upon. They are deterministically obligated to react to their wielder, subject only to the scope of their defined features and to unpredictable problems like resource exhaustion or electrical failure. The behavior of a tool is thus best conceptualized as an extension of its wielder's intent.
@@ -141,7 +141,7 @@ restrict the scope of Syntelos to interactions that satisfy three criteria:
     * *In Scope:* A search query (`/share/ask`) reduces informational asymmetry.
     * *Out of Scope:* A "trust_ping" where the message content is irrelevant and only the *fact* of transmission matters.
 
-## 3.2 General to specific
+### 3.2 General to specific
 
 Interactions may be categorized in various ways — by size, frequency, cardinality, risk profile, and so forth. However, given that we're trying to enable purposeful decision-making, building root categories based on purpose feels like an appropriate starting point, with secondary considerations playing a role as granularity increases.
 
@@ -151,7 +151,7 @@ Taxonomies that proceed from generic to specific also force precision and reveal
 
 Finally, hierarchical taxonomies have learnability advantages, map nicely onto namespace and organizational behavior constructs, and are easy to adapt to certain algorithms. For all of these reasons, we assume that our goal should be to accurately and gracefully *organize intents from general to specific*.
 
-## 3.3 Motives vs. steps
+### 3.3 Motives vs. steps
 
 Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, reinforces our preference for hierarchy. It explains how a hierarchy of purpose might organize. [31, 32] Leontiev argued that human behavior is not a flat sequence of tasks but a structured hierarchy of *Activities*, *Actions*, and *Operations*:
 
@@ -163,7 +163,7 @@ Activity Theory, originating from the Soviet psychologist Aleksei Leontiev, rein
 
 A key insight of this framework is that an action (mappable to a granular intent) only makes sense (carries a full semantic payload) in the context of its containing activity (a higher-level intent). "Checking vitals" is meaningless—or arguably indistinguishable from "gathering information"—unless we know the motive is "treating a patient." This suggests that our taxonomy should *root itself in a shared motive that binds the participants and gives vital context to lower-level actions*.
 
-## 3.4 Proximate vs. ultimate continuum
+### 3.4 Proximate vs. ultimate continuum
 
 Actors may engage in interactions with many different intents, and our taxonomy should help us compare them. However, applying Activity Theory's distinctions, we observe that two intents may amount to the same thing or to very different things, depending on the assumptions about the causality horizon.
 
@@ -177,7 +177,7 @@ When Alice clicks a "Watch" button, she simultaneously maintains intents at diff
 
 Our taxonomy should *make siblings out of categories that are roughly equivalent on the proximate-ultimate causality continuum*.
 
-## 3.5 Commitment protocols and social state
+### 3.5 Commitment protocols and social state
 
 In the realm of Multi-Agent Systems (MAS), researchers have moved beyond simple message-passing to model interactions as commitment protocols. In this view, the "meaning" of an interaction is not defined by the sequence of messages (which can vary) but by the social commitments created between agents. [34]
 
@@ -189,19 +189,19 @@ Example: "If you approve this pull request (Antecedent), I will deploy the code 
 
 The interaction is a process of creating, manipulating, and discharging these commitments. This perspective is vital for our taxonomy because it shifts the focus from conversation to a social contract of shared expectations. It is the latter that informs most of our digital interactions: the intent is to enter into a state where a specific commitment exists or is constructed or fulfilled. Where applicable, the taxonomy should therefore *reflect the types of commitments agents can make*.
 
-## 3.6 Multiple perspectives
+### 3.6 Multiple perspectives
 
 In the camera intentcasting example mentioned in section 1.2, if Carlos broadcasts an intent to "buy," and Deepa has an intent to "sell," we'd like to help them recognize that an interaction might make sense, despite their opposing perspectives. A viable taxonomy should therefore avoid categorizing in a way that describes only one perspective.
 
 It would be easy to say that categories must be bidirectional, but in fact we can't assume that two perspectives suffice, either. Many activities imply complex groups with a multiplicity of roles. Common examples include scheduling a surgery, conducting a parliamentary vote, brokering an introduction, and enacting an online auction. The taxonomy must *map an interaction to a category in such a way that all stakeholders recognize the category's applicability in a given context, despite their different perspectives*.
 
-## 3.7 Intent boundaries and trust
+### 3.7 Intent boundaries and trust
 
 The concept of ***intent boundaries*** further refines this by highlighting the ethical and UX implications of intent, a framework fully derived in [1]. For the purposes of this taxonomy, we define an intent boundary as a point where one party's knowledge of another party's intent becomes inadequate. Crossing such a boundary without confirmation (e.g., the "Watch" button upgrading a streaming subscription) is an unethical violation of agency. It opens opportunities for manipulation and abuse, and is thus likely to lead to diminished trust in the long run.
 
 Our taxonomy should therefore *draw lines at likely intent boundaries*, because they represent ideal points for consent and policy enforcement.
 
-## 3.8 Telos
+### 3.8 Telos
 
 Synthesizing the preceding principles, we might propose to root our taxonomy in *shared activities with clustered purposes*. This approaches the semantic we need. However, the wording is a bit loose. "Shared activities" could hide a distinction between doing something *parallel to* another party, and doing it *by interacting with them as a counterparty*. Friends might each use a language learning app to study French, and might describe their studies as a shared activity. Nevertheless, if their studies are independent and never intersect, they are just operating in parallel, not interacting. The proposed taxonomy is needed to enable decisions about interactions among counterparties, not just activities with a vaguely shared dimension.
 
@@ -225,7 +225,7 @@ In online dating:
 
 While the definition of *telos* is intended to support rigor and subtle distinctions, the basic question it addresses is straightforward: "What is the best mutually intelligible raison d'être for an interaction that someone proposes to start?"
 
-## 3.9 Parameterization
+### 3.9 Parameterization
 
 We must avoid the trap of enumerating the infinite. Given human limits on attention, decision-making, and configuration ability, a massive hierarchy is an antipattern, especially if all the leaf nodes are identical except for a specific attribute that changes decision criteria but nothing about the nature of an interaction. For example, we don't want separate categories in our taxonomy for buying blue shoes and red shoes; although an actor might make different decisions in these two cases, the character of the interaction is essentially the same. Instead, the taxonomy should leverage *parameters* for the "who" and the "what," utilizing existing standards like UNSPSC where they shine—at the leaf level.
 
@@ -239,7 +239,7 @@ The taxonomy should probably also leverage parameters for the "where" (platforms
 
 This keeps the taxonomy lean and maintainable while allowing for infinite specificity via external code sets from other standards.
 
-## 3.10 The consent distinguishability test
+### 3.10 The consent distinguishability test
 
 A proposed goal must provide enough information for a user to decide "Yes, I am interested in this kind of interaction" (a decision about category with a known telos) without yet agreeing to the specific terms (a decision about whether the telos remains desirable, given subsequently known attributes of a specific instance of the category).
 
@@ -247,7 +247,7 @@ Consent to a /gov/Identity.Verify interaction means "I agree to start a verifica
 
 This distinction is vital for healthy *intent boundaries*. The taxonomy defines the "room" we are entering; the subsequent protocol negotiation defines what happens inside that room, and whether the parties remain there.
 
-## 3.11 Decomposition
+### 3.11 Decomposition
 
 The theory underpinning our taxonomy also needs to deal with activities that are complex or multidimensional in their substructure. When someone books a vacation, are they engaged in a purchasing interaction, or a schedule coordination interaction? When someone visits the doctor, are they receiving health care or paying a bill?
 
@@ -255,7 +255,7 @@ This can be resolved without introducing hybrids into a taxonomy by asking the s
 
 Our taxonomy should *keep categories simple by decomposing them (e.g., using nesting and chaining) to deal with complex intents and their associated interactions*.
 
-# 4. Conventions
+## 4. Conventions
 
 Establishing some conventions and notation will make human communication and programmatic processing of the taxonomy efficiently deterministic.
 
@@ -268,13 +268,13 @@ Establishing some conventions and notation will make human communication and pro
 7. Each category path may have one or more localized ***category descriptions*** that are friendly to typical human users of technology who speak the description's natural language. Category descriptions are informational, not normative.  
 8. The taxonomy may be extended in an adhoc way at any level by introducing a category name that begins with "x-" (a so-called ***x-cat***). A small group of interested parties may use such a category name without formal extension of the standard, but should propose the 
 
-# 5. Proposed taxonomy
+## 5. Proposed taxonomy
 
 Below is a proposed taxonomy, rooted in a handful of fundamental domains of interactive digital activity. These domains cover the vast majority of agentic interactions while ensuring mutual exclusivity and clear scope narrowing. They are designed to support interactions involving businesses, consumers, and their agents (human or automated).
 
 Of course, this paper is not a definitive standard, but rather the conceptual framework for one. Therefore, the proposal is only provisional, and it is left to a standards organization to formalize further.
 
-## 5.1 /relate
+### 5.1 /relate
 
 Definition: interactions where the telos is to establish, maintain, or deepen   
 human connection for its own sake.
@@ -295,7 +295,7 @@ human connection for its own sake.
     Telos: Mark a life occasion or ritual.  
     Example: Sending a wedding invitation; attending a birthday party.
 
-## 5.2 /share
+### 5.2 /share
 
 Definition: interactions where the telos is to transmit, generate, or verify meaning,   
 knowledge, or culture. This distinguishes the flow of information from the trade of assets.
@@ -336,7 +336,7 @@ knowledge, or culture. This distinguishes the flow of information from the trade
     Telos: Broadcast an artistic experience.  
     Example: Streaming a concert; posting a video essay; performing a play.
 
-## 5.3 /care
+### 5.3 /care
 
 Definition: interactions where the telos is to nurture the physical, mental,   
 or developmental well-being of a living subject.
@@ -353,7 +353,7 @@ or developmental well-being of a living subject.
     Telos: Provide custodial oversight or assistance.  
     Example: Babysitting; elderly caregiving; daycare supervision.
 
-## 5.4 /serve
+### 5.4 /serve
 
 Definition: interactions where the telos is to apply skilled labor to modify   
 or maintain the physical world.
@@ -370,7 +370,7 @@ or maintain the physical world.
     Telos: Attend to personal appearance or fitness.  
     Example: Haircut; massage therapy; personal training session.
 
-## 5.5 /align
+### 5.5 /align
 
 Definition: interactions where the telos is to synchronize independent variables—  
 specifically time, space, movement, or logistics—between parties.
@@ -391,7 +391,7 @@ specifically time, space, movement, or logistics—between parties.
     Telos: Synchronize multi-modal transit.  
     Example: Sharing a flight itinerary; coordinating an airport pickup.
 
-## 5.6 /trade
+### 5.6 /trade
 
 Definition: interactions where the telos is to exchange ownership, rights, or value   
 between parties. This domain encompasses all economic activity, from simple purchases   
@@ -433,7 +433,7 @@ to complex investments and employment contracts, and as such, will be very commo
     Telos: Transfer value without expectation of return.  
     Example: Donating to a GoFundMe; attending a charity gala.
 
-## 5.7 /operate
+### 5.7 /operate
 
 Definition: interactions where the telos is to manage the function of agents or systems,   
 whether those agents are digital, mechanical, or human subordinates.
@@ -462,7 +462,7 @@ whether those agents are digital, mechanical, or human subordinates.
     Telos: Intervene to unblock a stalled process.  
     Example: Clearing a dependency; resetting a frozen system.
 
-## 5.8 /govern
+### 5.8 /govern
 
 Definition: interactions where the telos is to establish order, truth, permission,   
 or consensus. This covers the spectrum from decentralized influence to strict enforcement.
@@ -503,11 +503,11 @@ or consensus. This covers the spectrum from decentralized influence to strict en
     Telos: Impose order or ensure safety.  
     Example: Detaining a suspect; denying entry to a secure facility.
 
-# 6. Operational dynamics: the policy engine and the handshake
+## 6. Operational dynamics: the policy engine and the handshake
 
 A taxonomy is useless without a mechanism to enforce it. We must define how these codes function within the "handshake" of a digital interaction, particularly in the context of Policy Engines and Agentic AI.
 
-## 6.1 Proposal structure
+### 6.1 Proposal structure
 
 When Agent A contacts Agent B, the proposal message cannot simply be a string. It must be a structured object that contextualizes the telos. This object corresponds to the "Intent" in the intent-casting model.
 
@@ -532,7 +532,7 @@ Proposal Object Structure:
   `}`  
 `}`
 
-## 6.2. Policy engine logic
+### 6.2. Policy engine logic
 
 The hierarchical nature of the taxonomy enables a cascading consent model. A user does not need to write rules for every possible leaf node. They can write broad policies at the top and specific exceptions at the bottom.
 
@@ -548,7 +548,7 @@ Logic Flow:
 
 Example Policy: "I reject all Retail (/trade/swap), but I accept Auctions (/trade/bid/*) only for Vintage Cameras."
 
-## 6.3. The perspective problem: buy vs. sell
+### 6.3. The perspective problem: buy vs. sell
 
 As highlighted earlier, an important challenge is the perspective paradox: Alice thinks she is selling; Bob thinks he is buying. If the taxonomy forces them to use different trees, matching becomes difficult.
 
@@ -560,7 +560,7 @@ In our taxonomy, both parties use the Shared Activity domain: /trade/swap.
 
 The Match: The Goal is identical. The roles are complementary. This simplifies the logic of an intent router. It does not need to translate "Sales" to "Purchasing"; it simply checks if Goal_A == Goal_B and Role_A (not mutually exclusive with) Role_B.
 
-## 6.4. Integration with MCP and Goal Codes
+### 6.4. Integration with MCP and Goal Codes
 
 This taxonomy is designed to plug directly into the Model Context Protocol (MCP) and Aries Goal Codes. [38]
 
@@ -568,11 +568,11 @@ This taxonomy is designed to plug directly into the Model Context Protocol (MCP)
 
 * MCP: When an LLM agent needs to use a tool, it must understand the consequence of that tool. By tagging MCP tools with these Goal Codes (e.g., a Stripe API tool is tagged /trade/swap), the AI can reason about safety: "I am allowed to use /share/ask tools, but I am forbidden from using /trade/swap tools without human approval."
 
-# 7. Case Studies in Application
+## 7. Case Studies in Application
 
 To validate the taxonomy, we apply it to diverse real-world scenarios.
 
-## 7.1 Case study: the debt collection call
+### 7.1 Case study: the debt collection call
 
 1. Proposer (Bank Agent): Sends invitation.  
 Telos: /trade/lend  
@@ -625,7 +625,7 @@ If a Scammer tries to use this channel to sell a loan consolidation service:
 
    Result: The call is silently blocked.
 
-## 7.2 Case study: the DAO vote
+### 7.2 Case study: the DAO vote
 
 Scenario: A Decentralized Autonomous Organization (DAO) needs members to vote on a new budget. [39] New state:
 
@@ -638,7 +638,7 @@ Policy: "Auto-vote 'Abstain' on /govern/vote IF Topic=Budget AND Amount < $1000.
 
 Result: The agent handles the low-stakes vote automatically, reducing cognitive load.
 
-## 7.3 Case study: intent casting for a tutor
+### 7.3 Case study: intent casting for a tutor
 
 Scenario: Alice wants to learn guitar. New state:
 
@@ -652,7 +652,7 @@ Matches Goal. Checks Resource. Checks Role (Complementary).
 
 Result: The Tutor Agent sends a proposal: "I can teach guitar. Here is my rate."
 
-# 8. Conclusion
+## 8. Conclusion
 
 The transition from an "Attention Economy" to an "Intention Economy" requires a new grammar. We cannot rely on the static nouns of industrial codes or the empty verbs of communication protocols. We must adopt a Taxonomy of Interactive Activity that categorizes the shared outcome of our digital engagements.
 
@@ -660,7 +660,9 @@ By structuring intent into relate, share, care, serve, align, trade, operate, an
 
 This is not merely a classification system; it is the protocol for digital agency. It restores the "contract" to the "interaction," ensuring that when we click "Watch," answer a call, or authorize an agent, we know exactly what we are agreeing to do. It transforms the "Unknown Caller" into a known quantity and the "passive user" into an empowered principal. This is the architecture of a respectful digital future.
 
-# Works cited
+---
+
+## References
 
 [1] Hardman, D. 2025. Intent and Boundaries: A Framework for Digital Agency. SSRN Electronic Journal.
 
