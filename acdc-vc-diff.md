@@ -1,11 +1,7 @@
 ---
 title: "ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts"
 author: "Daniel Hardman"
-date: 
-# Add date if available from context
-# No explicit date in the first 60 lines, can be filled in if found later
-# No original publication info in first 60 lines
-# Tags from hash span:
+date: 2025-11-24
 tags: [acdc, keri, verifiable-credentials, w3c]
 ---
 

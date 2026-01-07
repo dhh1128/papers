@@ -40,6 +40,8 @@ KERI separates safety from liveness. It supports "cold" identifiers where keys m
 
 The `did:cel` heartbeat is a specific mitigation for architectures where past keys can be used to forge alternate histories. KERI neutralizes this threat through pre-rotation, which cryptographically binds the future to the present, and a witness network that detects inconsistencies. Adding a heartbeat mechanism to KERI would introduce unnecessary complexity and operational risk without providing additional security guarantees.
 
+---
+
 ## References
 
 [1] Digital Bazaar. 2024. DID CEL Method Specification. Retrieved from https://digitalbazaar.github.io/did-cel-spec/

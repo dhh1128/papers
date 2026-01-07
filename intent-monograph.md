@@ -94,6 +94,8 @@ Mishandled intent boundaries are at the heart of the modern trust crisis in tech
 
 The best systems will be those that see intent boundaries not as obstacles to conversion, but as the necessary borders of human autonomy.
 
+---
+
 ## References
 
 [1] Brignull, H. 2010. Dark Patterns: Deception vs. Honesty in UI Design. *A List Apart*.

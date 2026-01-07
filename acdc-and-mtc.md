@@ -195,3 +195,35 @@ These systems respond to different pressures, operate at different layers, and a
 Comparing them is useful not because one subsumes the other, but because the contrast sharpens assumptions. A reader who understands those assumptions is better equipped to evaluate new designs without forcing them into familiar but ill-fitting categories.
 
 If this paper succeeds, it leaves the reader with clearer mental models, not a verdict.
+
+---
+
+## References
+
+[1] Smith, S. (2019). *Key Event Receipt Infrastructure (KERI)*. arXiv:1907.02195. https://doi.org/10.48550/arXiv.1907.02195
+
+[2] Trust Over IP KSWG. (2023). *Authentic Chained Data Containers (ACDC) Specification*. Trust Over IP Foundation.
+
+[3] Laurie, B., Langley, A., and Kasper, E. (2013). *Certificate Transparency*. RFC 6962. https://doi.org/10.17487/RFC6962
+
+[4] Bernstein, D. J., et al. (2022). *Post-quantum cryptography*. Communications of the ACM, 65(2). https://doi.org/10.1145/3478437
+
+[5] Ben, D., et al. (2025). *Merkle Tree Certificates*. IETF Internet-Draft, work in progress.
+
+[6] International Organization for Standardization. (2024). *ISO 17442-3:2024 Financial services — Legal entity identifier (LEI) — Part 3: Verifiable LEIs (vLEIs)*. ISO.
+
+[7] GSMA. (2024). *GSMA Foundry launches Open Verifiable Calling project*. GSMA.
+
+[8] Trust Over IP KSWG. (2024). *Dossier Specification*. Draft.
+
+[9] Cloudflare, Inc. (2025). *Bootstrapping Merkle Tree Certificates*. Cloudflare Blog.
+
+[10] Menezes, A., van Oorschot, P., and Vanstone, S. (1996). *Handbook of Applied Cryptography*. CRC Press.
+
+[11] Cooper, D., et al. (2008). *Internet X.509 Public Key Infrastructure Certificate and CRL Profile*. RFC 5280. https://doi.org/10.17487/RFC5280
+
+[12] Hardman, D. (2023). *Verifiable Voice Protocol*. IETF Internet-Draft draft-hardman-verifiable-voice-protocol-02.
+
+[13] National Institute of Standards and Technology. (2024). *FIPS 204: Module-Lattice-Based Digital Signature Standard*. NIST.
+
+[14] Rescorla, E. (2018). *The Transport Layer Security (TLS) Protocol Version 1.3*. RFC 8446. https://doi.org/10.17487/RFC8446
