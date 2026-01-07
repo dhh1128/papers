@@ -2,6 +2,12 @@
 title: "How SD-JWT and ACDC are similar and different"
 author: "Daniel Hardman"
 date: 2024-11-15
+abstract: "This article compares SD-JWT and ACDC technologies, discussing their similarities, differences, and implications for verifiable credentials."
+keywords: "SD-JWT, ACDC, verifiable credentials, digital identity, cryptography"
+pdf_url: "https://dhh1128.github.io/papers/sdjwt-acdc.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 *Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*

@@ -1,8 +1,14 @@
-# Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions
-
-Abstract — The transition from direct human-computer interaction to an economy of agentic AI highlights an inadequacy that's always permeated digital architecture: the dissociation of mechanical action from human purpose. Proximate intents (e.g., clicking a button) are conflated with ultimate intents (e.g., consuming entertainment or entering a contract), rendering signaling mechanisms brittle and unsuitable for automated policy. Existing classification standards such as NAICS, UNSPSC, and FIPA ACL categorize actors, objects, and message envelopes, but say too little about high-level intent. Drawing on Activity Theory and Commitment Protocols, this paper proposes a taxonomy for intent that's rooted in shared outcomes rather than unilateral actions. This provides a rich, rigorous, machine-readable standard for constraining delegation and negotiating interactions. Principals can reference the taxonomy when creating policy for AI and human agents.
-
-Keywords — agentic AI, multi-agent systems, digital intent, human-agent interaction, semantic interoperability, decentralized identifiers, activity theory, commitment protocols, intention economy, policy engines, intent casting, goal codes, consent, model context protocol, intent boundaries
+---
+title: "Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions"
+author: "Daniel Hardman"
+date: 2025-12-11
+abstract: "The transition from direct human-computer interaction to an economy of agentic AI highlights an inadequacy that's always permeated digital architecture: the dissociation of mechanical action from human purpose. Proximate intents (e.g., clicking a button) are conflated with ultimate intents (e.g., consuming entertainment or entering a contract), rendering signaling mechanisms brittle and unsuitable for automated policy. Existing classification standards such as NAICS, UNSPSC, and FIPA ACL categorize actors, objects, and message envelopes, but say too little about high-level intent. Drawing on Activity Theory and Commitment Protocols, this paper proposes a taxonomy for intent that's rooted in shared outcomes rather than unilateral actions. This provides a rich, rigorous, machine-readable standard for constraining delegation and negotiating interactions. Principals can reference the taxonomy when creating policy for AI and human agents."
+keywords: "agentic AI, multi-agent systems, digital intent, human-agent interaction, semantic interoperability, decentralized identifiers, activity theory, commitment protocols, intention economy, policy engines, intent casting, goal codes, consent, model context protocol, intent boundaries"
+pdf_url: "https://dhh1128.github.io/papers/syntelos.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+---
 
 # 1. The unacknowledged gap in digital interactions
 

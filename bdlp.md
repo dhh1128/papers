@@ -3,7 +3,12 @@ title: "Big Desks and Little People"
 author: "Daniel Hardman"
 date: 2023-05-01
 tags: [identity, ssi, empowerment, advocacy]
-original_publication: "https://daniel-hardman.medium.com/big-desks-and-little-people-e1b1b9e92d79"
+abstract: "This article discusses the power imbalance in digital trust architectures, advocating for designs that empower individuals over institutions."
+keywords: "digital trust, power imbalance, identity, ssi, empowerment, advocacy"
+pdf_url: "https://dhh1128.github.io/papers/bdlp.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 *We are not paying enough attention to how our designs for high-trust interactions limit the autonomy of individuals. Familiar architectural patterns such as client-server APIs and business process workflows are useful, but they can empower orgs at the expense of people. Perhaps we can still use such building blocks, but we need to understand their risk and think about them differently.*

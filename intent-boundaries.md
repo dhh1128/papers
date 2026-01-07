@@ -3,6 +3,12 @@ title: "Intent and Boundaries"
 author: "Daniel Hardman"
 date: 2025-06-20
 tags: [ux, ssi, agents, ethics]
+abstract: "This article examines the concept of intent in digital systems, highlighting the importance of respecting user boundaries to preserve agency and trust."
+keywords: "intent, digital agency, user experience, ethics, boundaries, software design"
+pdf_url: "https://dhh1128.github.io/papers/intent-boundaries.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 ## Lip service

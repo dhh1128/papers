@@ -33,7 +33,7 @@
       {% endif %}
       "publisher": {
         "@type": "Organization",
-        "name": "Daniel Hardman Papers"
+        "name": "Codecraft"
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -41,6 +41,37 @@
       }
     }
     </script>
+    {% endif %}
+    {% if page.title %}
+    <meta name="citation_title" content="{{ page.title | escape }}">
+    {% endif %}
+    {% if page.author %}
+    <meta name="citation_author" content="{{ page.author | escape }}">
+    {% endif %}
+    {% if page.date %}
+    <meta name="citation_publication_date" content="{{ page.date }}">
+    {% endif %}
+    {% if page.journal_title %}
+    <meta name="citation_journal_title" content="{{ page.journal_title | escape }}">
+    {% else %}
+    <meta name="citation_journal_title" content="Codecraft Papers">
+    {% endif %}
+    {% if page.pdf_url %}
+    <meta name="citation_pdf_url" content="{{ page.pdf_url }}">
+    {% endif %}
+    {% if page.abstract %}
+    <meta name="citation_abstract" content="{{ page.abstract | escape }}">
+    {% endif %}
+    {% if page.keywords %}
+    <meta name="citation_keywords" content="{{ page.keywords | escape }}">
+    {% endif %}
+    {% if page.language %}
+    <meta name="citation_language" content="{{ page.language }}">
+    {% endif %}
+    {% if page.publisher %}
+    <meta name="citation_publisher" content="{{ page.publisher | escape }}">
+    {% else %}
+    <meta name="citation_publisher" content="Codecraft">
     {% endif %}
   </head>
   <body>
@@ -56,6 +87,12 @@
       <section>
       {% if page.title %}
       <h1>{{ page.title }}</h1>
+      {% endif %}
+      {% if page.abstract %}
+      <p class="abstract">{{ page.abstract }}</p>
+      {% endif %}
+      {% if page.keywords %}
+      <p class="keywords">Keywords: {{ page.keywords }}</p>
       {% endif %}
       {{ content }}
       </section>

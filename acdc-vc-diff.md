@@ -3,6 +3,12 @@ title: "ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifact
 author: "Daniel Hardman"
 date: 2025-11-24
 tags: [acdc, keri, verifiable-credentials, w3c]
+abstract: "This article argues for ACDCs as the foundation of digital trust, with W3C Verifiable Credentials as derivative artifacts, and compares their properties."
+keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
+pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 <p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>

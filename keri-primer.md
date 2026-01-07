@@ -1,3 +1,15 @@
+---
+title: "A Primer on KERI, ACDCs, and CESR"
+author: "Daniel Hardman"
+date: 2025-12-19
+abstract: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
+keywords: "KERI, ACDC, CESR, decentralized identity, verifiable credentials, cryptography"
+pdf_url: "https://dhh1128.github.io/papers/keri-primer.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+---
+
 # A Primer on KERI, ACDCs, and CESR
 19 December 2025
 <span class="hash">#keri #certs #verifiable-data #verifiable-credentials</span>

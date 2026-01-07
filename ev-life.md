@@ -3,7 +3,12 @@ title: "The Evidence Lifecycle in Telco"
 author: "Daniel Hardman"
 date: 2025-08-07
 tags: [telco, evidence, credentials, identity]
-original_publication: "https://www.linkedin.com/pulse/part-5-evidence-lifecycle-randy-warshaw-yvpye"
+abstract: "This article explores the evidence lifecycle in telecommunications, emphasizing the importance of comprehensive evidence for trust and accountability."
+keywords: "evidence, telco, digital identity, credentials, trust, telecommunications"
+pdf_url: "https://dhh1128.github.io/papers/ev-life.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 >This article is a guest post in [The Evidence Advantage](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/), a series by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The series is strongly recommended as important context.

@@ -3,6 +3,12 @@ title: "Comparison: ACDCs and Merkle Tree Certificates"
 author: "Daniel Hardman"
 date: 2026-01-06
 tags: [x509, acdc, hashing]
+abstract: "This paper compares ACDCs and Merkle Tree Certificates, analyzing their design, use cases, and implications for digital trust."
+keywords: "ACDC, Merkle Tree Certificates, digital identity, cryptography, verifiable credentials"
+pdf_url: "https://dhh1128.github.io/papers/acdc-and-mtc.pdf"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 ---
 
 ## 1. Introduction and scope
