@@ -8,6 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/sdjwt-acdc.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
+category: Comparison
 ---
 
 *Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*

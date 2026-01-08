@@ -9,6 +9,7 @@ pdf_url: "https://dhh1128.github.io/papers/bdlp.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
+category: Position
 ---
 
 *We are not paying enough attention to how our designs for high-trust interactions limit the autonomy of individuals. Familiar architectural patterns such as client-server APIs and business process workflows are useful, but they can empower orgs at the expense of people. Perhaps we can still use such building blocks, but we need to understand their risk and think about them differently.*

@@ -3,6 +3,7 @@ title: "The Dangerous Half-Truth of “We’ll Be Correlated Anyway”"
 author: "Daniel Hardman"
 date: 2020-04-05
 tags: [privacy, credentials]
+category: Analysis
 original_publication: "https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/"
 ---
 

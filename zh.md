@@ -3,6 +3,7 @@ title: "Zooko and Houdini: A Flatland Parable"
 author: "Daniel Hardman"
 date: 2024-06-20
 tags: [identity, ux]
+category: Primer
 original_publication: "https://www.didas.swiss/2024/11/26/dice-2024-shaping-the-future-of-digital-trust/"
 ---
 

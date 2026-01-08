@@ -8,6 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/syntelos.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
+category: Paper
 ---
 
 ## 1. The unacknowledged gap in digital interactions

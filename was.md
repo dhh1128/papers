@@ -8,6 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/was.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
+category: Primer
 ---
 
 By themselves, digital signatures are much weaker evidence than casual thinkers might imagine. The reason is that the secret upon which they depend (a private key) can be compromised or revoked, but *simple signatures are difficult to sequence relative to a compromise or revocation event*. An inability to reason about sequence enables retrograde attacks. (This is a well known problem among cryptography users; see "Note on lack of expiration date on code-signing keys" in [this blog post](https://blog.invisiblethings.org/keys/) for a typical discussion of the issue.)

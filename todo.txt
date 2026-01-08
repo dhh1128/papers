@@ -1,0 +1,3 @@
+To Do Items
+1. Collapse tags into keywords
+2. categorize items: spec, essay,
