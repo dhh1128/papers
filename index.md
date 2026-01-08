@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
+layout: meta
 # ----
 
 For information about the Codecraft Papers archive and its document categories, see the [editorial policy](editorial-policy.md).
@@ -30,16 +31,16 @@ For information about the Codecraft Papers archive and its document categories, 
 - [Authenticity vs. Veracity](authenticity-vs-veracity.md) (2025-12-28)
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 
-## Comparisons
-- [ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md) (2025-11-24)
-- [Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md) (2026-01-06)
-- [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)
-
 ## Primers
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
 - [Sentries, Confessionals, Vaults, and Envelopes](svce.md) (2023-01-18)
 - [Why Anchored Signatures?](was.md) (2025-02-20)
 - [Zooko and Houdini: A Flatland Parable](zh.md) (2024-06-20)
+
+## Comparisons
+- [ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md) (2025-11-24)
+- [Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md) (2026-01-06)
+- [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)
 
 ## Guidance
 - [Advice About Cybersecurity and Privacy](acp.md) (2023-06-06)

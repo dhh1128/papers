@@ -1,8 +1,15 @@
-# Editorial Policy
+---
+title: "Editorial Policy"
+author: "Daniel Hardman"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+layout: meta
+----
 
 ## Purpose of the Archive
 
-Codecraft Papers is a curated archive of long-form technical writing, including specifications, analyses, papers, and essays. The archive is not a blog. Each document is classified by primary editorial intent, not by topic, maturity, length, or rhetorical style. This policy defines the document categories used throughout the archive and the criteria for assigning documents to them.
+<cite>Codecraft Papers</cite> is a curated archive of long-form technical writing, including specifications, analyses, papers, and essays. The archive is not a blog. Each document is classified by primary editorial intent, not by topic, maturity, length, or rhetorical style. This policy defines the document categories used throughout the archive and the criteria for assigning documents to them.
 
 The goal of this taxonomy is to ensure that categories are [mutually exclusive and collectively exhaustive](https://en.wikipedia.org/wiki/MECE_principle), so that each document belongs unambiguously to one category.
 
@@ -55,19 +62,6 @@ If the document’s value lies in explaining or critiquing something that alread
 - Conclusions are descriptive or evaluative, not prescriptive  
 - No attempt to define correctness or to teach from first principles
 
-### Comparisons
-
-#### Definition  
-Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.
-
-#### Assignment test  
-If the document is explicitly structured as A versus B (or A versus B versus C), it is a Comparison.
-
-#### Key properties  
-- Multiple subjects analyzed side by side  
-- Emphasis on tradeoffs, differences, and equivalences  
-- Distinct from Analyses by plurality of objects
-
 ### Primers
 
 #### Definition  
@@ -80,6 +74,19 @@ If the document is optimized for learning and orientation rather than novelty, c
 - Didactic structure  
 - Explanatory examples and definitions  
 - Success is measured by reader understanding, not persuasion or adoption
+
+### Comparisons
+
+#### Definition  
+Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.
+
+#### Assignment test  
+If the document is explicitly structured as A versus B (or A versus B versus C), it is a Comparison.
+
+#### Key properties  
+- Multiple subjects analyzed side by side  
+- Emphasis on tradeoffs, differences, and equivalences  
+- Distinct from Analyses by plurality of objects
 
 ### Guidance
 
