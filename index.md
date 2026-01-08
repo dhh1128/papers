@@ -1,64 +1,53 @@
 ---
-layout: toc
----
+title: "Codecraft Papers"
+author: "Daniel Hardman"
+language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
+# ----
 
-[Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md). 6 Jan 2026. <span class="hash">#x509 #acdc #hashing</span> 
+For information about the Codecraft Papers archive and its document categories, see the [editorial policy](editorial-policy.md).
 
-[Authenticity vs. Veracity](authenticity-vs-veracity.md). 28 Dec 2025.
+## Specifications
+- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
+- [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
+- [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
+- [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html) (2025-02-01)
 
-[Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md). 20 Dec 2025. <span class="hash">#keri #identifiers</span> 
+## Papers
+- [Bytewise and Externalized SAIDs](bes.pdf) (2024-10-23)
+- [Intent and Boundaries](intent-boundaries.md) (2025-06-20)
+- [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-20)
+- [KERI's Strategy for Post-Quantum Security](kspqs.pdf) (2025-11-01)
+- [Privacy-Preserving Discovery (PPreD)](ppred.pdf) (2017-01-01)
+- [Security, Silos, and Sovereignty](sss.md) (2021-03-12)
+- [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
+- [The Evidence Lifecycle in Telco](ev-life.md) (2025-08-07)
+- [Three Dimensions of Identity](3dim.md) (2019-01-29)
 
-[A Primer on KERI, ACDCs, and CESR](keri-primer.md). 19 Dec 2025. <span class="hash">#keri #certs #verifiable-data #verifiable-credentials</span> 
+## Analyses
+- [Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md) (2025-12-20)
+- [Authenticity vs. Veracity](authenticity-vs-veracity.md) (2025-12-28)
+- [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 
-[Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md). 11 Dec 2025. <span class="hash">#ux #ai #intent</span> 
+## Comparisons
+- [ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md) (2025-11-24)
+- [Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md) (2026-01-06)
+- [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)
 
-[ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md). 24 Nov 2025. <span class="hash">#acdc #keri #verifiable-credentials #w3c</span> 
+## Primers
+- [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
+- [Sentries, Confessionals, Vaults, and Envelopes](svce.md) (2023-01-18)
+- [Why Anchored Signatures?](was.md) (2025-02-20)
+- [Zooko and Houdini: A Flatland Parable](zh.md) (2024-06-20)
 
-[KERI's Strategy for Post-Quantum Security](kspqs.pdf). Co-authored by Sam Smith. 21 Oct 2025. <span class="hash">#post-quantum #keri #cryptography</span>
+## Guidance
+- [Advice About Cybersecurity and Privacy](acp.md) (2023-06-06)
+- [The Coming Tsunami of Falsehood](ctf.pdf) (2024-06-01)
 
-[Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia). 28 Aug 2025. <span class="hash">#ux #identity</span>
-
-[The Evidence Lifecycle in Telco](ev-life.md). 7 Aug 2025. <span class="hash">#telco #evidence #credentials #identity</span>
-
-[Intent and Boundaries](intent-boundaries.md). 20 Jun 2025. <span class="hash">#ux #ssi #agents #ethics #intent</span>
-
-[Why Anchored Signatures](was.md). 20 Feb 2025. <span class="hash">#cybersecurity #identity #verifiable-data</span>
-
-[Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html). Feb 2025. <span class="hash">#identity #telco #sip #communication</span>
-
-[Why X509 Certs Should Be Secondary Evidence of Org Identity](x509-prob.md). 15 Nov 2024. <span class="hash">#identity #certs #orgid #verifiable-data</span>
-
-[How SD-JWT and ACDC are similar and different](sdjwt-acdc.md). 15 Nov 2024. <span class="hash">#verifiable-data #credentials #keri</span>
-
-[Bytewise and Externalized SAIDs](bes.pdf). Aug 2024. <span class="hash">#keri #verifiable-data</span>
-
-[Zooko and Houdini: A Flatland Parable](zh.md). 20 June 2024. <span class="hash">#identity #ux</span>
-
-[SADs and SAIDs for Opaquely Structured Data](ssosd.pdf). Jun 2023. Superseded by <cite>Bytewise and Externalized SAIDs</cite>. <span class="hash">#keri #verifiable-data</span>
-
-[Canonical Quoted Text spec](https://dhh1128.github.io/canonical-quoted-text). Jun 2023. <span class="hash">#keri #verifiable-data</span>
-
-[AI User Code of Conduct](ai-coca.md). Jun 2023. <span class="hash">#ai #trust #ethics</span>
-
-[The Coming Tsunami of Falsehood](ctf.pdf). Jun 2023. <span class="hash">#ai #verifiable-data #advocacy</span>
-
-[Advice About Cybersecurity and Privacy](acp.md). 6 Jun 2023. <span class="hash">#cybersecurity #privacy</span>
-
-[Big Desks and Little People](bdlp.md). 1 May 2023. <span class="hash">#identity #ssi #empowerment #advocacy</span>
-
-[Sentries, Confessionals, Vaults, and Envelopes](svce.md). 18 Jan 2023. <span class="hash">#identity #architecture #didcomm #tutorial</span>
-
-[Actors, Objects, and Linked Data](aold.md). 16 Nov 2022. <span class="hash">#identity #ssi #empowerment #data #advocacy</span>
-
-[Cross-File Associations](https://dhh1128.github.io/cfa). Sep 2022. <span class="hash">#data #hypertext #semantics</span>
-
-[Security, Silos, and Sovereignty](sss.md). 12 Mar 2021. <span class="hash">#identity #ssi #didcomm #agents #privacy</span> 
-
-[A Call for Reciprocal Negotiated Accountability](crna.md). 15 Jan 2021. <span class="hash">#identity #ssi #privacy #regulation</span> 
-
-[The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md). 5 Apr 2020. <span class="hash">#privacy #credentials</span> 
-
-[Three Dimensions of Identity](3dim.md). Daniel Hardman and Jason Law. 29 Jan 2019. <span class="hash">#identity #ssi #agents #relationships #data #tutorial</span>
-
-[Privacy-Preserving Discovery](ppred.pdf). early 2017, updated Mar 2020. <span class="hash">#privacy #decentralization #discovery</span>
-
+## Positions
+- [A Call for Reciprocal Negotiated Accountability](crna.md) (2021-01-15)
+- [Actors, Objects, and Linked Data](aold.md) (2022-11-16)
+- [AI User Code of Conduct](ai-coca.md) (2023-06-01)
+- [Big Desks and Little People](bdlp.md) (2023-05-01)
+- [Why X509 Certs Should Be Secondary Evidence of Org Identity](x509-prob.md) (2024-11-15)

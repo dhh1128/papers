@@ -8,7 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/ai-coca.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Position
+category: Positions
 ---
 
 # AI User Code of Conduct

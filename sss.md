@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2021-03-12
 tags: [identity, ssi, didcomm, agents, privacy]
 original_publication: "https://daniel-hardman.medium.com/security-silos-and-sovereignty-522e30bb8eb4"
-category: Paper
+category: Papers
 ---
 
 I just got a new mobile phone and phone number. You can guess the hoop-jumping that ensued as I installed apps and updated dozens of account profiles.

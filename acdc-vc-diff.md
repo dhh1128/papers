@@ -9,7 +9,7 @@ pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Comparison
+category: Comparisons
 ---
 
 <p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>

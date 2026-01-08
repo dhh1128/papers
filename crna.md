@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2021-01-15
 tags: [identity, ssi, privacy, regulation]
 original_publication: "https://web.archive.org/web/20210127150914/https:/www.evernym.com/blog/a-call-for-reciprocal-negotiated-accountability/"
+category: Positions
 ---
 
 >Thanks to [John Phillips](https://github.com/JohnOnGH) for some helpful feedback. 

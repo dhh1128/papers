@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2025-12-20
 abstract: "In the physical world, human intent is signaled through a rich context of body language, tone, and environment. In the digital realm, however, complex purposes are often compressed into low-fidelity signals, such as a single mouse click. This reduction creates a 'semantic void' where users and systems frequently misalign, leading to manipulation, error, and eroded trust. This paper defines a rigorous model of 'intent' and introduces the concept of intent boundaries—specific thresholds where an external observer’s knowledge of an actor’s purpose becomes inadequate. By synthesizing principles from bioethics, psychology, and design theory, we propose a framework for recognizing and respecting these boundaries, ensuring that future digital architectures—particularly those driving agentic AI—preserve human agency rather than subvert it."
 keywords: "Intent, Agentic AI, Human-Computer Interaction (HCI), Digital Agency, Ethics, Dark Patterns, User Experience (UX), Identity"
-category: Paper
+category: Papers
 ---
 
 ## 1. The bandwidth problem

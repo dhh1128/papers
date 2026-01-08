@@ -8,7 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/authenticity-vs-veracity.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Analysis
+category: Analyses
 ---
 
 Since **authenticity** and **veracity** both evaluate truth, casual discussions sometimes conflate the two ideas. Philosophy and law have long recognized that this fuzziness is a mistake. However, when I first began working in cybersecurity and identity, the thinking was muddy. I credit Sam Smith and the KERI community for emphasizing the distinction in a helpful way (e.g., in the [KERI](https://trustoverip.github.io/kswg-keri-specification), [ACDC](https://trustoverip.github.io/kswg-acdc-specification), and [did:webs](https://trustoverip.github.io/tswg-did-method-webs-specification/) specifications).

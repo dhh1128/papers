@@ -1,0 +1,36 @@
+bes.pdf:
+  - category: Papers
+  - title: Bytewise and Externalized SAIDs
+  - date: 2024-10-23
+ctf.pdf:
+  - category: Guidance
+  - title: The Coming Tsunami of Falsehood
+  - date: 2024-06-01
+kspqs.pdf:
+  - category: Papers
+  - title: KERI's Strategy for Post-Quantum Security
+  - date: 2025-11-01
+ppred.pdf:
+  - category: Papers
+  - title: Privacy-Preserving Discovery (PPreD)
+  - date: 2017-01-01
+1:
+  - url: https://dhh1128.github.io/coia
+  - category: Specifications
+  - title: Conventions for Opaque Identifier Aliases (COIA)
+  - date: 2025-08-28
+2:
+  - url: https://dhh1128.github.io/canonical-quoted-text
+  - category: Specifications
+  - title: Canonical Quoted Text
+  - date: 2023-06-01
+3:
+  - url: https://dhh1128.github.io/cfa
+  - category: Specifications
+  - title: Cross-File Associations
+  - date: 2022-09-01
+4:
+  - url: https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html
+  - category: Specifications
+  - title: Verifiable Voice Protocol (VVP)
+  - date: 2025-02-01

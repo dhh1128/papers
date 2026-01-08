@@ -9,7 +9,7 @@ pdf_url: "https://dhh1128.github.io/papers/acdc-and-mtc.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Comparison
+category: Comparisons
 ---
 
 ## 1. Introduction and scope

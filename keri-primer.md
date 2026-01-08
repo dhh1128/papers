@@ -8,7 +8,7 @@ pdf_url: "https://dhh1128.github.io/papers/keri-primer.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Primer
+category: Primers
 ---
 
 # A Primer on KERI, ACDCs, and CESR

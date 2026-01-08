@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run fixnotenums.py
+      - name: Guarantee correct numbering of notes and inline citations
         run: |
-          python3 scripts/fixnotenums.py --no-fix --except reorg-ideas.md --except aold.md *.md
+          python3 scripts/fix_note_nums.py --no-fix --except reorg-ideas.md --except aold.md *.md

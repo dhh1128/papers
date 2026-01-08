@@ -10,7 +10,7 @@ pdf_url: "https://dhh1128.github.io/papers/3dim.pdf"
 language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
-category: Paper
+category: Papers
 ---
 
 We all know that identity matters. We hear about cybersecurity breaches, GDPR, refugees, deep fakes, and election fraud. Each headline highlights a new way that identity impacts us.
