@@ -93,20 +93,20 @@
           <img src="{{site.logo}}" alt="Logo" />
         {% endif %}
         <p>{{ site.description | default: site.github.project_tagline }}</p>
-        <p class="not-printed"><a href="{{ '/' | absolute_url }}">&larr; back to Papers</a></p>
       </header>
       <section>
+      <p class="not-printed"><a href="{{ '/' | absolute_url }}">&larr; back</a></p>
       {% if page.title %}
       <h1>{{ page.title }}</h1>
       {% endif %}
       {% if page.abstract %}
-      <details class="abstract" open>
+      <details class="h3 abstract" open>
         <summary>Abstract</summary>
         <p>{{ page.abstract }}</p>
       </details>
       {% endif %}
       {% if page.keywords %}
-      <details class="keywords" open>
+      <details class="h3 keywords" open>
         <summary>Keywords</summary>
         <p>{{ page.keywords }}</p>
       </details>

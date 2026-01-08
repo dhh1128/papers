@@ -13,8 +13,6 @@ layout: meta
 
 The goal of this taxonomy is to ensure that categories are [mutually exclusive and collectively exhaustive](https://en.wikipedia.org/wiki/MECE_principle), so that each document belongs unambiguously to one category.
 
-## Primary Classification Principle
-
 Each document is assigned a category by answering the following question:
 
 >*What is the primary purpose of this document for its intended reader?*
@@ -27,7 +25,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Specifications</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
+<summary class="p">Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
 <h4>Assignment test</h4>
 <p>If a reader could reasonably claim that an implementation is compliant or non-compliant with the document, it is a Specification.</p>
 
@@ -42,7 +40,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Papers</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to present an original technical thesis, model, or design, supported by structured reasoning and evidence.</summary>
+<summary class="p">Documents whose primary purpose is to present an original technical thesis, model, or design, supported by structured reasoning and evidence.</summary>
 <h4>Assignment test</h4>
 <p>If the document’s main contribution is a technical claim or proposal defended through analysis, and not a teaching guide or conformance target, it is a Paper.</p>
 
@@ -57,7 +55,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Analyses</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to examine and reason about an existing artifact, claim, or system in order to understand its properties, implications, or limitations.</summary>
+<summary class="p">Documents whose primary purpose is to examine and reason about an existing artifact, claim, or system in order to understand its properties, implications, or limitations.</summary>
 <h4>Assignment test</h4>
 <p>If the document’s value lies in explaining or critiquing something that already exists, rather than proposing a new artifact or advocating a position, it is an Analysis.</p>
 
@@ -72,7 +70,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Primers</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to teach understanding and build reader competence or mental models.</summary>
+<summary class="p">Documents whose primary purpose is to teach understanding and build reader competence or mental models.</summary>
 <h4>Assignment test</h4>
 <p>If the document is optimized for learning and orientation rather than novelty, critique, or prescription, it is a Primer.</p>
 
@@ -87,7 +85,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Comparisons</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.</summary>
+<summary class="p">Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.</summary>
 <h4>Assignment test</h4>
 <p>If the document is explicitly structured as A versus B (or A versus B versus C), it is a Comparison.</p>
 
@@ -102,7 +100,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Guidance</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to enable correct decisions or actions in practice.</summary>
+<summary class="p">Documents whose primary purpose is to enable correct decisions or actions in practice.</summary>
 <h4>Assignment test</h4>
 <p>If the central reader question is “What should I do?”, the document is Guidance.</p>
 
@@ -117,7 +115,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 <dt>Positions</dt>
 <dd>
 <details>
-<summary>Documents whose primary purpose is to advocate a stance about priorities, values, or direction.</summary>
+<summary class="p">Documents whose primary purpose is to advocate a stance about priorities, values, or direction.</summary>
 <h4>Assignment test</h4>
 <p>If the document’s conclusion is fundamentally “we should”, it is a Position.</p>
 
