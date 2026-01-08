@@ -5,13 +5,14 @@ import yaml  # Requires PyYAML
 
 def get_categories_from_policy(policy_path):
     cats = []
+    dt_re = re.compile(r'<dt(?:\s+class="[^"]*")?>([^<]+)</dt>', re.IGNORECASE)
     with open(policy_path, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-    for line in lines:
-        if line.startswith('### '):
-            cat = line.strip().replace('### ', '').strip()
-            if cat:
-                cats.append(cat)
+        for line in f:
+            m = dt_re.search(line)
+            if m:
+                cat = m.group(1).strip()
+                if cat:
+                    cats.append(cat)
     return cats
 
 
