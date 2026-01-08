@@ -12,22 +12,25 @@ body, summary.p {
     background-color: white;
     color: #444;
 }
+strong {
+    font-weight: 500;
+}
 summary.p {
     margin: 0 0 20px;
 }
-h1, h2, h3 {
+h1, h2, h3, .h1, .h2, .h3 {
     font-family: 'Barlow Condensed';
 }
-h1 {
+h1, .h1 {
     font-weight: 500;
     font-size: 20pt;
     color: #491705;
 }
-h2 {
+h2, .h2 {
     font-weight: 500;
     font-size: 15pt;
 }
-h3, details.h3 summary, dt.h3 {
+h3, details.h3 summary, .h3 {
     font-weight: 300;
     font-size: 13pt;
     color: #666666;

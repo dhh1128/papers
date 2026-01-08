@@ -11,8 +11,6 @@ layout: meta
 
 <cite>Codecraft Papers</cite> is a curated archive of long-form technical writing, including specifications, analyses, papers, and essays. The archive is not a blog. Each document is classified by primary editorial intent, not by topic, maturity, length, or rhetorical style. This policy defines the document categories used throughout the archive and the criteria for assigning documents to them.
 
-The goal of this taxonomy is to ensure that categories are [mutually exclusive and collectively exhaustive](https://en.wikipedia.org/wiki/MECE_principle), so that each document belongs unambiguously to one category.
-
 Each document is assigned a category by answering the following question:
 
 >*What is the primary purpose of this document for its intended reader?*
@@ -20,6 +18,8 @@ Each document is assigned a category by answering the following question:
 Secondary attributes (status, maturity, domain, narrative style, etc.) are expressed via metadata and do not affect category assignment.
 
 ## Categories
+
+The goal of this taxonomy is to ensure that categories are [mutually exclusive and collectively exhaustive](https://en.wikipedia.org/wiki/MECE_principle), so that each document belongs unambiguously to one category.
 
 <dl>
 <dt class="h3">Specifications</dt>
