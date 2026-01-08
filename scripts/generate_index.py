@@ -128,7 +128,7 @@ language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
 layout: meta
-----
+---
 
 [About This Archive](about.md)
 """)
