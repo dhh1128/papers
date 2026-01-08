@@ -1,5 +1,4 @@
 ---
-title: "Codecraft Papers"
 author: "Daniel Hardman"
 language: "en"
 publisher: "Codecraft"

@@ -123,7 +123,6 @@ def main():
     index_path = os.path.join(repo_root, 'index.md')
     with open(index_path, 'w', encoding='utf-8') as idx:
         idx.write("""---
-title: "Codecraft Papers"
 author: "Daniel Hardman"
 language: "en"
 publisher: "Codecraft"
