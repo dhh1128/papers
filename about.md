@@ -1,5 +1,5 @@
 ---
-title: "Editorial Policy"
+title: "About the Archive"
 author: "Daniel Hardman"
 language: "en"
 publisher: "Codecraft"
@@ -7,7 +7,7 @@ journal_title: "Codecraft Papers"
 layout: meta
 ----
 
-## Purpose of the Archive
+## Purpose
 
 <cite>Codecraft Papers</cite> is a curated archive of long-form technical writing, including specifications, analyses, papers, and essays. The archive is not a blog. Each document is classified by primary editorial intent, not by topic, maturity, length, or rhetorical style. This policy defines the document categories used throughout the archive and the criteria for assigning documents to them.
 
@@ -15,13 +15,13 @@ The goal of this taxonomy is to ensure that categories are [mutually exclusive a
 
 ## Primary Classification Principle
 
-Each document is assigned exactly one category, based on the answer to the following question:
+Each document is assigned a category by answering the following question:
 
-What is the primary purpose of this document for its intended reader?
+>*What is the primary purpose of this document for its intended reader?*
 
 Secondary attributes (status, maturity, domain, narrative style, etc.) are expressed via metadata and do not affect category assignment.
 
-## Categories and Assignment Tests
+## Categories
 
 ### Specifications
 
@@ -138,4 +138,4 @@ The following attributes are intentionally not categories and must be expressed 
 
 This separation preserves category clarity and prevents taxonomy drift.
 
-This editorial policy exists to ensure consistency, clarity, and long-term maintainability of the Codecraft Papers archive.
+This editorial policy exists to ensure consistency, clarity, and long-term maintainability of the archive.

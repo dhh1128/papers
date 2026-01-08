@@ -64,7 +64,7 @@ def get_external_items(yaml_path):
 
 def main():
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    policy_path = os.path.join(repo_root, 'editorial-policy.md')
+    policy_path = os.path.join(repo_root, 'about.md')
     external_yaml_path = os.path.join(repo_root, 'external-items.yaml')
     cat_list = get_categories_from_policy(policy_path)
     folded_cat_list = [cat.casefold() for cat in cat_list]
@@ -128,9 +128,9 @@ language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
 layout: meta
-# ----
+----
 
-For information about the Codecraft Papers archive and its document categories, see the [editorial policy](editorial-policy.md).
+[About This Archive](about.md)
 """)
         for i, cat in enumerate(cat_list):
             idx.write(f'\n## {cat}\n')

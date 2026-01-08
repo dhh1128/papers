@@ -5,9 +5,9 @@ language: "en"
 publisher: "Codecraft"
 journal_title: "Codecraft Papers"
 layout: meta
-# ----
+----
 
-For information about the Codecraft Papers archive and its document categories, see the [editorial policy](editorial-policy.md).
+[About This Archive](about.md)
 
 ## Specifications
 - [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
