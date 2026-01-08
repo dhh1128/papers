@@ -22,7 +22,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 ## Categories
 
 <dl>
-<dt>Specifications</dt>
+<dt class="h3">Specifications</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
@@ -37,7 +37,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Papers</dt>
+<dt class="h3">Papers</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to present an original technical thesis, model, or design, supported by structured reasoning and evidence.</summary>
@@ -52,7 +52,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Analyses</dt>
+<dt class="h3">Analyses</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to examine and reason about an existing artifact, claim, or system in order to understand its properties, implications, or limitations.</summary>
@@ -67,7 +67,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Primers</dt>
+<dt class="h3">Primers</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to teach understanding and build reader competence or mental models.</summary>
@@ -82,7 +82,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Comparisons</dt>
+<dt class="h3">Comparisons</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.</summary>
@@ -97,7 +97,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Guidance</dt>
+<dt class="h3">Guidance</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to enable correct decisions or actions in practice.</summary>
@@ -112,7 +112,7 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 </ul>
 </details>
 </dd>
-<dt>Positions</dt>
+<dt class="h3">Positions</dt>
 <dd>
 <details>
 <summary class="p">Documents whose primary purpose is to advocate a stance about priorities, values, or direction.</summary>
