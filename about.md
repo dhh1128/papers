@@ -23,96 +23,113 @@ Secondary attributes (status, maturity, domain, narrative style, etc.) are expre
 
 ## Categories
 
-### Specifications
+<dl>
+<dt>Specifications</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
+<h4>Assignment test</h4>
+<p>If a reader could reasonably claim that an implementation is compliant or non-compliant with the document, it is a Specification.</p>
 
-#### Definition  
-Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.
+<h4>Key properties</h4>
+<ul>
+<li>Normative authority, explicit or implicit</li>
+<li>Precise definitions, algorithms, or rules</li>
+<li>Versioning is meaningful, but maturity is irrelevant (draft and stable specifications both qualify)</li>
+</ul>
+</details>
+</dd>
+<dt>Papers</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to present an original technical thesis, model, or design, supported by structured reasoning and evidence.</summary>
+<h4>Assignment test</h4>
+<p>If the document’s main contribution is a technical claim or proposal defended through analysis, and not a teaching guide or conformance target, it is a Paper.</p>
 
-#### Assignment test  
-If a reader could reasonably claim that an implementation is compliant or non-compliant with the document, it is a Specification.
+<h4>Key properties</h4>
+<ul>
+<li>Novelty or synthesis is central</li>
+<li>Conclusions are primarily descriptive</li>
+<li>May introduce frameworks, algorithms, or architectures without asserting normativity</li>
+</ul>
+</details>
+</dd>
+<dt>Analyses</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to examine and reason about an existing artifact, claim, or system in order to understand its properties, implications, or limitations.</summary>
+<h4>Assignment test</h4>
+<p>If the document’s value lies in explaining or critiquing something that already exists, rather than proposing a new artifact or advocating a position, it is an Analysis.</p>
 
-#### Key properties  
-- Normative authority, explicit or implicit  
-- Precise definitions, algorithms, or rules  
-- Versioning is meaningful, but maturity is irrelevant (draft and stable specifications both qualify)
+<h4>Key properties</h4>
+<ul>
+<li>Object of analysis may be a standard, system, design, or argument</li>
+<li>Conclusions are descriptive or evaluative, not prescriptive</li>
+<li>No attempt to define correctness or to teach from first principles</li>
+</ul>
+</details>
+</dd>
+<dt>Primers</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to teach understanding and build reader competence or mental models.</summary>
+<h4>Assignment test</h4>
+<p>If the document is optimized for learning and orientation rather than novelty, critique, or prescription, it is a Primer.</p>
 
-### Papers
+<h4>Key properties</h4>
+<ul>
+<li>Didactic structure</li>
+<li>Explanatory examples and definitions</li>
+<li>Success is measured by reader understanding, not persuasion or adoption</li>
+</ul>
+</details>
+</dd>
+<dt>Comparisons</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.</summary>
+<h4>Assignment test</h4>
+<p>If the document is explicitly structured as A versus B (or A versus B versus C), it is a Comparison.</p>
 
-#### Definition  
-Documents whose primary purpose is to present an original technical thesis, model, or design, supported by structured reasoning and evidence.
+<h4>Key properties</h4>
+<ul>
+<li>Multiple subjects analyzed side by side</li>
+<li>Emphasis on tradeoffs, differences, and equivalences</li>
+<li>Distinct from Analyses by plurality of objects</li>
+</ul>
+</details>
+</dd>
+<dt>Guidance</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to enable correct decisions or actions in practice.</summary>
+<h4>Assignment test</h4>
+<p>If the central reader question is “What should I do?”, the document is Guidance.</p>
 
-#### Assignment test  
-If the document’s main contribution is a technical claim or proposal defended through analysis, and not a teaching guide or conformance target, it is a Paper.
+<h4>Key properties</h4>
+<ul>
+<li>Action-oriented recommendations</li>
+<li>Best practices, policies, or codes of conduct</li>
+<li>Content may evolve as conditions change</li>
+</ul>
+</details>
+</dd>
+<dt>Positions</dt>
+<dd>
+<details>
+<summary>Documents whose primary purpose is to advocate a stance about priorities, values, or direction.</summary>
+<h4>Assignment test</h4>
+<p>If the document’s conclusion is fundamentally “we should”, it is a Position.</p>
 
-#### Key properties  
-- Novelty or synthesis is central  
-- Conclusions are primarily descriptive  
-- May introduce frameworks, algorithms, or architectures without asserting normativity
-
-### Analyses
-
-#### Definition  
-Documents whose primary purpose is to examine and reason about an existing artifact, claim, or system in order to understand its properties, implications, or limitations.
-
-#### Assignment test  
-If the document’s value lies in explaining or critiquing something that already exists, rather than proposing a new artifact or advocating a position, it is an Analysis.
-
-#### Key properties  
-- Object of analysis may be a standard, system, design, or argument  
-- Conclusions are descriptive or evaluative, not prescriptive  
-- No attempt to define correctness or to teach from first principles
-
-### Primers
-
-#### Definition  
-Documents whose primary purpose is to teach understanding and build reader competence or mental models.
-
-#### Assignment test  
-If the document is optimized for learning and orientation rather than novelty, critique, or prescription, it is a Primer.
-
-#### Key properties  
-- Didactic structure  
-- Explanatory examples and definitions  
-- Success is measured by reader understanding, not persuasion or adoption
-
-### Comparisons
-
-#### Definition  
-Documents whose primary purpose is to compare two or more mechanisms, systems, or approaches along defined dimensions.
-
-#### Assignment test  
-If the document is explicitly structured as A versus B (or A versus B versus C), it is a Comparison.
-
-#### Key properties  
-- Multiple subjects analyzed side by side  
-- Emphasis on tradeoffs, differences, and equivalences  
-- Distinct from Analyses by plurality of objects
-
-### Guidance
-
-#### Definition  
-Documents whose primary purpose is to enable correct decisions or actions in practice.
-
-#### Assignment test  
-If the central reader question is “What should I do?”, the document is Guidance.
-
-#### Key properties  
-- Action-oriented recommendations  
-- Best practices, policies, or codes of conduct  
-- Content may evolve as conditions change
-
-### Positions
-
-#### Definition  
-Documents whose primary purpose is to advocate a stance about priorities, values, or direction.
-
-#### Assignment test  
-If the document’s conclusion is fundamentally “we should”, it is a Position.
-
-#### Key properties  
-- Normative and persuasive by design  
-- Grounded in technical realities but oriented toward judgment or policy  
-- Distinct from Papers and Analyses by prescriptive intent
+<h4>Key properties</h4>
+<ul>
+<li>Normative and persuasive by design</li>
+<li>Grounded in technical realities but oriented toward judgment or policy</li>
+<li>Distinct from Papers and Analyses by prescriptive intent</li>
+</ul>
+</details>
+</dd>
+</dl>
 
 ## Tiebreak Rules
 
