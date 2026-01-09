@@ -36,7 +36,7 @@
 {%- capture cc_type -%}
 {%- case cat -%}
   {%- when "papers" -%}ScholarlyArticle
-  {%- else -%}WebPage
+  {%- else -%}TechArticle
 {%- endcase -%}
 {%- endcapture -%}
 
@@ -44,15 +44,7 @@
 {
   "@context": "https://schema.org",
   "@type": {{ cc_type | strip | jsonify }},
-  "headline": {{ page.title | jsonify }},
-  "url": {{ page.url | absolute_url | jsonify }},
   "mainEntityOfPage": { "@type": "WebPage", "@id": {{ page.url | absolute_url | jsonify }} }
-  {%- if page.author -%},
-  "author": { "@type": "Person", "name": {{ page.author | jsonify }} }
-  {%- endif -%}
-  {%- if page.date -%},
-  "datePublished": {{ page.date | date_to_xmlschema | jsonify }}
-  {%- endif -%}
   {%- if page.revised_date -%},
   "dateModified": {{ page.revised_date | date_to_xmlschema | jsonify }}
   {%- endif -%}

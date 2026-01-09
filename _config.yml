@@ -17,4 +17,4 @@ defaults:
       path: ""
     values:
       seo:
-        type: "TechArticle"
+        type: "Article"
