@@ -5,6 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="WF_xeelgVD-KNxUczjdZPXC2spg9YFtg4MCl7nrflps" />
+{% if page.doi %}
+  {% assign raw_doi = page.doi | strip %}
+
+  {% comment %}
+  Normalize DOI:
+  - If it's already a DOI string, use it as-is
+  - If it's a URL (dx.doi.org or doi.org), extract the DOI
+  {% endcomment %}
+
+  {% if raw_doi contains "doi.org/" %}
+    {% assign doi = raw_doi | split: "doi.org/" | last %}
+  {% elsif raw_doi contains "dx.doi.org/" %}
+    {% assign doi = raw_doi | split: "dx.doi.org/" | last %}
+  {% else %}
+    {% assign doi = raw_doi %}
+  {% endif %}
+
+  {% assign doi_url = "https://doi.org/" | append: doi %}
+{% endif %}
+
+{% if page.seo.type %}
+{% else %}
+  {% assign page.seo.type = "ScholarlyArticle" %}
+{% endif %}
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
@@ -12,26 +36,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
-
-    {% if page.doi %}
-      {% assign raw_doi = page.doi | strip %}
-
-      {% comment %}
-      Normalize DOI:
-      - If it's already a DOI string, use it as-is
-      - If it's a URL (dx.doi.org or doi.org), extract the DOI
-      {% endcomment %}
-
-      {% if raw_doi contains "doi.org/" %}
-        {% assign doi = raw_doi | split: "doi.org/" | last %}
-      {% elsif raw_doi contains "dx.doi.org/" %}
-        {% assign doi = raw_doi | split: "dx.doi.org/" | last %}
-      {% else %}
-        {% assign doi = raw_doi %}
-      {% endif %}
-
-      {% assign doi_url = "https://doi.org/" | append: doi %}
-    {% endif %}
 
     {% if page.title %}
     <script type="application/ld+json">

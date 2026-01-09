@@ -7,8 +7,6 @@ abstract: "This article argues for ACDCs as the foundation of digital trust, wit
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
 pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Comparisons
 ---
 

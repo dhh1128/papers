@@ -6,8 +6,6 @@ abstract: "This article distinguishes between authenticity (truth of origin) and
 keywords: "authenticity, veracity, digital identity, philosophy, law, KERI, ACDC"
 pdf_url: "https://dhh1128.github.io/papers/authenticity-vs-veracity.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Analyses
 ---
 

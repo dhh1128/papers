@@ -26,10 +26,6 @@ Add semantic metadata to each page and to the site itself to communicate that th
     "name": "Daniel Hardman"
   },
   "datePublished": "YYYY-MM-DD",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Daniel Hardman Papers"
-  },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://dhh1128.github.io/papers/your-page.html"

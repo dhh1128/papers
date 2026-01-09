@@ -6,8 +6,6 @@ abstract: "This article explains why simple digital signatures are insufficient 
 keywords: "digital signatures, retrograde attack, cryptography, key management, evidence, security"
 pdf_url: "https://dhh1128.github.io/papers/was.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Primers
 ---
 

@@ -6,8 +6,6 @@ abstract: "A practical guide to cybersecurity and privacy for non-experts, offer
 keywords: "cybersecurity, privacy, password management, antivirus, 2FA, best practices, online safety"
 pdf_url: "https://dhh1128.github.io/papers/acp.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Guidance
 ---
 

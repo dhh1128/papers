@@ -6,8 +6,6 @@ abstract: "This article compares SD-JWT and ACDC technologies, discussing their 
 keywords: "SD-JWT, ACDC, verifiable credentials, digital identity, cryptography"
 pdf_url: "https://dhh1128.github.io/papers/sdjwt-acdc.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Comparisons
 ---
 

@@ -8,8 +8,6 @@ abstract: "This article explores the three fundamental dimensions of digital ide
 keywords: "identity, SSI, agents, relationships, data, privacy, key management, digital identity"
 pdf_url: "https://dhh1128.github.io/papers/3dim.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Papers
 ---
 

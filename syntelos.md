@@ -6,8 +6,6 @@ abstract: "The transition from direct human-computer interaction to an economy o
 keywords: "agentic AI, multi-agent systems, digital intent, human-agent interaction, semantic interoperability, decentralized identifiers, activity theory, commitment protocols, intention economy, policy engines, intent casting, goal codes, consent, model context protocol, intent boundaries"
 pdf_url: "https://dhh1128.github.io/papers/syntelos.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Papers
 ---
 

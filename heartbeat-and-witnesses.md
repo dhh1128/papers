@@ -4,10 +4,7 @@ author: "Daniel Hardman"
 date: 2025-12-20
 abstract: "This paper analyzes the heartbeat mechanism in the did:cel method and its relevance to KERI's approach to retrograde attack defense."
 keywords: "did:cel, heartbeat, KERI, retrograde attack, decentralized identity"
-pdf_url: "https://dhh1128.github.io/papers/heartbeat-and-witnesses.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Analyses
 ---
 

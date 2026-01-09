@@ -7,8 +7,6 @@ abstract: "This paper compares ACDCs and Merkle Tree Certificates, analyzing the
 keywords: "ACDC, Merkle Tree Certificates, digital identity, cryptography, verifiable credentials"
 pdf_url: "https://dhh1128.github.io/papers/acdc-and-mtc.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Comparisons
 ---
 

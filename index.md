@@ -1,8 +1,6 @@
 ---
 author: "Daniel Hardman"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 layout: meta
 ---
 

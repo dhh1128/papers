@@ -7,8 +7,6 @@ abstract: "This article explores the evidence lifecycle in telecommunications, e
 keywords: "evidence, telco, digital identity, credentials, trust, telecommunications"
 pdf_url: "https://dhh1128.github.io/papers/ev-life.pdf"
 language: "en"
-publisher: "Codecraft"
-journal_title: "Codecraft Papers"
 category: Papers
 ---
 
