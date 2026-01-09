@@ -7,7 +7,7 @@ layout: meta
 
 ## Purpose
 
-<cite>Codecraft Papers</cite> is an archive of self-published technical and scholarly writings. Documents are categorized according to editorial intent, audience, and level of rigor. These categories are normative rather than descriptive: placement reflects an explicit judgment about the document’s purpose and quality, not merely its topic or length.
+<cite>Codecraft Papers</cite> is an archive of technical and scholarly writings. Some are published elsewhere; some are self-published. Documents are categorized according to editorial intent, audience, and level of rigor. These categories are normative rather than descriptive: placement reflects an explicit judgment about the document’s purpose and quality, not merely its topic or length.
 
 Documents classified as Papers are intended to function as citable technical literature. They are written in a formal, declarative style; they define scope and audience explicitly; and they are maintained as versioned works. Papers are expected to include an abstract, substantive argument or analysis, and appropriate citations. Revisions are made sparingly and transparently, with version identifiers indicating material changes.
 
