@@ -9,16 +9,18 @@ on:
       - '**'
 
 jobs:
-  check-requirements:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
       - name: Install dependencies
         run: pip install pyyaml
-      - name: Run check_requirements.py
+      - name: Check that content and metadata meet requirements
         run: python scripts/check_requirements.py
+      - name: Guarantee correct numbering of notes and inline citations
+        run: python3 scripts/fix_note_nums.py --no-fix --except reorg-ideas.md --except aold.md *.md
