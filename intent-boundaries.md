@@ -7,7 +7,7 @@ abstract: "This article examines the concept of intent in digital systems, highl
 keywords: "intent, digital agency, user experience, ethics, boundaries, software design"
 pdf_url: "https://dhh1128.github.io/papers/intent-boundaries.pdf"
 language: "en"
-category: Papers
+category: Analyses
 ---
 
 ## Lip service

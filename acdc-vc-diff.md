@@ -1,9 +1,9 @@
 ---
-title: "ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts"
+title: "ACDCs and W3C VCs: Lossless vs. Lossy"
 author: "Daniel Hardman"
 date: 2025-11-24
 tags: [acdc, keri, verifiable-credentials, w3c]
-abstract: "This article argues for ACDCs as the foundation of digital trust, with W3C Verifiable Credentials as derivative artifacts, and compares their properties."
+abstract: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
 pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
 language: "en"
