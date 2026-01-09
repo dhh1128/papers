@@ -36,9 +36,12 @@
 {%- capture cc_type -%}
 {%- case cat -%}
   {%- when "papers" -%}ScholarlyArticle
+  {%- when "" -%}WebPage
   {%- else -%}TechArticle
 {%- endcase -%}
 {%- endcapture -%}
+
+<!-- debug category={{ page.category | jsonify }} cat={{ cat | jsonify }} cc_type={{ cc_type | strip | jsonify }} -->
 
 <script type="application/ld+json">
 {
