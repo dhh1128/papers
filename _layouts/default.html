@@ -13,6 +13,26 @@
     <![endif]-->
     {% include head-custom.html %}
 
+    {% if page.doi %}
+      {% assign raw_doi = page.doi | strip %}
+
+      {% comment %}
+      Normalize DOI:
+      - If it's already a DOI string, use it as-is
+      - If it's a URL (dx.doi.org or doi.org), extract the DOI
+      {% endcomment %}
+
+      {% if raw_doi contains "doi.org/" %}
+        {% assign doi = raw_doi | split: "doi.org/" | last %}
+      {% elsif raw_doi contains "dx.doi.org/" %}
+        {% assign doi = raw_doi | split: "dx.doi.org/" | last %}
+      {% else %}
+        {% assign doi = raw_doi %}
+      {% endif %}
+
+      {% assign doi_url = "https://doi.org/" | append: doi %}
+    {% endif %}
+
     {% if page.title %}
     <script type="application/ld+json">
     {
@@ -46,6 +66,10 @@
       }
     }
     </script>
+    {% endif %}
+    {% if doi %}
+    <meta name="citation_doi" content="{{ doi }}">
+    <meta name="dc.identifier" content="doi:{{ doi }}">
     {% endif %}
     {% if page.title %}
     <meta name="citation_title" content="{{ page.title | escape }}">
@@ -98,6 +122,9 @@
       <p class="not-printed"><a href="{{ '/' | absolute_url }}">&larr; back</a></p>
       {% if page.title %}
       <h1>{{ page.title }}</h1>
+      {% endif %}
+      {% if doi %}
+      <p class="doi">DOI: <a href="{{ doi_url }}" rel="external">{{ doi }}</a></p>
       {% endif %}
       {% if page.abstract %}
       <details class="abstract" open>

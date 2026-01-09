@@ -9,13 +9,11 @@ layout: meta
 
 ## Purpose
 
-<cite>Codecraft Papers</cite> is a curated archive of long-form technical writing, including specifications, analyses, papers, and essays. The archive is not a blog. Each document is classified by primary editorial intent, not by topic, maturity, length, or rhetorical style. This policy defines the document categories used throughout the archive and the criteria for assigning documents to them.
+<cite>Codecraft Papers</cite> is an archive of self-published technical and scholarly writings. Documents are categorized according to editorial intent, audience, and level of rigor. These categories are normative rather than descriptive: placement reflects an explicit judgment about the document’s purpose and quality, not merely its topic or length.
 
-Each document is assigned a category by answering the following question:
+Documents classified as Papers are intended to function as citable technical literature. They are written in a formal, declarative style; they define scope and audience explicitly; and they are maintained as versioned works. Papers are expected to include an abstract, substantive argument or analysis, and appropriate citations. Revisions are made sparingly and transparently, with version identifiers indicating material changes.
 
->*What is the primary purpose of this document for its intended reader?*
-
-Secondary attributes (status, maturity, domain, narrative style, etc.) are expressed via metadata and do not affect category assignment.
+Other categories may be exploratory, argumentative, or provisional in nature. These documents may evolve more freely and may not meet all of the formal requirements applied to Papers. Category distinctions are preserved deliberately to avoid ambiguity for readers, indexers, and downstream citation or reuse.
 
 ## Categories
 
