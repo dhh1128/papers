@@ -25,11 +25,6 @@
   {% assign doi_url = "https://doi.org/" | append: doi %}
 {% endif %}
 
-{% if page.seo.type %}
-{% else %}
-  {% assign page.seo.type = "ScholarlyArticle" %}
-{% endif %}
-
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <!--[if lt IE 9]>
@@ -37,40 +32,33 @@
     <![endif]-->
     {% include head-custom.html %}
 
-    {% if page.title %}
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "{{ page.title | escape }}",
-      {% if page.author %}
-      {% if page.author.size %}
-      "author": [
-        {% for a in page.author %}
-        { "@type": "Person", "name": "{{ a | escape }}" }{% if forloop.last == false %},{% endif %}
-        {% endfor %}
-      ],
-      {% else %}
-      "author": { "@type": "Person", "name": "{{ page.author | escape }}" },
-      {% endif %}
-      {% endif %}
-      {% if page.date %}
-      "datePublished": "{{ page.date }}",
-      {% endif %}
-      {% if page.revised_date %}
-      "dateModified": "{{ page.revised_date }}",
-      {% endif %}
-      "publisher": {
-        "@type": "Organization",
-        "name": "Codecraft"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ page.url | absolute_url }}"
-      }
-    }
-    </script>
-    {% endif %}
+{%- assign cat = page.category | default: "" | downcase -%}
+{%- capture cc_type -%}
+{%- case cat -%}
+  {%- when "papers" -%}ScholarlyArticle
+  {%- else -%}WebPage
+{%- endcase -%}
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ cc_type | strip | jsonify }},
+  "headline": {{ page.title | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ page.url | absolute_url | jsonify }} }
+  {%- if page.author -%},
+  "author": { "@type": "Person", "name": {{ page.author | jsonify }} }
+  {%- endif -%}
+  {%- if page.date -%},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }}
+  {%- endif -%}
+  {%- if page.revised_date -%},
+  "dateModified": {{ page.revised_date | date_to_xmlschema | jsonify }}
+  {%- endif -%}
+}
+</script>
+
     {% if doi %}
     <meta name="citation_doi" content="{{ doi }}">
     <meta name="dc.identifier" content="doi:{{ doi }}">

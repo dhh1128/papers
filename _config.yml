@@ -1,5 +1,5 @@
 title: Codecraft Papers
-description: scholarly and technical writings by Daniel Hardman on various topics
+description: scholarly and technical writings by Daniel Hardman
 author:
   name: "Daniel Hardman"
   twitter: "dhh1128"
@@ -12,3 +12,9 @@ show_downloads: false
 include:
   - robots.txt
   - LICENSE
+defaults:
+  - scope:
+      path: ""
+    values:
+      seo:
+        type: "TechArticle"

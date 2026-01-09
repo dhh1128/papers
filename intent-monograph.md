@@ -6,6 +6,7 @@ abstract: "In the physical world, human intent is signaled through a rich contex
 keywords: "Intent, Agentic AI, Human-Computer Interaction (HCI), Digital Agency, Ethics, Dark Patterns, User Experience (UX), Identity"
 category: Papers
 pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5909382.pdf?abstractid=5909382&mirid=1
+doi: 10.2139/ssrn.5909382
 ---
 
 ## 1. The bandwidth problem
