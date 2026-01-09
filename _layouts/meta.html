@@ -13,35 +13,6 @@
     <![endif]-->
     {% include head-custom.html %}
 
-    {% if page.title %}
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "{{ page.title | escape }}",
-      {% if page.author %}
-      "author": {
-        "@type": "Person",
-        "name": "{{ page.author | escape }}"
-      },
-      {% endif %}
-      {% if page.date %}
-      "datePublished": "{{ page.date }}",
-      {% endif %}
-      {% if page.revised_date %}
-      "dateModified": "{{ page.revised_date }}",
-      {% endif %}
-      "publisher": {
-        "@type": "Organization",
-        "name": "Codecraft"
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ page.url | absolute_url }}"
-      }
-    }
-    </script>
-    {% endif %}
   </head>
   <body>
     <div class="wrapper">
