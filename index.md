@@ -1,6 +1,8 @@
 ---
 author: "Daniel Hardman"
 language: "en"
+publisher: "Codecraft"
+journal_title: "Codecraft Papers"
 layout: meta
 ---
 
@@ -14,28 +16,28 @@ layout: meta
 
 ## Papers
 - [Bytewise and Externalized SAIDs](bes.pdf) (2024-10-23)
-- [Intent and Boundaries](intent-boundaries.md) (2025-06-20)
-- [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-20)
+- [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
 - [KERI's Strategy for Post-Quantum Security](kspqs.pdf) (2025-11-01)
 - [Privacy-Preserving Discovery (PPreD)](ppred.pdf) (2017-01-01)
-- [Security, Silos, and Sovereignty](sss.md) (2021-03-12)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
-- [The Evidence Lifecycle in Telco](ev-life.md) (2025-08-07)
 - [Three Dimensions of Identity](3dim.md) (2019-01-29)
 
 ## Analyses
 - [Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md) (2025-12-20)
 - [Authenticity vs. Veracity](authenticity-vs-veracity.md) (2025-12-28)
+- [Intent and Boundaries](intent-boundaries.md) (2025-06-20)
+- [Security, Silos, and Sovereignty](sss.md) (2021-03-12)
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 
 ## Primers
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
 - [Sentries, Confessionals, Vaults, and Envelopes](svce.md) (2023-01-18)
+- [The Evidence Lifecycle in Telco](ev-life.md) (2025-08-07)
 - [Why Anchored Signatures?](was.md) (2025-02-20)
 - [Zooko and Houdini: A Flatland Parable](zh.md) (2024-06-20)
 
 ## Comparisons
-- [ACDCs Should Underpin Digital Trust; Keep W3C VCs as Derivative Artifacts](acdc-vc-diff.md) (2025-11-24)
+- [ACDCs and W3C VCs: Lossless vs. Lossy](acdc-vc-diff.md) (2025-11-24)
 - [Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md) (2026-01-06)
 - [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)
 
