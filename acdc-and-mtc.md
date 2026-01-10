@@ -131,7 +131,7 @@ Revocation follows the same pattern. An ACDC is revoked through events that chan
 
 Merkle Tree Certificates place freshness at the center of their efficiency model.
 
-If a relying party is up to date on landmarks, certificate validation can be performed with minimal data. If not, validation falls back to heavier proofs that resemble today’s certificates [5, 9].
+If a relying party is up to date on landmarks, certificate validation can be performed with minimal data. If not, validation falls back to heavier proofs that resemble today’s certificates [5, 9, 13].
 
 Revocation remains anchored in WebPKI semantics [11]. The Merkle structure optimizes how evidence of issuance and logging is conveyed; it does not replace certificate lifecycle mechanisms.
 
@@ -145,9 +145,9 @@ Each approach reflects the constraints of its home ecosystem.
 
 ## 6. Post-quantum readiness
 
-Post-quantum cryptography introduces uneven pressure. Keys and signatures grow larger, and systems already close to their operational limits feel that growth first [4, 13].
+Post-quantum cryptography introduces uneven pressure. Keys and signatures grow larger, and systems already close to their operational limits feel that growth first [4, 14].
 
-Both KERI/ACDCs and Merkle Tree Certificates rely on hash functions as long-lived anchors [10, 13]. Beyond that shared reliance, their responses diverge.
+Both KERI/ACDCs and Merkle Tree Certificates rely on hash functions as long-lived anchors [10, 14]. Beyond that shared reliance, their responses diverge.
 
 ### 6.1 Merkle Tree Certificates and size pressure
 
@@ -204,7 +204,6 @@ If this paper succeeds, it leaves the reader with clearer mental models, not a v
 ---
 
 ## References
-
 [1] Smith, S. (2019). *Key Event Receipt Infrastructure (KERI)*. arXiv:1907.02195. https://doi.org/10.48550/arXiv.1907.02195
 
 [2] Trust Over IP KSWG. (2023). *Authentic Chained Data Containers (ACDC) Specification*. Trust Over IP Foundation.
@@ -229,6 +228,6 @@ If this paper succeeds, it leaves the reader with clearer mental models, not a v
 
 [12] Hardman, D. (2023). *Verifiable Voice Protocol*. IETF Internet-Draft draft-hardman-verifiable-voice-protocol-02.
 
-[13] National Institute of Standards and Technology. (2024). *FIPS 204: Module-Lattice-Based Digital Signature Standard*. NIST.
+[13] Rescorla, E. (2018). *The Transport Layer Security (TLS) Protocol Version 1.3*. RFC 8446. https://doi.org/10.17487/RFC8446
 
-[14] Rescorla, E. (2018). *The Transport Layer Security (TLS) Protocol Version 1.3*. RFC 8446. https://doi.org/10.17487/RFC8446
+[14] National Institute of Standards and Technology. (2024). *FIPS 204: Module-Lattice-Based Digital Signature Standard*. NIST.

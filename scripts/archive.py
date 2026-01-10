@@ -156,10 +156,10 @@ def cat_index(cat_name: str) -> int:
 
 exit_code = 0
 
-def complain(msg):
+def complain(msg, update_exit_code=True):
     global exit_code
     sys.stderr.write(msg + '\n')
-    exit_code = 1
+    if update_exit_code: exit_code = 1
 
 if __name__ == '__main__':
     print("\nCategories:")
