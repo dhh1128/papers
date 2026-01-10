@@ -12,15 +12,14 @@ layout: meta
 - [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
 - [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
 - [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
-- [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html) (2025-02-01)
+- [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp) (2025-02-01)
 
 ## Papers
-- [Bytewise and Externalized SAIDs](bes.pdf) (2024-10-23)
+- [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
-- [KERI's Strategy for Post-Quantum Security](kspqs.pdf) (2025-11-01)
-- [Privacy-Preserving Discovery (PPreD)](ppred.pdf) (2017-01-01)
+- [KERI's Strategy for Post-Quantum Security](kspqs.md) (2025-11-01)
+- [Privacy-Preserving Discovery (PPreD)](ppred.md) (2017-01-01)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
-- [Three Dimensions of Identity](3dim.md) (2019-01-29)
 
 ## Analyses
 - [Analysis of did:cel Heartbeat: Relevance to KERI](heartbeat-and-witnesses.md) (2025-12-20)
@@ -33,6 +32,7 @@ layout: meta
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
 - [Sentries, Confessionals, Vaults, and Envelopes](svce.md) (2023-01-18)
 - [The Evidence Lifecycle in Telco](ev-life.md) (2025-08-07)
+- [Three Dimensions of Identity](3dim.md) (2019-01-29)
 - [Why Anchored Signatures?](was.md) (2025-02-20)
 - [Zooko and Houdini: A Flatland Parable](zh.md) (2024-06-20)
 
@@ -43,7 +43,7 @@ layout: meta
 
 ## Guidance
 - [Advice About Cybersecurity and Privacy](acp.md) (2023-06-06)
-- [The Coming Tsunami of Falsehood](ctf.pdf) (2024-06-01)
+- [The Coming Tsunami of Falsehood](ctf.md) (2024-06-01)
 
 ## Positions
 - [A Call for Reciprocal Negotiated Accountability](crna.md) (2021-01-15)
