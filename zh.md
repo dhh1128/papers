@@ -5,6 +5,7 @@ date: 2024-06-20
 tags: [identity, ux]
 category: Primers
 original_publication: "https://www.didas.swiss/2024/11/26/dice-2024-shaping-the-future-of-digital-trust/"
+item_id: CC-PRI-240602
 ---
 
 ## Pick 2 of 3

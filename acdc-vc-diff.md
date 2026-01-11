@@ -8,6 +8,7 @@ keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identi
 pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
 language: "en"
 category: Comparisons
+item_id: CC-COM-251105
 ---
 
 <p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>

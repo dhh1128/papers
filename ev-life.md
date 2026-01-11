@@ -8,6 +8,7 @@ keywords: "evidence, telco, digital identity, credentials, trust, telecommunicat
 pdf_url: "https://dhh1128.github.io/papers/ev-life.pdf"
 language: "en"
 category: Primers
+item_id: CC-PRI-250803
 ---
 
 >This article is a guest post in [The Evidence Advantage](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/), a series by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The series is strongly recommended as important context.

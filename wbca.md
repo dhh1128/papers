@@ -5,9 +5,10 @@ date: 2020-04-05
 tags: [privacy, credentials]
 category: Analyses
 original_publication: "https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/"
+item_id: CC-ANA-200401
 ---
 
-In a previous post, I described how verifiable credentials differ in their approach to privacy:
+In a previous article, I described how verifiable credentials differ in their approach to privacy:
 
 ![correlating credentials](assets/correlating-credentials.png)
 

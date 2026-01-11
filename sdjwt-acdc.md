@@ -7,6 +7,7 @@ keywords: "SD-JWT, ACDC, verifiable credentials, digital identity, cryptography"
 pdf_url: "https://dhh1128.github.io/papers/sdjwt-acdc.pdf"
 language: "en"
 category: Comparisons
+item_id: CC-COM-241105
 ---
 
 *Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*

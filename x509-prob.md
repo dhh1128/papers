@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2024-11-15
 revised_date: 2025-11-01
 category: Positions
+item_id: CC-POS-241104
 ---
 
 The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.

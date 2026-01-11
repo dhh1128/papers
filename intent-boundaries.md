@@ -8,6 +8,7 @@ keywords: "intent, digital agency, user experience, ethics, boundaries, software
 pdf_url: "https://dhh1128.github.io/papers/intent-boundaries.pdf"
 language: "en"
 category: Analyses
+item_id: CC-ANA-250602
 ---
 
 ## Lip service

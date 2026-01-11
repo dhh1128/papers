@@ -9,6 +9,7 @@ keywords: "identity, SSI, agents, relationships, data, privacy, key management, 
 pdf_url: "https://dhh1128.github.io/papers/3dim.pdf"
 language: "en"
 category: Primers
+item_id: CC-PRI-190101
 ---
 
 We all know that identity matters. We hear about cybersecurity breaches, GDPR, refugees, deep fakes, and election fraud. Each headline highlights a new way that identity impacts us.

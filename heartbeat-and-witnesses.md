@@ -6,6 +6,7 @@ abstract: "This paper analyzes the heartbeat mechanism in the did:cel method and
 keywords: "did:cel, heartbeat, KERI, retrograde attack, decentralized identity"
 language: "en"
 category: Analyses
+item_id: CC-ANA-251209
 ---
 
 The `did:cel` method specification introduces a "heartbeat" mechanism designed to protect the integrity of the identifier's log [1]. This analysis examines the purpose of the heartbeat feature and evaluates its necessity within the Key Event Receipt Infrastructure (KERI) ecosystem.

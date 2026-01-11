@@ -7,6 +7,7 @@ keywords: "Intent, Agentic AI, Human-Computer Interaction (HCI), Digital Agency,
 category: Papers
 pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5909382.pdf?abstractid=5909382&mirid=1
 doi: 10.2139/ssrn.5909382
+item_id: CC-PAP-251207
 ---
 
 ## 1. The bandwidth problem

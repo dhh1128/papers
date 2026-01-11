@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import yaml
+import datetime
 
 external_url_pat = re.compile('^https?://.*')
 repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -137,7 +138,7 @@ def categories():
                 cat = m.group(1).strip()
                 if cat:
                     _cats.append(cat)
-        _comparable_cats = [c.lower()[:4] for c in _cats]
+        _comparable_cats = [c.lower()[:3] for c in _cats]
     for c in _cats:
         yield c
 
@@ -148,11 +149,42 @@ def cat_index(cat_name: str) -> int:
     """
     # Force _comparable_cats to be populated.
     for x in categories(): break
-    comparable_name = cat_name.lower()[:4]
+    comparable_name = cat_name.lower()[:3]
     for i, c in enumerate(_comparable_cats):
-        if comparable_name == c[:4]:
+        if comparable_name == c:
             return i
     return -1
+
+def make_item_id(item, counter=None):
+    """
+    Generate a document ID according to the convention:
+    CC-XXX-YYOOMM
+    - CC: literal prefix
+    - XXX: first three letters of category, uppercased
+    - YY: last two digits of year
+    - OO: two-digit ordinal (counter, zero-padded)
+    - MM: two-digit month
+
+    If counter is provided, it must be a dict that tracks
+    how many items of a given type have been seen so far
+    in a year.
+    """
+    category = item.meta['category'].upper()[:3]
+    date = item.meta['date']
+    # Accepts YYYY-MM-DD or YYYY-MM or datetime.date/datetime.datetime
+    if isinstance(date, (datetime.date, datetime.datetime)):
+        year = f"{date.year % 100}"
+        month = f"{date.month:02d}"
+    elif isinstance(date, str):
+        parts = date.split('-')
+        year = f"{int(parts[0][-2:]):02d}"
+        month = f"{int(parts[1]):02d}"
+    if counter is not None:
+        ordinal = counter.get(year, 0) + 1
+        counter[year] = ordinal
+    else:
+        ordinal = 1
+    return f"CC-{category}-{year}{month}{ordinal:02d}"
 
 exit_code = 0
 
@@ -174,3 +206,8 @@ if __name__ == '__main__':
     print("\nExternal Items:")
     for item in external_items():
         print(f"  {item.url} ({item.meta.get('title')})")
+    counter = {}
+    ii = sorted([i for i in internal_items()], key=lambda x: x.meta['date'])
+    for item in ii:
+        id = make_item_id(item, counter)
+        print(f"{item.url}: {id}")

@@ -7,6 +7,7 @@ keywords: "cybersecurity, privacy, password management, antivirus, 2FA, best pra
 pdf_url: "https://dhh1128.github.io/papers/acp.pdf"
 language: "en"
 category: Guidance
+item_id: CC-GUI-230604
 ---
 
 # Advice About Cybersecurity and Privacy

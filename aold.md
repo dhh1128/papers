@@ -5,6 +5,7 @@ date: 2022-11-16
 tags: [identity, ssi, empowerment, data, advocacy]
 original_publication: "https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd"
 category: Positions
+item_id: CC-POS-221101
 ---
 
 ### (TL;DR)
