@@ -139,8 +139,39 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
       {% if page.title %}
       <h1>{{ page.title }}</h1>
       {% endif %}
-      {% if doi %}
-      <p class="doi">DOI: <a href="{{ doi_url }}" rel="external">{{ doi }}</a></p>
+      {% if doi or page.item_id or page.version or canonical_pdf_url %}
+      <div class="pubmeta">
+        <p>
+          {% if doi %}
+            <span class="meta-label">DOI:</span>
+            <a href="{{ doi_url }}" rel="external">{{ doi }}</a>
+            {% if page.item_id or page.version or canonical_pdf_url %}
+              <span class="meta-sep"> · </span>
+            {% endif %}
+          {% endif %}
+
+          {% if page.item_id %}
+            <span class="meta-label">Item ID:</span>
+            <span class="meta-mono">{{ page.item_id }}</span>
+            {% if page.version or canonical_pdf_url %}
+              <span class="meta-sep"> · </span>
+            {% endif %}
+          {% endif %}
+
+          {% if page.version %}
+            <span class="meta-label">Version:</span>
+            <span class="meta-mono">{{ page.version }}</span>
+            {% if canonical_pdf_url %}
+              <span class="meta-sep"> · </span>
+            {% endif %}
+          {% endif %}
+
+          {% if canonical_pdf_url %}
+            <span class="meta-label">Canonical PDF:</span>
+            <a href="{{ canonical_pdf_url | absolute_url }}">Download</a>
+          {% endif %}
+        </p>
+      </div>
       {% endif %}
       {% if page.abstract %}
       <details class="abstract" open>
