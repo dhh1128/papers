@@ -151,7 +151,7 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
           {% endif %}
 
           {% if page.item_id %}
-            <span class="meta-label">Item ID:</span>
+            <span class="meta-label">item ID:</span>
             <span class="meta-mono">{{ page.item_id }}</span>
             {% if page.version or canonical_pdf_url %}
               <span class="meta-sep"> · </span>
@@ -159,7 +159,7 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
           {% endif %}
 
           {% if page.version %}
-            <span class="meta-label">Version:</span>
+            <span class="meta-label">version:</span>
             <span class="meta-mono">{{ page.version }}</span>
             {% if canonical_pdf_url %}
               <span class="meta-sep"> · </span>
@@ -167,8 +167,8 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
           {% endif %}
 
           {% if canonical_pdf_url %}
-            <span class="meta-label">Canonical PDF:</span>
-            <a href="{{ canonical_pdf_url | absolute_url }}">Download</a>
+            <span class="meta-label">canonical PDF:</span>
+            <a href="{{ canonical_pdf_url | absolute_url }}">download</a>
           {% endif %}
         </p>
       </div>

@@ -17,10 +17,8 @@ The CESR spec defines self-addressing data (SAD) as a data structure that contai
 
 When a SAD holds its SAID, the correspondence between the two can be checked, making the data structure versioned and authenticatable. [2, 3, 4, 5, 6, 7] Any change to the SAD or SAID breaks the correspondence. The SAID can also be used by itself as a tamper-evident reference to or compression of its associated SAD, enabling extremely efficient caching. Embedding additional, foreign SAIDs in a given SAD is a linking strategy that enables complex and decentralized graphs of authenticated data. These graphs are far more efficient, secure, and robust across untrusted storage and internet disruption than the generic Semantic Web, which has no such guarantees. They are a core building block of authentic chained data containers (ACDCs). [8]
 
-<figure id="fig1">
-  <img src="assets/normal-SAD-to-SAID.png">
-  <figcaption>Figure 1: CESR's saidification algorithm</figcaption>
-</figure>
+<a id="fig1"></a>
+![Figure 1: CESR's saidification algorithm](assets/normal-SAD-to-SAID.png)
 
 ## 2. Opaquely Structured Data
 Imagining the relationship between SAD and SAID as one of a data structure to a field works well for structured serialization formats like JSON, CBOR, or MsgPack. However, what if we want to securely reference, share, and cache data that isn't structured the way CESR's saidification algorithm expects? The world is full of data like this. Consider YouTube's video catalog, or the set of documents on a company's SharePoint, or a personal collection of digital photos, or an invoice attached to an email as a PDF. It would be helpful if such data could also participate in efficient, robust, authenticated data graphs.
@@ -35,20 +33,16 @@ We could imagine adding a custom field to hold a SAID in an opaquely structured 
 ### 3.1 Byte array
 The first step toward a solution is to embrace the opacity of these formats and simply view them as byte arrays (or alternatively, as a 3-field data structure: bytes-before, SAID, bytes-after). This completely eliminates canonicalization problems — any bytewise difference is significant — and it gives us an easy and wholly generic, robust saidification algorithm. Rather than traversing structure to find a field in the data, we simply scan the byte stream for the placeholder:
 
-<figure id="fig2">
-  <img src="assets/opaque-SAD-to-SAID-trivial.png">
-  <figcaption>Figure 2: naïve algorithm for a SAID in a byte array</figcaption>
-</figure>
+<a id="fig2"></a>
+![Figure 2: naïve algorithm for a SAID in a byte array](assets/opaque-SAD-to-SAID-trivial.png)
 
 ### 3.2 Delimiters
 Although this makes saidification easy, it creates a new problem, which is that there's no reliable way to find the SAID once it's been inserted. After all, the SAID is a byte sequence that we can't predict in advance.
 
 The simple solution is to use delimiters in both step 1 and step 3:
 
-<figure id="fig3">
-  <img src="assets/opaque-SAD-to-SAID-delims.png">
-  <figcaption>Figure 3: byte array with delimiter + SAID</figcaption>
-</figure>
+<a id="fig3"></a>
+![Figure 3: byte array with delimiter + SAID](assets/opaque-SAD-to-SAID-delims.png)
 
 We call this modified algorithm (including minor enhancements described in 3.5 below) the bytewise SAID algorithm, a SAD that uses it a bytewise SAD, a SAID produced by it a bytewise SAID (or bSAID for short), and a delim+placeholder an insertion point.
 
@@ -71,7 +65,7 @@ A regex that correctly matches insertion points in an arbitrary byte stream is:
 SAID:([EFGHI](?:[-_\w]{43}|#{43})|0[DEFG](?:[-_\w]{86}|#{86}))
 ```
 
-Note that this regex is case-sensitive, and it MUST match as a byte stream (e.g., be declared as rb"..." in python) rather than as unicode text, or the \w construct will produce invalid results.
+Note that this regex is case-sensitive, and it MUST match as a byte stream (e.g., be declared as rb"..." in python) rather than as unicode text, or the `\w` construct will produce invalid results.
 
 Recall that standard JSON saidification accepts any JSON object, normalizes it, finds a field that will hold the new SAID (using a field named "d" as a default), replaces any prior value of that field with a string that contains exactly as many # characters as the SAID will replace, then hashes the data and replaces the # characters with the SAID.
 
@@ -107,10 +101,8 @@ This may seem like a futile exercise. The same flexibility that allows us to emb
 
 We call this (including minor enhancements described in 3.5 below) the externalized SAID algorithm, a SAD that uses it an externalized SAD, a SAID produced by it an externalized SAID (or xSAID for short), and the combination of delimiter+regex an exsertion instruction:
 
-<figure id="fig4">
-  <img src="assets/opaque-SAD-to-external-SAID.png">
-  <figcaption>Figure 4: byte array with delimiter + SAID regex</figcaption>
-</figure>
+<a id="fig4"></a>
+![Figure 4: byte array with delimiter + SAID regex](assets/opaque-SAD-to-external-SAID.png)
 
 This algorithm avoids any rewrite of the data structure after it's saved by its native tools, but it guarantees that a SAID is carried with the file wherever it goes, because any person or tool that sees the opaquely structured data in its decompressed/decrypted form can discover that a naming constraint exists on the file. If the file is (re)named improperly, it becomes an invalid match for the file's content. However, a proper name can be restored by renaming again in a way that conforms to the requirements in the regex.
 
@@ -123,10 +115,8 @@ Neither the bytewise algorithm nor the externalized algorithm can deal with the 
 #### 3.5.1 Bytewise echoes
 In the bytewise algorithm, the first occurrence of a valid insertion point defines a secondary search string. All other occurrences of the placeholder in the same file, called echoes, are replaced by a template when calculating the SAID value, and are then replaced by the calculated SAID value once it is known. This allows file content to reference its SAID in multiple places. For example, a markdown file could use echoes to display a SAID in YAML frontmatter and in a visible title, and place the less user-friendly delimiter+placeholder in an HTML comment:
 
-<figure id="fig5">
-  <img src="assets/bytewise-SAID-echoes.png">
-  <figcaption>Figure 5: A delim+placeholder and its echoes</figcaption>
-</figure>
+<a id="fig5"></a>
+![Figure 5: A delim+placeholder and its echoes](assets/bytewise-SAID-echoes.png)
 
 #### 3.5.2 Combined algorithms
 A single file may use both the bytewise and the externalized algorithms. If the bytewise algorithm is practical for a given file, the externalized algorithm is not necessary to communicate the SAID. However, it may be useful to bind the filename and file content together more strongly.

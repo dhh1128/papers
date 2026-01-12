@@ -2,7 +2,7 @@
 title: "Why X509 Certs Should Be Secondary Evidence of Org Identity"
 author: "Daniel Hardman"
 date: 2024-11-15
-revised_date: 2025-11-01
+revision_date: 2025-11-01
 category: Positions
 item_id: CC-POS-241104
 ---
