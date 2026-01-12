@@ -13,6 +13,13 @@ def main(item):
     author = meta['author']
     d = date_as_pdfdate(meta['date'])
     md = meta.get('revision_date', None)
+    titl = meta['title']
+    if len(titl) > 40:
+        i = titl[:41].rfind(' ')
+        if i > 10:
+            titl = titl[:i] + '…'
+        else:
+            titl = titl[:39] + '…'
     if md:
         md = date_as_pdfdate(md)
     if isinstance(author, list):
@@ -30,6 +37,9 @@ def main(item):
         f.write(r'    pdfsubject={Codecraft Papers (item: ' + meta['item_id'] + ', version: ' + str(meta['version']) + ')},\n')
         f.write(r'    pdfkeywords={' + meta['keywords'] + '}\n')
         f.write('  }\n}\n')
+        f.write(r'\newcommand{\ccitemid}{' + meta['item_id'] + '}\n')
+        f.write(r'\newcommand{\ccversion}{' + str(meta['version']) + '}\n')
+        f.write(r'\newcommand{\cctitle}{' + titl + '}\n')
     cmd = f'pandoc "{input_path}" -o "{output_path}" ' + \
         '--from=markdown+autolink_bare_uris+yaml_metadata_block+implicit_figures+link_attributes ' + \
         '--pdf-engine=xelatex ' + \
@@ -41,7 +51,8 @@ def main(item):
         '-V monofont="Inconsolata" ' + \
         '-V microtypeoptions=protrusion=true ' + \
         '--include-in-header=scripts/pandoc/pkgs.tex ' + \
-        '--include-in-header=.pdfmeta.tex '
+        '--include-in-header=.pdfmeta.tex ' + \
+        '--include-in-header=scripts/pandoc/header.tex '
     print(cmd)
     ret = os.system(cmd)
     if not ret:
