@@ -2,6 +2,7 @@
 title: "ACDCs and W3C VCs: Lossless vs. Lossy"
 author: "Daniel Hardman"
 date: 2025-11-24
+revision_date: 2026-01-14
 tags: [acdc, keri, verifiable-credentials, w3c]
 abstract: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
@@ -9,6 +10,7 @@ pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
 language: "en"
 category: Comparisons
 item_id: CC-COM-251105
+version: 1.1
 ---
 
 <p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>
@@ -78,7 +80,8 @@ Cryptographers recognize that every signing key has a cryptoperiod — a statist
 An outside observer also cannot assess the robustness of the issuer's key management practices. How often do they rotate keys? What triggered the last rotation — a scheduled policy or a suspected breach? What safeguards govern the rotation process? In high-assurance contexts, these questions matter. A legal entity signing million-dollar contracts or a pharmaceutical company certifying drug provenance should demonstrate rigorous key hygiene. But in standard VC ecosystems, there is no transparent record. Verifiers must trust the issuer's current assertions without evidence of responsible stewardship over time.
 
 ACDCs are backed by KERI, which maintains a complete, cryptographically verifiable Key Event Log (KEL). Every key rotation, every delegation, every change in signing authority is recorded with cryptographic proofs of continuity. Crucially, KERI anchors credential issuances to specific key states in the KEL, proving that a credential was issued during the cryptoperiod of a valid key. This extends verifiability beyond the statistical cryptoperiod because the historical record is tamper-evident.
-More importantly, KERI uses independent witnesses to detect actual compromise when it happens, not just estimate statistical likelihood. If a key is misused, witnesses detect the anomaly and trigger rotation recovery. This transforms cryptoperiods from fixed statistical estimates into adaptive responses to real risk. Think of it as the difference between smoking statistics (average cancer risk) and regular screenings (detect early, treat immediately). An organization with a riskier threat profile discovers problems early and adapts, rather than waiting for a breach to metastasize.
+
+More importantly, KERI uses independent witnesses plus watchers to detect actual compromise when it happens, not just estimate statistical likelihood. If a key is misused, witnesses publish data that watchers can use to detect the anomaly; controllers can then trigger rotation recovery. This transforms cryptoperiods from fixed statistical estimates into adaptive responses to real risk. Think of it as the difference between smoking statistics (average cancer risk) and regular screenings (detect early, treat immediately). An organization with a riskier threat profile discovers problems early and adapts, rather than waiting for a breach to metastasize.
 
 The KEL also allows verifiers to appraise an issuer's actual track record. An auditor can review rotation frequency, recovery incidents, and changes in key management strength over time. Trust becomes evidence-based, not merely asserted. A pharmaceutical company can demonstrate five years of quarterly rotations with no compromises. A startup can show it upgraded from single-signature to multi-signature control as it matured. Verifiers adjust their trust accordingly.
 
@@ -86,7 +89,7 @@ KERI also implements [pre-rotation](https://trustoverip.github.io/kswg-keri-spec
 
 This is not theoretical. As quantum computing advances, "harvest now, decrypt later" attacks are already underway — adversaries save encrypted sessions today, knowing they can crack them later. NIST and ENISA have issued urgent guidance about post-quantum transitions. [ACDCs are post-quantum ready by design](kspqs.pdf). Pre-rotation allows identifiers to commit to quantum-resistant keys before they are needed, protecting long-lived credentials from future compromise.
 
-W3C VCs have no normative support for pre-rotation, witness-based compromise detection, or transparent key event logs. Some DID methods support key rotation, but protections vary widely and are not enforced. In a post-quantum world, this is a lossy model — you cannot recover security guarantees or accountability once they are gone.
+W3C VCs have no normative support for pre-rotation, witness-and-watcher-based compromise detection, or transparent key event logs. Some DID methods support key rotation, but protections vary widely and are not enforced. In a post-quantum world, this is a lossy model — you cannot recover security guarantees or accountability once they are gone.
 
 ### Loss 6: Schema Stability
 
