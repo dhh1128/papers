@@ -16,6 +16,7 @@ layout: meta
 
 ## Papers
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
+- [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
 - [KERI's Strategy for Post-Quantum Security](kspqs.md) (2025-11-01)
 - [Privacy-Preserving Discovery (PPreD)](ppred.md) (2017-01-01)
