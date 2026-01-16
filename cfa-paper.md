@@ -6,7 +6,7 @@ date: 2025-12-18
 doi: 5940195
 category: Papers
 item_id: CC-PAP-251208
-pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5909382.pdf?abstractid=5909382&mirid=1
+pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5940195.pdf?abstractid=5940195&mirid=1
 abstract: |
   Folders, archive files, source code repositories, and similar containers are the dominant mechanisms for grouping digital artifacts today [1,2]. Containers offer clarity and durability, but they also impose rigid structure and become fragile when data moves across systems or administrative boundaries. Tagging systems provide a more flexible and decentralized alternative, but at the cost of precision and formal interpretability; prior work documents the semantic ambiguity and weak governance that arise in collaborative tagging and folksonomies [3–5].
 
