@@ -2,7 +2,7 @@
 title: "Who Is Signing?"
 author: "Daniel Hardman"
 date: 2026-02-07
-abstract: "Explores the reasons why a simple answer about which entity is directly in control of cryptographic keys may limit our insight."
+abstract: "Explores the reasons why a simple answer to the question of which entity is in control of cryptographic keys may limit our insight."
 keywords: "intent, digital signatures, authenticity, delegation"
 language: "en"
 category: Analyses
