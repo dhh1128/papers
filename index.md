@@ -28,6 +28,7 @@ layout: meta
 - [Intent and Boundaries](intent-boundaries.md) (2025-06-20)
 - [Security, Silos, and Sovereignty](sss.md) (2021-03-12)
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
+- [Who Is Signing?](who-sign.md) (2026-02-07)
 
 ## Primers
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
