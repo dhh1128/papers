@@ -9,8 +9,6 @@ category: Analyses
 item_id: CC-ANA-260203
 ---
 
-# Signing Doesn't Always Claim Authorship
-
 People often treat a signature as if it were a claim of authorishop. That is sometimes true. But it is not what signatures *are* in general — and it is not what digital signatures are in particular.
 
 A signature is a mechanism. Its meaning depends on context.
@@ -45,7 +43,7 @@ A digital signature can show that *someone controlling a private key* processed 
 
 Those meanings have to come from protocol, policy, ceremony, or surrounding evidence.
 
-That is why modern ecosystems often *encode* purpose explicitly. The W3C Verifiable Credentials work includes a `proofPurpose` field (for example, `assertionMethod`) precisely to avoid guessing what a signature "means".[6][7]
+That is why modern ecosystems often *encode* purpose explicitly. The W3C Verifiable Credentials work includes a `proofPurpose` field (for example, `assertionMethod`) precisely to avoid guessing what a signature "means".[6, 7]
 
 And the EU Digital Identity Wallet Architecture and Reference Framework is unambiguous that signing is not just about documents you authored: the Wallet "will allow the User to create qualified electronic signatures or seals over any data".[8] It even includes a blueprint titled "Remote QES — Creating a signature for authentication / authorisation".[9] If a signature can be for authentication or authorisation, then "authorship" cannot be the default inference.
 
@@ -53,7 +51,7 @@ And the EU Digital Identity Wallet Architecture and Reference Framework is unamb
 
 A signature is evidence that a signing mechanism ran.
 
-If you need to know what was meant, do not assume. Ask where semantics come from:
+If you need to know what was meant, do not assume. A governance framework or specification may answer. Otherwise, Ask where semantics come from:
 
 - What role was the signer in?
 - What ceremony or policy governs the act?
