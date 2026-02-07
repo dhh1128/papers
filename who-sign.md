@@ -66,11 +66,11 @@ A signature may mean:
 
 Consider signing a petition. You did not write it. You may not agree with every sentence. But your signature expresses endorsement. The meaning of the signature is *not authorship*—it is *stance*.
 
-Cryptographic systems inherited a bias to assume signing was an assertion of authoriship from early message-signing use cases. In credential contexts, specifications often do make the intent of a signature clear. However, occasional naive gaps surface. Identity systems cannot afford to neglect this nuance.
+Cryptographic systems inherited a bias to assume signing was an assertion of authoriship from early message-signing use cases. In credential contexts, specifications often do make the intent of a signature clear. However, occasional naive gaps surface. Identity systems cannot afford to neglect this nuance. [1]
 
 ## A lifecycle view of signing
 
-In robust identity architectures, signatures typically appear at **multiple points in an evidence lifecycle**, and each plays a different role [1].
+In robust identity architectures, signatures typically appear at **multiple points in an evidence lifecycle**, and each plays a different role [2].
 
 1. **Issuers sign credentials**  
    These signatures assert facts about the world: legal identity, control of a resource, rights to use a brand. The signer is an authoritative source, not the subject.
@@ -91,13 +91,13 @@ Delegation is unavoidable. No serious organization can function without it.
 
 The real question is not whether delegation exists, but *whether it is inspectable*.
 
-Some systems externalize governance. For example, multisignature identifiers can make signing thresholds, role separation, and recovery mechanisms visible and verifiable. Observers can see not just *that* something was signed, but *how authority is distributed* [2].
+Some systems externalize governance. For example, multisignature identifiers can make signing thresholds, role separation, and recovery mechanisms visible and verifiable. Observers can see not just *that* something was signed, but *how authority is distributed* [3].
 
-Unfortunately, most tech in common use today hides governance behind a single key. A sophisticated policy engine may exist internally—requiring approvals, enforcing limits, or coordinating humans—but externally, the result is indistinguishable from a lone script with a leaked secret [3, 4, 5].
+Unfortunately, most tech in common use today hides governance behind a single key. A sophisticated policy engine may exist internally—requiring approvals, enforcing limits, or coordinating humans—but externally, the result is indistinguishable from a lone script with a leaked secret [4, 5, 6].
 
 From the outside, these two situations look the same.
 
-This is not a critique of any specific tool. It is an observation about evidence. *Opaque control collapses meaningful distinctions*, and collapsed distinctions force trust decisions to rely on reputation and hope rather than inspection [6].
+This is not a critique of any specific tool. It is an observation about evidence. *Opaque control collapses meaningful distinctions*, and collapsed distinctions force trust decisions to rely on reputation and hope rather than inspection [7].
 
 The same concern applies to agentic AI. The danger is not that an AI signs something. The danger is that we cannot tell whether a signature represents human intent, delegated authority, automated policy, or accidental execution.
 
@@ -105,7 +105,7 @@ The same concern applies to agentic AI. The danger is not that an AI signs somet
 
 Every signature claims to represent intent—but intent is internal. Only the intender knows it fully.
 
-That means signatures inevitably sit at *intent boundaries*: places where outsiders must infer purpose from action. [7] Good systems acknowledge these boundaries and make them narrow. Bad systems pretend they do not exist [8].
+That means signatures inevitably sit at *intent boundaries*: places where outsiders must infer purpose from action. [8] Good systems acknowledge these boundaries and make them narrow. Bad systems pretend they do not exist [9].
 
 Delegation, endorsement, and automation all stretch intent across distance and time. The question is whether a system preserves enough structure to let others reason responsibly about what a signature does—and does not—mean.
 
@@ -124,18 +124,20 @@ Systems that surface these answers do not eliminate ambiguity—but they make am
 That, in the end, is what trustworthy identity infrastructure should do.
 
 ## References
-[1] Hardman, D. *The Evidence Lifecycle in Telco*. Codecraft Papers, 2025. https://dhh1128.github.io/papers/ev-life.html
+[1] Hardman, D. *Signing Doesn't Always Claim Authorship* Codecraft Papers, 2026. https://dhh1128.github.io/papers/sign-author.html
 
-[2] Smith, S. M. 2024. KERI Specification (v2.7.0). Trust Over IP Foundation. Retrieved December 18, 2024 from https://trustoverip.github.io/kswg-keri-specification/
+[2] Hardman, D. *The Evidence Lifecycle in Telco*. Codecraft Papers, 2025. https://dhh1128.github.io/papers/ev-life.html
 
-[3] HashiCorp. n.d. *Transit secrets engine | Vault*. HashiCorp Developer Documentation. Retrieved February 7, 2026 from https://developer.hashicorp.com/vault/docs/secrets/transit
+[3] Smith, S. M. 2024. KERI Specification (v2.7.0). Trust Over IP Foundation. Retrieved December 18, 2024 from https://trustoverip.github.io/kswg-keri-specification/
 
-[4] Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and Polk, W. 2008. *Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile*. RFC 5280. IETF. DOI: https://doi.org/10.17487/RFC5280
+[4] HashiCorp. n.d. *Transit secrets engine | Vault*. HashiCorp Developer Documentation. Retrieved February 7, 2026 from https://developer.hashicorp.com/vault/docs/secrets/transit
 
-[5] Barnes, R., Hoffman-Andrews, J., McCarney, D., and Kasten, J. 2019. Automatic Certificate Management Environment (ACME). RFC 8555. IETF. DOI: https://doi.org/10.17487/RFC8555.
+[5] Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and Polk, W. 2008. *Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile*. RFC 5280. IETF. DOI: https://doi.org/10.17487/RFC5280
 
-[6] Hardman, D. *Why Anchored Signatures?* Codecraft Papers, 2025. https://dhh1128.github.io/papers/was.html
+[6] Barnes, R., Hoffman-Andrews, J., McCarney, D., and Kasten, J. 2019. Automatic Certificate Management Environment (ACME). RFC 8555. IETF. DOI: https://doi.org/10.17487/RFC8555.
 
-[7] Hardman, D. 2025. *Intent and Boundaries: A Framework for Digital Agency*. SSRN Electronic Journal. DOI: https://doi.org/10.2139/ssrn.5909382
+[7] Hardman, D. *Why Anchored Signatures?* Codecraft Papers, 2025. https://dhh1128.github.io/papers/was.html
 
-[8] Hardman, D. *Intent and Boundaries* Codecraft Papers, 2025. https://dhh1128.github.io/papers/intent-and-boundaries.html
+[8] Hardman, D. 2025. *Intent and Boundaries: A Framework for Digital Agency*. SSRN Electronic Journal. DOI: https://doi.org/10.2139/ssrn.5909382
+
+[9] Hardman, D. *Intent and Boundaries* Codecraft Papers, 2025. https://dhh1128.github.io/papers/intent-and-boundaries.html

@@ -27,6 +27,7 @@ layout: meta
 - [Authenticity vs. Veracity](authenticity-vs-veracity.md) (2025-12-28)
 - [Intent and Boundaries](intent-boundaries.md) (2025-06-20)
 - [Security, Silos, and Sovereignty](sss.md) (2021-03-12)
+- [Signing Doesn't Always Claim Authorship](sign-author.md) (2026-02-07)
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 - [Who Is Signing?](who-sign.md) (2026-02-07)
 
