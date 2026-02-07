@@ -130,7 +130,7 @@ That, in the end, is what trustworthy identity infrastructure should do.
 
 [3] Smith, S. M. 2024. KERI Specification (v2.7.0). Trust Over IP Foundation. Retrieved December 18, 2024 from https://trustoverip.github.io/kswg-keri-specification/
 
-[4] HashiCorp. n.d. *Transit secrets engine | Vault*. HashiCorp Developer Documentation. Retrieved February 7, 2026 from https://developer.hashicorp.com/vault/docs/secrets/transit
+[4] HashiCorp. n.d. *Transit secrets engine / Vault*. HashiCorp Developer Documentation. Retrieved February 7, 2026 from https://developer.hashicorp.com/vault/docs/secrets/transit
 
 [5] Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and Polk, W. 2008. *Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile*. RFC 5280. IETF. DOI: https://doi.org/10.17487/RFC5280
 
