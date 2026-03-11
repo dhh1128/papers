@@ -212,13 +212,15 @@ The system must support migration to new cryptographic algorithms, including pos
 
 ### Cross-Cutting Concerns
 
-**O1. Compact Real-Time Signaling** (operational goal, not architecture requirement)  
+These are operational goals, not architectural requirements. However, they color or constrain many of the requirements listed above.
+
+#### Compact Real-Time Signaling  
 Real-time communications should carry only compact evidence or evidence references in-band.
 
-**O2. Low-Latency Verification** (operational goal, not architecture requirement)  
-Verification workflows should support latency appropriate to real-time call or message handling.
+#### Low-Latency Verification  
+Verification workflows should support latency (including revocation latency) appropriate to real-time call or message handling.
 
-**O3. Manageable Cost** (operational goal, not architecture requirement)  
+#### Manageable Cost  
 Issuance, maintenance, rotation, recovery, and verification costs should be low enough for broad adoption by enterprises, service providers, and downstream verifiers.
 
 ---
