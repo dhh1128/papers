@@ -66,7 +66,9 @@ This is not a hierarchy. It's a graph with weighted edges, conditional logic, ti
 
 Any evidence architecture that models delegation as simple parent-to-child chains will be stretched and stressed when faced with the actual requirements. Extensions, side registries, and bolt-on overlays will proliferate. These aren't signs of a flexible system. They're signs of structural mismatch.
 
-First-class support for complex delegation — including the ability to verify constraints and trace authority back to appropriate roots — is a requirement, not a nice-to-have.
+Moreover, delegation introduces accountability risks. If a delegate can act unilaterally on the delegator's behalf, how does the delegator know when that authority is being exercised? How can abuse be detected and prevented? Cooperative delegation models — in which the delegate's actions require cryptographic cooperation from the delegator, or at least transparent reporting that the delegator can audit — provide stronger accountability than purely unilateral delegation. The delegate receives authority, but accepts an explicitly enforced duty to keep the delegator informed. Similarly, preventing unauthorized sub-delegation — where a delegate passes authority to yet another party — requires the system to track and enforce whether further delegation is permitted.
+
+First-class support for complex delegation — including the ability to verify rich constraints, enforce cooperative models, prevent unauthorized sub-delegation, and trace authority back to appropriate roots — is a requirement, not a nice-to-have.
 
 ### 4. Jurisdictional Diversity
 
@@ -158,45 +160,53 @@ The system must support revocation or invalidation of evidence and authority rel
 
 #### 11. Delegation Semantics
 
-The system must support delegation of authority across organizational boundaries. The delegation model must support identification of delegator and delegate, scope of delegated authority, constraints on delegated authority, revocation or expiration of delegated authority, and verifier inspection of the delegation chain or graph.
+The system must support delegation of authority across organizational boundaries. The delegation model must support identification of delegator and delegate, scope of delegated authority, multiple constraint types on delegated authority including purpose, geography, jurisdiction, time, protocol/role, and proof requirements, composition semantics for multiple constraints, revocation or expiration of delegated authority, and verifier inspection of the delegation chain or graph.
 
-#### 12. Multi-Party Control
+#### 12. Cooperative Delegation
+
+The system should support cooperative delegation models in which the delegate's exercise of authority can be cryptographically bound to the delegator's awareness or endorsement. Such models minimize the risk of undetected misuse of delegated authority and provide stronger accountability than purely unilateral delegation.
+
+#### 13. Sub-Delegation Control
+
+The system should support explicit control over whether a delegate can further delegate (attenuate) the authority they have received. When sub-delegation is prohibited, the system must prevent delegates from granting portions of their delegated authority to additional parties.
+
+#### 14. Multi-Party Control
 
 The system should support control models stronger than single-key ownership, including threshold control, weighted approval, separation of duties, and other multi-party authorization schemes appropriate for high-value organizational identities.
 
 ### Jurisdictional Diversity
 
-#### 13. Cross-Jurisdiction Operability
+#### 15. Cross-Jurisdiction Operability
 
 The system must function across jurisdictional boundaries and trust domains without requiring all participants to share a single nationally bounded root-of-trust regime. Verifiers must be able to evaluate evidence even when the issuer, subject, verifier, and communication providers operate under different governance frameworks.
 
-#### 14. Incremental Deployability
+#### 16. Incremental Deployability
 
 The system must be deployable incrementally. Adoption by one enterprise or one verifier must create value without requiring prior universal rollout, national mandates, or global flag-day migrations.
 
-#### 15. Compatibility with Existing Transports
+#### 17. Compatibility with Existing Transports
 
 The system must be usable over existing communication channels and protocols with reasonable transport overhead. Where compact real-time messages are needed, the system may separate lightweight in-band evidence references from richer out-of-band evidence retrieval, provided integrity and binding remain verifiable.
 
-#### 16. Performance and Scalability
+#### 18. Performance and Scalability
 
 The system must scale to large numbers of organizations, delegates, and verifiers without requiring constant high-cost reissuance, excessive online lookups, or brittle centralized bottlenecks.
 
-#### 17. Privacy and Selective Disclosure
+#### 19. Privacy and Selective Disclosure
 
 The system should support variable evidence disclosure so that verifiers can receive the minimum information necessary for their role, jurisdiction, and purpose. The architecture should permit distinct verifier views when required by privacy or regulatory constraints.
 
-#### 18. Data Locality and Regulatory Adaptability
+#### 20. Data Locality and Regulatory Adaptability
 
 The system must be capable of deployment in ways compatible with locality, retention, erasure, and sector-specific regulatory requirements. Where requirements conflict, the architecture should make these tensions explicit and manageable.
 
 ### Cryptographic Agility
 
-#### 19. Compromise Detection and Recovery
+#### 21. Compromise Detection and Recovery
 
 The system must support transparent detection of key compromise or control anomalies and must support recovery procedures that preserve or re-establish legitimate control. Recovery mechanisms must minimize the risk that an attacker can obtain permanent control simply by compromising a currently active key.
 
-#### 20. Cryptographic Agility
+#### 22. Cryptographic Agility
 
 The system must support migration to new cryptographic algorithms, including post-quantum algorithms, without requiring synchronized global upgrades by all ecosystem participants. The system should allow long-lived identifiers and evidence artifacts to survive such transitions.
 
