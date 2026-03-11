@@ -1,13 +1,10 @@
 ---
-title: "What Do We Actually Need? Requirements for Organizational Identity Evidence in Telco"
+title: "What Does Telco Need? Requirements for Organizational Identity Evidence"
 author: "Daniel Hardman"
 date: 2026-03-11
 category: Position
 item_id: CC-POS-260311
 ---
-
-# What Do We Actually Need?
-## Requirements for Organizational Identity Evidence in Telco
 
 Before debating whether a bridge should be steel or concrete, engineers agree on what it must carry, how far it must span, and what earthquakes it must survive. Only then do materials matter.
 
@@ -33,7 +30,7 @@ The system must answer these questions in a way that remains meaningful under ke
 
 Any architecture proposed for this space should be evaluated against these five properties.
 
-### 1. Evidence, Not Just Keys
+### 1. Evidence Over Keys
 
 A courthouse doesn't just check whether your ID is valid today. It maintains a record — affidavits, filings, receipts, transcripts — that can be reviewed later by appeals courts, journalists, or historians. The record isn't about present-tense access. It's about *accountability*.
 
@@ -45,7 +42,7 @@ This evidence must be verifiable without depending on hidden institutional state
 
 Present-tense key validation is important. But it's not enough. Evidence comes first.
 
-### 2. History, Not Just Now
+### 2. Historical Provability
 
 Suppose your bank calls you about suspected fraud on your credit card. You authorize them to reverse three specific charges. Two years later, the bank produces a signed authorization from you, but you don't remember signing it, and the amount seems wrong.
 
@@ -59,7 +56,7 @@ Keys rotate. Algorithms change. Delegates are added and removed. Organizational 
 
 A system optimized only for present-tense checks — "does this key validate?" — cannot answer historical questions without bolting on extensive side machinery. By then, you're not using the architecture's native features; you're compensating for its gaps.
 
-### 3. Delegation Is Complex
+### 3. Complex Delegation
 
 A multinational enterprise doesn't make all its own phone calls. It authorizes call centers, marketing partners, customer support vendors, and regional offices to act on its behalf. These arrangements aren't simple parent-child relationships. They have constraints.
 
@@ -71,7 +68,7 @@ Any evidence architecture that models delegation as simple parent-to-child chain
 
 First-class support for complex delegation — including the ability to verify constraints and trace authority back to appropriate roots — is a requirement, not a nice-to-have.
 
-### 4. Jurisdictions Differ
+### 4. Jurisdictional Diversity
 
 A certificate authority in one country may not be trusted in another. A governance regime mandated by US regulators is not accepted in Europe or Asia. A telco standard designed around a single national root of trust cannot scale globally without fragmenting into a patchwork of incompatible regional silos.
 
@@ -83,7 +80,7 @@ This doesn't mean eliminating governance. Governance is necessary. But it does m
 
 Incremental deployment matters, too. It must be possible for one enterprise or one verifier to adopt the system and gain value, without waiting for a global flag-day migration or a regulatory mandate. Systems that require universal prior agreement never deploy.
 
-### 5. Cryptography Evolves
+### 5. Cryptographic Agility
 
 Cryptographic algorithms have lifespans. MD5 was once standard, then broken. SHA-1 followed the same path. RSA is robust today, but vulnerable to quantum computers tomorrow. Every major organization should be planning post-quantum migrations now, even though commercial quantum computers don't yet exist.
 
@@ -99,7 +96,7 @@ If an architecture cannot handle cryptographic change gracefully, it will age po
 
 ## What This Means
 
-These five properties — evidence before keys, history alongside the present, complex delegation, cross-jurisdiction portability, and cryptographic resilience — are not wishlist items. They are what organizational identity in telco actually requires.
+These five properties — evidence over keys, historical provability, complex delegation, jurisdictional diversity, and cryptographic agility — are not wishlist items. They are what organizational identity in telco actually requires.
 
 Proposed architectures should be evaluated by asking: How does this system address each property? Which capabilities are native, and which require extensive retrofitting?
 
@@ -113,74 +110,94 @@ The point is not to declare a winner in advance. The point is to agree on a fair
 
 The five essential properties above map to the following detailed technical requirements, organized by theme.
 
-### Evidence, Not Just Keys
+### Evidence Over Keys
 
-**R1. Accountable-Party Binding**  
+#### 1. Accountable-Party Binding
+
 The system must support cryptographically verifiable binding between a communication and an accountable party whose legal or formally recognized identity can be established.
 
-**R2. Channel-Right Binding**  
+#### 2. Channel-Right Binding
+
 The system must support proof that the accountable party, or a valid delegate, has the right to use the asserted communication channel or endpoint identifier (phone numbers, messaging handles, etc.).
 
-**R3. Attribute-Right Binding**  
+#### 3. Attribute-Right Binding
+
 The system must support proof that asserted attributes (brand, logo, trade name, role, settlement, human-vs-AI) are authorized for use by the accountable party.
 
-**R12. Portable Verification**  
+#### 4. Portable Verification
+
 The system must allow verification decisions to be based primarily on portable, inspectable evidence rather than hidden institutional state, unverifiable assertions, or bilateral side agreements.
 
-**R19. Source Authority Traceability**  
+#### 5. Source Authority Traceability
+
 The system must support tracing each material assertion back to an appropriate source of authority (legal registries for identity, numbering authorities for channels, trademark offices for brands, delegating principals for delegation).
 
-**R20. Evidence Composability**  
+#### 6. Evidence Composability
+
 The system must support composition of multiple evidence artifacts into a verifier-meaningful whole without losing provenance, integrity, or relationship semantics.
 
-### History, Not Just Now
+### Historical Provability
 
-**R5. Historical Provability**  
+#### 7. Historical Provability
+
 The system must support verifiable reconstruction of evidence and authority relationships that were valid at an arbitrary point in the past. It must be possible to distinguish what was valid then from what is valid now.
 
-**R6. Stable Identity Across Key Change**  
+#### 8. Stable Identity Across Key Change
+
 The system must preserve continuity of accountable identity across key rotation, algorithm migration, and routine cryptographic maintenance. Routine maintenance must not require a change in the underlying identity.
 
-**R8. Verifiable Event Ordering**  
+#### 9. Verifiable Event Ordering
+
 The system must support cryptographically meaningful reasoning about how signing, issuance, revocation, and key-state changes relate in time. The system must not depend solely on present-tense status checks when historical validity questions are in scope.
 
-**R9. Revocation with Defined Freshness**  
+#### 10. Revocation with Defined Freshness
+
 The system must support revocation or invalidation of evidence and authority relationships with freshness properties appropriate to real-time communications. Freshness assumptions must be explicit so verifiers can determine whether the system meets their operational risk thresholds.
 
-### Delegation Is Complex
+### Complex Delegation
 
-**R4. Delegation Semantics**  
+#### 11. Delegation Semantics
+
 The system must support delegation of authority across organizational boundaries. The delegation model must support identification of delegator and delegate, scope of delegated authority, constraints on delegated authority, revocation or expiration of delegated authority, and verifier inspection of the delegation chain or graph.
 
-**R11. Multi-Party Control**  
+#### 12. Multi-Party Control
+
 The system should support control models stronger than single-key ownership, including threshold control, weighted approval, separation of duties, and other multi-party authorization schemes appropriate for high-value organizational identities.
 
-### Jurisdictions Differ
+### Jurisdictional Diversity
 
-**R13. Cross-Jurisdiction Operability**  
+#### 13. Cross-Jurisdiction Operability
+
 The system must function across jurisdictional boundaries and trust domains without requiring all participants to share a single nationally bounded root-of-trust regime. Verifiers must be able to evaluate evidence even when the issuer, subject, verifier, and communication providers operate under different governance frameworks.
 
-**R14. Incremental Deployability**  
+#### 14. Incremental Deployability
+
 The system must be deployable incrementally. Adoption by one enterprise or one verifier must create value without requiring prior universal rollout, national mandates, or global flag-day migrations.
 
-**R15. Compatibility with Existing Transports**  
+#### 15. Compatibility with Existing Transports
+
 The system must be usable over existing communication channels and protocols with reasonable transport overhead. Where compact real-time messages are needed, the system may separate lightweight in-band evidence references from richer out-of-band evidence retrieval, provided integrity and binding remain verifiable.
 
-**R16. Performance and Scalability**  
+#### 16. Performance and Scalability
+
 The system must scale to large numbers of organizations, delegates, and verifiers without requiring constant high-cost reissuance, excessive online lookups, or brittle centralized bottlenecks.
 
-**R17. Privacy and Selective Disclosure**  
+#### 17. Privacy and Selective Disclosure
+
 The system should support variable evidence disclosure so that verifiers can receive the minimum information necessary for their role, jurisdiction, and purpose. The architecture should permit distinct verifier views when required by privacy or regulatory constraints.
 
-**R18. Data Locality and Regulatory Adaptability**  
+#### 18. Data Locality and Regulatory Adaptability
+
 The system must be capable of deployment in ways compatible with locality, retention, erasure, and sector-specific regulatory requirements. Where requirements conflict, the architecture should make these tensions explicit and manageable.
 
-### Cryptography Evolves
+### Cryptographic Agility
 
-**R7. Compromise Detection and Recovery**  
+#### 19. Compromise Detection and Recovery
+
 The system must support transparent detection of key compromise or control anomalies and must support recovery procedures that preserve or re-establish legitimate control. Recovery mechanisms must minimize the risk that an attacker can obtain permanent control simply by compromising a currently active key.
 
-**R10. Cryptographic Agility**  
+#### 20. Cryptographic Agility
+
 The system must support migration to new cryptographic algorithms, including post-quantum algorithms, without requiring synchronized global upgrades by all ecosystem participants. The system should allow long-lived identifiers and evidence artifacts to survive such transitions.
 
 ### Cross-Cutting Concerns

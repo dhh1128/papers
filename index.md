@@ -53,5 +53,5 @@ layout: meta
 - [Actors, Objects, and Linked Data](aold.md) (2022-11-16)
 - [AI User Code of Conduct](ai-coca.md) (2023-06-01)
 - [Big Desks and Little People](bdlp.md) (2023-05-01)
-- [What Do We Actually Need? Requirements for Organizational Identity Evidence in Telco](telco-ev-reqs.md) (2026-03-11)
+- [What Does Telco Need? Requirements for Organizational Identity Evidence](telco-ev-reqs.md) (2026-03-11)
 - [Why X509 Certs Should Be Secondary Evidence of Org Identity](x509-prob.md) (2024-11-15)
