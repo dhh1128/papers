@@ -13,13 +13,6 @@ revision_date: 2026-03-27
 version: 1
 ---
 
-# Cryptographic vs. Administrative Trust: KERI's Witness/Watcher Architecture and X.509 + Certificate Transparency
-
-**Abstract**
-
-
----
-
 ## 1. The Identity Problem: Administrative Trust and Its Limits
 
 The internet was built as a network of machines. It addresses endpoints, not the people or organizations that control them. To fill this void, digital architects built Public Key Infrastructure (PKI) — a system that depends on centralized Certificate Authorities (CAs) to vouch for the binding between a cryptographic key and an entity.
