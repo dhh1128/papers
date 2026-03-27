@@ -27,7 +27,7 @@ layout: meta
 """)
     for i, cat in enumerate(categories()):
         buf.write(f'\n## {cat}\n')
-        articles = sorted(articles_by_cat[i], key=lambda x: x.meta.get('title').casefold())
+        articles = sorted(articles_by_cat[i], key=lambda x: x.meta.get('date'), reverse=True)
         for item in articles:
             buf.write(f'- [{item.meta.get("title")}]({item.url}) ({item.meta.get("date")})\n')
     new_content = buf.getvalue()

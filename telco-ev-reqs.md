@@ -3,7 +3,7 @@ title: "What Does Telco Need? Requirements for Organizational Identity Evidence"
 author: "Daniel Hardman"
 date: 2026-03-11
 category: Position
-item_id: CC-POS-260311
+item_id: CC-POS-260304
 ---
 
 Before debating whether a bridge should be steel or concrete, engineers agree on what it must carry, how far it must span, and what earthquakes it must survive. Only then do materials matter.

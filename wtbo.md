@@ -9,6 +9,8 @@ pdf_url: "https://dhh1128.github.io/papers/wtbo.pdf"
 language: "en"
 category: Comparisons
 item_id: CC-COM-260327
+revision_date: 2026-03-27
+version: 1
 ---
 
 # Cryptographic vs. Administrative Trust: KERI's Witness/Watcher Architecture and X.509 + Certificate Transparency
