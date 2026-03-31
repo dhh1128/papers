@@ -3,14 +3,14 @@ title: "Where Trust Bottoms Out: X.509, Certificate Transparency, and KERI's DPK
 author: "Daniel Hardman"
 date: 2026-03-05
 abstract: |
-    The internet has no native identity layer. To fill that gap, we built Public Key Infrastructure (PKI) — an administrative model in which Certificate Authorities (CAs) vouch for the binding between cryptographic keys and entities, and Certificate Transparency (CT) logs provide after-the-fact auditability. CT was a genuine improvement in PKI: it made the CA ecosystem more accountable. But it redistributes administrative trust rather than eliminating it, and it runs on cryptographic foundations that are now under an explicit deprecation timeline. The Key Event Receipt Infrastructure (KERI) takes a different approach, shifting the root of trust from administrators to self-certifying identifiers. This paper compares CT with KERI's decentralized witnesses and watchers — their shared commitments, their real differences, and their respective trajectories as the quantum transition moves from planning exercise to engineering deadline.
+    The internet has no native identity layer. To fill that gap, the community built Public Key Infrastructure (PKI) — an administrative model in which Certificate Authorities (CAs) vouch for the binding between cryptographic keys and entities, and Certificate Transparency (CT) logs provide after-the-fact auditability. CT was a genuine improvement in PKI: it made the CA ecosystem more accountable. But it redistributes administrative trust rather than eliminating it, and it runs on cryptographic foundations that are now under an explicit deprecation timeline. The Key Event Receipt Infrastructure (KERI) takes a different approach, shifting the root of trust from administrators to self-certifying identifiers. This paper compares CT with KERI's decentralized witnesses and watchers — their shared commitments, their real differences, and their respective trajectories as the quantum transition moves from planning exercise to engineering deadline.
 keywords: "KERI, X509, CT, admnistrative trust, post-quantum, PKI, DPKI"
 pdf_url: "https://dhh1128.github.io/papers/wtbo.pdf"
 language: "en"
 category: Comparisons
 item_id: CC-COM-260327
 revision_date: 2026-03-28
-version: 2
+version: 3
 ---
 
 ## 1. The Identity Problem: Administrative Trust and Its Limits
@@ -118,7 +118,7 @@ KERI shares a second, messier kind of recovery scenario with X509 and all key-ba
 
 **Witness and watcher discipline.** KERI's security depends on verifiers checking witness state before trusting any KEL — comparing log heads across multiple witnesses to detect divergence. Thus, discipline with witnesses and watchers matters.
 
-A common misconception is that this requires a network of large, shared watcher services analogous to CT's monitors. It does not. A watcher can be (and by default usually is) as simple as an in-process component in a verifier's own software stack that queries multiple witnesses directly before reporting any result. In this model, the verifier trusts its own code to compare what witnesses say — not a remote third party. KERI's architects explicitly recommend this local-resolver pattern over centralized alternatives. A "super watcher" — a shared archival service providing broad coverage — is a possible deployment pattern but a discouraged one, precisely because it reintroduces the centralized trust dependency KERI was designed to avoid. Nonetheless, certain superwatchers may serve a purpose.
+A common misconception is that this requires a network of large, shared watcher services analogous to CT's monitors. It does not. A watcher can be (and by default usually is) as simple as an in-process component in a verifier's own software stack that queries multiple witnesses directly before reporting any result. In this model, the verifier trusts its own code to compare what witnesses say — not a remote third party. KERI's architects explicitly recommend this local-resolver pattern. A "super watcher" — a shared archival service providing broad coverage in time and space — is another possible deployment pattern. Depending only on superwatchers is undesirable, as it encourages centralization. However, having some widely deployed superwatchers immunizes any verifier who consults one against eclipse and dead attacks, and is thus a desirable security enhancer.
 
 A variant on the watcher concern focuses on witness availability. Not all witnesses need to be up all the time, but enough witnesses need to be available, for any given AID, to satisfy the consensus requirements of watchers that track it. Whether controllers of AIDs are selecting reliable and well distributed witnesses is thus important, and careless choices could produce suboptimal results.
 
