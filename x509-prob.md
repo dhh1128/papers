@@ -2,7 +2,7 @@
 title: "Why X509 Certs Should Be Secondary Evidence of Org Identity"
 author: "Daniel Hardman"
 date: 2024-11-15
-revision_date: 2025-11-01
+revision_date: 2026-04-06
 category: Positions
 item_id: CC-POS-241104
 ---
@@ -22,7 +22,7 @@ How often do you renew your birth certificate?
 
 Identity is stable. In fact, identity means *sameness*; it's what holds constant across contexts. On the other hand, privileges are dynamic. 
 
-Certs are designed to be dynamic privilege mechanisms (that's why they're perfect for domains), and both tooling and tribal knowledge about them encourages short lifespans. Using certs to prove a permanent identity rather than a temporary privilege means that *evidence must turn over regularly*. This builds implicit maintenance costs into a solution, and it creates other nagging problems that will never be resolved.
+Certs are designed to be dynamic privilege mechanisms (that's why they're perfect for domains), and both tooling and tribal knowledge about them encourages short lifespans. This trend toward ephemerality is accelerating. In 2025, the CA/Browser Forum [approved a binding schedule](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/) to reduce publicly trusted TLS certificate lifetimes to 47 days by 2029. Using certs to prove a permanent identity rather than a temporary privilege means that *evidence must turn over regularly*. This builds implicit maintenance costs into a solution, and it creates other nagging problems that will never be resolved.
 
 <figure>
   <img src="assets/lifespans.png" alt="scale drawing of lifespans of org vs. cert" style="width:100%">
@@ -163,4 +163,4 @@ ACDCs and their related underpinnings have been codified by the Trust Over IP Fo
 
 For more details, you may want to read [this comparison of ACDCs and SD-JWTs](sdjwt-acdc.md).
 
-Identity is hard. Getting the evidence right is crucial. We've had X509 and PKI for four decades, and they've served us well. We're all glad our TLS sessions are pretty safe. However, certs aren't the right building block for major new identity infrastructure. It's high time for an upgrade.
+Identity is hard. Getting the evidence right is crucial. We've had X509 and PKI for four decades, and they've served us well. We're all glad our TLS sessions are pretty safe. However, certs aren't the right building block for major new identity infrastructure. It's time for an upgrade.
