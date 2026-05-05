@@ -139,6 +139,25 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
       {% if page.title %}
       <h1>{{ page.title }}</h1>
       {% endif %}
+      {%- comment -%}Byline: support 'authors' (list of dicts) or 'author' (string or list){%- endcomment -%}
+      {%- if page.authors -%}
+        {%- assign byline_parts = "" -%}
+        {%- for a in page.authors -%}
+          {%- if a.affiliation -%}
+            {%- assign byline_parts = byline_parts | append: a.name | append: " (" | append: a.affiliation | append: ")" -%}
+          {%- else -%}
+            {%- assign byline_parts = byline_parts | append: a.name -%}
+          {%- endif -%}
+          {%- unless forloop.last -%}{%- assign byline_parts = byline_parts | append: "; " -%}{%- endunless -%}
+        {%- endfor -%}
+      <p class="byline">{{ byline_parts }}</p>
+      {%- elsif page.author -%}
+        {%- if page.author.first -%}
+      <p class="byline">{{ page.author | join: "; " }}</p>
+        {%- else -%}
+      <p class="byline">{{ page.author }}</p>
+        {%- endif -%}
+      {%- endif -%}
       {% if doi or page.item_id or page.version or canonical_pdf_url %}
       <div class="pubmeta">
         <p>
@@ -182,7 +201,11 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
       {% if page.keywords %}
       <details class="keywords" open>
         <summary class="h3">Keywords</summary>
+        {%- if page.keywords.first -%}
+        <p>{{ page.keywords | join: ", " }}</p>
+        {%- else -%}
         <p>{{ page.keywords }}</p>
+        {%- endif -%}
       </details>
       {% endif %}
       {{ content }}

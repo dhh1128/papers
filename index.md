@@ -9,6 +9,7 @@ layout: meta
 [About This Archive](about.md)
 
 ## Specifications
+- [Verifiable Dossiers](https://trustoverip.github.io/kswg-dossier-specification) (2025-10-01)
 - [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
 - [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp) (2025-02-01)
 - [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
