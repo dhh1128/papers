@@ -10,10 +10,6 @@ category: Primers
 item_id: CC-PRI-251208
 ---
 
-# A Primer on KERI, ACDCs, and CESR
-19 December 2025
-<span class="hash">#keri #certs #verifiable-data #verifiable-credentials</span>
-
 ## 1. Administrative trust failure
 
 The internet was not built with an identity layer. It was built as a network of machines, addressing endpoints rather than the human or legal entities controlling them. To fill this void, digital architects constructed the public key infrastructure (PKI), a system dependent on centralized certificate authorities (CAs) to attest to the binding between a cryptographic key and an entity. While functional for the early web, this administrative model of trust has proven brittle, expensive, and hard to govern in the face of modern scale and sophisticated adversaries.

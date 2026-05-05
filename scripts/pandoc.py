@@ -11,6 +11,8 @@ def main(item):
     input_path = item.path
     output_path = item.path[:-3] + '.pdf'
     meta = item.meta
+    if 'author' not in meta and 'authors' in meta:
+        meta['author'] = [a['name'] if isinstance(a, dict) else a for a in meta['authors']]
     author = meta['author']
     d = date_as_pdfdate(meta['date'])
     md = meta.get('revision_date', None)
@@ -35,8 +37,11 @@ def main(item):
     if isinstance(author, list):
         meta['author'] = ', '.join(author)
     keywords = meta.get('keywords', '')
-    if isinstance(keywords, str) and keywords[0] == '"':
+    if isinstance(keywords, list):
+        keywords = ', '.join(keywords)
+    elif isinstance(keywords, str) and keywords.startswith('"'):
         keywords = keywords[1:-1]
+    meta['keywords'] = keywords
     
     # Handle missing version
     version = meta.get('version', None)

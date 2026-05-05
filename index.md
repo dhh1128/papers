@@ -15,6 +15,7 @@ layout: meta
 - [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
 
 ## Papers
+- [Progressive Assurance: Flexible Organizational Identity in the Digital Economy](prog-a.md) (2026-05-05)
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
@@ -40,7 +41,7 @@ layout: meta
 - [Three Dimensions of Identity](3dim.md) (2019-01-29)
 
 ## Comparisons
-- [Where Trust Bottoms Out: X.509, Certificate Transparency, and KERI's Witness Architecture](wtbo.md) (2026-03-05)
+- [Where Trust Bottoms Out: X.509, Certificate Transparency, and KERI's DPKI Architecture](wtbo.md) (2026-03-05)
 - [Comparison: ACDCs and Merkle Tree Certificates](acdc-and-mtc.md) (2026-01-06)
 - [ACDCs and W3C VCs: Lossless vs. Lossy](acdc-vc-diff.md) (2025-11-24)
 - [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)

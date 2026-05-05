@@ -27,7 +27,11 @@ layout: meta
 """)
     for i, cat in enumerate(categories()):
         buf.write(f'\n## {cat}\n')
-        articles = sorted(articles_by_cat[i], key=lambda x: x.meta.get('date'), reverse=True)
+        try:
+            articles = sorted(articles_by_cat[i], key=lambda x: x.meta.get('date'), reverse=True)
+        except TypeError as e:
+            missing = [x.url for x in articles_by_cat[i] if x.meta.get('date') is None]
+            sys.exit(f"Sort failed for category '{cat}' — missing date in: {missing}. ({e})")
         for item in articles:
             buf.write(f'- [{item.meta.get("title")}]({item.url}) ({item.meta.get("date")})\n')
     new_content = buf.getvalue()
@@ -52,9 +56,15 @@ def main():
     args = parser.parse_args()
     articles_by_cat = [[] for _ in categories()]
     for item in internal_items():
-        categorize(item, articles_by_cat)
+        try:
+            categorize(item, articles_by_cat)
+        except Exception as e:
+            sys.exit(f"Error processing {item.url}: {e}")
     for item in external_items():
-        categorize(item, articles_by_cat)
+        try:
+            categorize(item, articles_by_cat)
+        except Exception as e:
+            sys.exit(f"Error processing {item.url}: {e}")
     if exit_code == 0:
         write_index(articles_by_cat, check_only=args.check_only)
     sys.exit(exit_code)
