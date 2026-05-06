@@ -9,8 +9,8 @@ pdf_url: "https://dhh1128.github.io/papers/wtbo.pdf"
 language: "en"
 category: Comparisons
 item_id: CC-COM-260327
-revision_date: 2026-04-06
-version: 4
+revision_date: 2026-05-06
+version: 5
 ---
 
 ## 1. The Identity Problem: Administrative Trust and Its Limits
@@ -86,9 +86,7 @@ The history of an AID is maintained in its Key Event Log (KEL) — an append-onl
 
 Think of it like a sealed succession document held in a vault. The document commits the heir's identity without revealing it. If the reigning key is stolen, the attacker can act in the present, but cannot seize the future — because the succession is sealed, in writing, and they can't forge it.
 
-Pre-rotation has direct quantum implications. A quantum adversary who breaks the current signing key via Shor's algorithm gains the ability to forge interaction events — but not to rotate, because the pre-rotation commitment is protected by a hash which retains its strength against quantum attack. [25, 26] When the legitimate controller detects the compromise through their own watcher, they can execute a recovery rotation using the pre-committed key, issue a new pre-rotation commitment in a post-quantum algorithm, and keep going. The identifier persists. The history persists. The transition is cryptographic, not administrative.
-
-because the pre-rotation commitment is protected by a hash, which retains its strength against quantum attack (§3). [25, 26]
+Pre-rotation has direct quantum implications. A quantum adversary who breaks the current signing key via Shor's algorithm gains the ability to forge interaction events — but not to rotate, because the pre-rotation commitment is protected by a hash which retains its strength against quantum attack (§3). [25, 26] When the legitimate controller detects the compromise through their own watcher, they can execute a recovery rotation using the pre-committed key, issue a new pre-rotation commitment in a post-quantum algorithm, and keep going. The identifier persists. The history persists. The transition is cryptographic, not administrative.
 
 The interaction-event forgery window is real and should not be minimized. But KERI provides mechanisms to shrink it that have no X.509 equivalent. High-stakes operations — credential issuance, for example — are anchored to the KEL, making them visible to witnesses and watchers in near-real-time. Controllers are encouraged to watch their own KELs, and KERI's libraries enforce consistency checks against witness state automatically. An unauthorized anchored event is detectable almost immediately. For operations that don't warrant anchoring, weighted multisig raises the compromise bar further: forging an interaction event for a multisig AID requires compromising multiple keys across multiple custodians. X.509, by contrast, always binds a certificate to a single keypair, and provides no mechanism for the key holder to detect unauthorized use of their own key through protocol machinery. The forgery window in X.509 is not just open — it is invisible to the party most affected.
 
