@@ -70,12 +70,23 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
 
 ## Phase 3 — PDF pipeline (CI artifacts)
-- [ ] Make `pandoc.py` reproducible; reconcile `author`/`authors` + missing fields
-- [ ] Publish workflow builds one PDF per internal document, uploads artifacts
-- [ ] `build_pdfs.py --check-only` + test: every published document has a current
-      PDF; `pdf_url` validated against the produced artifact (graduate to required)
-- [ ] Retire the committed `*.pdf` blobs once the build is proven
-- [ ] Reconcile the dangling `pdf_url`s (currently 404 on the live site)
+- [x] Make `pandoc.py` reproducible + importable: extract `pdf_metadata`
+      (handles `author`/`authors`, list/str keywords, default version) and
+      `build_pdf`. Fix the silent exit-code bug (`sys.exit(os.system(...))`
+      wrapped failures mod 256 → a failed render reported success). _(red→green)_
+- [x] Build-time **webp → png** conversion (xelatex can't embed webp; 5 docs use
+      it). Non-destructive: converts in a temp dir, leaves web assets untouched.
+- [x] `scripts/build_pdfs.py`: build one PDF per internal doc into `build/pdfs/`
+      (gitignored); exits nonzero if any doc fails — the CI gate.
+- [x] `.github/workflows/build-pdfs.yml`: installs pandoc/xelatex/fonts/
+      ImageMagick, builds the whole corpus, uploads the PDFs as an artifact
+      (node24 actions; `upload-artifact@v7`).
+- [x] `tests/test_pdfs.py`: metadata prep, webp rewrite, exit-code semantics.
+- [ ] **Deferred to the Phase 4 deploy** (no site-deploy of PDFs exists yet):
+      reconcile the `pdf_url` scheme + validate against the produced artifact
+      (graduate to required), and retire the committed `*.pdf` blobs. The 8
+      committed PDFs currently serve the only resolving `pdf_url`s, so retiring
+      them before built PDFs are deployed would 404 those links.
 
 ## Phase 4 — Jekyll → Zensical
 Reference: `ZENSICAL-MIGRATION-KT.md` (sister-repo lessons) — but note papers'
