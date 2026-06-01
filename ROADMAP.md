@@ -63,13 +63,71 @@ artifacts** (`pdf_url` becomes derived/validated).
 - [ ] Reconcile the dangling `pdf_url`s (currently 404 on the live site)
 
 ## Phase 4 — Jekyll → Zensical
-- [ ] Port to `mkdocs.yml` + Material/Zensical (the `../tti/home` pattern:
-      `requirements.txt` pins `zensical`, `build.sh` → `zensical build`, publish
-      workflow)
-- [ ] Preserve URLs/redirects, the categorized index, and the external-items merge
-- [ ] Add JSON-LD `ScholarlyArticle` + citation metadata so indexers/AI see a
-      scholarly archive, not a blog (the `.reorg-ideas.md` goals)
-- [ ] Verify build parity (no broken links/images) before cutover
+Reference: `ZENSICAL-MIGRATION-KT.md` (sister-repo lessons) — but note papers'
+hardest part (per-page scholarly `<head>` metadata) is NOT covered there, since
+codecraft injects none. See the feasibility findings below.
+
+**Approach (decided after analysis):** keep canonical `*.md` at repo root; a
+Python assembler (reusing `archive.py`'s `internal_items()`/`external_items()`/
+`item.meta`) generates a disposable `build/` MkDocs tree; `zensical build`
+renders `build/site/`. All presentation chrome — visible *and* `<head>` — is
+**template-driven from frontmatter via `overrides/main.html`**, exactly as
+Jekyll's `_layouts/default.html` does today (Liquid → Minijinja). The assembler
+does NOT inject extras into the markdown body (that would pollute the TOC and
+edit/source links). Confirmed feasible: Zensical 0.0.43's `base.html` exposes
+`{% block extrahead %}` and `{% block content %}`, supports `theme.custom_dir`,
+and reads `page.meta.*`.
+
+- [ ] **Spike first (5–6 docs).** Acceptance test is not "does it build" but:
+      does `overrides/main.html` emit correct `citation_*` + JSON-LD for an
+      `author` doc, an `authors` doc (e.g. `prog-a`), and the one DOI doc
+      (`cfa-paper`)? Plus inline `<figure>`/`<img>`/tables render; abstract +
+      byline + colophon show; URLs sane. (Apply the §9 KT log discipline:
+      `NO_COLOR=1 TERM=dumb`, redirect to file, strip ANSI, grep — never paste a
+      raw Zensical log into the session.)
+- [ ] **Assembler** (`scripts/build_site.py`): emit `build/docs/<slug>.md`
+      (keeping the scholarly frontmatter — do NOT slim to title-only, the
+      template needs `item_id`/`author(s)`/`doi`/`keywords`/`abstract`/`version`),
+      a categorized `build/docs/index.md`, copy `assets/`, copy CSS, write
+      `mkdocs.yml`. External items → outbound links in the index only, never a
+      local page (mirror `generate_index.py`).
+- [ ] **`overrides/main.html`** (the heart): port `default.html` logic to
+      Minijinja — `{% block extrahead %}` for `citation_*` meta + JSON-LD
+      (`ScholarlyArticle`/`TechArticle`/`WebPage` by category) + DOI + canonical
+      PDF; `{% block content %}` for byline (both `author`/`authors`), the
+      `item ID · version · PDF` colophon, abstract, and keywords, then `super()`.
+- [ ] **Extensions** in generated `mkdocs.yml`: `admonition`, `pymdownx.details`,
+      `attr_list`, `md_in_html` (needed for `<figure>`/`<img>` and `about.md`'s
+      `<dl>`/`<details>`), `toc: permalink`. Nav from the 7 MECE **categories**
+      (NOT the `tags` plugin).
+- [ ] **Redirects:** inventory current Jekyll URL shape (`/papers/slug.html` vs
+      `/slug/`); self-generate meta-refresh stubs for any internal doc whose URL
+      would move (don't trust `mkdocs-redirects`). Stable citable URLs are a hard
+      requirement; re-verify every `index.md` + `.external-items.yml` entry.
+- [ ] **Styling:** `assets/css/zensical-extra.css` — custom properties + heading
+      rules + verbatim `@media print` block + mobile `img` rule. Pick a serif web
+      font echoing the PDF (TeX Gyre Pagella / Inconsolata), not codecraft's
+      Open Sans — an author design call.
+- [ ] **Internal link cleanup:** harvest `unresolved link reference` warnings
+      from the build as a worklist; fix. (Keeps the scheduled lychee external
+      check.)
+- [ ] **Test-first** (`tests/test_site_build.py`): assert the generated `build/`
+      tree contract WITHOUT invoking `zensical build` — one page per published
+      doc, scholarly frontmatter retained, `overrides/main.html` present with the
+      required blocks, redirect stubs present, valid `mkdocs.yml` with required
+      extensions, CSS carried. Honest-failure exit discipline
+      (`archive.exit_with_status`). `xfail(strict=True)` tripwires for not-yet-met
+      goals.
+- [ ] **PDFs unchanged:** `scripts/pandoc.py` reads canonical source `.md`, so it
+      ports untouched; just ensure the assembler never strips fields it needs
+      from the *source* (it only governs the *built* page).
+- [ ] **Publish workflow:** `./build.sh` → deploy `build/site/` to Pages; retire
+      the Jekyll auto-build. Pin all actions to `node24` runtimes (verify each).
+- [ ] **Cutover & cleanup:** once live and URLs verified, retire `_config.yml`,
+      `_layouts/`, `_includes/`, `index.md`'s `layout: meta` (keep in git
+      history). Leave `docs/conventions.md`, `about.md`, `scripts/`, `tests/`
+      untouched. `about.md` keeps its `<dl>`/`<dt>` HTML — `archive.py`'s
+      `categories()` parses `<dt>` from source.
 
 ---
 
