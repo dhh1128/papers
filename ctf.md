@@ -1,6 +1,7 @@
 ---
 category: Guidance
 title: The Coming Tsunami of Falsehood
+author: "Daniel Hardman"
 date: 2024-06-01
 item_id: CC-GUI-240601
 pdf_url: ctf.pdf

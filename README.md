@@ -22,7 +22,7 @@ and `CC` id namespace.
 ```
 pip install -r requirements.txt
 pytest                                   # prove the corpus invariants
-python scripts/check_requirements.py     # metadata / required fields
+python scripts/validate_metadata.py      # metadata schema (add --report for gaps)
 python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
 python scripts/generate_index.py --check-only
 ```

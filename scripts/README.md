@@ -17,10 +17,10 @@ Every quality goal pairs a script here with a prover test in
 | Script | Purpose | `--check-only` |
 |---|---|---|
 | `archive.py` | Shared library: Item model, category parse, frontmatter load, id minting | — |
-| `check_requirements.py` | Indexed files exist; Papers carry required metadata | (always read-only) |
+| `validate_metadata.py` | Validate all docs against the schema; `--report` prints a coverage punch-list | (read-only) |
 | `generate_index.py` | Regenerate the categorized `index.md` | ✓ |
 | `fix_ref_nums.py` | Normalize inline/expanded reference numbering (ACM style) | ✓ |
 | `pandoc.py` | Render a document to PDF | — |
 
-Planned (see the M-table in [../ROADMAP.md](../ROADMAP.md)):
-`validate_metadata.py`, `build_pdfs.py`, a citation/link reconciler.
+Planned (see [../ROADMAP.md](../ROADMAP.md)):
+`build_pdfs.py`, a citation/link reconciler.

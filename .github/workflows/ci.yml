@@ -18,8 +18,8 @@ jobs:
           cache-dependency-path: requirements.txt
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Metadata & required fields
-        run: python scripts/check_requirements.py
+      - name: Metadata schema validation
+        run: python scripts/validate_metadata.py
       - name: Reference/citation numbering is consistent
         run: python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
       - name: Index is up to date

@@ -11,6 +11,7 @@ date: 2026-05-05
 item_id: CC-PAP-260501
 category: Papers
 version: 0.9
+revision_date: 2026-05-05
 keywords:
   - organizational identity
   - progressive assurance

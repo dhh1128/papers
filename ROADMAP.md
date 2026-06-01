@@ -45,12 +45,21 @@ artifacts** (`pdf_url` becomes derived/validated).
       refuses range files rather than mangle them. _(red→green)_
 
 ## Phase 2 — Quality & consistency audit → backlog
-- [ ] Normalize `author` vs `authors` across the corpus (start with `prog-a.md`)
-- [ ] Backfill `keywords`/`abstract` on the ~9 thin documents (aold, crna, sss,
-      svce, wbca, telco-ev-reqs, ai-coca, zh, x509-prob)
-- [ ] Decide + apply a `version`/`revision_date` policy
-- [ ] Add `validate_metadata.py` + test enforcing the full schema (graduate the
-      warn-only fields to required as coverage completes)
+**Decisions:** author = singular `author` (norm), `authors` list only for
+multi-author/affiliations; version+revision_date required for Papers+Specs only
+(backfill `1.0`/pub-date); abstracts for thin docs drafted by AI as proposals.
+
+- [x] Add `validate_metadata.py` + `tests/test_metadata.py` enforcing the schema
+      with ERROR/WARN tiers + a `--report` punch-list (supersedes the Papers-only
+      `check_requirements.py`; wired into CI). _(red→green)_
+- [x] Decide + apply the `version`/`revision_date` policy: backfilled all 7
+      Papers (version 1.0 / revision_date = pub date where unset).
+- [x] Normalize author form: added `author: "Daniel Hardman"` to `ctf`, `kspqs`,
+      `ppred`; `prog-a` keeps its multi-author `authors` list. Convention
+      documented in `docs/conventions.md`.
+- [ ] Backfill `abstract`+`keywords` on the 9 thin docs (ai-coca, aold, crna,
+      sss, svce, telco-ev-reqs, wbca, x509-prob, zh) — AI drafts as proposals for
+      review; then graduate abstract/keywords from WARN to ERROR in the validator.
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
 - [ ] Verify external-item entries in `.external-items.yml` still resolve
 

@@ -23,29 +23,40 @@ should not be changed without the author.
 ## Frontmatter schema
 
 Each document is a Markdown file whose YAML frontmatter carries the fields below.
-"Req" marks fields enforced (or planned to be enforced) by
-`scripts/check_requirements.py` and the pytest suite.
+The tiers are enforced by `scripts/validate_metadata.py` (and the pytest suite):
+**ERROR** fails CI; **WARN** is advisory. Run `validate_metadata.py --report`
+for a per-field coverage punch-list.
 
-| Field | Req | Type | Notes |
+| Field | Tier | Type | Notes |
 |---|---|---|---|
-| `title` | ✓ | string | Display title. The body must not repeat it. |
-| `date` | ✓ | date | Original publication date (ISO 8601). Drives the id ordinal and index sort. |
-| `category` | ✓ | enum | Exactly one of the seven categories above. |
-| `item_id` | ✓ | string | Permanent id, `CC-XXX-YYMMOO` (see below). Assigned once, never changed. |
-| `abstract` | ✓ | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
-| `keywords` | ✓ | list/string | For SEO and PDF metadata. |
-| `author` *or* `authors` | ✓¹ | string / list | Single author string, or a list of `{name, affiliation}`. To be normalized to one form in Phase 2. |
-| `pdf_url` | rec² | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
-| `version` | rec | int/str | Bump on substantive revision. |
-| `revision_date` | rec | date | Date of last substantive revision. |
+| `title` | ERROR | string | Display title. The body must not repeat it. |
+| `date` | ERROR | date | Original publication date (ISO 8601). Drives the id ordinal and index sort. |
+| `category` | ERROR | enum | Exactly one of the seven categories above. |
+| `item_id` | ERROR | string | Permanent id, `CC-XXX-YYMMOO` (see below). Assigned once, never changed. |
+| `author` *or* `authors` | ERROR | string / list | See author convention below. |
+| `version` | ERROR¹ | int/str | Bump on substantive revision. |
+| `revision_date` | ERROR¹ | date | Date of last substantive revision. |
+| `abstract` | WARN² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
+| `keywords` | WARN² | list/string | For SEO and PDF metadata. |
+| `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
 
-¹ Papers are the strict tier: `check_requirements.py` hard-requires
-`title`, `date`, `abstract`, `item_id`, `category`. `author`/`authors` and
-`pdf_url`/`keywords` are surfaced as warnings during the current transition.
+¹ `version` + `revision_date` are required (ERROR) only for **Papers** and
+**Specifications** — the citable, versioned tiers; optional elsewhere. Backfill
+default: `version: 1.0`, `revision_date` = publication date.
 
-² `pdf_url` is *recommended* (warn-only) until the Phase 3 PDF build lands; it
+² `abstract` + `keywords` are schema-required but currently **WARN** while the
+remaining thin documents are backfilled (Phase 2). They graduate to ERROR once
+coverage is complete.
+
+³ `pdf_url` is *recommended* (warn-only) until the Phase 3 PDF build lands; it
 will then be validated against an actually-produced artifact.
+
+**Author convention:** use the singular `author` (a string) for single-author
+documents — the norm. Use the plural `authors` (a list of `{name, affiliation}`
+maps) only when a document has multiple authors or affiliations matter (e.g.
+`prog-a.md`). Tooling (`validate_metadata.py`, `pandoc.py`, the layout) accepts
+either form.
 
 Notes:
 - The body must **not** repeat the title or abstract; the layout renders those.

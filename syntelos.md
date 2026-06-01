@@ -8,6 +8,8 @@ pdf_url: "https://dhh1128.github.io/papers/syntelos.pdf"
 language: "en"
 category: Papers
 item_id: CC-PAP-251206
+version: 1.0
+revision_date: 2025-12-11
 ---
 
 ## 1. The unacknowledged gap in digital interactions
