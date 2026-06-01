@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Metadata & required fields
+        run: python scripts/check_requirements.py
+      - name: Reference/citation numbering is consistent
+        run: python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
+      - name: Index is up to date
+        run: python scripts/generate_index.py --check-only
+      - name: Run tests
+        run: pytest -q

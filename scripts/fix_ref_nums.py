@@ -2,10 +2,17 @@ import sys
 import glob
 import re
 import argparse
-from archive import exit_code, complain
+import archive
+from archive import complain
 
-bracket_pat = re.compile(r'\[((?:\d+\s*,\s*)*\d+)\](?!\()')
-superscript_pat = re.compile(r'<sup>\s*((?:\d+\s*,\s*)*\d+)\s*</sup>')
+# A single citation token is a number or an inclusive range (hyphen or en-dash),
+# e.g. "3" or "3-5" or "3–5". A group is a comma-separated list of such tokens,
+# e.g. "1, 3–5, 7". Ranges are valid ACM style and must be expanded for checking.
+_TOKEN = r'\d+(?:\s*[-–]\s*\d+)?'
+_GROUP = rf'(?:{_TOKEN}\s*,\s*)*{_TOKEN}'
+bracket_pat = re.compile(rf'\[({_GROUP})\](?!\()')
+superscript_pat = re.compile(rf'<sup>\s*({_GROUP})\s*</sup>')
+range_sep_pat = re.compile(r'\s*[-–]\s*')
 end_section_pat = re.compile(r'^(#+\s*(References|Works Cited|Endnotes)\s*$)', re.MULTILINE | re.IGNORECASE)
 end_num_pat = re.compile(r'^\s*\[(?:<a id="[^"]+">)?(\d+)(?:</a>)?\](.*?)$', re.MULTILINE)
 ref_point_pat = re.compile(bracket_pat.pattern + '|' + superscript_pat.pattern)
@@ -20,10 +27,31 @@ def split_body_and_end(content):
 def parse_comma_separated(txt):
     return [n.strip() for n in txt.split(',')]
 
+def expand_ref_tokens(group):
+    """Expand a citation group into individual number strings, resolving ranges.
+
+    "1, 3–5, 7" -> ["1", "3", "4", "5", "7"]. Hyphen and en-dash both delimit a
+    range. Used for checking; the in-place fixer does not rewrite ranges.
+    """
+    nums = []
+    for part in parse_comma_separated(group):
+        if not part:
+            continue
+        ends = range_sep_pat.split(part)
+        if len(ends) == 2 and ends[0].isdigit() and ends[1].isdigit():
+            lo, hi = int(ends[0]), int(ends[1])
+            nums.extend(str(n) for n in range(lo, hi + 1))
+        else:
+            nums.append(part)
+    return nums
+
+def group_has_range(group):
+    return any(range_sep_pat.search(part) for part in parse_comma_separated(group))
+
 def flatten_groups(groups):
     nums = []
     for group in groups:
-        nums.extend(parse_comma_separated(group))
+        nums.extend(expand_ref_tokens(group))
     return nums
 
 def parse_ref_nums(text):
@@ -82,7 +110,9 @@ def check(filename, check_only):
         max_seen = 0
         for n in nums:
             if n > max_seen + 1:
-                complain(f"Gap or out-of-order {category} [{n}] in {filename}.", not check_only)
+                # Fail CI in check-only mode; when fixing in place we repair the
+                # gap below, so it should not set a failing exit code.
+                complain(f"Gap or out-of-order {category} [{n}] in {filename}.", check_only)
                 gaps = True
             max_seen = max(max_seen, n)
 
@@ -114,6 +144,20 @@ class RefPoint:
         self.nums = nums
     def __str__(self):
         return f"RefPoint at {self.m.start()}: nums={self.nums}"
+
+def file_has_ranges(filename):
+    """True if the body uses range notation ([a-b] / [a–b]) in a citation point.
+
+    The renumbering logic rewrites comma lists only; ranges are left for a human
+    so they are never silently flattened or corrupted.
+    """
+    with open(filename, 'r', encoding='utf-8') as f:
+        body, _ = split_body_and_end(f.read())
+    for m in ref_point_pat.finditer(body):
+        group = m.group(1) if m.group(1) else m.group(2)
+        if group_has_range(group):
+            return True
+    return False
 
 def find_ref_points(body):
     points = []
@@ -178,8 +222,14 @@ def main():
     for filename in unique_files:
         gaps = check(filename, args.check_only)
         if gaps and not args.check_only:
-            fix_gaps(filename, args.new)
-    sys.exit(exit_code)
+            if file_has_ranges(filename):
+                complain(f"{filename} uses range notation [a–b]; automatic "
+                         f"renumbering is not supported. Fix manually.")
+            else:
+                fix_gaps(filename, args.new)
+    # archive.exit_code (live), not the stale by-value import, so --check-only
+    # actually fails CI when a gap or mismatch is detected.
+    sys.exit(archive.exit_code)
 
 if __name__ == '__main__':
     main()

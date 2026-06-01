@@ -1,0 +1,3 @@
+# Toolkit + test dependencies for the Codecraft Papers archive.
+pyyaml
+pytest

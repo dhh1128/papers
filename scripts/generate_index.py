@@ -3,6 +3,7 @@ import sys
 import argparse
 import io
 
+import archive
 from archive import *
 
 def categorize(item, articles_by_cat):
@@ -65,9 +66,11 @@ def main():
             categorize(item, articles_by_cat)
         except Exception as e:
             sys.exit(f"Error processing {item.url}: {e}")
-    if exit_code == 0:
+    # Read archive.exit_code live: a bare `exit_code` here is the stale
+    # by-value import (always 0) and would mask categorization errors.
+    if archive.exit_code == 0:
         write_index(articles_by_cat, check_only=args.check_only)
-    sys.exit(exit_code)
+    sys.exit(archive.exit_code)
 
 
 if __name__ == '__main__':

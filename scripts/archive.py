@@ -80,7 +80,9 @@ def indexed_items():
             title, url, date = m.groups()
             yield Item(url, {"title": title, "date": date})
 
-_non_articles = ['index.md', 'about.md']
+# Top-level .md files that are project meta-docs, not archive documents.
+_non_articles = ['index.md', 'about.md', 'README.md', 'AGENTS.md',
+                 'CLAUDE.md', 'ROADMAP.md']
 _internal_items = None
 def internal_items():
     """Yield Items that exist in the repo that's backing storage for the archive."""
@@ -158,12 +160,12 @@ def cat_index(cat_name: str) -> int:
 def make_item_id(item, counter=None):
     """
     Generate a document ID according to the convention:
-    CC-XXX-YYOOMM
+    CC-XXX-YYMMOO
     - CC: literal prefix
     - XXX: first three letters of category, uppercased
     - YY: last two digits of year
-    - OO: two-digit ordinal (counter, zero-padded)
     - MM: two-digit month
+    - OO: two-digit ordinal (counter, zero-padded)
 
     If counter is provided, it must be a dict that tracks
     how many items of a given type have been seen so far
@@ -192,6 +194,18 @@ def complain(msg, update_exit_code=True):
     global exit_code
     sys.stderr.write(msg + '\n')
     if update_exit_code: exit_code = 1
+
+def exit_with_status(ok_message=None):
+    """Exit the process using the LIVE accumulated exit_code.
+
+    Scripts must call this (or read archive.exit_code) rather than a stale
+    ``from archive import exit_code`` binding: that binding captures the value
+    at import time (0) and never reflects later complain() calls, which would
+    let a script print problems yet exit 0 — silently neutering CI.
+    """
+    if exit_code == 0 and ok_message:
+        print(ok_message)
+    sys.exit(exit_code)
 
 if __name__ == '__main__':
     print("\nCategories:")
