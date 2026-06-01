@@ -61,6 +61,10 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
       sss, svce, telco-ev-reqs, wbca, x509-prob, zh) — AI-drafted, author-approved;
       graduated abstract/keywords from WARN to ERROR in the validator. Also fixed
       `telco-ev-reqs` category `Position` → `Positions`.
+- [x] Close the authoring-time metadata gap: `scripts/new_doc.py` scaffolds a
+      schema-valid stub and mints the next `item_id` (`archive.next_item_id`);
+      `.standard-initial-prompt.md` updated to the enforced schema. So new docs
+      are *produced* valid, not just rejected by CI. _(red→green)_
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
 - [ ] Verify external-item entries in `.external-items.yml` still resolve
 

@@ -130,7 +130,12 @@ The body must **not** repeat the title or abstract — the layout renders those.
 ## How to add or edit a document
 
 1. Decide the single category by editorial intent (about.md tiebreak rules).
-2. Keep frontmatter schema-valid; assign a permanent `item_id` once.
-3. Prose changes follow the propose-don't-silently-edit rule above.
-4. Run `pytest` and the `--check-only` guards before committing; CI is the
-   backstop. Work test-first for any new tooling.
+2. Scaffold it with `python scripts/new_doc.py --title "…" --category <Cat>` —
+   this mints the permanent `item_id` and writes a complete, schema-valid
+   frontmatter stub (replace the TODO `abstract`/`keywords`). The authoring house
+   style is in [.standard-initial-prompt.md](.standard-initial-prompt.md); the
+   schema is in [docs/conventions.md](docs/conventions.md).
+3. Never hand-fabricate an `item_id`; it is permanent and minted by `new_doc.py`.
+4. Prose changes follow the propose-don't-silently-edit rule above.
+5. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
+   guards before committing; CI is the backstop. Work test-first for new tooling.

@@ -16,7 +16,8 @@ Every quality goal pairs a script here with a prover test in
 
 | Script | Purpose | `--check-only` |
 |---|---|---|
-| `archive.py` | Shared library: Item model, category parse, frontmatter load, id minting | — |
+| `archive.py` | Shared library: Item model, category parse, frontmatter load, id minting (`next_item_id`) | — |
+| `new_doc.py` | Scaffold a new document: mints the next `item_id`, writes a complete schema-valid frontmatter stub | (writes one file) |
 | `validate_metadata.py` | Validate all docs against the schema; `--report` prints a coverage punch-list | (read-only) |
 | `generate_index.py` | Regenerate the categorized `index.md` | ✓ |
 | `fix_ref_nums.py` | Normalize inline/expanded reference numbering (ACM style) | ✓ |

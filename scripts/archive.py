@@ -190,6 +190,28 @@ def make_item_id(item, counter=None):
         ordinal = 1
     return f"CC-{category}-{year}{month}{ordinal:02d}"
 
+_id_pat = re.compile(r'^CC-[A-Z]{3}-(\d{6})$')
+def next_item_id(category, date):
+    """Return the next available item id for a NEW document.
+
+    `CC-XXX-YYMMOO`, where OO is one greater than the highest ordinal already
+    used in that YYMM period across ALL categories — so the YYMMOO segment is
+    unique within the month and the full id cannot collide. `date` accepts an
+    ISO 'YYYY-MM-DD' string or a date/datetime.
+    """
+    cat3 = category.upper()[:3]
+    if isinstance(date, (datetime.date, datetime.datetime)):
+        period = f"{date.year % 100:02d}{date.month:02d}"
+    else:
+        parts = str(date).split('-')
+        period = f"{int(parts[0][-2:]):02d}{int(parts[1]):02d}"
+    max_oo = 0
+    for it in internal_items():
+        m = _id_pat.match(str(it.meta.get('item_id', '')))
+        if m and m.group(1)[:4] == period:
+            max_oo = max(max_oo, int(m.group(1)[4:]))
+    return f"CC-{cat3}-{period}{max_oo + 1:02d}"
+
 exit_code = 0
 
 def complain(msg, update_exit_code=True):
