@@ -65,8 +65,9 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
       schema-valid stub and mints the next `item_id` (`archive.next_item_id`);
       `.standard-initial-prompt.md` updated to the enforced schema. So new docs
       are *produced* valid, not just rejected by CI. _(red→green)_
+- [x] Verify external-item entries in `.external-items.yml` still resolve
+      (all 5 return 200 as of 2026-06-01)
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
-- [ ] Verify external-item entries in `.external-items.yml` still resolve
 
 ## Phase 3 — PDF pipeline (CI artifacts)
 - [ ] Make `pandoc.py` reproducible; reconcile `author`/`authors` + missing fields
