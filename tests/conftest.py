@@ -15,9 +15,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))  # let tests import the toolkit (archive, etc.)
 
-# Top-level .md files that are NOT archive documents.
-META_FILES = {"README.md", "AGENTS.md", "CLAUDE.md", "ROADMAP.md",
-              "index.md", "about.md"}
+import archive  # noqa: E402  (after sys.path setup)
+
+# Top-level .md files that are NOT archive documents. Single source of truth is
+# archive._non_articles, so the toolkit and the tests can never disagree.
+META_FILES = set(archive._non_articles)
 
 
 def _doc_paths():

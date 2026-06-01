@@ -81,8 +81,10 @@ def indexed_items():
             yield Item(url, {"title": title, "date": date})
 
 # Top-level .md files that are project meta-docs, not archive documents.
+# Single source of truth: tests import this (see tests/conftest.py) so the two
+# can't drift. Add any new root-level dev/meta markdown here.
 _non_articles = ['index.md', 'about.md', 'README.md', 'AGENTS.md',
-                 'CLAUDE.md', 'ROADMAP.md']
+                 'CLAUDE.md', 'ROADMAP.md', 'ZENSICAL-MIGRATION-KT.md']
 _internal_items = None
 def internal_items():
     """Yield Items that exist in the repo that's backing storage for the archive."""

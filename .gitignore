@@ -28,3 +28,6 @@ MANIFEST
 .coverage
 .coverage.*
 .cache
+_site/
+.jekyll-cache/
+.jekyll-metadata
