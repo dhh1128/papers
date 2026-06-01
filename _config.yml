@@ -12,6 +12,25 @@ show_downloads: false
 include:
   - robots.txt
   - LICENSE
+# Developer-facing docs and tooling — not part of the published archive. Keeping
+# them out of the Jekyll build also avoids Liquid parsing their contents (e.g.
+# ROADMAP.md contains Minijinja `{% block %}` examples that Liquid cannot parse).
+# NOTE: a custom `exclude` replaces Jekyll's default list, so the usual defaults
+# (Gemfile, node_modules, vendor) are re-listed here.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md
+  - ROADMAP.md
+  - ZENSICAL-MIGRATION-KT.md
+  - docs/
+  - scripts/
+  - tests/
+  - requirements.txt
 defaults:
   - scope:
       path: ""
