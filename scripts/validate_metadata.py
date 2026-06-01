@@ -1,11 +1,11 @@
 """Validate every document's frontmatter against the docs/conventions.md schema.
 
 Tiers:
-  ERROR (fails CI): title, date, category, item_id, author/authors.
-    Papers + Specifications additionally require version + revision_date.
-  WARN  (advisory): abstract, keywords. These are *required* by the schema but
-    surfaced as warnings during Phase 2 backfill; graduate to ERROR (move into
-    CORE_REQUIRED / add a hard check) once the thin docs are filled.
+  ERROR (fails CI): title, date, category, item_id, abstract, keywords,
+    author/authors. Papers + Specifications additionally require version +
+    revision_date.
+  WARN  (advisory): none currently. (abstract/keywords graduated from WARN to
+    ERROR once the Phase 2 backfill completed.)
 
 Run `validate_metadata.py --report` for a per-field coverage punch-list.
 """
@@ -17,8 +17,8 @@ import archive
 from archive import (internal_items, external_items, indexed_items, cat_index,
                      complain, exit_with_status)
 
-CORE_REQUIRED = ['title', 'date', 'category', 'item_id']
-SOFT_REQUIRED = ['abstract', 'keywords']       # warn-tier until Phase 2 backfill
+CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords']
+SOFT_REQUIRED = []                             # (abstract/keywords graduated to ERROR)
 VERSIONED_CATS = {'Papers', 'Specifications'}  # require version + revision_date
 EXTERNAL_REQUIRED = ['category', 'title', 'date']
 

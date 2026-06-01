@@ -5,6 +5,9 @@ date: 2023-06-01
 language: "en"
 category: Positions
 item_id: CC-POS-230603
+abstract: |
+  Artificial intelligence is a tool, and like any tool it can be used well or badly. This document is a personal code of conduct — a public pledge governing the author's own use of AI, not a standard imposed on others. It sets out four commitments: to be truthful, and never use AI to deceive others about the humanness or identity of their counterparty; to respect social norms such as privacy, courtesy, and personal space; to accept responsibility for what an AI does under one's direction while still crediting its contribution; and to provide sensible safeguards and human backchannels against egregious automated mistakes. The aim is public accountability, and an invitation for others to write principles of their own.
+keywords: "AI ethics, code of conduct, responsible AI, accountability, transparency, deception, consent, human oversight"
 ---
 
 >*I'm publishing this document to be publicly accountable and transparent about my intentions with respect to this important and [ethically complex](ctf.pdf) technology. The principles below seem important to me, but of course I encourage you to write your own document like this if you feel inspired. For ideas on code of conduct for AI _builders_, I thought [this open letter](https://openletter.worldethicaldata.org/en/openletter/) was insightful*.

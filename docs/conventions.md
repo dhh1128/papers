@@ -36,8 +36,8 @@ for a per-field coverage punch-list.
 | `author` *or* `authors` | ERROR | string / list | See author convention below. |
 | `version` | ERROR¹ | int/str | Bump on substantive revision. |
 | `revision_date` | ERROR¹ | date | Date of last substantive revision. |
-| `abstract` | WARN² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
-| `keywords` | WARN² | list/string | For SEO and PDF metadata. |
+| `abstract` | ERROR² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
+| `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
 | `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
 
@@ -45,9 +45,8 @@ for a per-field coverage punch-list.
 **Specifications** — the citable, versioned tiers; optional elsewhere. Backfill
 default: `version: 1.0`, `revision_date` = publication date.
 
-² `abstract` + `keywords` are schema-required but currently **WARN** while the
-remaining thin documents are backfilled (Phase 2). They graduate to ERROR once
-coverage is complete.
+² `abstract` + `keywords` are required (ERROR). They were WARN-tier during the
+Phase 2 backfill and graduated to ERROR once every document carried them.
 
 ³ `pdf_url` is *recommended* (warn-only) until the Phase 3 PDF build lands; it
 will then be validated against an actually-produced artifact.

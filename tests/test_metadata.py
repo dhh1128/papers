@@ -65,10 +65,14 @@ def test_non_versioned_category_does_not_require_version():
     assert not any("version" in e or "revision_date" in e for e in errors), errors
 
 
-def test_missing_abstract_is_warning_not_error():
-    errors, warnings = vm.field_problems(_drop(COMPLETE_PAPER, "abstract"))
-    assert not any("abstract" in e for e in errors), errors
-    assert any("abstract" in w for w in warnings), warnings
+def test_missing_abstract_is_error():
+    errors, _ = vm.field_problems(_drop(COMPLETE_PAPER, "abstract"))
+    assert any("abstract" in e for e in errors), errors
+
+
+def test_missing_keywords_is_error():
+    errors, _ = vm.field_problems(_drop(COMPLETE_PAPER, "keywords"))
+    assert any("keywords" in e for e in errors), errors
 
 
 def test_corpus_passes_validation(run_script):

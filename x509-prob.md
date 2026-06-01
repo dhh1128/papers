@@ -5,6 +5,9 @@ date: 2024-11-15
 revision_date: 2026-04-06
 category: Positions
 item_id: CC-POS-241104
+abstract: |
+  X.509 certificates and PKI have secured the web for forty years, but this paper argues they are the wrong primary evidence for organizational identity — a supporting role suits them better, with Authentic Chained Data Containers (ACDCs), such as vLEIs, carrying the primary weight. The mismatch is structural. Certificates are dynamic privilege mechanisms whose lifespans are shrinking toward weeks, while organizational identity is stable and measured in decades; their security rests on a single, opaquely managed secret; their governance is centralized and jurisdiction-bound; and they lack prerotation, multi-signature control, sequenced signatures, and a graceful post-quantum path. The paper works through each gap, along with the maintenance burden and revocation disincentives that ephemerality breeds, and shows how binding evidence to a rotating identity rather than to a key — as ACDCs do — resolves them. Renewing an identity is a non-sequitur; infrastructure for organizational identity deserves a better building block than the certificate.
+keywords: "X.509, PKI, organizational identity, ACDC, vLEI, certificate authorities, prerotation, post-quantum, key rotation, STIR/SHAKEN, decentralized identity"
 ---
 
 The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.

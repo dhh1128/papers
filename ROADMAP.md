@@ -57,9 +57,10 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
 - [x] Normalize author form: added `author: "Daniel Hardman"` to `ctf`, `kspqs`,
       `ppred`; `prog-a` keeps its multi-author `authors` list. Convention
       documented in `docs/conventions.md`.
-- [ ] Backfill `abstract`+`keywords` on the 9 thin docs (ai-coca, aold, crna,
-      sss, svce, telco-ev-reqs, wbca, x509-prob, zh) — AI drafts as proposals for
-      review; then graduate abstract/keywords from WARN to ERROR in the validator.
+- [x] Backfill `abstract`+`keywords` on the 9 thin docs (ai-coca, aold, crna,
+      sss, svce, telco-ev-reqs, wbca, x509-prob, zh) — AI-drafted, author-approved;
+      graduated abstract/keywords from WARN to ERROR in the validator. Also fixed
+      `telco-ev-reqs` category `Position` → `Positions`.
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
 - [ ] Verify external-item entries in `.external-items.yml` still resolve
 

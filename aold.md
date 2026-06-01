@@ -6,6 +6,9 @@ tags: [identity, ssi, empowerment, data, advocacy]
 original_publication: "https://daniel-hardman.medium.com/actors-objects-and-linked-data-7f60701af9bd"
 category: Positions
 item_id: CC-POS-221101
+abstract: |
+  This paper argues that data about people is ethically special, and that the W3C Verifiable Credentials data model mishandles that specialness by binding credentials to Linked Data. The argument takes a deliberately philosophical path: the old distinction between things that act and things that are acted upon, the human capacity for agency, and the social and technological harms that follow from objectifying people — treating them as resources to be processed rather than actors with boundaries of their own. Computationally there is no difference between data about a person and data about a stock price, but in awareness, consent, accountability, relationship, and change, human data is unlike any other. By requiring `@context` at issuance, the VC specification grafts human subjects into a global, ungovernable semantic graph built for correlation — whether or not anyone ever processes the credential as Linked Data. The author recommends making `@context` optional, at least for credentials about people, and shifting the community's emphasis from perfect, web-scale data toward extensible actions and the humans the system is meant to serve.
+keywords: "verifiable credentials, Linked Data, JSON-LD, semantic web, objectification, human agency, privacy, correlation, data ethics, decentralized identity"
 ---
 
 ### (TL;DR)
