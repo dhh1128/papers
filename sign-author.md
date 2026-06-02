@@ -10,8 +10,8 @@ item_id: CC-ANA-260203
 pdf_url: https://dhh1128.github.io/papers/sign-author.pdf
 description: "Introduces some nuance about the assumption common in decentralized identity circles, that a digital signature is a claim of authoriship. This is sometimes the intended meaning, but numerous use cases provide counter examples."
 image: /assets/cards/sign-author.png
-version: "1.0"
-revision_date: 2026-02-07
+version: "1.1"
+revision_date: 2026-06-02
 ---
 
 People often treat a signature as if it were a claim of authorishop. That is sometimes true. But it is not what signatures *are* in general — and it is not what digital signatures are in particular.
@@ -67,7 +67,7 @@ If you need to know what was meant, do not assume. A governance framework or spe
 
 ## References
 
-[1] UNCITRAL. *Model Law on Electronic Signatures (2001) with Guide to Enactment*. See "Functions of signatures" (paras. 29–31). https://uncitral.un.org/sites/uncitral.un.org/files/media-documents/uncitral/en/ml-elecsig-e.pdf
+[1] UNCITRAL. *Model Law on Electronic Signatures (2001) with Guide to Enactment*. See "Functions of signatures" (paras. 29–31). https://uncitral.un.org/en/texts/ecommerce/modellaw/electronic_signatures
 
 [2] Britannica Dictionary. "Autograph". https://www.britannica.com/dictionary/autograph
 

@@ -37,6 +37,15 @@ exclude = [
   '://([^/]*\.)?nophonehome\.com',
   '://t\.ly',
   '://groups\.google\.com',   # Google Groups 403s checkers (Mozilla dev-security-policy thread)
+  # Timeout/block automated checkers though live in a browser (2026-06 run):
+  '://([^/]*\.)?cabforum\.org',
+  '://([^/]*\.)?csail\.mit\.edu',
+  '://([^/]*\.)?iso20022\.org',
+  '://([^/]*\.)?sei\.cmu\.edu',
+  '://([^/]*\.)?unspsc\.org',
+  '://([^/]*\.)?bozho\.net',          # Cloudflare-fronted; slow to checkers
+  # Deliberate placeholder URL used illustratively in ppred.md (not a real host):
+  '://([^/]*\.)?infrastructureprovider\.com',
 ]
 
 # Developer/meta docs are not part of the published archive and contain template

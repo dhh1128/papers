@@ -12,8 +12,8 @@ abstract: |
 keywords: "verifiable credentials, Linked Data, JSON-LD, semantic web, objectification, human agency, privacy, correlation, data ethics, decentralized identity"
 description: "This paper argues that data about people is ethically special, and that the W3C Verifiable Credentials data model mishandles that specialness by binding credentials to Linked Data. The argument takes a deliberately philosophical path: the old distinction between things that act and things that are acted upon, the human capacity for agency, and the social and technological harms that follow from objectifying people — treating them as resources to be processed rather than actors with boundaries of their own. Computationally there is no difference between data about a person and data about a stock price, but in awareness, consent, accountability, relationship, and change, human data is unlike any other. By requiring `@context` at issuance, the VC specification grafts human subjects into a global, ungovernable semantic graph built for correlation — whether or not anyone ever processes the credential as Linked Data. The author recommends making `@context` optional, at least for credentials about people, and shifting the community's emphasis from perfect, web-scale data toward extensible actions and the humans the system is meant to serve."
 image: /assets/cards/aold.png
-version: "1.0"
-revision_date: 2022-11-16
+version: "1.1"
+revision_date: 2026-06-02
 ---
 
 ### (TL;DR)
@@ -205,7 +205,7 @@ Doing what I’m proposing here wouldn’t make VCs incompatible with the semant
 
 [<a id="note11">11</a>] [https://doi.org/10.2139/ssrn.1032263](https://doi.org/10.2139/ssrn.1032263), [https://nyti.ms/3znLg5p](https://nyti.ms/3znLg5p)
 
-[<a id="note12">12</a>] [https://doi.org/10.1002/hpm.3008]([https://doi.org/10.1002/hpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
+[<a id="note12">12</a>] [https://doi.org/10.1002/hpm.3008](https://doi.org/10.1002/hpm.3008), [https://bit.ly/3gQiu7g](https://bit.ly/3gQiu7g)
 
 [<a id="note13">13</a>] [https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/](https://techhq.com/2018/04/facebook-if-something-is-free-you-are-the-product/), [https://cnn.it/3fkGXRM](https://cnn.it/3fkGXRM)
 

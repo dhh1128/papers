@@ -11,8 +11,8 @@ category: Analyses
 item_id: CC-ANA-250602
 description: "This article examines the concept of intent in digital systems, highlighting the importance of respecting user boundaries to preserve agency and trust."
 image: /assets/cards/intent-boundaries.png
-version: "1.0"
-revision_date: 2025-06-20
+version: "1.1"
+revision_date: 2026-06-02
 ---
 
 ## Lip service
@@ -29,7 +29,7 @@ Upgrading was not my intent when I clicked the *Watch* button. (In the web versi
 
 As builders of software, we have to handle intent better.
 
-Thinkers have explored intent in various disciplines, including law, philosophy, religion, organizational behavior, cybersecurity, and human-computer interaction. In my experience, user intent is also discussed regularly by dev and product teams in software. Nonetheless, our industry is often careless, naive, inefficient, or downright disrespectful of the intent of those who use what we build. My story is just one example. Check out [darkpatterns.org](https://darkpatterns.org) for many more.
+Thinkers have explored intent in various disciplines, including law, philosophy, religion, organizational behavior, cybersecurity, and human-computer interaction. In my experience, user intent is also discussed regularly by dev and product teams in software. Nonetheless, our industry is often careless, naive, inefficient, or downright disrespectful of the intent of those who use what we build. My story is just one example. Check out [deceptive.design](https://www.deceptive.design) (formerly darkpatterns.org) for many more.
 
 I'd like to raise the bar by introducing some concepts that I think our industry lacks, and then proposing some associated principles. I believe these principles are foundational to smooth and intuitive UX, efficient and safe agentic UI, and ethical and empowering identity systems.
 
