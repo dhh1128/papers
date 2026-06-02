@@ -8,6 +8,7 @@ language: "en"
 category: Analyses
 item_id: CC-ANA-251209
 pdf_url: https://dhh1128.github.io/papers/heartbeat-and-witnesses.pdf
+description: "This paper analyzes the heartbeat mechanism in the did:cel method and its relevance to KERI's approach to retrograde attack defense."
 ---
 
 The `did:cel` method specification introduces a "heartbeat" mechanism designed to protect the integrity of the identifier's log [1]. This analysis examines the purpose of the heartbeat feature and evaluates its necessity within the Key Event Receipt Infrastructure (KERI) ecosystem.

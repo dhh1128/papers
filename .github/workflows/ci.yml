@@ -24,6 +24,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Metadata schema validation
         run: python scripts/validate_metadata.py
+      - name: SEO descriptions in sync with abstracts
+        run: python scripts/sync_descriptions.py --check-only
       - name: Reference/citation numbering is consistent
         run: python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
       - name: Index is up to date

@@ -9,6 +9,7 @@ pdf_url: https://dhh1128.github.io/papers/intent-boundaries.pdf
 language: "en"
 category: Analyses
 item_id: CC-ANA-250602
+description: "This article examines the concept of intent in digital systems, highlighting the importance of respecting user boundaries to preserve agency and trust."
 ---
 
 ## Lip service

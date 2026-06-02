@@ -9,6 +9,7 @@ pdf_url: https://dhh1128.github.io/papers/acdc-and-mtc.pdf
 language: "en"
 category: Comparisons
 item_id: CC-COM-260101
+description: "This paper compares ACDCs and Merkle Tree Certificates, analyzing their design, use cases, and implications for digital trust."
 ---
 
 ## 1. Introduction and scope

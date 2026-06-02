@@ -145,5 +145,7 @@ The body must **not** repeat the title or abstract — the layout renders those.
    or rebuild the whole corpus with `python scripts/build_pdfs.py --out .`.
    Builds are timestamp-deterministic (`SOURCE_DATE_EPOCH`), so a PDF only
    changes when its content does — regenerate only the docs you touched.
-6. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
+6. If you change an `abstract`, re-run `python scripts/sync_descriptions.py` so
+   the SEO `description` stays in sync (CI checks this with `--check-only`).
+7. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
    guards before committing; CI is the backstop. Work test-first for new tooling.

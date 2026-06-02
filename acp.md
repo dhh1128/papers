@@ -8,6 +8,7 @@ pdf_url: https://dhh1128.github.io/papers/acp.pdf
 language: "en"
 category: Guidance
 item_id: CC-GUI-230604
+description: "A practical guide to cybersecurity and privacy for non-experts, offering distilled advice on browsers, passwords, antivirus, software installation, two-factor authentication, and more."
 ---
 
 # Advice About Cybersecurity and Privacy

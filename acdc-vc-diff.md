@@ -11,6 +11,7 @@ language: "en"
 category: Comparisons
 item_id: CC-COM-251105
 version: 1.1
+description: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 ---
 
 <p align="right"><em>(related: comparisons of <a href="x509-prob.html">ACDCs and X509</a> and <a href="sdjwt-acdc.html">SD-JWTs</a>)</em></p>

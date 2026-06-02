@@ -92,3 +92,12 @@ def test_every_document_has_committed_pdf(docs, root):
     """PDFs are committed at the repo root and served at /papers/<slug>.pdf."""
     missing = [p.name for p, _ in docs if not (root / (p.stem + ".pdf")).is_file()]
     assert not missing, f"documents without a committed <slug>.pdf: {missing}"
+
+
+def test_descriptions_in_sync_with_abstracts(docs):
+    """The SEO `description` mirrors the `abstract` (one line). See sync_descriptions.py."""
+    def norm(s):
+        return " ".join(str(s).split())
+    drift = {p.name for p, fm in docs
+             if fm.get("abstract") and norm(fm.get("description")) != norm(fm.get("abstract"))}
+    assert not drift, f"description out of sync with abstract: {sorted(drift)}"
