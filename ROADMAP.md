@@ -97,17 +97,15 @@ On plain GitHub Pages Jekyll, the live site serves committed repo files. Today
 built PDFs are CI artifacts only, so ~12 `pdf_url`s 404 on the live site and a
 few committed PDFs are dead weight nothing links to.
 
-- [ ] **DECIDE the publication model** (gating): commit the built PDFs (Jekyll
-      serves them; simplest, reverses the old "don't commit" stance) vs. switch
-      Pages to an Actions build+deploy (no committed binaries, more infra).
-- [ ] Reconcile `pdf_url`: one uniform scheme for internal docs; keep SSRN as
-      `canonical_pdf_url` for `cfa-paper`/`intent-monograph` with a local
-      `pdf_url` alongside; add `pdf_url` to the 13 docs that lack one (or derive
-      it from the slug in the layout). Fix the ~12 live 404s.
-- [ ] Retire/refresh committed `*.pdf` per the chosen model (incl. the dead-weight
-      `cfa-paper.pdf`, `prog-a.pdf`, `rendered/intent-monograph.pdf`).
-- [ ] Graduate `pdf_url` to validated/required in `validate_metadata.py` once it
-      resolves; add a freshness/exists check + test.
+- [x] **Publication model = commit the built PDFs** (Jekyll serves them). All 32
+      committed at repo root as `<slug>.pdf`; fixes the ~12 live 404s.
+- [x] Reconcile `pdf_url`: absolute site URL on all 30 non-SSRN docs; the 2 SSRN
+      docs keep `pdf_url` → SSRN (version of record) and also publish a local copy.
+- [x] Removed the stale `rendered/intent-monograph.pdf`; regenerated the other
+      committed PDFs from current source (now reproducible via `SOURCE_DATE_EPOCH`).
+- [x] `validate_metadata.py` requires a committed `<slug>.pdf` per document +
+      `tests/test_metadata.py` test. _(red→green)_
+- [ ] _(nice-to-have)_ a `.gitattributes` to pin `*.md` to LF (ai-coca was CRLF).
 
 ## Phase 5 — SEO / scholarly-indexing hardening (Jekyll)
 The `.reorg-ideas.md` goals — make indexers and AI see a scholarly archive, not a
