@@ -14,6 +14,12 @@ concurrency:
   group: build-pdfs-${{ github.ref }}
   cancel-in-progress: true
 
+# Least privilege: only reads source. Artifact upload uses the Actions runtime
+# token, not the contents scope, so read is sufficient and the token cannot
+# write to the repo even if a build dependency were compromised.
+permissions:
+  contents: read
+
 jobs:
   pdfs:
     runs-on: ubuntu-latest
