@@ -7,6 +7,8 @@ author:
 plugins:
   - jekyll-remote-theme
   - jekyll-sitemap
+  - jekyll-seo-tag        # the {% seo %} tag (was implicit via the GH Pages default set)
+  - jekyll-default-layout # assigns default.html to layout-less documents
 remote_theme: pages-themes/minimal@v0.2.0
 show_downloads: false
 include:

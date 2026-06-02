@@ -42,19 +42,55 @@
 {%- endcapture -%}
 
 {%- comment -%}
-Supplemental JSON-LD: additive metadata not supplied by jekyll-seo-tag.
-Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplies them.
+Complete scholarly JSON-LD node (ScholarlyArticle / TechArticle by category) —
+richer than jekyll-seo-tag's generic Article. Both share the same @id so a
+consumer can merge them into one node.
 {%- endcomment -%}
 
 {% assign canonical_pdf_url = page.canonical_pdf_url | default: page.pdf_url %}
 {% assign has_identifiers = false %}
 {% if page.item_id or doi %}{% assign has_identifiers = true %}{% endif %}
+{%- assign seo_keywords = page.keywords -%}
+{%- if page.keywords.first -%}{%- assign seo_keywords = page.keywords | join: ", " -%}{%- endif -%}
+{%- assign seo_description = page.description | default: page.abstract | strip_newlines -%}
 
-{% if has_identifiers or page.version or canonical_pdf_url %}
+{% if page.title %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@id": {{ page.url | absolute_url | jsonify }}
+  "@type": {{ cc_type | jsonify }},
+  "@id": {{ page.url | absolute_url | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }},
+  "headline": {{ page.title | jsonify }},
+  "name": {{ page.title | jsonify }},
+  "inLanguage": {{ page.language | default: "en" | jsonify }},
+  "isPartOf": { "@type": "Periodical", "name": "Codecraft Papers" },
+  "publisher": { "@type": "Organization", "name": "Codecraft" },
+  "author": [
+    {%- if page.authors -%}
+      {%- for a in page.authors -%}
+    { "@type": "Person", "name": {{ a.name | jsonify }}{% if a.affiliation %}, "affiliation": {{ a.affiliation | jsonify }}{% endif %} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    {%- elsif page.author.first -%}
+      {%- for a in page.author -%}
+    { "@type": "Person", "name": {{ a | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    {%- else -%}
+    { "@type": "Person", "name": {{ page.author | default: site.author.name | jsonify }} }
+    {%- endif -%}
+  ]
+  {%- if page.date -%},
+  "datePublished": {{ page.date | jsonify }}
+  {%- endif -%}
+  {%- if page.revision_date -%},
+  "dateModified": {{ page.revision_date | jsonify }}
+  {%- endif -%}
+  {%- if seo_description -%},
+  "description": {{ seo_description | jsonify }}
+  {%- endif -%}
+  {%- if seo_keywords -%},
+  "keywords": {{ seo_keywords | jsonify }}
+  {%- endif -%}
   {%- if has_identifiers -%},
   "identifier": [
     {%- if page.item_id -%}{{ page.item_id | jsonify }}{%- endif -%}
@@ -87,15 +123,23 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
     {% if page.title %}
     <meta name="citation_title" content="{{ page.title | escape }}">
     {% endif %}
-    {% if page.author %}
-    {% if page.author.size %}
-      {% for a in page.author %}
-      <meta name="citation_author" content="{{ a | escape }}">
-      {% endfor %}
-    {% else %}
-      <meta name="citation_author" content="{{ page.author | escape }}">
-    {% endif %}
-    {% endif %}
+    {%- comment -%}Highwire authors: support 'authors' (list of dicts) or 'author' (string/list){%- endcomment -%}
+    {%- if page.authors -%}
+      {%- for a in page.authors %}
+    <meta name="citation_author" content="{{ a.name | escape }}">
+        {%- if a.affiliation %}
+    <meta name="citation_author_institution" content="{{ a.affiliation | escape }}">
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif page.author -%}
+      {%- if page.author.first -%}
+        {%- for a in page.author %}
+    <meta name="citation_author" content="{{ a | escape }}">
+        {%- endfor -%}
+      {%- else %}
+    <meta name="citation_author" content="{{ page.author | escape }}">
+      {%- endif -%}
+    {%- endif -%}
     {% if page.date %}
     <meta name="citation_publication_date" content="{{ page.date }}">
     {% endif %}
@@ -110,9 +154,13 @@ Do NOT repeat headline/description/date/url here; jekyll-seo-tag already supplie
     {% if page.abstract %}
     <meta name="citation_abstract" content="{{ page.abstract | escape }}">
     {% endif %}
-    {% if page.keywords %}
+    {%- if page.keywords -%}
+      {%- if page.keywords.first %}
+    <meta name="citation_keywords" content="{{ page.keywords | join: ', ' | escape }}">
+      {%- else %}
     <meta name="citation_keywords" content="{{ page.keywords | escape }}">
-    {% endif %}
+      {%- endif -%}
+    {%- endif -%}
     {% if page.language %}
     <meta name="citation_language" content="{{ page.language }}">
     {% endif %}
