@@ -10,7 +10,7 @@ pdf_url: https://dhh1128.github.io/papers/acdc-vc-diff.pdf
 language: "en"
 category: Comparisons
 item_id: CC-COM-251105
-version: 1.1
+version: "1.1"
 description: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 image: /assets/cards/acdc-vc-diff.png
 ---

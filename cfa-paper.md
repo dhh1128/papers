@@ -6,7 +6,7 @@ date: 2025-12-18
 doi: 5940195
 category: Papers
 item_id: CC-PAP-251208
-version: 1.0
+version: "1.0"
 revision_date: 2025-12-18
 pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5940195.pdf?abstractid=5940195&mirid=1
 abstract: |

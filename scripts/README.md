@@ -16,7 +16,8 @@ Every quality goal pairs a script here with a prover test in
 
 | Script | Purpose | `--check-only` |
 |---|---|---|
-| `archive.py` | Shared library: Item model, category parse, frontmatter load, id minting (`next_item_id`) | — |
+| `publish.py` | **Maintainer entry point.** Orchestrates the others: regenerate cards/descriptions/index + stale PDFs, `--revise` bumps a version, then validate | (writes) |
+| `archive.py` | Shared library: Item model, category parse, frontmatter load, id minting (`next_item_id`), version helpers | — |
 | `new_doc.py` | Scaffold a new document: mints the next `item_id`, writes a complete schema-valid frontmatter stub | (writes one file) |
 | `validate_metadata.py` | Validate all docs against the schema; `--report` prints a coverage punch-list | (read-only) |
 | `sync_descriptions.py` | Mirror each doc's `abstract` into a `description` field (the SEO meta description) | ✓ |

@@ -212,6 +212,28 @@ def next_item_id(category, date):
             max_oo = max(max_oo, int(m.group(1)[4:]))
     return f"CC-{cat3}-{period}{max_oo + 1:02d}"
 
+def normalize_version(v):
+    """Return a canonical `MAJOR.MINOR` string for a version value.
+
+    YAML reads `version: 1.10` as the float 1.1, so versions are stored as quoted
+    strings; this canonicalizes any current value (float/int/str) to `M.N`.
+    """
+    s = str(v)
+    if '.' not in s:
+        s += '.0'
+    major, minor = s.split('.', 1)
+    return f"{int(major)}.{int(minor)}"
+
+
+def bump_version(current, major=False):
+    """Return the next version string. Minor bump by default (errata); `major`
+    bumps the major and resets the minor (a new edition). Absent -> treat as 1.0."""
+    maj, minr = (int(x) for x in normalize_version(current if current is not None else "1.0").split('.'))
+    if major:
+        return f"{maj + 1}.0"
+    return f"{maj}.{minr + 1}"
+
+
 exit_code = 0
 
 def complain(msg, update_exit_code=True):

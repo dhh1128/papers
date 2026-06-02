@@ -4,7 +4,7 @@ title: Privacy-Preserving Discovery (PPreD)
 date: 2017-01-01
 item_id: CC-PAP-170101
 author: "Daniel Hardman"
-version: 1.0
+version: "1.0"
 revision_date: 2017-01-01
 pdf_url: https://dhh1128.github.io/papers/ppred.pdf
 abstract: |

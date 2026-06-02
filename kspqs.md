@@ -4,7 +4,7 @@ title: KERI's Strategy for Post-Quantum Security
 date: 2025-11-01
 item_id: CC-PAP-251104
 author: "Daniel Hardman"
-version: 1.0
+version: "1.0"
 revision_date: 2025-11-01
 pdf_url: https://dhh1128.github.io/papers/kspqs.pdf
 abstract: |

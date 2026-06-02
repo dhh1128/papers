@@ -128,26 +128,28 @@ category), `item_id` (`CC-XXX-YYMMOO`), `abstract`, `keywords`, and `author` (or
 `authors`); Papers additionally aim for `pdf_url`, `version`, `revision_date`.
 The body must **not** repeat the title or abstract — the layout renders those.
 
-## How to add or edit a document
+## How to add, edit, or re-publish a document
 
+**`scripts/publish.py` is the one command you run.** It regenerates everything
+derived (social cards, SEO descriptions, the index) and rebuilds only the PDFs
+whose rendered content changed, then validates and tells you exactly what to
+commit. You don't need to remember the individual tools.
+
+**New document:**
 1. Decide the single category by editorial intent (about.md tiebreak rules).
-2. Scaffold it with `python scripts/new_doc.py --title "…" --category <Cat>` —
-   this mints the permanent `item_id` and writes a complete, schema-valid
-   frontmatter stub (replace the TODO `abstract`/`keywords`). The authoring house
-   style is in [.standard-initial-prompt.md](.standard-initial-prompt.md); the
-   schema is in [docs/conventions.md](docs/conventions.md).
-3. Never hand-fabricate an `item_id`; it is permanent and minted by `new_doc.py`.
-4. Prose changes follow the propose-don't-silently-edit rule above.
-5. **Build and commit the PDF.** PDFs are committed at the repo root as
-   `<slug>.pdf` (Jekyll serves them at `/papers/<slug>.pdf`, which is what
-   `pdf_url` points to). Regenerate after a content change and commit it:
-   `python scripts/pandoc.py <slug>.md` (writes to `build/pdfs/`; copy to root)
-   or rebuild the whole corpus with `python scripts/build_pdfs.py --out .`.
-   Builds are timestamp-deterministic (`SOURCE_DATE_EPOCH`), so a PDF only
-   changes when its content does — regenerate only the docs you touched.
-6. If you change an `abstract`, re-run `python scripts/sync_descriptions.py` so
-   the SEO `description` stays in sync (CI checks this with `--check-only`). If
-   you change the title/authors/category/date, re-run `python scripts/make_cards.py`
-   to refresh the committed social card (`assets/cards/<slug>.png`).
-7. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
-   guards before committing; CI is the backstop. Work test-first for new tooling.
+2. `python scripts/new_doc.py --title "…" --category <Cat>` — mints the permanent
+   `item_id` and writes a schema-valid stub (replace the TODO `abstract`/
+   `keywords`). The house style is in `.standard-initial-prompt.md`; the schema
+   in `docs/conventions.md`. Never hand-fabricate an `item_id`.
+3. Write the content (prose changes follow the propose-don't-silently-edit rule).
+4. `python scripts/publish.py` → review its summary → `git add -A && git commit -s && git push`.
+
+**Re-publishing an existing document** (errata / revisions):
+- Errata, small fixes → `python scripts/publish.py --revise <slug>` — bumps the
+  **minor** version (`1.3 → 1.4`), sets `revision_date` to today, and regenerates.
+- A substantial new edition → add `--major` (`1.4 → 2.0`, minor reset).
+- Versions are `MAJOR.MINOR` quoted strings; `item_id` never changes across
+  versions (prior versions live in git history — see the page footer).
+
+**Anytime:** `python scripts/publish.py --check` validates without changing
+anything (same checks CI runs). Work test-first for new tooling.

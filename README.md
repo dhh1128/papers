@@ -21,12 +21,22 @@ and `CC` id namespace.
 
 ```
 pip install -r requirements.txt
-pytest                                   # prove the corpus invariants
-python scripts/validate_metadata.py      # metadata schema (add --report for gaps)
-python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
-python scripts/generate_index.py --check-only
+
+# Add a document
+python scripts/new_doc.py --title "…" --category Papers   # scaffold (mints item_id)
+# …write the content, replace the TODO abstract/keywords…
+python scripts/publish.py                                 # regenerate + validate everything
+git add -A && git commit -s -m "Add …" && git push
+
+# Re-publish with a version bump (errata)
+python scripts/publish.py --revise <slug>            # minor bump (--major for a new edition)
+
+# Check only (change nothing)
+python scripts/publish.py --check
 ```
 
-CI (`.github/workflows/ci.yml`) runs all of the above on every push and PR.
-Every quality goal pairs a script in [`scripts/`](scripts/) with a prover test
-in [`tests/`](tests/); work test-first (see AGENTS.md).
+`publish.py` is the maintainer entry point — it regenerates social cards, SEO
+descriptions, the index, and the stale PDFs, then runs every guard. CI
+(`.github/workflows/ci.yml`) runs the same checks on every push/PR. Every quality
+goal pairs a script in [`scripts/`](scripts/) with a prover test in
+[`tests/`](tests/); work test-first (see AGENTS.md).
