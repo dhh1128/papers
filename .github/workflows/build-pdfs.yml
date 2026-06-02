@@ -28,9 +28,19 @@ jobs:
       - name: Install pandoc, xelatex, fonts, and ImageMagick
         run: |
           sudo apt-get update
+          # Package set derived by listing every \usepackage in pandoc's
+          # xelatex output + our headers and mapping each .sty to its Debian
+          # package (kpsewhich/dpkg -S). Notably: lmodern -> lmodern,
+          # selnolig -> texlive-luatex, xurl/hyperxmp/upquote -> latex-extra,
+          # fancyhdr/graphicx/longtable -> latex-base. fonts-texgyre/-inconsolata
+          # supply the mainfont/monofont via fontconfig for xelatex.
           sudo apt-get install -y --no-install-recommends \
-            pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra \
-            fonts-texgyre fonts-inconsolata imagemagick
+            pandoc \
+            texlive-xetex texlive-luatex \
+            texlive-base texlive-latex-base texlive-latex-recommended \
+            texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra \
+            lmodern fonts-texgyre fonts-inconsolata \
+            imagemagick
       - name: Install Python dependencies
         run: pip install -r requirements.txt
       - name: Build every document to PDF
