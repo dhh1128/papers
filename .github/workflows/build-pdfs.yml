@@ -1,8 +1,9 @@
 name: Build PDFs
 
-# Renders a PDF for every document and uploads them as a downloadable artifact.
-# This is the "PDFs as CI artifacts" model: nothing is committed to the repo.
-# The build fails if any document cannot be rendered.
+# Build gate: renders a PDF for every document and fails if any cannot be built.
+# PDFs are committed in the repo (served by Jekyll at /papers/<slug>.pdf); this
+# workflow does NOT commit — it verifies the whole corpus still builds and
+# uploads the fresh PDFs as a downloadable artifact for convenience.
 
 on:
   push:

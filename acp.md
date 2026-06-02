@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2023-06-06
 abstract: "A practical guide to cybersecurity and privacy for non-experts, offering distilled advice on browsers, passwords, antivirus, software installation, two-factor authentication, and more."
 keywords: "cybersecurity, privacy, password management, antivirus, 2FA, best practices, online safety"
-pdf_url: "https://dhh1128.github.io/papers/acp.pdf"
+pdf_url: https://dhh1128.github.io/papers/acp.pdf
 language: "en"
 category: Guidance
 item_id: CC-GUI-230604

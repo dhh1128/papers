@@ -86,3 +86,9 @@ def test_report_mode_runs_and_lists_abstract_gap(run_script):
     r = run_script("validate_metadata.py", "--report")
     assert r.returncode == 0, r.stderr
     assert "abstract" in (r.stdout + r.stderr).lower()
+
+
+def test_every_document_has_committed_pdf(docs, root):
+    """PDFs are committed at the repo root and served at /papers/<slug>.pdf."""
+    missing = [p.name for p, _ in docs if not (root / (p.stem + ".pdf")).is_file()]
+    assert not missing, f"documents without a committed <slug>.pdf: {missing}"

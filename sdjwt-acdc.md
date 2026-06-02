@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2024-11-15
 abstract: "This article compares SD-JWT and ACDC technologies, discussing their similarities, differences, and implications for verifiable credentials."
 keywords: "SD-JWT, ACDC, verifiable credentials, digital identity, cryptography"
-pdf_url: "https://dhh1128.github.io/papers/sdjwt-acdc.pdf"
+pdf_url: https://dhh1128.github.io/papers/sdjwt-acdc.pdf
 language: "en"
 category: Comparisons
 item_id: CC-COM-241105

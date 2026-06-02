@@ -8,7 +8,7 @@ abstract: |
 
     This paper introduces two generic algorithms that extend self-addressing identifiers to arbitrary files treated as byte streams. The first embeds a self-certifying identifier directly within file content using a delimiter-based placeholder scheme, while the second externalizes the identifier to a constrained filename when in-place modification is impractical. Together, these approaches allow most file types to participate in authenticated, content-addressable data graphs, provided that authors can introduce an insertion point (or exsertion instruction) at creation time and that subsequent handling preserves the file’s bytes (or else any byte-changing transformation is treated as producing a new identity).
 keywords: "self-certifying identifiers, content-addressable data, authenticated data structures, cryptographic hashes, verifiable data, decentralized identifiers, file integrity verification, self-addressing identifiers, data integrity, cryptographic data structures, KERI, CESR"
-pdf_url: "bes.pdf"
+pdf_url: https://dhh1128.github.io/papers/bes.pdf
 language: "en"
 category: Papers
 version: 1.5

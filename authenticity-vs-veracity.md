@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2025-12-28
 abstract: "This article distinguishes between authenticity (truth of origin) and veracity (truth of content), clarifying their roles in philosophy, law, and digital identity."
 keywords: "authenticity, veracity, digital identity, philosophy, law, KERI, ACDC"
-pdf_url: "https://dhh1128.github.io/papers/authenticity-vs-veracity.pdf"
+pdf_url: https://dhh1128.github.io/papers/authenticity-vs-veracity.pdf
 language: "en"
 category: Analyses
 item_id: CC-ANA-251210

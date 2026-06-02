@@ -138,5 +138,12 @@ The body must **not** repeat the title or abstract — the layout renders those.
    schema is in [docs/conventions.md](docs/conventions.md).
 3. Never hand-fabricate an `item_id`; it is permanent and minted by `new_doc.py`.
 4. Prose changes follow the propose-don't-silently-edit rule above.
-5. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
+5. **Build and commit the PDF.** PDFs are committed at the repo root as
+   `<slug>.pdf` (Jekyll serves them at `/papers/<slug>.pdf`, which is what
+   `pdf_url` points to). Regenerate after a content change and commit it:
+   `python scripts/pandoc.py <slug>.md` (writes to `build/pdfs/`; copy to root)
+   or rebuild the whole corpus with `python scripts/build_pdfs.py --out .`.
+   Builds are timestamp-deterministic (`SOURCE_DATE_EPOCH`), so a PDF only
+   changes when its content does — regenerate only the docs you touched.
+6. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
    guards before committing; CI is the backstop. Work test-first for new tooling.

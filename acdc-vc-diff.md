@@ -6,7 +6,7 @@ revision_date: 2026-01-14
 tags: [acdc, keri, verifiable-credentials, w3c]
 abstract: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
-pdf_url: "https://dhh1128.github.io/papers/acdc-vc-diff.pdf"
+pdf_url: https://dhh1128.github.io/papers/acdc-vc-diff.pdf
 language: "en"
 category: Comparisons
 item_id: CC-COM-251105

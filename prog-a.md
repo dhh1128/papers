@@ -9,6 +9,7 @@ abstract: |
   The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-cost tools like X.509 certificates and high-assurance, high-cost systems like the verifiable Legal Entity Identifier (vLEI). Most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business.
 date: 2026-05-05
 item_id: CC-PAP-260501
+pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 version: 0.9
 revision_date: 2026-05-05

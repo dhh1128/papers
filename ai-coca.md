@@ -5,6 +5,7 @@ date: 2023-06-01
 language: "en"
 category: Positions
 item_id: CC-POS-230603
+pdf_url: https://dhh1128.github.io/papers/ai-coca.pdf
 abstract: |
   Artificial intelligence is a tool, and like any tool it can be used well or badly. This document is a personal code of conduct — a public pledge governing the author's own use of AI, not a standard imposed on others. It sets out four commitments: to be truthful, and never use AI to deceive others about the humanness or identity of their counterparty; to respect social norms such as privacy, courtesy, and personal space; to accept responsibility for what an AI does under one's direction while still crediting its contribution; and to provide sensible safeguards and human backchannels against egregious automated mistakes. The aim is public accountability, and an invitation for others to write principles of their own.
 keywords: "AI ethics, code of conduct, responsible AI, accountability, transparency, deception, consent, human oversight"

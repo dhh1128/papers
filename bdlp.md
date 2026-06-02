@@ -5,7 +5,7 @@ date: 2023-05-01
 tags: [identity, ssi, empowerment, advocacy]
 abstract: "This article discusses the power imbalance in digital trust architectures, advocating for designs that empower individuals over institutions."
 keywords: "digital trust, power imbalance, identity, ssi, empowerment, advocacy"
-pdf_url: "https://dhh1128.github.io/papers/bdlp.pdf"
+pdf_url: https://dhh1128.github.io/papers/bdlp.pdf
 language: "en"
 category: Positions
 item_id: CC-POS-230502

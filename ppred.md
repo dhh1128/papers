@@ -6,7 +6,7 @@ item_id: CC-PAP-170101
 author: "Daniel Hardman"
 version: 1.0
 revision_date: 2017-01-01
-pdf_url: ppred.pdf
+pdf_url: https://dhh1128.github.io/papers/ppred.pdf
 abstract: |
   This paper presents Privacy-Preserving Discovery (PPreD), a protocol that resolves the tension between privacy and discoverability in decentralized identity systems. PPreD enables parties to initiate communication using public identifiers while preserving mutual privacy of routes and endpoints. The mechanism uses a network of rendezvous nodes, quad-based address spaces, and encrypted onion routing to create anonymous connections that require active participation from both parties. Unlike traditional onion routing which only anonymizes the sender, PPreD protects both parties' infrastructure details from each other and from all observers. The paper demonstrates how this active-participation model extends beyond endpoint discovery to enable mutable, GDPR-compliant DID registration without blockchain dependencies.
 keywords: "privacy, discovery, decentralized identity, DID, onion routing, rendezvous nodes, anonymity, GDPR, routing protocols, endpoint discovery"

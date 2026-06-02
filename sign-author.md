@@ -7,6 +7,7 @@ keywords: "intent, digital signatures, authenticity, delegation"
 language: "en"
 category: Analyses
 item_id: CC-ANA-260203
+pdf_url: https://dhh1128.github.io/papers/sign-author.pdf
 ---
 
 People often treat a signature as if it were a claim of authorishop. That is sometimes true. But it is not what signatures *are* in general — and it is not what digital signatures are in particular.

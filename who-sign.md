@@ -7,6 +7,7 @@ keywords: "intent, digital signatures, authenticity, delegation"
 language: "en"
 category: Analyses
 item_id: CC-ANA-260202
+pdf_url: https://dhh1128.github.io/papers/who-sign.pdf
 ---
 
 In cryptographic systems, one of the most important questions we can ask is deceptively simple:

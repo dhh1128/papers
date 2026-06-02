@@ -5,7 +5,7 @@ date: 2025-08-07
 tags: [telco, evidence, credentials, identity]
 abstract: "This article explores the evidence lifecycle in telecommunications, emphasizing the importance of comprehensive evidence for trust and accountability."
 keywords: "evidence, telco, digital identity, credentials, trust, telecommunications"
-pdf_url: "https://dhh1128.github.io/papers/ev-life.pdf"
+pdf_url: https://dhh1128.github.io/papers/ev-life.pdf
 language: "en"
 category: Primers
 item_id: CC-PRI-250803

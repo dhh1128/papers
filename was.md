@@ -4,7 +4,7 @@ author: "Daniel Hardman"
 date: 2025-02-20
 abstract: "This article explains why simple digital signatures are insufficient for strong evidence, describes the retrograde attack problem, and explores mitigations and their limitations."
 keywords: "digital signatures, retrograde attack, cryptography, key management, evidence, security"
-pdf_url: "https://dhh1128.github.io/papers/was.pdf"
+pdf_url: https://dhh1128.github.io/papers/was.pdf
 language: "en"
 category: Primers
 item_id: CC-PRI-250201

@@ -15,7 +15,7 @@ import sys
 
 import archive
 from archive import (internal_items, external_items, indexed_items, cat_index,
-                     complain, exit_with_status)
+                     complain, exit_with_status, repo_root)
 
 CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords']
 SOFT_REQUIRED = []                             # (abstract/keywords graduated to ERROR)
@@ -91,6 +91,11 @@ def main():
             complain(f"{item.url}: {e}")
         for w in warnings:
             complain(f"{item.url}: {w}", update_exit_code=False)
+        # Every document must ship a committed PDF (served at /papers/<slug>.pdf).
+        pdf = os.path.join(repo_root, item.url[:-3] + '.pdf')
+        if not os.path.isfile(pdf):
+            complain(f"{item.url}: missing committed PDF ({item.url[:-3]}.pdf) — "
+                     f"run `python scripts/build_pdfs.py --out .`")
     # 3. External items: must carry enough to render in the index.
     for item in external_items():
         miss = [f for f in EXTERNAL_REQUIRED if not item.meta.get(f)]

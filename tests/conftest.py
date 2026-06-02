@@ -17,13 +17,12 @@ sys.path.insert(0, str(SCRIPTS))  # let tests import the toolkit (archive, etc.)
 
 import archive  # noqa: E402  (after sys.path setup)
 
-# Top-level .md files that are NOT archive documents. Single source of truth is
-# archive._non_articles, so the toolkit and the tests can never disagree.
-META_FILES = set(archive._non_articles)
-
 
 def _doc_paths():
-    return sorted(p for p in ROOT.glob("*.md") if p.name not in META_FILES)
+    # Single source of truth: the toolkit's own notion of archive documents
+    # (excludes meta-docs AND dotfiles like .reorg-ideas.md), so tests and
+    # tooling can never disagree about which files are documents.
+    return sorted(ROOT / it.url for it in archive.internal_items())
 
 
 @pytest.fixture(scope="session")

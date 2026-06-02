@@ -11,6 +11,8 @@ Two issues this module fixes vs. the original:
     to .png in a throwaway work dir and the markdown is rewritten to match —
     the author's web assets are left untouched.
 """
+import calendar
+import datetime
 import os
 import re
 import shutil
@@ -43,6 +45,21 @@ def _tex_escape(s):
     return ''.join(repl.get(c, c) for c in str(s))
 
 
+def _epoch(d):
+    """Unix UTC seconds for a date / datetime / 'YYYY-MM-DD' string.
+
+    Used as SOURCE_DATE_EPOCH so xelatex/hyperxmp embed a deterministic
+    timestamp — committed PDFs then change only when content changes, not on
+    every rebuild.
+    """
+    if isinstance(d, dt):
+        return calendar.timegm(d.utctimetuple())
+    if isinstance(d, datetime.date):
+        return calendar.timegm(d.timetuple())
+    p = str(d).split('-')
+    return calendar.timegm((int(p[0]), int(p[1]), int(p[2][:2]), 0, 0, 0, 0, 0, 0))
+
+
 def pdf_metadata(meta, fallback_mtime=None):
     """Normalize frontmatter into the values the PDF needs.
 
@@ -68,7 +85,8 @@ def pdf_metadata(meta, fallback_mtime=None):
         'item_id': meta.get('item_id', ''),
         'version': meta.get('version', 1),
         'date': meta['date'],
-        'revision_date': meta.get('revision_date') or fallback_mtime,
+        # Fall back to the publication date (deterministic), not file mtime.
+        'revision_date': meta.get('revision_date') or fallback_mtime or meta['date'],
     }
 
 
@@ -123,8 +141,7 @@ def build_pdf(item, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     slug = os.path.basename(item.url)[:-3]
     output_path = os.path.join(out_dir, slug + '.pdf')
-    mtime = dt.fromtimestamp(os.path.getmtime(item.path))
-    m = pdf_metadata(item.meta, fallback_mtime=mtime)
+    m = pdf_metadata(item.meta)
     work = tempfile.mkdtemp(prefix='ccpdf-')
     try:
         src_md = _prepare_source(item.path, work)
@@ -144,7 +161,11 @@ def build_pdf(item, out_dir):
                '--include-in-header=' + os.path.join(hdr, 'pkgs.tex'),
                '--include-in-header=' + meta_tex,
                '--include-in-header=' + os.path.join(hdr, 'header.tex')]
-        r = subprocess.run(cmd, capture_output=True, text=True)
+        # Deterministic timestamps so committed PDFs are reproducible.
+        env = dict(os.environ)
+        env['SOURCE_DATE_EPOCH'] = str(_epoch(m['date']))
+        env['FORCE_SOURCE_DATE'] = '1'
+        r = subprocess.run(cmd, capture_output=True, text=True, env=env)
         return r.returncode, (r.stdout + r.stderr), output_path
     finally:
         shutil.rmtree(work, ignore_errors=True)

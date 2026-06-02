@@ -6,6 +6,7 @@ tags: [privacy, credentials]
 category: Analyses
 original_publication: "https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/"
 item_id: CC-ANA-200401
+pdf_url: https://dhh1128.github.io/papers/wbca.pdf
 abstract: |
   Advocates of correlating verifiable credentials often argue that resisting correlation is wasted effort, since 'we'll be correlated anyway'. This analysis grants the half-truth and then takes it apart. Whether correlation happens is the wrong question; the useful ones are how expensive it is, who can do it, when it happens, how completely it links a person's separate contexts, and how much control the subject keeps over how a proof is reshared. Correlating credentials — which expose the same identifier and signature on every use — make correlation cheap, accurate, universal, and permanent, and hand industrial-strength lookup to any stranger who collects one. Non-correlating credentials move each of these variables in the holder's favour. Managing correlation, then, is neither futile nor a mere nicety: it shapes the economics and incentives of surveillance, and for individuals who want a few genuinely private spaces, non-correlating credentials are the better tool.
 keywords: "verifiable credentials, correlation, privacy, selective disclosure, unlinkability, surveillance, self-sovereign identity, data brokers"

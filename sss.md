@@ -6,6 +6,7 @@ tags: [identity, ssi, didcomm, agents, privacy]
 original_publication: "https://daniel-hardman.medium.com/security-silos-and-sovereignty-522e30bb8eb4"
 category: Analyses
 item_id: CC-ANA-210302
+pdf_url: https://dhh1128.github.io/papers/sss.pdf
 abstract: |
   Secure messaging is a solved problem, so what makes decentralized identifiers (DIDs) and DID-based communication (DIDComm) worth the effort? This analysis reaches an answer by way of a personal frustration: switching phone numbers meant losing a Signal account, because its security was bound to an identifier rented from a carrier rather than owned by the user. The headline benefit of DIDs, the author argues, is not the encrypted channel — Signal, TLS, and SSH already provide that — but that DIDs make a trust context portable. Existing secure channels are siloed, owned by whoever supplies them; DIDs let a relationship and its accumulated trust move across transports, devices, and form factors, with no backchannel coordination and no way for third parties to correlate the participants. The author calls this self-sovereign security, and argues that it, not encryption, is the real breakthrough.
 keywords: "decentralized identifiers, DIDComm, self-sovereign identity, portable trust, secure messaging, vendor lock-in, correlation, digital identity"

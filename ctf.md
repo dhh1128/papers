@@ -4,7 +4,7 @@ title: The Coming Tsunami of Falsehood
 author: "Daniel Hardman"
 date: 2024-06-01
 item_id: CC-GUI-240601
-pdf_url: ctf.pdf
+pdf_url: https://dhh1128.github.io/papers/ctf.pdf
 abstract: |
   This guidance document warns about the convergence of advanced artificial intelligence with existing problems of truth, disinformation, and digital dishonesty. Written in June 2023 following major AI breakthroughs, it predicts how AI-powered tools will enable unprecedented levels of personalized deception, manipulation, and fraud through deep fakes, targeted scams, and automated character assassination. The author argues that while AI itself is not the core problem, its weaponization by dishonest actors creates conditions that could severely damage societal trust. The document provides concrete recommendations for individuals to protect themselves: becoming careful truth-hearers and truth-tellers, proving authenticity of communications, treasuring reliable sources, and clarifying personal knowledge.
 keywords: "artificial intelligence, AI, disinformation, truth, cybersecurity, deepfakes, digital identity, authenticity, scams, social media, trust"

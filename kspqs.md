@@ -6,7 +6,7 @@ item_id: CC-PAP-251104
 author: "Daniel Hardman"
 version: 1.0
 revision_date: 2025-11-01
-pdf_url: kspqs.pdf
+pdf_url: https://dhh1128.github.io/papers/kspqs.pdf
 abstract: |
   This whitepaper explains how the Key Event Receipt Infrastructure (KERI) provides a comprehensive defense against quantum computing threats to digital identity systems. KERI addresses both "Harvest Now, Decrypt Later" attacks on confidentiality and surprise quantum attacks on control and authenticity. Through its pre-rotation mechanism using quantum-safe hash commitments, KERI makes identity control resilient and recoverable even if signing keys are compromised. The paper demonstrates how KERI's architectural separation of identity management from communication encryption, combined with its foundational cryptographic agility, enables a practical bridge from classical to post-quantum cryptographic systems without premature commitment to unproven algorithms.
 keywords: "post-quantum cryptography, KERI, quantum computing, pre-rotation, cryptographic agility, key management, digital identity, HNDL attack, hash functions, resilience"
