@@ -1,0 +1,38 @@
+name: SEO check (rendered)
+
+# Builds the site and validates the actual rendered <head> SEO / scholarly
+# metadata (citation_*, JSON-LD @type, og:image, canonical, per-page
+# description, CollectionPage). This catches LAYOUT regressions the pytest
+# suite (which checks source frontmatter) cannot. It is heavy (bundle + jekyll
+# + remote theme), so it runs on a schedule — about every 6 months — plus on
+# demand. Routine source-level checks stay in ci.yml on every push.
+
+on:
+  schedule:
+    - cron: '0 0 1 1,7 *'   # Jan 1 and Jul 1 (~ every 6 months)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1.310.0
+        with:
+          ruby-version: '3.3'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install gems (github-pages) and Python deps
+        run: |
+          bundle install
+          pip install pyyaml
+      - name: Build the site
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+        run: bundle exec jekyll build -d _site
+      - name: Validate rendered SEO metadata
+        run: python scripts/check_seo.py _site

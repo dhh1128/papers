@@ -22,6 +22,7 @@ Every quality goal pairs a script here with a prover test in
 | `validate_metadata.py` | Validate all docs against the schema; `--report` prints a coverage punch-list | (read-only) |
 | `sync_descriptions.py` | Mirror each doc's `abstract` into a `description` field (the SEO meta description) | ✓ |
 | `make_cards.py` | Render a 1200×630 social-share card (`og:image`) per doc → `assets/cards/<slug>.png` | ✓ |
+| `check_seo.py` | Validate the RENDERED `<head>` SEO/scholarly metadata of a built site (scheduled `seo-check.yml`) | (read-only) |
 | `generate_index.py` | Regenerate the categorized `index.md` | ✓ |
 | `fix_ref_nums.py` | Normalize inline/expanded reference numbering (ACM style) | ✓ |
 | `pandoc.py` | Render a document to PDF | — |

@@ -127,21 +127,22 @@ test-first (JSON-LD validated with `json.loads`). `Gemfile.lock` is gitignored.
       (author(s), headline, datePublished, abstract-as-description, joined
       keywords, identifier, version, isPartOf Periodical, PDF encoding) — valid
       across single/multi-author, DOI, and no-version docs.
-- [ ] **og/meta `description`** still the site tagline (jekyll-seo-tag needs
-      `page.description`; JSON-LD already uses the abstract). Decide: add
-      `description` (≈abstract) to frontmatter vs. leave. _(author call)_
+- [x] **og/meta `description`** now per-page (mirrors the abstract via
+      `sync_descriptions.py`); `url`/`baseurl` set so og:image/canonical are absolute.
 
 **Medium:**
 - [x] `robots.txt`: advertise `Sitemap:`.
 - [x] `jekyll-seo-tag` + `jekyll-default-layout` explicit in `_config.yml` plugins.
-- [ ] Social cards: add a default OG/Twitter image + `summary_large_image` (needs
-      a ~1200×630 image asset — author to provide or approve a generated one).
-- [ ] `check_seo.py` + test: `citation_author` present for every doc incl.
-      multi-author; well-formed `citation_keywords`; valid JSON-LD with the right
-      `@type`; canonical present. CI guard (renders via the local github-pages build).
+- [x] **Per-paper social cards** (`make_cards.py`) — 1200×630 `og:image` +
+      `summary_large_image`, committed; richer than a single default image.
+- [x] `check_seo.py` + `tests/test_seo.py`: validates the RENDERED head
+      (citation_* incl. multi-author, JSON-LD `@type`, og:image absolute,
+      canonical, per-page description, CollectionPage). Runs in the **scheduled**
+      `seo-check.yml` workflow (~every 6 months) since it needs a full site build.
 
-**Low / optional:** index/about JSON-LD as a `CollectionPage`/`Periodical` to
-signal a curated archive landing.
+**Low / optional:**
+- [x] Index JSON-LD as a `CollectionPage` that `isPartOf` the Periodical and
+      lists every document as `hasPart`.
 
 ---
 
