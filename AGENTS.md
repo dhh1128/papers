@@ -79,28 +79,29 @@ as a blog. The governing editorial policy is [about.md](about.md).
   house style; the author edits, AI assists.
 - **Taxonomy:** single mutually-exclusive **category** per document (MECE, per
   about.md). No tags.
-- **PDFs:** built in **CI as artifacts**, not committed long-term. `pdf_url`
-  becomes a derived/validated field rather than hand-maintained. (Until the build
-  workflow lands in Phase 3, the currently-committed PDFs stay in place and
-  `pdf_url` is a *recommended*, not hard-required, Paper field.)
+- **Publishing platform: stay on Jekyll.** GitHub Pages' built-in Jekyll
+  (remote `minimal` theme; no `Gemfile`). A Zensical/MkDocs migration was
+  evaluated and **declined** — no compelling need. The scholarly `<head>`
+  metadata (JSON-LD, Highwire `citation_*`) already lives in `_layouts/`, and
+  the PDF story is handled on Jekyll. Revisit only if Jekyll becomes a blocker.
+- **PDFs:** built reproducibly by `scripts/build_pdfs.py` (Phase 3), produced in
+  CI, and embedding full XMP + `/Info` metadata. *How they reach the live site*
+  (commit vs Actions-deploy) is the one open decision — see ROADMAP Phase 4;
+  `pdf_url`/`canonical_pdf_url` reconciliation rides on it.
 - **External items:** specs published elsewhere are declared in
   [.external-items.yml](.external-items.yml) and merged into `index.md`.
 
 ## Open questions (decide when relevant, don't assume)
 
-- **Publishing platform.** The site builds with **Jekyll** on GitHub Pages
-  (remote `minimal` theme; no `Gemfile`, so no Ruby gem dependency surface — only
-  the Actions workflows). Jekyll is blog-oriented; the author is migrating newer
-  sites to **Zensical** (an actively-maintained, MkDocs-API-compatible successor,
-  more publication- than blog-oriented). A migration is **planned for after the
-  quality pass** (ROADMAP Phase 4); `../tti/home` is a working reference
-  (`requirements.txt` pins `zensical`, `build.sh` runs `zensical build`, published
-  via a Pages/Cloudflare workflow). Do not migrate before the quality phases land.
-- **`author` vs `authors`.** The corpus mixes a singular `author` string with a
-  plural `authors` list (e.g. `prog-a.md`). To be normalized in Phase 2; tooling
-  currently accepts either.
-- **`version` / `revision_date` policy.** Present on only a few documents. Decide
-  when these are required vs optional.
+- **PDF publication model on Jekyll.** Built PDFs currently upload as a CI
+  artifact only; they are not on the live site, so ~12 `pdf_url`s 404. Decide how
+  they get served on plain GitHub Pages Jekyll: commit the built PDFs, or switch
+  Pages to an Actions build+deploy. This gates retiring the committed `*.pdf`
+  blobs and the `pdf_url`/`canonical_pdf_url` reconciliation. See ROADMAP Phase 4.
+
+_(Resolved earlier: platform = Jekyll; `author` singular with `authors` only for
+multi-author docs; `version`/`revision_date` required for Papers + Specifications
+— all recorded in [docs/conventions.md](docs/conventions.md).)_
 
 ## Repository layout
 

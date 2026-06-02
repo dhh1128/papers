@@ -1,15 +1,16 @@
 # Roadmap
 
 The plan for hardening the Codecraft Papers archive: a tested toolkit and
-rigorous CI first, then a quality/consistency pass, then PDFs, then a migration
-from Jekyll to Zensical. Tick items as completed. See [AGENTS.md](AGENTS.md) for
-vision and principles, [docs/conventions.md](docs/conventions.md) for schema.
+rigorous CI first, then a quality/consistency pass, then PDFs, then PDF
+publication + SEO on Jekyll. Tick items as completed. See [AGENTS.md](AGENTS.md)
+for vision and principles, [docs/conventions.md](docs/conventions.md) for schema.
 
 _Created 2026-06-01._
 
 **Locked decisions:** prose = propose-as-diffs only (never silently edited);
-single MECE **category** per document (no tags); PDFs built in **CI as
-artifacts** (`pdf_url` becomes derived/validated).
+single MECE **category** per document (no tags); **stay on Jekyll** (Zensical
+migration evaluated and declined); PDFs built reproducibly in CI (publication
+model — commit vs deploy — is the one open decision, Phase 4).
 
 ---
 
@@ -29,8 +30,7 @@ artifacts** (`pdf_url` becomes derived/validated).
       and made scripts read the live `archive.exit_code`. _(red→green)_
 - [x] **Fix the dead Papers check:** `check_requirements.py` evaluated synthesized
       index meta (no `category`), so the Papers branch never ran and referenced an
-      undefined `required_fields`. Rewrote it to validate real frontmatter via
-      `paper_problems()`. _(red→green)_
+      undefined `required_fields`. Rewrote it to validate real frontmatter. _(red→green)_
 - [x] **Fix inverted ref-num flag:** `fix_ref_nums` passed `not check_only` to
       `complain`, so `--check-only` never failed on a gap. _(red→green)_
 - [x] Tests: category parse, item-id format/uniqueness/segment-consistency,
@@ -43,6 +43,7 @@ artifacts** (`pdf_url` becomes derived/validated).
       "uncited" — but they ARE cited via en-dash ranges; the tool, not the
       document, was incomplete. Checker now expands ranges; the in-place fixer
       refuses range files rather than mangle them. _(red→green)_
+- [x] Least-privilege `permissions: contents: read` on all workflows.
 
 ## Phase 2 — Quality & consistency audit → backlog
 **Decisions:** author = singular `author` (norm), `authors` list only for
@@ -63,13 +64,12 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
       `telco-ev-reqs` category `Position` → `Positions`.
 - [x] Close the authoring-time metadata gap: `scripts/new_doc.py` scaffolds a
       schema-valid stub and mints the next `item_id` (`archive.next_item_id`);
-      `.standard-initial-prompt.md` updated to the enforced schema. So new docs
-      are *produced* valid, not just rejected by CI. _(red→green)_
+      `.standard-initial-prompt.md` updated to the enforced schema. _(red→green)_
 - [x] Verify external-item entries in `.external-items.yml` still resolve
       (all 5 return 200 as of 2026-06-01)
 - [ ] _(optional)_ deeper multi-persona content audit via a workflow
 
-## Phase 3 — PDF pipeline (CI artifacts)
+## Phase 3 — PDF build pipeline
 - [x] Make `pandoc.py` reproducible + importable: extract `pdf_metadata`
       (handles `author`/`authors`, list/str keywords, default version) and
       `build_pdf`. Fix the silent exit-code bug (`sys.exit(os.system(...))`
@@ -80,84 +80,50 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
       (gitignored); exits nonzero if any doc fails — the CI gate.
 - [x] `.github/workflows/build-pdfs.yml`: installs pandoc/xelatex/fonts/
       ImageMagick, builds the whole corpus, uploads the PDFs as an artifact
-      (node24 actions; `upload-artifact@v7`).
+      (node24 actions; `upload-artifact@v7`; verified 32/32 build on the runner).
 - [x] `tests/test_pdfs.py`: metadata prep, webp rewrite, exit-code semantics.
-- [ ] **Deferred to the Phase 4 deploy** (no site-deploy of PDFs exists yet):
-      reconcile the `pdf_url` scheme + validate against the produced artifact
-      (graduate to required), and retire the committed `*.pdf` blobs. The 8
-      committed PDFs currently serve the only resolving `pdf_url`s, so retiring
-      them before built PDFs are deployed would 404 those links.
+- [x] **XMP metadata** restored: `hyperxmp` deferred via etoolbox `\AtEndPreamble`
+      so it loads after pandoc's hyperref (newer hyperxmp enforces the order).
+      Verified via the xelatex log + the embedded XMP packet. PDFs are richly
+      indexable (dc:title/dc:creator/pdf:Keywords/dates) plus `/Info`.
 
-## Phase 4 — Jekyll → Zensical
-Reference: `ZENSICAL-MIGRATION-KT.md` (sister-repo lessons) — but note papers'
-hardest part (per-page scholarly `<head>` metadata) is NOT covered there, since
-codecraft injects none. See the feasibility findings below.
+## Phase 4 — PDF publication & metadata reconciliation (Jekyll)
+> Zensical/MkDocs migration was evaluated and **declined** — no compelling need;
+> the scholarly `<head>` metadata already lives in `_layouts/default.html` and
+> the PDF story works on Jekyll. The analysis is preserved in
+> `ZENSICAL-MIGRATION-KT.md` should it ever be reconsidered.
 
-**Approach (decided after analysis):** keep canonical `*.md` at repo root; a
-Python assembler (reusing `archive.py`'s `internal_items()`/`external_items()`/
-`item.meta`) generates a disposable `build/` MkDocs tree; `zensical build`
-renders `build/site/`. All presentation chrome — visible *and* `<head>` — is
-**template-driven from frontmatter via `overrides/main.html`**, exactly as
-Jekyll's `_layouts/default.html` does today (Liquid → Minijinja). The assembler
-does NOT inject extras into the markdown body (that would pollute the TOC and
-edit/source links). Confirmed feasible: Zensical 0.0.43's `base.html` exposes
-`{% block extrahead %}` and `{% block content %}`, supports `theme.custom_dir`,
-and reads `page.meta.*`.
+On plain GitHub Pages Jekyll, the live site serves committed repo files. Today
+built PDFs are CI artifacts only, so ~12 `pdf_url`s 404 on the live site and a
+few committed PDFs are dead weight nothing links to.
 
-- [ ] **Spike first (5–6 docs).** Acceptance test is not "does it build" but:
-      does `overrides/main.html` emit correct `citation_*` + JSON-LD for an
-      `author` doc, an `authors` doc (e.g. `prog-a`), and the one DOI doc
-      (`cfa-paper`)? Plus inline `<figure>`/`<img>`/tables render; abstract +
-      byline + colophon show; URLs sane. (Apply the §9 KT log discipline:
-      `NO_COLOR=1 TERM=dumb`, redirect to file, strip ANSI, grep — never paste a
-      raw Zensical log into the session.)
-- [ ] **Assembler** (`scripts/build_site.py`): emit `build/docs/<slug>.md`
-      (keeping the scholarly frontmatter — do NOT slim to title-only, the
-      template needs `item_id`/`author(s)`/`doi`/`keywords`/`abstract`/`version`),
-      a categorized `build/docs/index.md`, copy `assets/`, copy CSS, write
-      `mkdocs.yml`. External items → outbound links in the index only, never a
-      local page (mirror `generate_index.py`).
-- [ ] **`overrides/main.html`** (the heart): port `default.html` logic to
-      Minijinja — `{% block extrahead %}` for `citation_*` meta + JSON-LD
-      (`ScholarlyArticle`/`TechArticle`/`WebPage` by category) + DOI + canonical
-      PDF; `{% block content %}` for byline (both `author`/`authors`), the
-      `item ID · version · PDF` colophon, abstract, and keywords, then `super()`.
-- [ ] **Extensions** in generated `mkdocs.yml`: `admonition`, `pymdownx.details`,
-      `attr_list`, `md_in_html` (needed for `<figure>`/`<img>` and `about.md`'s
-      `<dl>`/`<details>`), `toc: permalink`. Nav from the 7 MECE **categories**
-      (NOT the `tags` plugin).
-- [ ] **Redirects:** inventory current Jekyll URL shape (`/papers/slug.html` vs
-      `/slug/`); self-generate meta-refresh stubs for any internal doc whose URL
-      would move (don't trust `mkdocs-redirects`). Stable citable URLs are a hard
-      requirement; re-verify every `index.md` + `.external-items.yml` entry.
-- [ ] **Styling:** `assets/css/zensical-extra.css` — custom properties + heading
-      rules + verbatim `@media print` block + mobile `img` rule. Pick a serif web
-      font echoing the PDF (TeX Gyre Pagella / Inconsolata), not codecraft's
-      Open Sans — an author design call.
-- [ ] **Internal link cleanup:** harvest `unresolved link reference` warnings
-      from the build as a worklist; fix. (Keeps the scheduled lychee external
-      check.)
-- [ ] **Test-first** (`tests/test_site_build.py`): assert the generated `build/`
-      tree contract WITHOUT invoking `zensical build` — one page per published
-      doc, scholarly frontmatter retained, `overrides/main.html` present with the
-      required blocks, redirect stubs present, valid `mkdocs.yml` with required
-      extensions, CSS carried. Honest-failure exit discipline
-      (`archive.exit_with_status`). `xfail(strict=True)` tripwires for not-yet-met
-      goals.
-- [ ] **PDFs unchanged:** `scripts/pandoc.py` reads canonical source `.md`, so it
-      ports untouched; just ensure the assembler never strips fields it needs
-      from the *source* (it only governs the *built* page).
-- [ ] **Publish workflow:** `./build.sh` → deploy `build/site/` to Pages; retire
-      the Jekyll auto-build. Pin all actions to `node24` runtimes (verify each).
-- [ ] **Cutover & cleanup:** once live and URLs verified, retire `_config.yml`,
-      `_layouts/`, `_includes/`, `index.md`'s `layout: meta` (keep in git
-      history). Leave `docs/conventions.md`, `about.md`, `scripts/`, `tests/`
-      untouched. `about.md` keeps its `<dl>`/`<dt>` HTML — `archive.py`'s
-      `categories()` parses `<dt>` from source.
+- [ ] **DECIDE the publication model** (gating): commit the built PDFs (Jekyll
+      serves them; simplest, reverses the old "don't commit" stance) vs. switch
+      Pages to an Actions build+deploy (no committed binaries, more infra).
+- [ ] Reconcile `pdf_url`: one uniform scheme for internal docs; keep SSRN as
+      `canonical_pdf_url` for `cfa-paper`/`intent-monograph` with a local
+      `pdf_url` alongside; add `pdf_url` to the 13 docs that lack one (or derive
+      it from the slug in the layout). Fix the ~12 live 404s.
+- [ ] Retire/refresh committed `*.pdf` per the chosen model (incl. the dead-weight
+      `cfa-paper.pdf`, `prog-a.pdf`, `rendered/intent-monograph.pdf`).
+- [ ] Graduate `pdf_url` to validated/required in `validate_metadata.py` once it
+      resolves; add a freshness/exists check + test.
+
+## Phase 5 — SEO / scholarly-indexing hardening (Jekyll)
+The `.reorg-ideas.md` goals — make indexers and AI see a scholarly archive, not a
+blog. `_layouts/default.html` already emits JSON-LD (`ScholarlyArticle`/
+`TechArticle`) + Highwire `citation_*` + DOI; audit and complete it.
+
+- [ ] Audit the JSON-LD + `citation_*` coverage across all categories; fill gaps.
+- [ ] Sitemap (jekyll-sitemap is enabled), canonical URLs, Open Graph / Twitter
+      cards, `robots.txt` review.
+- [ ] `check_seo.py` + test: required SEO fields present and within length, no
+      duplicate titles/descriptions.
 
 ---
 
 ## Housekeeping / deferred
 - [x] Removed `.item-id-convention.md` (content now in `docs/conventions.md`)
 - [ ] Keep the Dependabot security tab clean as standing hygiene (see AGENTS.md)
-- [ ] `.todo.txt` legacy notes ("collapse tags into keywords") — fold into Phase 2
+- [ ] `.todo.txt` legacy notes ("collapse tags into keywords") — now obsolete
+      (keywords are populated corpus-wide); delete the stale note.
