@@ -3,9 +3,13 @@
 # sibling ../sivanea.com config. (require_https is intentionally NOT set here:
 # this archive cites legitimate http-only resources, e.g. aaronsw.com.)
 
-# Resolve extensionless internal links — e.g. (ev-life), (was), (x509-prob) — to
-# their .md source so they verify against the committed file rather than 404.
-remap = ['^(file:.*/[^/.]+)$ $1.md']
+# Resolve internal links to their .md source so they verify against the committed
+# file: extensionless links — e.g. (ev-life), (was), (x509-prob) — and raw-HTML
+# `<a href="x.html">` links (jekyll renders both to the right page live).
+remap = [
+  '^(file:.*/[^/.]+)$ $1.md',
+  '^(file:.*/[^/.]+)\.html$ $1.md',
+]
 
 # A 429 means the host rate-limited the checker, not that the link is broken.
 # Lower concurrency provokes it less.
@@ -23,6 +27,15 @@ exclude = [
   '://([^/]*\.)?cloudflare\.com',
   '://([^/]*\.)?congress\.gov',
   '://([^/]*\.)?bit\.ly',
+  # 403-to-bots though live in a browser (confirmed by a link-check run):
+  '://([^/]*\.)?medium\.com',
+  '://([^/]*\.)?ssrn\.com',
+  '://([^/]*\.)?iacr\.org',
+  '://([^/]*\.)?researchgate\.net',
+  '://([^/]*\.)?britannica\.com',
+  '://([^/]*\.)?entrust\.com',
+  '://([^/]*\.)?nophonehome\.com',
+  '://t\.ly',
 ]
 
 # Developer/meta docs are not part of the published archive and contain template
@@ -30,4 +43,6 @@ exclude = [
 exclude_path = [
   "README.md", "AGENTS.md", "CLAUDE.md", "ROADMAP.md",
   "ZENSICAL-MIGRATION-KT.md", "docs", "scripts", "tests",
+  # dev notes / authoring prompt — contain example/placeholder URLs:
+  ".reorg-ideas.md", ".standard-initial-prompt.md",
 ]

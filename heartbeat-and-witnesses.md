@@ -58,4 +58,4 @@ The `did:cel` heartbeat is a specific mitigation for architectures where past ke
 
 [3] Smith, S. M. 2024. KERI Specification. Trust Over IP Foundation. Retrieved from https://github.com/trustoverip/kswg-keri-specification
 
-[4] Hardman, D. 2025. A Primer on KERI, ACDCs, and CESR. Daniel Hardman's Papers. Retrieved from https://dhh1128.github.io/papers/keri-primer.md
+[4] Hardman, D. 2025. A Primer on KERI, ACDCs, and CESR. Daniel Hardman's Papers. Retrieved from https://dhh1128.github.io/papers/keri-primer.html

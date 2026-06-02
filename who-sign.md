@@ -143,4 +143,4 @@ That, in the end, is what trustworthy identity infrastructure should do.
 
 [8] Hardman, D. 2025. *Intent and Boundaries: A Framework for Digital Agency*. SSRN Electronic Journal. DOI: https://doi.org/10.2139/ssrn.5909382
 
-[9] Hardman, D. *Intent and Boundaries* Codecraft Papers, 2025. https://dhh1128.github.io/papers/intent-and-boundaries.html
+[9] Hardman, D. *Intent and Boundaries* Codecraft Papers, 2025. https://dhh1128.github.io/papers/intent-boundaries.html
