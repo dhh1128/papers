@@ -1,4 +1,10 @@
 \usepackage{xurl}
-\usepackage{hyperxmp} % optional
+% hyperxmp (richer XMP metadata packet) intentionally NOT loaded here: newer
+% versions require hyperref to be loaded first, but pandoc loads hyperref AFTER
+% these header-includes, which fails the build. Core PDF Info metadata
+% (pdftitle / pdfauthor / pdfsubject / pdfkeywords) is still set via \hypersetup
+% in the generated .pdfmeta.tex, so it is unaffected. To restore XMP later,
+% defer the load until after hyperref, e.g.:
+%   \usepackage{etoolbox}\AtEndPreamble{\usepackage{hyperxmp}}
 \Urlmuskip=0mu plus 1mu
 \emergencystretch=2em
