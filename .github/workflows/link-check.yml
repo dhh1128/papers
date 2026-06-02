@@ -1,12 +1,15 @@
 name: check links in markdown files
 
-on:
-  repository_dispatch:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 0 1 * *'
+# Quarterly sweep for broken hyperlinks (external + internal) across the
+# published documents, using Lychee with .github/lychee.toml. External
+# link-checking is inherently flaky (timeouts / rate limits), so it runs on a
+# schedule rather than on every push.
 
-# Least privilege: only reads source to check links.
+on:
+  schedule:
+    - cron: '0 0 1 1,4,7,10 *'   # quarterly: 1st of Jan, Apr, Jul, Oct
+  workflow_dispatch:
+
 permissions:
   contents: read
 
@@ -15,9 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-
       - name: Run lychee link checker
         uses: lycheeverse/lychee-action@v2.8.0
         with:
-          args: --verbose --exclude '((doi|genderit|archive|dl\.acm)\.org)|nyti.ms|cloudflare.com|congress.gov|bit.ly' './**/*.md'
+          args: --config .github/lychee.toml --verbose './**/*.md'
           fail: true

@@ -1,0 +1,33 @@
+# Lychee config for the broken-link sweep (.github/workflows/link-check.yml).
+# Tuned to suppress FALSE failures, not to hide real ones. Adapted from the
+# sibling ../sivanea.com config. (require_https is intentionally NOT set here:
+# this archive cites legitimate http-only resources, e.g. aaronsw.com.)
+
+# Resolve extensionless internal links — e.g. (ev-life), (was), (x509-prob) — to
+# their .md source so they verify against the committed file rather than 404.
+remap = ['^(file:.*/[^/.]+)$ $1.md']
+
+# A 429 means the host rate-limited the checker, not that the link is broken.
+# Lower concurrency provokes it less.
+accept = ["200..=299", "429"]
+max_concurrency = 4
+
+# Hosts that block automated checkers (a bot gets 401/403/throttled though the
+# page is live in a browser) or are chronically flaky for link-checkers.
+exclude = [
+  '://([^/]*\.)?doi\.org',
+  '://([^/]*\.)?genderit\.org',
+  '://([^/]*\.)?archive\.org',
+  '://dl\.acm\.org',
+  '://([^/]*\.)?nyti\.ms',
+  '://([^/]*\.)?cloudflare\.com',
+  '://([^/]*\.)?congress\.gov',
+  '://([^/]*\.)?bit\.ly',
+]
+
+# Developer/meta docs are not part of the published archive and contain template
+# URLs (e.g. https://.../<org>/<action>/<tag>/...) that are not real links.
+exclude_path = [
+  "README.md", "AGENTS.md", "CLAUDE.md", "ROADMAP.md",
+  "ZENSICAL-MIGRATION-KT.md", "docs", "scripts", "tests",
+]
