@@ -2,8 +2,8 @@
 
 Tiers:
   ERROR (fails CI): title, date, category, item_id, abstract, keywords,
-    author/authors. Papers + Specifications additionally require version +
-    revision_date.
+    author/authors, version, revision_date. Every internal document is
+    versioned (1.0 baseline); content edits bump it as errata.
   WARN  (advisory): none currently. (abstract/keywords graduated from WARN to
     ERROR once the Phase 2 backfill completed.)
 
@@ -19,7 +19,7 @@ from archive import (internal_items, external_items, indexed_items, cat_index,
 
 CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords']
 SOFT_REQUIRED = []                             # (abstract/keywords graduated to ERROR)
-VERSIONED_CATS = {'Papers', 'Specifications'}  # require version + revision_date
+VERSION_FIELDS = ['version', 'revision_date']  # required on every internal document
 EXTERNAL_REQUIRED = ['category', 'title', 'date']
 
 
@@ -36,11 +36,9 @@ def field_problems(meta):
               for f in CORE_REQUIRED if not meta.get(f)]
     if not has_author(meta):
         errors.append("missing required field 'author'/'authors'")
-    cat = str(meta.get('category', ''))
-    if cat in VERSIONED_CATS:
-        for f in ('version', 'revision_date'):
-            if not meta.get(f):
-                errors.append(f"{cat} requires '{f}'")
+    for f in VERSION_FIELDS:
+        if not meta.get(f):
+            errors.append(f"missing required field '{f}'")
     warnings = [f"missing field '{f}'" for f in SOFT_REQUIRED if not meta.get(f)]
     return errors, warnings
 
@@ -49,7 +47,7 @@ def report():
     """Print a per-field coverage punch-list. Never fails (exit 0)."""
     docs = sorted(internal_items(), key=lambda i: i.url)
     n = len(docs)
-    fields = CORE_REQUIRED + ['author/authors'] + SOFT_REQUIRED + ['version', 'revision_date']
+    fields = CORE_REQUIRED + ['author/authors'] + SOFT_REQUIRED + VERSION_FIELDS
     print(f"Metadata coverage — {n} internal documents\n")
     for f in fields:
         if f == 'author/authors':
@@ -60,7 +58,7 @@ def report():
         print(f"  {f:16} {tag}")
         if missing:
             print(f"        {', '.join(m[:-3] for m in missing)}")
-    print("\n(version/revision_date are required only for Papers + Specifications.)")
+    print("\n(version/revision_date are required on every internal document.)")
 
 
 def main():

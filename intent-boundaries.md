@@ -11,6 +11,8 @@ category: Analyses
 item_id: CC-ANA-250602
 description: "This article examines the concept of intent in digital systems, highlighting the importance of respecting user boundaries to preserve agency and trust."
 image: /assets/cards/intent-boundaries.png
+version: "1.0"
+revision_date: 2025-06-20
 ---
 
 ## Lip service

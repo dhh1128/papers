@@ -22,7 +22,6 @@ import archive
 from archive import next_item_id, categories, repo_root
 
 DEFAULT_AUTHOR = "Daniel Hardman"
-VERSIONED_CATS = {"Papers", "Specifications"}  # require version + revision_date
 
 
 def slugify(title):
@@ -49,9 +48,9 @@ def frontmatter_stub(title, category, date, item_id, author=DEFAULT_AUTHOR):
              f"date: {date}",
              f"category: {category}",
              f"item_id: {item_id}",
-             'language: "en"']
-    if category in VERSIONED_CATS:
-        lines += ["version: 1.0", f"revision_date: {date}"]
+             'language: "en"',
+             'version: "1.0"',
+             f"revision_date: {date}"]
     lines += ['keywords: "TODO, replace, with, real, keywords"',
               "abstract: |",
               "  TODO: one-paragraph summary of purpose, scope, and result. Replace before publishing.",

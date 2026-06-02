@@ -100,8 +100,8 @@ as a blog. The governing editorial policy is [about.md](about.md).
   blobs and the `pdf_url`/`canonical_pdf_url` reconciliation. See ROADMAP Phase 4.
 
 _(Resolved earlier: platform = Jekyll; `author` singular with `authors` only for
-multi-author docs; `version`/`revision_date` required for Papers + Specifications
-— all recorded in [docs/conventions.md](docs/conventions.md).)_
+multi-author docs; `version`/`revision_date` required on every internal document
+(1.0 baseline) — all recorded in [docs/conventions.md](docs/conventions.md).)_
 
 ## Repository layout
 
@@ -125,7 +125,8 @@ ROADMAP.md           the tickable project plan
 Canonical definition in [docs/conventions.md](docs/conventions.md). In brief,
 each document's YAML frontmatter carries `title`, `date`, `category` (one MECE
 category), `item_id` (`CC-XXX-YYMMOO`), `abstract`, `keywords`, and `author` (or
-`authors`); Papers additionally aim for `pdf_url`, `version`, `revision_date`.
+`authors`), plus `version` + `revision_date` (every internal document is
+versioned, `1.0` baseline); Papers additionally aim for `pdf_url`.
 The body must **not** repeat the title or abstract — the layout renders those.
 
 ## How to add, edit, or re-publish a document
@@ -145,6 +146,14 @@ commit. You don't need to remember the individual tools.
 4. `python scripts/publish.py` → review its summary → `git add -A && git commit -s && git push`.
 
 **Re-publishing an existing document** (errata / revisions):
+- **MANDATORY RULE — every content edit to a published document is errata and
+  MUST bump its version.** Any change to the body or a citation/reference (fixing
+  a dead link, correcting a fact, reword, re-attribution) is a new revision. Do
+  not hand-edit the `.md` and run plain `publish.py` — that ships the change with
+  no version record, understating it to readers and indexers. Instead, after
+  making the content edit, run `--revise` so the bump and `revision_date` are
+  recorded. Pure-metadata fixes (an `image:`/`pdf_url:` path, a typo in
+  `keywords`) are not errata and need no bump.
 - Errata, small fixes → `python scripts/publish.py --revise <slug>` — bumps the
   **minor** version (`1.3 → 1.4`), sets `revision_date` to today, and regenerates.
 - A substantial new edition → add `--major` (`1.4 → 2.0`, minor reset).

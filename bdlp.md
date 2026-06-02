@@ -11,6 +11,8 @@ category: Positions
 item_id: CC-POS-230502
 description: "This article discusses the power imbalance in digital trust architectures, advocating for designs that empower individuals over institutions."
 image: /assets/cards/bdlp.png
+version: "1.0"
+revision_date: 2023-05-01
 ---
 
 *We are not paying enough attention to how our designs for high-trust interactions limit the autonomy of individuals. Familiar architectural patterns such as client-server APIs and business process workflows are useful, but they can empower orgs at the expense of people. Perhaps we can still use such building blocks, but we need to understand their risk and think about them differently.*

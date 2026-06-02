@@ -10,6 +10,8 @@ category: Primers
 item_id: CC-PRI-250201
 description: "This article explains why simple digital signatures are insufficient for strong evidence, describes the retrograde attack problem, and explores mitigations and their limitations."
 image: /assets/cards/was.png
+version: "1.0"
+revision_date: 2025-02-20
 ---
 
 By themselves, digital signatures are much weaker evidence than casual thinkers might imagine. The reason is that the secret upon which they depend (a private key) can be compromised or revoked, but *simple signatures are difficult to sequence relative to a compromise or revocation event*. An inability to reason about sequence enables retrograde attacks. (This is a well known problem among cryptography users; see "Note on lack of expiration date on code-signing keys" in [this blog post](https://blog.invisiblethings.org/keys/) for a typical discussion of the issue.)

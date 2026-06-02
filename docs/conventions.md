@@ -34,16 +34,19 @@ for a per-field coverage punch-list.
 | `category` | ERROR | enum | Exactly one of the seven categories above. |
 | `item_id` | ERROR | string | Permanent id, `CC-XXX-YYMMOO` (see below). Assigned once, never changed. |
 | `author` *or* `authors` | ERROR | string / list | See author convention below. |
-| `version` | ERROR¹ | int/str | Bump on substantive revision. |
-| `revision_date` | ERROR¹ | date | Date of last substantive revision. |
+| `version` | ERROR¹ | str | `MAJOR.MINOR` (quoted). `1.0` baseline; bump on every content edit (errata). |
+| `revision_date` | ERROR¹ | date | Date of last revision (= publication date until first errata). |
 | `abstract` | ERROR² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
 | `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
 | `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
 
-¹ `version` + `revision_date` are required (ERROR) only for **Papers** and
-**Specifications** — the citable, versioned tiers; optional elsewhere. Backfill
-default: `version: 1.0`, `revision_date` = publication date.
+¹ `version` + `revision_date` are required (ERROR) on **every internal
+document**, regardless of category — the whole archive is citable, versioned
+literature. Originals carry `version: "1.0"`, `revision_date` = publication date.
+**Every content edit (body or reference) is errata and must bump the version** —
+use `scripts/publish.py --revise <slug>` so the bump and `revision_date` are
+recorded, never a plain hand-edit. Pure-metadata fixes are not errata.
 
 ² `abstract` + `keywords` are required (ERROR). They were WARN-tier during the
 Phase 2 backfill and graduated to ERROR once every document carried them.

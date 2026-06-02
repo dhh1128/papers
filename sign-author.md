@@ -10,6 +10,8 @@ item_id: CC-ANA-260203
 pdf_url: https://dhh1128.github.io/papers/sign-author.pdf
 description: "Introduces some nuance about the assumption common in decentralized identity circles, that a digital signature is a claim of authoriship. This is sometimes the intended meaning, but numerous use cases provide counter examples."
 image: /assets/cards/sign-author.png
+version: "1.0"
+revision_date: 2026-02-07
 ---
 
 People often treat a signature as if it were a claim of authorishop. That is sometimes true. But it is not what signatures *are* in general — and it is not what digital signatures are in particular.

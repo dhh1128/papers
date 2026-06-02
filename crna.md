@@ -12,6 +12,8 @@ abstract: |
 keywords: "privacy, oversight, accountability, verifiable encryption, key escrow, provisional anonymity, digital watermarks, lawful access, self-sovereign identity"
 description: "Debates about privacy and oversight usually sort people into three camps — privacy zealots, watchdogs, and pragmatists who split the difference — and assume any gain for one side is a loss for the other. This paper rejects that framing. The tradeoff, it argues, rests on a flawed assumption: that the world holds only suspects and enforcers, with accountability imposed from outside. If most people would willingly support enforcement they could trust and audit, privacy and oversight can both be strong at once. The paper sketches three techniques for what the author calls reciprocal negotiated accountability — tamper-evident watermarks that bind terms of service to shared data; provisional anonymity backed by verifiable encryption and independent escrow; and opt-in 'front-door' decryption keys, created by the data owner and released from blinded escrow only under watermarked legal conditions. In each, accountability runs both ways, so neither privacy nor oversight need be sacrificed to gain the other."
 image: /assets/cards/crna.png
+version: "1.0"
+revision_date: 2021-01-15
 ---
 
 >Thanks to [John Phillips](https://github.com/JohnOnGH) for some helpful feedback. 

@@ -12,6 +12,8 @@ category: Primers
 item_id: CC-PRI-190101
 description: "This article explores the three fundamental dimensions of digital identity—relationships, attributes, and agents—showing how each contributes to privacy, trust, and security. It explains how identity models must account for these dimensions to be complete, and discusses the implications for key management, privacy, and user autonomy."
 image: /assets/cards/3dim.png
+version: "1.0"
+revision_date: 2019-01-29
 ---
 
 We all know that identity matters. We hear about cybersecurity breaches, GDPR, refugees, deep fakes, and election fraud. Each headline highlights a new way that identity impacts us.

@@ -1,10 +1,9 @@
 """Corpus-wide metadata schema validator (scripts/validate_metadata.py).
 
 Supersedes the old Papers-only check. Tiers (per docs/conventions.md):
-  ERROR (fails CI): title, date, category, item_id, author/authors;
-    Papers + Specifications additionally require version + revision_date.
-  WARN (advisory):  abstract, keywords — graduate to ERROR once the remaining
-    thin docs are backfilled (Phase 2).
+  ERROR (fails CI): title, date, category, item_id, author/authors, abstract,
+    keywords, version, revision_date — required on every internal document
+    (the whole archive is versioned, 1.0 baseline).
 """
 import validate_metadata as vm
 
@@ -57,12 +56,13 @@ def test_paper_missing_revision_date_is_error():
     assert any("revision_date" in e for e in errors), errors
 
 
-def test_non_versioned_category_does_not_require_version():
-    """A Primer (or other non-versioned category) needs no version/revision_date."""
+def test_every_category_requires_version():
+    """Versioning is universal: even a Primer needs version + revision_date."""
     meta = {**_drop(COMPLETE_PAPER, "version", "revision_date"), "category": "Primers",
             "item_id": "CC-PRI-260101"}
     errors, _ = vm.field_problems(meta)
-    assert not any("version" in e or "revision_date" in e for e in errors), errors
+    assert any("version" in e for e in errors), errors
+    assert any("revision_date" in e for e in errors), errors
 
 
 def test_missing_abstract_is_error():

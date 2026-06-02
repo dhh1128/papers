@@ -12,6 +12,8 @@ abstract: |
 keywords: "Zooko's triangle, identifiers, decentralized identity, naming, human-friendly names, petnames, usability, network protocols"
 description: "Zooko's triangle holds that an identifier can be at most two of three things at once: secure, decentralized, and human-friendly. This primer uses a parable — a flatlander named Houdini who escapes a triangular prison by perceiving a dimension his peers cannot — to show that the trilemma dissolves once we stop assuming human-friendliness must mean the same thing to everyone. Friendliness lives in the eye of the beholder, the way the entries in a personal address book do: the same person is 'Mom' to one contact and 'Regina Q. Public' to another, with no conflict, because each looks her up only in their own list. The lesson is that human-friendliness is a poor success criterion for a network protocol. Better to let people discover identifiers through attributes they choose for themselves — including names — and resolve to a secure, decentralized identifier when a protocol actually runs."
 image: /assets/cards/zh.png
+version: "1.0"
+revision_date: 2024-06-20
 ---
 
 ## Pick 2 of 3

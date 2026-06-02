@@ -10,6 +10,8 @@ category: Guidance
 item_id: CC-GUI-230604
 description: "A practical guide to cybersecurity and privacy for non-experts, offering distilled advice on browsers, passwords, antivirus, software installation, two-factor authentication, and more."
 image: /assets/cards/acp.png
+version: "1.0"
+revision_date: 2023-06-06
 ---
 
 # Advice About Cybersecurity and Privacy
