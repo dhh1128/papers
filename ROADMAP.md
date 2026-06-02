@@ -109,14 +109,39 @@ few committed PDFs are dead weight nothing links to.
 
 ## Phase 5 — SEO / scholarly-indexing hardening (Jekyll)
 The `.reorg-ideas.md` goals — make indexers and AI see a scholarly archive, not a
-blog. `_layouts/default.html` already emits JSON-LD (`ScholarlyArticle`/
-`TechArticle`) + Highwire `citation_*` + DOI; audit and complete it.
+blog. Audit (2026-06-02) against the LIVE rendered head found the engine works
+for single-author/string-keyword docs but has real gaps, several on the
+multi-author paper `prog-a`. Tasks, by priority:
 
-- [ ] Audit the JSON-LD + `citation_*` coverage across all categories; fill gaps.
-- [ ] Sitemap (jekyll-sitemap is enabled), canonical URLs, Open Graph / Twitter
-      cards, `robots.txt` review.
-- [ ] `check_seo.py` + test: required SEO fields present and within length, no
-      duplicate titles/descriptions.
+**Enabler (done):** local rendering fidelity via a `Gemfile` (github-pages gem)
+— `JEKYLL_GITHUB_TOKEN=$(gh auth token) bundle exec jekyll build` renders
+`default.html` + `{% seo %}` identically to GH Pages, so SEO fixes are testable
+test-first (JSON-LD validated with `json.loads`). `Gemfile.lock` is gitignored.
+
+**High — scholarly-metadata correctness (the core goal):**
+- [x] **Multi-author loss fixed:** `citation_author` now handles `authors` (list
+      of dicts) + `citation_author_institution`; the JSON-LD author array carries
+      every author + affiliation (prog-a regained Karla McKenna). _(verified locally)_
+- [x] **`citation_keywords`** now joins list-valued keywords.
+- [x] **JSON-LD `@type`:** emit a complete `ScholarlyArticle`/`TechArticle` node
+      (author(s), headline, datePublished, abstract-as-description, joined
+      keywords, identifier, version, isPartOf Periodical, PDF encoding) — valid
+      across single/multi-author, DOI, and no-version docs.
+- [ ] **og/meta `description`** still the site tagline (jekyll-seo-tag needs
+      `page.description`; JSON-LD already uses the abstract). Decide: add
+      `description` (≈abstract) to frontmatter vs. leave. _(author call)_
+
+**Medium:**
+- [x] `robots.txt`: advertise `Sitemap:`.
+- [x] `jekyll-seo-tag` + `jekyll-default-layout` explicit in `_config.yml` plugins.
+- [ ] Social cards: add a default OG/Twitter image + `summary_large_image` (needs
+      a ~1200×630 image asset — author to provide or approve a generated one).
+- [ ] `check_seo.py` + test: `citation_author` present for every doc incl.
+      multi-author; well-formed `citation_keywords`; valid JSON-LD with the right
+      `@type`; canonical present. CI guard (renders via the local github-pages build).
+
+**Low / optional:** index/about JSON-LD as a `CollectionPage`/`Periodical` to
+signal a curated archive landing.
 
 ---
 

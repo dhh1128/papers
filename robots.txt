@@ -1,2 +1,4 @@
 user-agent: *
 Allow: /
+
+Sitemap: https://dhh1128.github.io/papers/sitemap.xml
