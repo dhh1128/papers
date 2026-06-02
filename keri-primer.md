@@ -10,6 +10,8 @@ category: Primers
 item_id: CC-PRI-251208
 description: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
 image: /assets/cards/keri-primer.png
+version: "1.1"
+revision_date: 2026-06-02
 ---
 
 ## 1. Administrative trust failure
@@ -279,7 +281,7 @@ Engineers must shift their mental models. We stop thinking about certificates (s
 
 [2] Sleevi, R. 2017. Chrome's Plan to Distrust Symantec Certificates. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2017/09/chromes-plan-to-distrust-symantec.html
 
-[3] Resch, T. 2022. Mozilla Distrusts TrustCor Systems. Mozilla Security Blog. Retrieved December 18, 2024 from https://blog.mozilla.org/security/2022/11/30/mozilla-distrusts-trustcor-systems/
+[3] Wilson, K. 2022. Mozilla Distrusts TrustCor Systems. Mozilla dev-security-policy mailing list. Retrieved from https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/oxX69KFvsm4
 
 [4] Wang, W., Delavar, M., Azad, M. A., Nabizadeh, F., Smith, S., and Hao, F. 2024. Spoofing Against Spoofing: Towards Caller ID Verification In Heterogeneous Telecommunication Systems. ACM Trans. Priv. Secur. 27, 1, Article 5 (March 2024), 33 pages. https://doi.org/10.1145/3630107
 

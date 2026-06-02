@@ -10,6 +10,8 @@ item_id: CC-ANA-251209
 pdf_url: https://dhh1128.github.io/papers/heartbeat-and-witnesses.pdf
 description: "This paper analyzes the heartbeat mechanism in the did:cel method and its relevance to KERI's approach to retrograde attack defense."
 image: /assets/cards/heartbeat-and-witnesses.png
+version: "1.1"
+revision_date: 2026-06-02
 ---
 
 The `did:cel` method specification introduces a "heartbeat" mechanism designed to protect the integrity of the identifier's log [1]. This analysis examines the purpose of the heartbeat feature and evaluates its necessity within the Key Event Receipt Infrastructure (KERI) ecosystem.
@@ -52,7 +54,7 @@ The `did:cel` heartbeat is a specific mitigation for architectures where past ke
 
 ## References
 
-[1] Digital Bazaar. 2024. DID CEL Method Specification. Retrieved from https://digitalbazaar.github.io/did-cel-spec/
+[1] Digital Bazaar. 2024. DID CEL Method Specification. Retrieved from https://w3c-ccg.github.io/did-cel-spec/
 
 [2] Hardman, D. 2025. Why Anchored Signatures? Daniel Hardman's Papers. Retrieved from https://dhh1128.github.io/papers/was.html
 

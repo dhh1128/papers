@@ -36,6 +36,7 @@ exclude = [
   '://([^/]*\.)?entrust\.com',
   '://([^/]*\.)?nophonehome\.com',
   '://t\.ly',
+  '://groups\.google\.com',   # Google Groups 403s checkers (Mozilla dev-security-policy thread)
 ]
 
 # Developer/meta docs are not part of the published archive and contain template
