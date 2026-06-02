@@ -26,6 +26,18 @@ from archive import internal_items, repo_root
 PANDOC_FROM = ('markdown+autolink_bare_uris+yaml_metadata_block'
                '+implicit_figures+link_attributes')
 _webp_ref = re.compile(r'assets/([\w.-]+)\.webp')
+_html_figure = re.compile(r'<figure\b[^>]*>(.*?)</figure>', re.S | re.I)
+_html_img = re.compile(r'<img\b([^>]*?)/?>', re.S | re.I)
+_html_figcaption = re.compile(r'<figcaption\b[^>]*>(.*?)</figcaption>', re.S | re.I)
+_html_anchor = re.compile(r'<a\b[^>]*\bhref\s*=\s*"([^"]*)"[^>]*>(.*?)</a>', re.S | re.I)
+_html_cite = re.compile(r'<cite\b[^>]*>(.*?)</cite>', re.S | re.I)
+_html_tag = re.compile(r'</?[a-zA-Z][^>]*>')
+
+
+def _html_attr(name, attrs):
+    """Value of a double-quoted HTML attribute (e.g. src/alt), or '' if absent."""
+    m = re.search(rf'\b{name}\s*=\s*"([^"]*)"', attrs, re.I)
+    return m.group(1) if m else ''
 
 
 def date_as_pdfdate(d):
@@ -98,6 +110,64 @@ def rewrite_webp_refs(text):
     return new, pairs
 
 
+def _caption_to_markdown(html):
+    """Flatten <figcaption> inner HTML to Pandoc inline Markdown.
+
+    xelatex drops raw HTML, so the few inline tags the captions use (<a>, <cite>)
+    are converted to their Markdown equivalents and any remaining tags stripped;
+    a Pandoc caption keeps the link/emphasis the website figure showed.
+    """
+    s = _html_anchor.sub(lambda m: f'[{m.group(2).strip()}]({m.group(1)})', html)
+    s = _html_cite.sub(lambda m: f'*{m.group(1).strip()}*', s)
+    s = _html_tag.sub('', s)                      # drop any leftover tags
+    return ' '.join(s.split())                    # collapse whitespace/newlines
+
+
+def rewrite_html_figures(text):
+    """Rewrite raw-HTML <figure>/<img> blocks to Pandoc image syntax.
+
+    The documents embed images as raw HTML so the website gets styled
+    <figure>/<figcaption> markup, but xelatex's writer silently drops raw HTML —
+    the image (and its caption) vanish from the PDF. This converts each block to
+    `![caption](src)` (caption from <figcaption>, else the <img> alt) so
+    +implicit_figures renders a real figure. Source is untouched; only the
+    throwaway build copy is rewritten. Bare <img> tags outside a <figure> are
+    converted too.
+    """
+    def img_md(attrs, caption):
+        src = _html_attr('src', attrs)
+        if not src:
+            return ''
+        cap = caption or _html_attr('alt', attrs)
+        return f'\n![{cap}]({src})\n'
+
+    def figure_repl(m):
+        inner = m.group(1)
+        cm = _html_figcaption.search(inner)
+        caption = _caption_to_markdown(cm.group(1)) if cm else ''
+        im = _html_img.search(inner)
+        if not im:
+            return ''
+        return img_md(im.group(1), caption)
+
+    text = _html_figure.sub(figure_repl, text)
+    # Any <img> left outside a <figure> (none today, but keep the build robust).
+    text = _html_img.sub(lambda m: img_md(m.group(1), ''), text)
+    return text
+
+
+def prepare_markdown(text):
+    """Apply every source->build transform the PDF render needs.
+
+    Returns (build-ready markdown, [(name.webp, name.png), ...]). The author's
+    source (and its website rendering) is left untouched; these rewrites apply
+    only to the throwaway copy pandoc actually consumes.
+    """
+    text, pairs = rewrite_webp_refs(text)
+    text = rewrite_html_figures(text)
+    return text, pairs
+
+
 def _write_meta_tex(path, m):
     d = date_as_pdfdate(m['date'])
     md = date_as_pdfdate(m['revision_date'])
@@ -122,7 +192,7 @@ def _prepare_source(input_path, work_dir):
     so the build never touches the source tree.
     """
     text = open(input_path, encoding='utf-8').read()
-    new_text, pairs = rewrite_webp_refs(text)
+    new_text, pairs = prepare_markdown(text)
     if pairs:
         assets_out = os.path.join(work_dir, 'assets')
         os.makedirs(assets_out, exist_ok=True)

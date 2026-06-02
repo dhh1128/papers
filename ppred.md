@@ -110,4 +110,3 @@ Information about this message now percolates through the system, and Bob learns
 ## Regulatory Compliance
 
 What's interesting about this mechanism from a regulatory compliance perspective is that the registration is mutable. It doesn't need blockchain features, and it doesn't have to be supported by trustworthy nodes. Nobody is ever registering their full DID anywhere; rather, they are registering possibly true, possibly false interest in particular portions of a DID which, taken in the aggregate, allow only the holder of the real DID to confirm its existence, its routability, etc.
----
