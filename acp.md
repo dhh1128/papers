@@ -9,6 +9,7 @@ language: "en"
 category: Guidance
 item_id: CC-GUI-230604
 description: "A practical guide to cybersecurity and privacy for non-experts, offering distilled advice on browsers, passwords, antivirus, software installation, two-factor authentication, and more."
+image: /assets/cards/acp.png
 ---
 
 # Advice About Cybersecurity and Privacy

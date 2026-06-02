@@ -10,6 +10,7 @@ language: "en"
 category: Primers
 item_id: CC-PRI-250803
 description: "This article explores the evidence lifecycle in telecommunications, emphasizing the importance of comprehensive evidence for trust and accountability."
+image: /assets/cards/ev-life.png
 ---
 
 >This article is a guest post in [The Evidence Advantage](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/), a series by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The series is strongly recommended as important context.

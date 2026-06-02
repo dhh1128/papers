@@ -20,6 +20,7 @@ Every quality goal pairs a script here with a prover test in
 | `new_doc.py` | Scaffold a new document: mints the next `item_id`, writes a complete schema-valid frontmatter stub | (writes one file) |
 | `validate_metadata.py` | Validate all docs against the schema; `--report` prints a coverage punch-list | (read-only) |
 | `sync_descriptions.py` | Mirror each doc's `abstract` into a `description` field (the SEO meta description) | ✓ |
+| `make_cards.py` | Render a 1200×630 social-share card (`og:image`) per doc → `assets/cards/<slug>.png` | ✓ |
 | `generate_index.py` | Regenerate the categorized `index.md` | ✓ |
 | `fix_ref_nums.py` | Normalize inline/expanded reference numbering (ACM style) | ✓ |
 | `pandoc.py` | Render a document to PDF | — |

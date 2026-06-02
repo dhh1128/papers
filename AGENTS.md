@@ -146,6 +146,8 @@ The body must **not** repeat the title or abstract — the layout renders those.
    Builds are timestamp-deterministic (`SOURCE_DATE_EPOCH`), so a PDF only
    changes when its content does — regenerate only the docs you touched.
 6. If you change an `abstract`, re-run `python scripts/sync_descriptions.py` so
-   the SEO `description` stays in sync (CI checks this with `--check-only`).
+   the SEO `description` stays in sync (CI checks this with `--check-only`). If
+   you change the title/authors/category/date, re-run `python scripts/make_cards.py`
+   to refresh the committed social card (`assets/cards/<slug>.png`).
 7. Run `pytest`, `python scripts/validate_metadata.py`, and the `--check-only`
    guards before committing; CI is the backstop. Work test-first for new tooling.

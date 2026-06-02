@@ -11,6 +11,7 @@ item_id: CC-PAP-251206
 version: 1.0
 revision_date: 2025-12-11
 description: "The transition from direct human-computer interaction to an economy of agentic AI highlights an inadequacy that's always permeated digital architecture: the dissociation of mechanical action from human purpose. Proximate intents (e.g., clicking a button) are conflated with ultimate intents (e.g., consuming entertainment or entering a contract), rendering signaling mechanisms brittle and unsuitable for automated policy. Existing classification standards such as NAICS, UNSPSC, and FIPA ACL categorize actors, objects, and message envelopes, but say too little about high-level intent. Drawing on Activity Theory and Commitment Protocols, this paper proposes a taxonomy for intent that's rooted in shared outcomes rather than unilateral actions. This provides a rich, rigorous, machine-readable standard for constraining delegation and negotiating interactions. Principals can reference the taxonomy when creating policy for AI and human agents."
+image: /assets/cards/syntelos.png
 ---
 
 ## 1. The unacknowledged gap in digital interactions

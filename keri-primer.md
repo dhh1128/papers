@@ -9,6 +9,7 @@ language: "en"
 category: Primers
 item_id: CC-PRI-251208
 description: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
+image: /assets/cards/keri-primer.png
 ---
 
 ## 1. Administrative trust failure

@@ -9,6 +9,7 @@ category: Analyses
 item_id: CC-ANA-260202
 pdf_url: https://dhh1128.github.io/papers/who-sign.pdf
 description: "Explores the reasons why a simple answer to the question of which entity is in control of cryptographic keys may limit our insight."
+image: /assets/cards/who-sign.png
 ---
 
 In cryptographic systems, one of the most important questions we can ask is deceptively simple:

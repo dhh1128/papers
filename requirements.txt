@@ -1,3 +1,6 @@
 # Toolkit + test dependencies for the Codecraft Papers archive.
 pyyaml
 pytest
+# Social-card rendering (scripts/make_cards.py). Imported lazily, only when
+# generating cards; the CI `--check-only` guard does not need it.
+cairosvg

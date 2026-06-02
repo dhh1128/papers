@@ -1,5 +1,10 @@
 title: Codecraft Papers
 description: scholarly and technical writings by Daniel Hardman
+# Project page at dhh1128.github.io/papers. GitHub Pages injects these during its
+# build; setting them explicitly makes local builds faithful (correct absolute
+# canonical / og:image / asset URLs) and is the same value GH Pages uses.
+url: "https://dhh1128.github.io"
+baseurl: "/papers"
 author:
   name: "Daniel Hardman"
   twitter: "dhh1128"

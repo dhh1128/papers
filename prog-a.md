@@ -25,6 +25,7 @@ keywords:
   - governance
   - audit trail
 description: "The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-cost tools like X.509 certificates and high-assurance, high-cost systems like the verifiable Legal Entity Identifier (vLEI). Most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business."
+image: /assets/cards/prog-a.png
 ---
 
 ## 1. The Organizational Identity Gap

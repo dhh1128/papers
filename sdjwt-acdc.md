@@ -9,6 +9,7 @@ language: "en"
 category: Comparisons
 item_id: CC-COM-241105
 description: "This article compares SD-JWT and ACDC technologies, discussing their similarities, differences, and implications for verifiable credentials."
+image: /assets/cards/sdjwt-acdc.png
 ---
 
 *Provenant is advocating that telco evidence be built from ACDCs, not SD-JWTs. How are these two technologies similar, how are they different, and why does it matter?*

@@ -94,6 +94,15 @@ def test_every_document_has_committed_pdf(docs, root):
     assert not missing, f"documents without a committed <slug>.pdf: {missing}"
 
 
+def test_every_document_has_social_card(docs, root):
+    """A committed og:image card per doc (assets/cards/<slug>.png) + image field."""
+    missing = [p.name for p, _ in docs
+               if not (root / "assets" / "cards" / (p.stem + ".png")).is_file()]
+    assert not missing, f"documents without a social card: {missing}"
+    bad = [p.name for p, fm in docs if fm.get("image") != f"/assets/cards/{p.stem}.png"]
+    assert not bad, f"documents with missing/wrong image field: {bad}"
+
+
 def test_descriptions_in_sync_with_abstracts(docs):
     """The SEO `description` mirrors the `abstract` (one line). See sync_descriptions.py."""
     def norm(s):
