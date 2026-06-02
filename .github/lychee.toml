@@ -13,7 +13,10 @@ remap = [
 
 # A 429 means the host rate-limited the checker, not that the link is broken.
 # Lower concurrency provokes it less.
-accept = ["200..=299", "429"]
+# 415 = the server got the request but rejected the checker's Accept/content
+# headers; the URL itself resolves (confirmed 200 in a browser), so it is never
+# a broken-link signal. 429 = rate-limited, not broken.
+accept = ["200..=299", "415", "429"]
 max_concurrency = 4
 
 # Hosts that block automated checkers (a bot gets 401/403/throttled though the
@@ -44,6 +47,7 @@ exclude = [
   '://([^/]*\.)?sei\.cmu\.edu',
   '://([^/]*\.)?unspsc\.org',
   '://([^/]*\.)?bozho\.net',          # Cloudflare-fronted; slow to checkers
+  '://([^/]*\.)?unsplash\.com',       # 401s datacenter/unauthenticated requests
   # Deliberate placeholder URL used illustratively in ppred.md (not a real host):
   '://([^/]*\.)?infrastructureprovider\.com',
 ]
