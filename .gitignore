@@ -33,3 +33,4 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 .bundle/
+reviews/
