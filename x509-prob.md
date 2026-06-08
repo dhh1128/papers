@@ -2,7 +2,7 @@
 title: "Why X509 Certs Should Be Secondary Evidence of Org Identity"
 author: "Daniel Hardman"
 date: 2024-11-15
-revision_date: 2026-06-02
+revision_date: 2026-06-08
 category: Positions
 item_id: CC-POS-241104
 pdf_url: https://dhh1128.github.io/papers/x509-prob.pdf
@@ -11,7 +11,7 @@ abstract: |
 keywords: "X.509, PKI, organizational identity, ACDC, vLEI, certificate authorities, prerotation, post-quantum, key rotation, STIR/SHAKEN, decentralized identity"
 description: "X.509 certificates and PKI have secured the web for forty years, but this paper argues they are the wrong primary evidence for organizational identity — a supporting role suits them better, with Authentic Chained Data Containers (ACDCs), such as vLEIs, carrying the primary weight. The mismatch is structural. Certificates are dynamic privilege mechanisms whose lifespans are shrinking toward weeks, while organizational identity is stable and measured in decades; their security rests on a single, opaquely managed secret; their governance is centralized and jurisdiction-bound; and they lack prerotation, multi-signature control, sequenced signatures, and a graceful post-quantum path. The paper works through each gap, along with the maintenance burden and revocation disincentives that ephemerality breeds, and shows how binding evidence to a rotating identity rather than to a key — as ACDCs do — resolves them. Renewing an identity is a non-sequitur; infrastructure for organizational identity deserves a better building block than the certificate."
 image: /assets/cards/x509-prob.png
-version: "1.2"
+version: "1.3"
 ---
 
 The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.
@@ -102,6 +102,8 @@ If we want our identity mechanism to reflect hard-won wisdom in the analog world
 The identity of an org should be guarded not just by an assertion about its current key, but by a cryptographic commitment to the next key (the one the owner will rotate to next). The next key is then managed in a different place, with independent protections. Such a scheme is called *prerotation*, and it drastically improves security, because even if a hacker can abuse a current key, they can't rotate to new keys and take permanent control without accomplishing a second hack somewhere else. The identity owner thus has a failsafe that they can use to take control back.
 
 Prerotation isn't just a recovery issue. Lacking prerotation, certificate rotation produces anemic cryptographic proof of continuity of control by the certificate holder. Without evidence, we must trust the assertion of the CA that the old cert holder and the new cert holder are the same party.
+
+This is not an abstraction. In May 2026, Google Cloud told customers to prepare for a switch of many endpoints — `googleapis.com` included — from RSA to ECDSA certificate chains, and [warned them not to pin certificates](assets/admin-trust-cert-friction-example.pdf) because pinning "will cause your application to break during routine certificate rotations." The advice is sound *within the X509 model*: there is no cryptographic thread joining the old key to the new one, so a relying party that pinned the old key pinned nothing durable — the only continuity on offer is the CA's say-so. Prerotation is exactly what would let a relying party commit to a durable cryptographic anchor *and* survive the rotation: the safety of pinning, without the breakage the notice warns about.
 
 An X509 extension could be designed for prerotation, perhaps using Certificate Transparency. However, such a mechanism would need to be developed, standardized, and adopted before it is accurate to claim it as a cert feature. Cert technology in its general deployment doesn't support this crucial feature.
 

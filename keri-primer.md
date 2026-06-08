@@ -10,8 +10,8 @@ category: Primers
 item_id: CC-PRI-251208
 description: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
 image: /assets/cards/keri-primer.png
-version: "1.1"
-revision_date: 2026-06-02
+version: "1.2"
+revision_date: 2026-06-08
 ---
 
 ## 1. Administrative trust failure
@@ -34,7 +34,7 @@ To its credit, the PKI community has implemented certificate transparency (CT) t
 
 More importantly, CT does not solve the underlying architectural issue of identity continuity. The administrative model of web identity is ephemeral. A certificate has an expiration date. When it expires, or when a key must be rotated due to compromise, the evidence about identity effectively resets. The new certificate contains a new public key and a new serial number. It is mathematically unrelated to the old certificate. The only link between them is the administrative procedure of the CA, which verifies the applicant again and issues a new assertion.
 
-Specifically, the CA usually runs the ACME protocol [18] to reauthenticate the party asking for an updated certificate. While ACME provides continuity via a persistent account key, this continuity exists only in the eyes of the CA. The public just sees the issued certificate, which typically contains a rotated public key and no cryptographic link to predecessors. Consequently, the CA's reasons for asserting continuity remain opaque to the public, returning us to the administrative trust problem [19].
+Specifically, the CA usually runs the ACME protocol [18] to reauthenticate the party asking for an updated certificate. While ACME provides continuity via a persistent account key, this continuity exists only in the eyes of the CA. The public just sees the issued certificate, which typically contains a rotated public key and no cryptographic link to predecessors. Consequently, the CA's reasons for asserting continuity remain opaque to the public, returning us to the administrative trust problem [19]. Google Cloud made this concrete in 2026, [advising customers against certificate pinning](assets/admin-trust-cert-friction-example.pdf) precisely because routine rotations sever any cryptographic link a relying party might otherwise have established — leaving the CA's say-so as the only thread of continuity.
 
 If an entity cannot prove *on its own* that it is the same entity that acted in a different context, its reputation remains perpetually derivative of external authorities that must reaffirm its existence and continuity [20]. This gives attackers a steady stream of indirect vulnerabilities to attack, and leads to a never-ending churn of evidence (a consequence of the X.509 standard's mandatory `Validity` fields (NotBefore / NotAfter) [21]). The result is elevated risk, unpredictable acceptance, and high maintenance costs for the whole ecosystem.
 
