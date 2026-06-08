@@ -1,9 +1,20 @@
 name: Build PDFs
 
-# Build gate: renders a PDF for every document and fails if any cannot be built.
+# Build gate: renders documents to PDF and fails if any cannot be built.
 # PDFs are committed in the repo (served by Jekyll at /papers/<slug>.pdf); this
-# workflow does NOT commit — it verifies the whole corpus still builds and
-# uploads the fresh PDFs as a downloadable artifact for convenience.
+# workflow does NOT commit — it verifies that documents still build and uploads
+# the fresh PDFs as a downloadable artifact for convenience.
+#
+# Scope is decided per run (see the "Decide build scope" step):
+#   * push to main / workflow_dispatch  -> full corpus (the real renderability
+#     gate; catches regressions in docs whose .md is byte-identical).
+#   * pull_request that touches ONLY top-level corpus *.md  -> just those docs
+#     (fast feedback for content-only edits).
+#   * pull_request that touches any renderer input (scripts/, assets/, headers,
+#     requirements.txt, the workflow itself, root config) -> full corpus, since
+#     such a change can alter the output of every document.
+# The per-doc input hash in .pdf-manifest.json deliberately does NOT cover the
+# toolchain/template, so it must never be used to skip docs in this gate.
 
 on:
   push:
@@ -26,13 +37,78 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0   # need the PR base in history to diff the change set
+      - id: scope
+        name: Decide build scope (full corpus vs. changed docs)
+        run: |
+          set -euo pipefail
+
+          # Non-PR events (push to main, manual) are the real gate: build all.
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "Event '${{ github.event_name }}' -> full corpus build (renderability gate)."
+            echo "build=true" >> "$GITHUB_OUTPUT"
+            echo "args=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          base="origin/${{ github.base_ref }}"
+          changed="$(git diff --name-only "$base"...HEAD)"
+          printf 'Changed files:\n%s\n\n' "$changed"
+
+          # Top-level *.md files that are NOT corpus documents (not rendered).
+          ignore=" index.md about.md README.md AGENTS.md CLAUDE.md ROADMAP.md ZENSICAL-MIGRATION-KT.md "
+
+          full=false
+          slugs=""
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            case "$f" in
+              docs/*|tests/*)
+                : ;;                          # documentation/tests — not rendered
+              .pdf-manifest.json)
+                : ;;                          # build cache (output), not a renderer input
+              *.pdf)
+                if [ "$f" = "${f##*/}" ]; then
+                  : ;                         # committed <slug>.pdf at repo root — an output, not an input
+                else
+                  full=true                   # a PDF under assets/ etc. — be safe
+                fi ;;
+              *.md)
+                if [ "$f" != "${f##*/}" ]; then
+                  full=true                   # .md in some other subdir — be safe
+                elif [[ "$ignore" == *" $f "* ]]; then
+                  : ;                         # top-level meta-doc — not rendered
+                else
+                  slugs="$slugs ${f%.md}"     # a corpus document changed
+                fi ;;
+              *)
+                full=true ;;                  # scripts/, assets/, headers, deps, workflow, root config
+            esac
+          done <<< "$changed"
+
+          if [ "$full" = true ]; then
+            echo "A renderer input changed -> full corpus build."
+            echo "build=true" >> "$GITHUB_OUTPUT"
+            echo "args=" >> "$GITHUB_OUTPUT"
+          elif [ -n "${slugs## }" ]; then
+            echo "Content-only PR -> building changed docs:$slugs"
+            echo "build=true" >> "$GITHUB_OUTPUT"
+            echo "args=--only$slugs" >> "$GITHUB_OUTPUT"
+          else
+            echo "No document inputs changed -> nothing to build."
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "args=" >> "$GITHUB_OUTPUT"
+          fi
       - name: Set up Python
+        if: steps.scope.outputs.build == 'true'
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: requirements.txt
       - name: Install pandoc, xelatex, fonts, and ImageMagick
+        if: steps.scope.outputs.build == 'true'
         run: |
           sudo apt-get update
           # Package set derived by listing every \usepackage in pandoc's
@@ -49,11 +125,13 @@ jobs:
             lmodern fonts-texgyre fonts-inconsolata \
             imagemagick
       - name: Install Python dependencies
+        if: steps.scope.outputs.build == 'true'
         run: pip install -r requirements.txt
-      - name: Build every document to PDF
-        run: python scripts/build_pdfs.py
+      - name: Build documents to PDF
+        if: steps.scope.outputs.build == 'true'
+        run: python scripts/build_pdfs.py ${{ steps.scope.outputs.args }}
       - name: Upload PDFs
-        if: always()
+        if: always() && steps.scope.outputs.build == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: codecraft-papers-pdfs
