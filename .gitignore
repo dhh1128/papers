@@ -34,3 +34,6 @@ _site/
 Gemfile.lock
 .bundle/
 reviews/
+
+/.tick
+.tick.lock
