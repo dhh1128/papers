@@ -16,7 +16,6 @@ layout: meta
 - [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
 
 ## Papers
-- [Progressive Assurance: Flexible Organizational Identity in the Digital Economy](prog-a.md) (2026-05-05)
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
