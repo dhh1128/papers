@@ -18,3 +18,33 @@
   - category: Specifications
   - title: Verifiable Dossiers
   - date: 2025-10-01
+"https://identity.foundation/didcomm-messaging/spec/":
+  - category: Specifications
+  - title: DIDComm Messaging
+  - date: "2022-05"
+  - note: co-inventor and one of two principal authors (DIF)
+"https://identity.foundation/peer-did-method-spec/":
+  - category: Specifications
+  - title: Peer DID Method Specification
+  - date: "2019-07"
+  - note: sole inventor and author (DIF)
+"https://w3c.github.io/did-rubric/":
+  - category: Specifications
+  - title: W3C DID Method Rubric
+  - date: "2021"
+  - note: co-editor
+"https://w3c.github.io/did/":
+  - category: Specifications
+  - title: W3C Decentralized Identifiers (DID Core)
+  - date: "2019-07"
+  - note: Invited Expert; authored the Immutability security-considerations section
+"https://w3c.github.io/vc-data-model/":
+  - category: Specifications
+  - title: W3C Verifiable Credentials Data Model
+  - date: "2018-10"
+  - note: Invited Expert; introduced 'tamper-evident' terminology and the credential/presentation distinction
+"https://github.com/hyperledger/aries-rfcs":
+  - category: Specifications
+  - title: Hyperledger Aries RFCs
+  - date: "2017-11"
+  - note: founder and single largest contributor; 47 RFCs authored or co-authored (DIDComm v1, Protocols, Decorators, Attachments, and more)

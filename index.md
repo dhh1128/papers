@@ -8,13 +8,6 @@ layout: meta
 
 [About This Archive](about.md)
 
-## Specifications
-- [Verifiable Dossiers](https://trustoverip.github.io/kswg-dossier-specification) (2025-10-01)
-- [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
-- [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp) (2025-02-01)
-- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
-- [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
-
 ## Papers
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
@@ -22,6 +15,19 @@ layout: meta
 - [KERI's Strategy for Post-Quantum Security](kspqs.md) (2025-11-01)
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
 - [Privacy-Preserving Discovery (PPreD)](ppred.md) (2017-01-01)
+
+## Specifications
+- [Verifiable Dossiers](https://trustoverip.github.io/kswg-dossier-specification) (2025-10-01)
+- [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
+- [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp) (2025-02-01)
+- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
+- [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
+- [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/) (2022-05) — co-inventor and one of two principal authors (DIF)
+- [W3C DID Method Rubric](https://w3c.github.io/did-rubric/) (2021) — co-editor
+- [Peer DID Method Specification](https://identity.foundation/peer-did-method-spec/) (2019-07) — sole inventor and author (DIF)
+- [W3C Decentralized Identifiers (DID Core)](https://w3c.github.io/did/) (2019-07) — Invited Expert; authored the Immutability security-considerations section
+- [W3C Verifiable Credentials Data Model](https://w3c.github.io/vc-data-model/) (2018-10) — Invited Expert; introduced 'tamper-evident' terminology and the credential/presentation distinction
+- [Hyperledger Aries RFCs](https://github.com/hyperledger/aries-rfcs) (2017-11) — founder and single largest contributor; 47 RFCs authored or co-authored (DIDComm v1, Protocols, Decorators, Attachments, and more)
 
 ## Analyses
 - [Who Is Signing?](who-sign.md) (2026-02-07)

@@ -11,6 +11,7 @@ date: 2026-05-05
 item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
+listed: false
 version: "0.9"
 revision_date: 2026-05-05
 keywords:

@@ -40,6 +40,7 @@ for a per-field coverage punch-list.
 | `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
 | `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
+| `listed` | — | bool | Defaults to `true`. Set `false` to keep an otherwise-valid document (e.g. a not-yet-ready draft) out of `index.md`; the document still validates and builds. |
 
 ¹ `version` + `revision_date` are required (ERROR) on **every internal
 document**, regardless of category — the whole archive is citable, versioned

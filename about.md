@@ -18,21 +18,6 @@ Other categories may be exploratory, argumentative, or provisional in nature. Th
 The goal of this taxonomy is to ensure that categories are [mutually exclusive and collectively exhaustive](https://en.wikipedia.org/wiki/MECE_principle), so that each document belongs unambiguously to one category.
 
 <dl>
-<dt class="h3">Specifications</dt>
-<dd>
-<details>
-<summary class="p">Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
-<h4>Assignment test</h4>
-<p>If a reader could reasonably claim that an implementation is compliant or non-compliant with the document, it is a Specification.</p>
-
-<h4>Key properties</h4>
-<ul>
-<li>Normative authority, explicit or implicit</li>
-<li>Precise definitions, algorithms, or rules</li>
-<li>Versioning is meaningful, but maturity is irrelevant (draft and stable specifications both qualify)</li>
-</ul>
-</details>
-</dd>
 <dt class="h3">Papers</dt>
 <dd>
 <details>
@@ -45,6 +30,21 @@ The goal of this taxonomy is to ensure that categories are [mutually exclusive a
 <li>Novelty or synthesis is central</li>
 <li>Conclusions are primarily descriptive</li>
 <li>May introduce frameworks, algorithms, or architectures without asserting normativity</li>
+</ul>
+</details>
+</dd>
+<dt class="h3">Specifications</dt>
+<dd>
+<details>
+<summary class="p">Documents whose primary purpose is to normatively define behavior such that independent implementations can be evaluated for conformance.</summary>
+<h4>Assignment test</h4>
+<p>If a reader could reasonably claim that an implementation is compliant or non-compliant with the document, it is a Specification.</p>
+
+<h4>Key properties</h4>
+<ul>
+<li>Normative authority, explicit or implicit</li>
+<li>Precise definitions, algorithms, or rules</li>
+<li>Versioning is meaningful, but maturity is irrelevant (draft and stable specifications both qualify)</li>
 </ul>
 </details>
 </dd>

@@ -7,6 +7,11 @@ import archive
 from archive import *
 
 def categorize(item, articles_by_cat):
+    # `listed: false` keeps an otherwise-valid document out of index.md
+    # (e.g. a not-yet-ready draft whose file lives in the repo). The document
+    # still validates and builds; it is simply not surfaced in the index.
+    if item.meta.get('listed', True) is False:
+        return
     i = cat_index(item.meta.get('category'))
     if i == -1:
         complain(f"Bad category, {item.meta.get('category')}, for {item.url}.")
@@ -28,13 +33,17 @@ layout: meta
 """)
     for i, cat in enumerate(categories()):
         buf.write(f'\n## {cat}\n')
-        try:
-            articles = sorted(articles_by_cat[i], key=lambda x: x.meta.get('date'), reverse=True)
-        except TypeError as e:
-            missing = [x.url for x in articles_by_cat[i] if x.meta.get('date') is None]
-            sys.exit(f"Sort failed for category '{cat}' — missing date in: {missing}. ({e})")
+        missing = [x.url for x in articles_by_cat[i] if x.meta.get('date') is None]
+        if missing:
+            sys.exit(f"Sort failed for category '{cat}' — missing date in: {missing}.")
+        # Dates may be datetime.date (full ISO) or str (month/year precision, e.g.
+        # external items contributed-to but not authored here). Sort by the ISO
+        # string so mixed precisions and types compare cleanly and chronologically.
+        articles = sorted(articles_by_cat[i], key=lambda x: str(x.meta.get('date')), reverse=True)
         for item in articles:
-            buf.write(f'- [{item.meta.get("title")}]({item.url}) ({item.meta.get("date")})\n')
+            note = item.meta.get('note')
+            suffix = f' — {note}' if note else ''
+            buf.write(f'- [{item.meta.get("title")}]({item.url}) ({item.meta.get("date")}){suffix}\n')
     new_content = buf.getvalue()
     if os.path.exists(index_path):
         with open(index_path, 'r', encoding='utf-8') as f:
