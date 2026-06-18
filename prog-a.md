@@ -6,7 +6,7 @@ authors:
   - name: Karla McKenna
     affiliation: Head of Standards, GLEIF
 abstract: |
-  The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-cost tools like X.509 certificates and high-assurance, high-cost systems like the verifiable Legal Entity Identifier (vLEI). Most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business.
+  The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-friction tools like X.509 certificates and high-assurance, higher-friction systems like the verifiable Legal Entity Identifier (vLEI). Assurance and friction rise together, and most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business.
 date: 2026-05-05
 item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
@@ -25,7 +25,7 @@ keywords:
   - credentialing
   - governance
   - audit trail
-description: "The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-cost tools like X.509 certificates and high-assurance, high-cost systems like the verifiable Legal Entity Identifier (vLEI). Most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business."
+description: "The digital economy demands reliable, scalable methods for verifying organizational identity. Today, organizations must choose between low-assurance, low-friction tools like X.509 certificates and high-assurance, higher-friction systems like the verifiable Legal Entity Identifier (vLEI). Assurance and friction rise together, and most business interactions fall between these extremes, lacking a fit-for-purpose solution. This paper introduces the Progressive Assurance Model, which defines four incremental levels of assurance—each built on the same cryptographic identifier and credential schema. The model enables organizations to match assurance to risk, scale as needs evolve, and maintain a durable, auditable evidence chain. We analyze the limitations of current approaches, detail the properties of the progressive model, and discuss its implications for open ecosystems, independent verification, and long-term trust in digital business."
 image: /assets/cards/prog-a.png
 ---
 
@@ -35,7 +35,7 @@ In an economy run on digital interactions, a basic question often gets a weak an
 
 A piece of the problem hides in plain sight. Most digital infrastructure does not distinguish between a brand name like "Coca-Cola" and a specific legal entity like Coca-Cola Europacific Partners Nederland B.V. [a] The brand is what consumers recognize. The legal entity is what can be sued, what owes taxes, what holds contracts, and what carries reputational consequence. When digital systems treat them as the same thing, fraud finds room to operate.
 
-Today, organizations face a binary choice: low-assurance, low-cost identity tools, or high-assurance, high-cost ones. Almost nothing fits between them. This paper argues for a middle path — a Progressive Assurance Model that lets organizations pay for the assurance they actually need, scale up as risk grows, and reuse the same cryptographic identifier across all levels.
+Today, organizations face a binary choice: low-assurance, low-friction identity tools, or high-assurance, higher-friction ones. Stronger assurance has meant heavier vetting, and almost nothing fits between the extremes. This paper argues for a middle path — a Progressive Assurance Model that lets organizations match assurance to the risk they actually face, scale up as risk grows, and reuse the same cryptographic identifier across all levels.
 
 ### 1.1 The cost of digital anonymity
 
@@ -49,7 +49,7 @@ Two poles dominate the landscape, with a wide and underserved middle.
 
 For four decades, X.509 PKI has secured the web [3]. Its application to organizational identity, however, is an accident of history. X.509 was designed to authenticate web servers for TLS, not to prove the identity of a durable legal entity [1]. The fit is poor in several ways.
 
-**Lifespans don't match.** A legal entity's identity is stable, measured in decades. X.509 certificates are ephemeral by design and shrinking. The CA/Browser Forum has approved a phased reduction of public TLS certificate lifetimes to 47 days by 2029 [4]. Short lifespans are a sensible response to the risk of key compromise on a server. They are an awkward fit for proving that a corporation incorporated in 1975 is still the same corporation today. A business does not renew its articles of incorporation every 47 days [1, 5].
+**Lifespans don't match.** A legal entity's identity is stable, measured in decades. X.509 certificates are ephemeral by design and shrinking. The CA/Browser Forum has approved a phased reduction of public TLS certificate lifetimes to 47 days by 2029 [4]. Short lifespans are a sensible response to the risk of key compromise on a server. They are an awkward fit for proving that a corporation incorporated in 1975 is still the same corporation today. A business does not renew its articles of incorporation every 47 days [1, 5]. And the trend runs the wrong way: as mandated lifetimes shrink, the burden of reissuing, re-validating, and redeploying certificates recurs ever more often — recurring friction that buys no additional assurance about the entity behind the certificate.
 
 **Governance is opaque.** Trust in X.509 bottoms out in administrators: Certificate Authorities, browser root programs, and the CA/Browser Forum [5]. Administrators fail. DigiNotar was breached by state actors in 2011 and used to spy on Iranian dissidents [6]. Symantec's CA business was distrusted by Google in 2017 after years of compliance failures [7]. In 2024, Chrome, Firefox, and Apple all removed Entrust from their trust stores citing a consistent pattern of incidents [5]. The pattern recurs. And the practices that matter most — how the certificate *holder* manages its private key — are invisible to verifiers and unaudited by anyone [1].
 
@@ -63,13 +63,13 @@ At the other end sits the verifiable Legal Entity Identifier (vLEI), built on IS
 
 The vLEI's strength is its governance. GLEIF acts as the root of trust and qualifies a network of vLEI issuers under a published Ecosystem Governance Framework [11]. Every vLEI credential traces to GLEIF through a verifiable chain. Technically, the vLEI uses Authentic Chained Data Containers (ACDCs) and the Key Event Receipt Infrastructure (KERI), which solve key-management and revocation problems that X.509 does not [12].
 
-The vLEI is rigorous. It is also expensive and slow to obtain. A small business securing its website does not need what a bank executing a cross-border settlement needs.
+The vLEI is rigorous. That rigor necessarily comes with friction: the vetting is demanding and deliberate by design, because higher assurance cannot be conjured without more thorough verification. A small business securing its website does not need — and may not be ready to undertake — what a bank executing a cross-border settlement needs.
 
 ### 1.3 The need for a bridge
 
-The market has been forced to choose between flawed-but-cheap and excellent-but-costly. Most everyday business interactions sit in between, and have nowhere to land.
+The market has been forced to choose between low-friction-but-limited and rigorous-but-demanding. Most everyday businesses have a variety of needs that sit at many points on this continuum, and have nowhere to land for most of them.
 
-The Progressive Assurance Model fills the gap. It defines four levels of assurance, all built on the same underlying cryptographic identifier and credential schema. An organization can start where it can afford to start, then climb the ladder by adding verifiable claims as needs evolve. The same identifier persists; the same evidence chain persists; only the level of assurance changes.
+The Progressive Assurance Model fills the gap. It defines four levels of assurance, all built on the same underlying cryptographic identifier and credential schema. An organization can start at whatever level its risk and readiness justify, then climb the ladder by adding verifiable claims as needs evolve. The same identifier persists; the same evidence chain persists; only the level of assurance changes.
 
 ---
 
@@ -208,7 +208,7 @@ The analogy is photographic. A RAW file is the archival source, lossless and reu
 
 ## 5. Conclusion
 
-The lack of a flexible, reliable method for proving organizational identity has forced businesses into a bad choice: low-assurance X.509 certificates designed for a different problem, or high-assurance specialty systems too costly for everyday use. The middle ground — most actual business interactions — has been left to operate without a fit-for-purpose tool.
+The lack of a flexible, reliable method for proving organizational identity has forced businesses into a bad choice: low-assurance X.509 certificates designed for a different problem, or high-assurance specialty systems whose vetting demands are too heavy for everyday use. The middle ground — most actual business interactions — has been left to operate without a fit-for-purpose tool.
 
 Progressive Assurance addresses the gap with four levels of control assurance, each layered on the same cryptographic substrate, riding on top of GLEIF's three levels of reference assurance. An organization adopts the level its risk profile justifies and climbs as needs change. The same identifier persists. The same evidence chain extends.
 
