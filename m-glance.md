@@ -1,7 +1,7 @@
 ---
 title: "Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart"
 author: "Daniel Hardman"
-thanks: "daniel@provenant.net"
+thanks: "daniel.hardman@gmail.com"
 date: 2026-06-22
 category: Papers
 item_id: CC-PAP-260602

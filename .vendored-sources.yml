@@ -20,6 +20,7 @@ sources:
 - local: assets/amp-diff/fig-comparison.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-comparison.png
+  note: "served PNG is REGENERATED from the upstream SVG with font-family forced to DejaVu Sans Mono (cairosvg can't resolve the SVG's web-font chain and falls back to a proportional font, raggeding the space-padded randomart). NOT a raw copy of the upstream PNG. Re-apply on re-vendor until fixed upstream in entviz."
   sha256: a0cae6203449510fc1c10db97e75584f6a1d713b2c30dd02a10ed8fa6b27bd15
   severity: fail
 - local: assets/amp-diff/fig-4a-cell-anatomy.png

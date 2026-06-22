@@ -1,7 +1,7 @@
 ---
 title: "Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations"
 author: "Daniel Hardman"
-thanks: "daniel@provenant.net"
+thanks: "daniel.hardman@gmail.com"
 date: 2026-06-22
 category: Papers
 item_id: CC-PAP-260601
