@@ -1,0 +1,69 @@
+# Provenance ledger for vendored upstream sources (the "drift guard").
+#
+# Each entry is an artifact copied in from a sibling repo and published here as a
+# self-contained work. `sha256` pins the UPSTREAM file at vendoring time;
+# scripts/check_drift.py fails (severity: fail) or warns (severity: warn) when the
+# current upstream no longer matches. Regenerate the pins with:
+#   python scripts/check_drift.py --repin
+# Managed by check_drift.py — comments above the `sources:` key are preserved.
+sources:
+- local: amp-diff.md
+  upstream_repo: ../entviz
+  upstream_path: docs/entviz-paper.md
+  sha256: 84ae45f892e345d258f9fb67a66dbcbc2d4157d646bc1059e99bf77ead6ef76a
+  severity: fail
+- local: assets/amp-diff/fig-hero.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-hero.png
+  sha256: 3e450ae463d642d7d2b724c1641c9f9b9d3bc262ee02591da2b60faf477a25ab
+  severity: fail
+- local: assets/amp-diff/fig-comparison.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-comparison.png
+  sha256: a0cae6203449510fc1c10db97e75584f6a1d713b2c30dd02a10ed8fa6b27bd15
+  severity: fail
+- local: assets/amp-diff/fig-4a-cell-anatomy.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4a-cell-anatomy.png
+  sha256: ce71563beb95c663c18d7aef3cd17b32050093c972747cfe4d65643c8d5375dd
+  severity: fail
+- local: assets/amp-diff/fig-4b-surround-avalanche.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4b-surround-avalanche.png
+  sha256: 770bc773bf9eed1ecfe070244249c7dbea264ae7f98711dd806037764c94f5fa
+  severity: fail
+- local: assets/amp-diff/fig-4c-palette.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4c-palette.png
+  sha256: 22615d9e33d8f02882227ba2809a4c7d7abaf3c079c421f14bc1e570370020fe
+  severity: fail
+- local: assets/amp-diff/fig-4d-color-bar.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4d-color-bar.png
+  sha256: 8fd2041476e9e0cbf7444fb67d9efc44d176cdfc7261422ac6091f74a206764b
+  severity: fail
+- local: assets/amp-diff/fig-4e-ellipse.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4e-ellipse.png
+  sha256: 1188a25eac1d920f5c1098e0306612bb0634d382af0e618a6f7510f107b92a4c
+  severity: fail
+- local: assets/amp-diff/fig-4f-crc.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4f-crc.png
+  sha256: a4765a82fbbe969f897979cbe801809b955e59d743b7d7902c7e8b0fe1b2ac67
+  severity: fail
+- local: assets/amp-diff/fig-4g-large-input.png
+  upstream_repo: ../entviz
+  upstream_path: docs/assets/paper/fig-4g-large-input.png
+  sha256: 38f4c60ec02519ee1c120a09471305dfc8a194710ddbc09f02b778cfaa1e467c
+  severity: fail
+- local: m-glance.md
+  upstream_repo: ../entviz-adversarial
+  upstream_path: paper/measuring-the-glance.md
+  sha256: 47c75fcbd47f2202baa4b2dcf218745e71b66db47d54bc553d1ad702f825f143
+  severity: fail
+- local: (external) entviz spec — .external-items.yml
+  upstream_repo: ../entviz
+  upstream_path: docs/spec.md
+  sha256: db4f7dc56fff31eb06276a889bd8d650b87f8652a281a2b10f7844a04d47c669
+  severity: warn

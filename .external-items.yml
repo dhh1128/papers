@@ -1,3 +1,7 @@
+"https://dhh1128.github.io/entviz/spec":
+  - category: Specifications
+  - title: "entviz — Algorithm Specification"
+  - date: 2026-05-27
 "https://dhh1128.github.io/coia":
   - category: Specifications
   - title: Conventions for Opaque Identifier Aliases (COIA)
@@ -43,7 +47,7 @@
   - title: W3C Verifiable Credentials Data Model
   - date: "2018-10"
   - note: Invited Expert; introduced 'tamper-evident' terminology and the credential/presentation distinction
-"https://github.com/hyperledger/aries-rfcs":
+"https://identity.foundation/aries-rfcs/latest/":
   - category: Specifications
   - title: Hyperledger Aries RFCs
   - date: "2017-11"

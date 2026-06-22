@@ -153,6 +153,7 @@ def validate():
         run("index up to date", ["generate_index.py", "--check-only"]),
         run("reference numbering", ["fix_ref_nums.py", "--check-only",
                                     "--except", ".hyperlinks-only", *mds]),
+        run("vendored sources not drifted", ["check_drift.py", "--check-only"]),
     ]
     pt = subprocess.run([sys.executable, "-m", "pytest", "-q"], cwd=repo_root,
                         capture_output=True, text=True)
