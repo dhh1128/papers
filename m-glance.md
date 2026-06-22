@@ -3,11 +3,13 @@ title: "Measuring the Glance: An Adversarial Estimate of Habituated Perceptual E
 author: "Daniel Hardman"
 thanks: "daniel.hardman@gmail.com"
 date: 2026-06-22
+doi: 6979878
 category: Papers
 item_id: CC-PAP-260602
 language: "en"
 version: "1.0"
 revision_date: 2026-06-22
+pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/6979878.pdf?abstractid=6979878&mirid=1
 keywords: "perceptual entropy, habituated verification, adversarial estimation, hash visualization, entviz, SSH randomart, drunken bishop, just-noticeable difference, visual search, near-collision resistance, usable security"
 abstract: |
   An entropy visualization is only as strong as the part of it a person actually checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so verifies the whole value, from a *habituated* one, who recognizes a few landmarks and trusts the rest — and names the bits a habituated glance carries (estimated at twenty to forty) as its central open problem. We estimate that quantity from the adversary's side: a render-model reimplementation, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is not a number but a *curve*. The habituated glance is parallel — a bundle of global channels taken in at once, the low-to-mid teens of bits — and it rises with deliberate attention toward the lossless text ceiling, the whole value. We measure the same way for SSH randomart, the drunken bishop, yielding the first habituated figure for any randomart: the two are comparable at the bare glance, but entviz is decisively more robust at the careful ceiling and, by design, along the habituation path a deployment would cultivate. Every perceptual tolerance and salience weight here is modeled, not measured on people, and was hardened by two rounds of independent adversarial expert review before the numbers were locked; the human study the design paper calls for remains what would turn these models into measurements.

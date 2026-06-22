@@ -20,8 +20,7 @@ sources:
 - local: assets/amp-diff/fig-comparison.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-comparison.png
-  note: "served PNG is REGENERATED from the upstream SVG with font-family forced to DejaVu Sans Mono (cairosvg can't resolve the SVG's web-font chain and falls back to a proportional font, raggeding the space-padded randomart). NOT a raw copy of the upstream PNG. Re-apply on re-vendor until fixed upstream in entviz."
-  sha256: a0cae6203449510fc1c10db97e75584f6a1d713b2c30dd02a10ed8fa6b27bd15
+  sha256: ed2d87ee560af05bab17e8e2259ec7eac9f1973f01ffe50f9cb7d83856a57d1a
   severity: fail
 - local: assets/amp-diff/fig-4a-cell-anatomy.png
   upstream_repo: ../entviz
@@ -36,12 +35,12 @@ sources:
 - local: assets/amp-diff/fig-4c-palette.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4c-palette.png
-  sha256: 22615d9e33d8f02882227ba2809a4c7d7abaf3c079c421f14bc1e570370020fe
+  sha256: cbeda4bdbda99bc99b59cab698e018c6b677ef38d0e25dff5208bc5c265e385c
   severity: fail
 - local: assets/amp-diff/fig-4d-color-bar.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4d-color-bar.png
-  sha256: 8fd2041476e9e0cbf7444fb67d9efc44d176cdfc7261422ac6091f74a206764b
+  sha256: 47027531369c890f1d3e8ac6ec4db475ab4e84e9960690f1fc0750f9c0d8ab24
   severity: fail
 - local: assets/amp-diff/fig-4e-ellipse.png
   upstream_repo: ../entviz
@@ -61,7 +60,7 @@ sources:
 - local: m-glance.md
   upstream_repo: ../entviz-adversarial
   upstream_path: paper/measuring-the-glance.md
-  sha256: 47c75fcbd47f2202baa4b2dcf218745e71b66db47d54bc553d1ad702f825f143
+  sha256: 31d4fffc3beed6062f64475cfa1e9b3a512067fff069abd35c093a862976e44f
   severity: fail
 - local: (external) entviz spec — .external-items.yml
   upstream_repo: ../entviz

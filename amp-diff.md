@@ -3,11 +3,13 @@ title: "Amplifying Difference: Perceptual Design and Verification of Human-Centr
 author: "Daniel Hardman"
 thanks: "daniel.hardman@gmail.com"
 date: 2026-06-22
+doi: 6979798
 category: Papers
 item_id: CC-PAP-260601
 language: "en"
 version: "1.0"
 revision_date: 2026-06-22
+pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/6979798.pdf?abstractid=6979798&mirid=1
 keywords: "hash visualization, authentication visualization, perceptual entropy, psychophysics, just-noticeable difference, Gestalt psychology, color-vision deficiency, key fingerprint verification, short authentication string, usable security"
 abstract: |
   Security increasingly asks ordinary people to verify high-entropy values by eye — SSH host-key fingerprints, messaging safety numbers, blockchain payment addresses — a task that pits a known human weakness, serial symbol matching, against a known strength, holistic pattern recognition. This paper analyzes *entviz*, an algorithm that renders a high-entropy value as a layered set of perceptual channels so that an untrained adult with reasonably good vision can decide whether two values are the same or different. The thesis is that entviz advances human-centric hash visualization by applying psychophysics and cognitive psychology systematically to the goal of *amplifying difference*. We defend the design with an explicit, channel-by-channel perceptual-entropy budget; we draw the distinction between machine-centric *perceptual hashing*, which prizes robustness to similarity, and human-centric *authentication visualization*, which must prize sensitivity to difference, and show that conflating them is a security bug. The same perceptual reasoning yields not only a better picture but a better *procedure*: a commit-and-reveal, seeded comparison walk that defends the habituated user whom real attacks exploit. We are candid throughout that the perceptual budget is an analytic estimate and the procedure's human ergonomics are as yet untested; a companion paper takes up the security-relevant habituated estimate from the adversary's side.
