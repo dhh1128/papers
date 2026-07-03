@@ -9,6 +9,7 @@ layout: meta
 [About This Archive](about.md)
 
 ## Papers
+- [A Theory of System Coherence](tsc.md) (2026-07-03)
 - [Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations](amp-diff.md) (2026-06-22)
 - [Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart](m-glance.md) (2026-06-22)
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
