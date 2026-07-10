@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" width="680" height="250" font-family="Open Sans, sans-serif">
+  <rect width="680" height="250" fill="#ffffff"/>
+
+  <!-- the boundary between two facets -->
+  <line x1="340" y1="34" x2="340" y2="216" stroke="#c9b8ab" stroke-width="1.4" stroke-dasharray="6 5"/>
+
+  <!-- left facet: what her doctor sees -->
+  <rect x="40" y="55" width="255" height="120" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="62" y="88" font-size="13" font-weight="300" fill="#777777">her doctor sees</text>
+  <text x="167" y="140" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="30" fill="#491705">the patient</text>
+
+  <!-- right facet: what her employer sees -->
+  <rect x="385" y="55" width="255" height="120" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="407" y="88" font-size="13" font-weight="300" fill="#777777">her employer sees</text>
+  <text x="512" y="140" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="30" fill="#491705">the employee</text>
+
+  <!-- the forbidden correlation across the boundary (single accent) -->
+  <line x1="300" y1="115" x2="380" y2="115" stroke="#765043" stroke-width="1.6"/>
+  <circle cx="340" cy="115" r="15" fill="#ffffff"/>
+  <g stroke="#914f37" stroke-width="3.2" stroke-linecap="round">
+    <line x1="331" y1="106" x2="349" y2="124"/>
+    <line x1="349" y1="106" x2="331" y2="124"/>
+  </g>
+</svg>

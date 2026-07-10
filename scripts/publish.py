@@ -196,6 +196,7 @@ def main():
     normalize_versions()
     if args.revise:
         revise(args.revise, args.major, today)
+    run("diagrams", ["build_diagrams.py"])
     run("social cards", ["make_cards.py"])
     run("descriptions <- abstracts", ["sync_descriptions.py"])
     run("index.md", ["generate_index.py"])

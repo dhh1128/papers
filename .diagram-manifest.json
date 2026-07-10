@@ -1,0 +1,29 @@
+{
+  "scale": 2,
+  "diagrams": [
+    {
+      "svg": "assets/if/boundary.svg",
+      "png": "assets/if/boundary.png",
+      "svg_sha256": "48d3677ccc2f65f179fc1b4a6f8891c1d1279ddd624f10b90b6d0e909c6c5972",
+      "png_sha256": "094409d01042ac0185425ed998e1ef2cb8cd4c89f1a707830420f671a4537056"
+    },
+    {
+      "svg": "assets/if/gem.svg",
+      "png": "assets/if/gem.png",
+      "svg_sha256": "0d9c3b9a951f707fe6bcf30bcc709cc13173e1e04f7956ee1400f0e6255771b3",
+      "png_sha256": "0d5887d68d024eb7e7e3f910e77803df347d7d64b9ae1292656123fbf0ad35ae"
+    },
+    {
+      "svg": "assets/if/signatures.svg",
+      "png": "assets/if/signatures.png",
+      "svg_sha256": "69ced6fa9538a2795fd1eb7a59d329968bd746e763fba07980a075172677c5de",
+      "png_sha256": "ae8f3c63bd6634ac2362b76a6681490ef67c1327ed1a60765444b2b0cf37bd1c"
+    },
+    {
+      "svg": "assets/oia/aliases.svg",
+      "png": "assets/oia/aliases.png",
+      "svg_sha256": "3e4e8243b939a61bf5bf060ff0a76e4c6981e68bc8d7e52cb2825c72ebd9a218",
+      "png_sha256": "d95e73fb7ab1893011b0e98990ad1c1fd395fb4b58db4215723c849489302751"
+    }
+  ]
+}

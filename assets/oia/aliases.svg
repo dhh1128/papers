@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390" font-family="Open Sans, sans-serif">
+  <rect width="720" height="390" fill="#ffffff"/>
+
+  <!-- leader lines from each card down to the shared identifier -->
+  <g fill="none" stroke="#c9b8ab" stroke-width="1.2">
+    <path d="M195 205 C195 258 250 262 300 296"/>
+    <path d="M525 205 C525 258 470 262 420 296"/>
+  </g>
+
+  <!-- left contact card (my phone) -->
+  <rect x="70" y="60" width="250" height="145" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="92" y="92" font-size="13" font-weight="300" fill="#777777" letter-spacing="0.4">in my contacts</text>
+  <text x="195" y="150" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="40" fill="#491705">Mom</text>
+
+  <!-- right contact card (your phone) -->
+  <rect x="400" y="60" width="250" height="145" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="422" y="92" font-size="13" font-weight="300" fill="#777777" letter-spacing="0.4">in your contacts</text>
+  <text x="525" y="150" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="34" fill="#491705">Regina Q. Public</text>
+
+  <!-- the one shared identifier (focal accent) -->
+  <rect x="210" y="300" width="300" height="52" rx="26" fill="#f4e9df" stroke="#914f37" stroke-width="1.8"/>
+  <text x="360" y="332" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="15" fill="#914f37">did:example:EMyYn&#8230;szynS</text>
+</svg>

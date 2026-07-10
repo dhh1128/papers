@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 400" width="620" height="400" font-family="Open Sans, sans-serif">
+  <rect width="620" height="400" fill="#ffffff"/>
+
+  <!-- leader lines: each points to the MIDDLE of a facet -->
+  <g fill="none" stroke="#c9b8ab" stroke-width="1.1">
+    <path d="M261.5 153 C220 130 206 118 192 108"/>   <!-- mother  (upper-left facet) -->
+    <path d="M338.5 153 C381 130 396 118 410 108"/>   <!-- CEO     (upper-right facet) -->
+    <path d="M338.5 287 C388 306 408 316 424 324"/>   <!-- patient (lower-right facet) -->
+    <path d="M261.5 287 C212 306 192 316 176 324"/>   <!-- citizen (lower-left facet) -->
+  </g>
+
+  <!-- gem: girdle (outer hexagon) -->
+  <polygon points="403.9,280 300,340 196.1,280 196.1,160 300,100 403.9,160"
+           fill="#fbf7f3" stroke="#8a6f5c" stroke-width="1.9" stroke-linejoin="round"/>
+
+  <!-- the lit crown facet an observer sees (single accent) -->
+  <polygon points="300,100 403.9,160 350.2,191 300,162" fill="#e7cdb8" stroke="none"/>
+
+  <!-- table (inner hexagon) -->
+  <polygon points="350.2,249 300,278 249.8,249 249.8,191 300,162 350.2,191"
+           fill="#f4e9df" stroke="#a98c78" stroke-width="1.2" stroke-linejoin="round"/>
+
+  <!-- crown facet lines (radial) -->
+  <g stroke="#c9b8ab" stroke-width="1">
+    <line x1="403.9" y1="280" x2="350.2" y2="249"/>
+    <line x1="300" y1="340" x2="300" y2="278"/>
+    <line x1="196.1" y1="280" x2="249.8" y2="249"/>
+    <line x1="196.1" y1="160" x2="249.8" y2="191"/>
+    <line x1="300" y1="100" x2="300" y2="162"/>
+    <line x1="403.9" y1="160" x2="350.2" y2="191"/>
+  </g>
+
+  <!-- glint on the lit facet -->
+  <line x1="352" y1="139" x2="343" y2="166" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- facet-centre markers (what each label points at) -->
+  <g fill="#765043">
+    <circle cx="261.5" cy="153" r="2.6"/>
+    <circle cx="338.5" cy="153" r="2.6"/>
+    <circle cx="338.5" cy="287" r="2.6"/>
+    <circle cx="261.5" cy="287" r="2.6"/>
+  </g>
+
+  <!-- labels: the face each observer sees -->
+  <g font-family="Barlow Condensed, sans-serif" font-size="21" font-weight="500" fill="#444444" text-anchor="middle">
+    <text x="150" y="98">as mother</text>
+    <text x="452" y="98" fill="#491705">as CEO</text>
+    <text x="456" y="336">as patient</text>
+    <text x="146" y="336">as citizen</text>
+  </g>
+</svg>
