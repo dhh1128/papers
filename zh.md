@@ -12,8 +12,8 @@ abstract: |
 keywords: "Zooko's triangle, identifiers, decentralized identity, naming, human-friendly names, petnames, usability, network protocols"
 description: "Zooko's triangle holds that an identifier can be at most two of three things at once: secure, decentralized, and human-friendly. This primer uses a parable — a flatlander named Houdini who escapes a triangular prison by perceiving a dimension his peers cannot — to show that the trilemma dissolves once we stop assuming human-friendliness must mean the same thing to everyone. Friendliness lives in the eye of the beholder, the way the entries in a personal address book do: the same person is 'Mom' to one contact and 'Regina Q. Public' to another, with no conflict, because each looks her up only in their own list. The lesson is that human-friendliness is a poor success criterion for a network protocol. Better to let people discover identifiers through attributes they choose for themselves — including names — and resolve to a secure, decentralized identifier when a protocol actually runs."
 image: /assets/cards/zh.png
-version: "1.0"
-revision_date: 2024-06-20
+version: "1.1"
+revision_date: 2026-07-10
 ---
 
 ## Pick 2 of 3
@@ -76,5 +76,5 @@ Not every human that needs friendliness will need, or want, the same solution, b
 
 This is not to say that totally unfettered variation is optimal. A convention about how to choose friendly names would be very helpful &mdash; not as a constraint imposed from above, but as a teaching aid. It might teach a correct mental model, eliminating some important cybersecurity risks and helping people make choices that set them up for success, before they understand the complexities they'll eventually face on the digital identity landscape.
 
-Such a convention is the subject of a different essay.
+Such a convention is the subject of a [different essay](oia.md), and the theory of the multifaceted identities it serves is developed in [Identity Facets](if.md).
 
