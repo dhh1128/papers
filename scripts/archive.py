@@ -217,11 +217,13 @@ def normalize_version(v):
 
     YAML reads `version: 1.10` as the float 1.1, so versions are stored as quoted
     strings; this canonicalizes any current value (float/int/str) to `M.N`.
+
+    Anything after `MAJOR.MINOR` is ignored, so a doc may declare a longer value
+    (e.g. `0.9.1`) and it is published as `0.9`.
     """
-    s = str(v)
-    if '.' not in s:
-        s += '.0'
-    major, minor = s.split('.', 1)
+    parts = str(v).split('.')
+    major = parts[0] or '0'
+    minor = parts[1] if len(parts) > 1 else '0'
     return f"{int(major)}.{int(minor)}"
 
 

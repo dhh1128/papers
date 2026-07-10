@@ -21,7 +21,7 @@ import sys
 import tempfile
 from datetime import datetime as dt
 
-from archive import internal_items, repo_root
+from archive import internal_items, repo_root, normalize_version
 
 PANDOC_FROM = ('markdown+autolink_bare_uris+yaml_metadata_block'
                '+implicit_figures+link_attributes')
@@ -95,7 +95,7 @@ def pdf_metadata(meta, fallback_mtime=None):
         'author': author or '',
         'keywords': keywords,
         'item_id': meta.get('item_id', ''),
-        'version': meta.get('version', 1),
+        'version': normalize_version(meta['version']) if meta.get('version') is not None else 1,
         'date': meta['date'],
         # Fall back to the publication date (deterministic), not file mtime.
         'revision_date': meta.get('revision_date') or fallback_mtime or meta['date'],

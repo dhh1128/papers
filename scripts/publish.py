@@ -100,9 +100,15 @@ def set_field(path, key, value):
 
 
 def normalize_versions():
-    """Store every existing `version` as a quoted MAJOR.MINOR string."""
+    """Quote any unquoted `version` so YAML can't misparse it (`1.10` -> `1.1`).
+
+    Values already quoted as strings in the source are left untouched, so an
+    author may declare e.g. `"0.9.1"` and it stays in the file verbatim; it is
+    reduced to `MAJOR.MINOR` only where the version is consumed (index, PDF,
+    id — see `archive.normalize_version`)."""
     changed = [it.url for it in internal_items()
                if it.meta.get("version") is not None
+               and not isinstance(it.meta["version"], str)
                and set_field(it.path, "version", f'"{normalize_version(it.meta["version"])}"')]
     if changed:
         print(f"  normalized version format on {len(changed)} doc(s)")
