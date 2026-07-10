@@ -46,7 +46,7 @@ The second is **facet**. At any single moment, Cecilia is a mother *and* a CEO *
 
 Think of a cut gemstone. It is a single stone, but it has many facets, and each facet catches the light differently depending on the angle you hold it to. Turn the gem and a new face flashes; the stone has not changed, but what you see has. A person is like that. The mother-face and the CEO-face are genuinely *hers* — no mask, no pretense — yet each shows a different aspect to a different observer. Identity is the whole stone. A facet is one of its faces.
 
-[SUGGESTED DIAGRAM: One stone, many faces — a single cut gem whose facets are labeled with an actor's roles (mother, CEO, patient, citizen), a single beam of light entering and leaving differently at each face, to show one identity presenting many aspects.]
+![One stone: each observer sees only the facet turned toward them.](assets/if/gem.png)
 
 ## Only the owner sees the whole stone
 
@@ -66,7 +66,7 @@ Cecilia's doctor should not be able to connect Cecilia-the-patient to Cecilia-th
 
 This case is made well elsewhere, and I won't repeat it here. That different people should see different faces of us — and that collapsing everyone's view into one universal "you" is a privacy catastrophe — is the argument of Three Dimensions of Identity [1], of Security, Silos, and Sovereignty [2], and of the dangerous half-truth that we'll "be correlated anyway" [3]. Take those as read.
 
-[SUGGESTED DIAGRAM: Two facets that must not touch — the doctor's view of a patient beside the employer's view of an employee, a dashed boundary between them, and an arrow trying to cross it marked with a red X.]
+![Two facets that must not touch: linking the patient to the employee across the boundary is forbidden.](assets/if/boundary.png)
 
 The privacy argument is real, but it is only half the story. It explains why we might *choose* to keep facets apart. It does not explain where most facets come from in the first place — and it turns out we rarely choose them at all.
 
@@ -82,7 +82,7 @@ This is why the law is so fussy about something it calls *capacity* — the spec
 
 Return to the afternoon of signatures. When Cecilia signs a personal lease, she acts in her capacity as a private individual, and she alone is on the hook. When she signs the €100,000 invoice, she acts in her capacity as CEO, and the *company* is on the hook — she is merely its hand. On a negotiable instrument, the law spells this out: a signature made plainly in a representative capacity binds the represented company and not the signer [5]. Same handwriting, radically different consequences. Some acts are even valid in more than one capacity: Cecilia could sign a loan as a private citizen or as her company's officer, and which one she chose changes who must repay it. The signature cannot tell you. Only the capacity can.
 
-[SUGGESTED DIAGRAM: One hand, three signatures — the same handwritten signature over three documents (a school permission slip, a company invoice, an apartment lease), each tagged with the capacity it was signed in and the party who bears the liability.]
+![One hand, three signatures: the same signature binds a different party depending on the capacity it was made in.](assets/if/signatures.png)
 
 Blur capacity and you get the corporate-law equivalent of the fraud-or-nonsense problem: a personal debt charged to a company, or a company obligation pinned on an individual. Precision here is not optional. It is the whole point.
 

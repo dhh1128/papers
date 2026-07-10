@@ -43,7 +43,7 @@ An alias is not an identifier. It is a **nickname** — the label you, privately
 
 Miss the category and you write broken logic. Treat an alias as an identifier and you get collisions, because aliases are not unique. Cache it as though it were stable and you get staleness, because aliases change. Parse someone else's alias for meaning and you get an attack surface, because a name can claim anything. The rose is the identifier. The alias is only what we happen to call it today.
 
-[SUGGESTED DIAGRAM: The same person, two contact cards — one phone showing an identifier saved as "Mom", another phone showing the same identifier saved as "Regina Q. Public", with the opaque identifier identical underneath both, to show aliases as local, non-unique labels over one shared identifier.]
+![Two friendly names, one identifier underneath: each contact list labels the same identifier for its own use.](assets/oia/aliases.png)
 
 ## A convention, not a free-for-all
 
