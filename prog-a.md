@@ -12,8 +12,8 @@ item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 listed: false
-version: "0.9"
-revision_date: 2026-05-05
+version: "0.9.2"
+revision_date: 2026-07-01
 keywords:
   - organizational identity
   - progressive assurance
@@ -35,11 +35,11 @@ In an economy run on digital interactions, a basic question often gets a weak an
 
 A piece of the problem hides in plain sight. Most digital infrastructure does not distinguish between a brand name like "Coca-Cola" and a specific legal entity like Coca-Cola Europacific Partners Nederland B.V. [a] The brand is what consumers recognize. The legal entity is what can be sued, what owes taxes, what holds contracts, and what carries reputational consequence. When digital systems treat them as the same thing, fraud finds room to operate.
 
-Today, organizations face a binary choice: low-assurance, low-friction identity tools, or high-assurance, higher-friction ones. Stronger assurance has meant heavier vetting, and almost nothing fits between the extremes. This paper argues for a middle path — a Progressive Assurance Model that lets organizations match assurance to the risk they actually face, scale up as risk grows, and reuse the same cryptographic identifier across all levels.
+Today, organizations face a binary choice: low-assurance, low-friction identity tools, or high-assurance, higher-friction ones. Stronger assurance has meant heavier vetting, and almost nothing fits between the extremes. This paper argues for a middle path — a Progressive Assurance Model that lets organizations determine the assurance they actually need, scale up as risk grows, and reuse the same cryptographic identifier across all levels.
 
 ### 1.1 The cost of digital anonymity
 
-When you cannot reliably know who is on the other end, the malicious actors who exploit the uncertainty have an edge [1, 2]. The losses are concrete: wire fraud, payroll diversion, regulatory penalties, brand damage. The current toolkit is a patchwork. Each tool forces a trade between security, cost, and friction, and none of them is satisfying.
+When you cannot reliably identify your counterparty, the malicious actors who exploit the uncertainty have an edge [1, 2]. The losses are concrete: wire fraud, payroll diversion, regulatory penalties, brand damage. The current toolkit is a patchwork. Each tool forces a trade between security, cost, and friction, and none of them is satisfying.
 
 ### 1.2 Today's spectrum: a flawed choice
 
@@ -49,7 +49,7 @@ Two poles dominate the landscape, with a wide and underserved middle.
 
 For four decades, X.509 PKI has secured the web [3]. Its application to organizational identity, however, is an accident of history. X.509 was designed to authenticate web servers for TLS, not to prove the identity of a durable legal entity [1]. The fit is poor in several ways.
 
-**Lifespans don't match.** A legal entity's identity is stable, measured in decades. X.509 certificates are ephemeral by design and shrinking. The CA/Browser Forum has approved a phased reduction of public TLS certificate lifetimes to 47 days by 2029 [4]. Short lifespans are a sensible response to the risk of key compromise on a server. They are an awkward fit for proving that a corporation incorporated in 1975 is still the same corporation today. A business does not renew its articles of incorporation every 47 days [1, 5]. And the trend runs the wrong way: as mandated lifetimes shrink, the burden of reissuing, re-validating, and redeploying certificates recurs ever more often — recurring friction that buys no additional assurance about the entity behind the certificate.
+**Lifespans don't match.** A legal entity's identity is stable, measured in decades. X.509 certificates are ephemeral by design, and their lifespans are shrinking. The CA/Browser Forum has approved a phased reduction of public TLS certificate lifespans to 47 days by 2029 [4]. Short lifespans may be a pragmatic response to the risk of key compromise on a server; they are an awkward fit for proving that a corporation incorporated in 1975 is still the same corporation today. A business does not renew its articles of incorporation every 47 days [1, 5]. As lifespans shrink, the friction and expense of reissuing, re-validating, and redeploying certificates is increasingly onerous, yet buys no additional assurance about the entity behind the certificate.
 
 **Governance is opaque.** Trust in X.509 bottoms out in administrators: Certificate Authorities, browser root programs, and the CA/Browser Forum [5]. Administrators fail. DigiNotar was breached by state actors in 2011 and used to spy on Iranian dissidents [6]. Symantec's CA business was distrusted by Google in 2017 after years of compliance failures [7]. In 2024, Chrome, Firefox, and Apple all removed Entrust from their trust stores citing a consistent pattern of incidents [5]. The pattern recurs. And the practices that matter most — how the certificate *holder* manages its private key — are invisible to verifiers and unaudited by anyone [1].
 
@@ -75,31 +75,38 @@ The Progressive Assurance Model fills the gap. It defines four levels of assuran
 
 ## 2. A Progressive Assurance Model
 
-A uniform approach to identity wastes money on low-risk interactions and under-protects high-risk ones. The model below breaks assurance into incremental levels, so that organizations can match the strength of the credential to the value of the interaction.
+A uniform approach to identity wastes money on low-risk interactions and under-protects high-risk ones. The model below breaks assurance into incremental levels, so that organizations can match the strength of the credential to the value and perceived risk of the interaction.
 
-### 2.1 Two axes of assurance
+### 2.1 Multiple axes of assurance
 
-Before the levels, a clarification. Identity assurance is not one number. It has at least two axes that should be evaluated independently.
+Identity assurance of organizations involves multiple considerations that should be evaluated independently.
 
-**Reference assurance** asks: how confidently is the identifier tied to a specific legal entity in authoritative records? This is the axis GLEIF already grades. Every LEI record carries a corroboration level that classifies how thoroughly the entity's reference data — name, registered address, legal form, country, registration ID — has been validated against authoritative public sources [13]:
+First is the scope and certain features of the identifier itself. For example, is the identifier globally recognized, recognized across some jurisdictions or domains, or recognized only within a particular jurisdiction, industry or domain? The LEI is the starting point for achieving a globally connected network of verifiable, interoperable business identity and information. Further, the global standard under which LEIs are issued, the ISO 17442 Part 1 standard, requires LEIs to be unique, persistent and an unambiguous way to identify legal entities.
 
-- **Fully corroborated.** Every reference data element has been validated against a public authoritative source on GLEIF's Registration Authority List. As of February 2026, 87.64% of LEI records sit at this level [13].
-- **Partially corroborated.** At least one element could not be validated against a public source — typically because the local registry does not disclose it. About 3.86% of records [13].
-- **Entity-supplied only.** No public authoritative source is available; the LEI issuer reviewed the entity's submission but could not verify it independently. About 8.50% of records, mostly entities exempt from public registration or with privacy constraints [13].
+**Reference assurance** asks: how confidently is the identifier tied to a specific legal entity and the available reference data about the entity? For the LEI, GLEIF exposes several nuances for this question through the required guidelines that issuers must follow in validating entities registering for LEIs.
 
-**Control assurance** asks: how strongly is control of the identifier bound to the entity, an accountable human, or a governed program? This is the axis the rest of this paper develops, in four levels (LoA 0 through LoA 3).
+The process starts by validating the existence of an entity, whether it is an active, operational entity. Throughout the life of an LEI, certain entity events, such as corporate
+actions, are tracked to evaluate the continued existence and operation of an entity.
 
-The two axes are independent in principle but related in practice. An LoA 0 affidavit issued against a fully corroborated LEI is meaningfully stronger than the same affidavit issued against an entity-supplied-only LEI, even though both occupy LoA 0 on the control axis. At the top end, GLEIF's Ecosystem Governance Framework presupposes a fully corroborated LEI as input [11]; LoA 3 therefore implies maximum reference assurance by construction. LoA 0 through LoA 2 can ride on top of any corroboration level.
+Another nuance tracks how the entity's reference data — name, registered address, legal form, country, registration ID, etc. — has been validated. This is reflected in the corroboration classifications assigned to LEIs. For some entity legal forms, all data about the entity can be checked against authoritative public sources [13] listed in GLEIF's Registration Authority List. Although these classifications may suggest a reference data rating system, the corroboration classification sources are not meant to be interpreted strictly as judgements as to the validity of an entity’s reference data. For some entity legal forms, public data is only partially available. For others, like some funds, trusts and pools, only entity-supplied data is available. At all corroboration classifications, LEIs are considered as validly validated LEIs.
 
-The remainder of §2 holds reference assurance fixed and develops the four levels of control assurance.
+A further nuance extends into the life of the LEI and concerns how recently some or all of the information about the identifier has been revalidated and updated as necessary. This is reflected in the registration status of an LEI of LAPSED. This status indicates that the data has not been reconfirmed within a specified period of time, with the implication that some of the data may or may not be the most current or accurate.
+
+So, taking this all into account, the meaningful assurance considerations for the LEI as an identifier are whether the entity has been revalidated as an active going concern along with its reference data or whether the LEI has lapsed.
+
+**Control assurance** asks: how strongly is *control* of the identifier bound to the entity, an accountable human, or a governed program? This is the axis the rest of this paper develops, in four levels (LoA 0 through LoA 3).
+
+The two axes are independent in principle but related in practice. An LoA 0 affidavit issued against a fully corroborated LEI is meaningfully stronger than the same affidavit issued against an entity-supplied-only LEI, even though both occupy LoA 0 on the control axis. At the top end, GLEIF's Ecosystem Governance Framework presupposes a fully corroborated and actively registered LEI as input [11]; LoA 3 therefore implies maximum reference assurance by construction. LoA 0 through LoA 2 can ride on top of any reference assurance level.
+
+The remainder of section 2 holds reference assurance fixed and develops the four levels of control assurance.
 
 ### 2.2 LoA 0: Unambiguous reference affidavit
 
-**Business need.** At the most basic level, an organization needs a globally unique, unambiguous way to refer to a specific legal entity. This is the digital equivalent of pointing at a row in a registry. Use cases range from regulatory filings (where the LEI is already mandatory in many jurisdictions [10]) to social media platforms attributing corporate accounts to database systems tagging records.
+**Business need.** At the most basic level, an organization needs a globally unique, unambiguous way to refer to or identify a specific legal entity. This is the digital equivalent of pointing at a row in a registry. Use cases range from regulatory filings (where the LEI is already mandatory in many jurisdictions [10]) to social media platforms attributing corporate accounts to database systems tagging records.
 
-**Vetting process.** LoA 0 should be cheap and fast. A requester proves they are human (CAPTCHA or API-key registration), then uses a lookup service connected to a registry like the GLEIF LEI index, OpenCorporates, or Dun & Bradstreet to find the entity. The service confirms the entity is currently active.
+**Vetting process.** LoA 0 should be cheap and fast. A requester proves they are human (CAPTCHA or API-key registration), then uses a lookup service connected to a registry like the GLEIF LEI index, business registers, or commercial identification schemes to find the entity. The service confirms the entity is currently active.
 
-**Limitations.** LoA 0 provides zero proof of *control*. It is an affidavit — an assertion of fact for the public record — not a credential conferring entitlement. Anyone can use it to refer to the entity, including competitors, critics, or attackers [14]. Its trustworthiness is bounded by the freshness of the underlying registry data and by the security practices of the affidavit's issuer. Its reference assurance is exactly that of the underlying record.
+**Limitations.** LoA 0 provides zero proof of *control*. It is an affidavit — an assertion of fact for the existence of the entity and certain reference data about it — not a credential conferring entitlement. Anyone can use it to refer to the entity, including competitors, critics, or attackers [14]. Its trustworthiness is bounded by the freshness of the underlying registry data and by the security practices of the affidavit's issuer. Its reference assurance is exactly that of the underlying record.
 
 ### 2.3 LoA 1: Foundational control
 
@@ -116,19 +123,19 @@ The remainder of §2 holds reference assurance fixed and develops the four level
 
 ### 2.4 LoA 2: Human accountability
 
-**Business need.** For higher-value interactions — verifiable trade, large web3 transactions, legally binding digital contracts — proving organizational control is not enough. The verifier needs to know that a specific, accountable human is acting on the organization's behalf with explicitly delegated authority. LoA 2 maps roughly to the rigor of an Extended Validation X.509 certificate, applied to a more flexible identifier [5].
+**Business need.** For higher-value interactions — potential examples such as verifiable trade, large web3 transactions, and legally binding digital contracts might fit this category for many stakeholders — proving organizational control is not enough. The verifier needs to know that a specific, accountable human is acting on the organization's behalf with explicitly delegated authority. LoA 2 maps roughly to the rigor of an Extended Validation X.509 certificate, applied to a more flexible identifier [5].
 
 **Vetting process.** LoA 2 keeps the domain control proof of LoA 1 and adds two layers:
 
 1. **Human identity assurance.** The individual requesting the credential proves their own legal identity non-repudiably — for example, by presenting a government-issued mobile driver's license or digital passport, or by showing a physical passport in a recorded video call [14].
 
-2. **Verifiable delegation.** The organization issues the individual a credential proving they hold authority to request and manage the organizational credential. Two natural mechanisms exist: a GLEIF Official Organizational Role (OOR) vLEI for organizations already in the vLEI ecosystem [11], or a Generalized Cooperative Delegation (GCD) credential, which lets the issuer attach explicit constraints — scope, jurisdiction, expiry, signing thresholds — to the delegation [16]. Either replaces flimsy evidence (a LinkedIn profile, a corporate email signature) with a cryptographic claim.
+2. **Verifiable delegation.** Once the organization obtains its organization-level vLEI, it can authorize a credential for individuals, proving that said individuals hold authority to request and manage the organizational credential. Two natural mechanisms exist: GLEIF vLEI Role credentials such as Official Organizational Role (OOR) or Engagement Context Role (ECR) vLEIs [11], or a Generalized Cooperative Delegation (GCD) credential, which lets the issuer attach explicit constraints — scope, jurisdiction, expiry, signing thresholds — to the delegation [16]. Either replaces flimsy evidence (a LinkedIn profile, a corporate email signature) with a cryptographic claim.
 
 **Limitations.** LoA 2 establishes accountability for the human requester. It does not guarantee that the organization itself has good internal governance over its identity strategy. The vetting flow remains vulnerable to social engineering and man-in-the-middle attacks if not run carefully. Delegation is one-way at this level: a properly authorized requester can still go rogue without tripping automated alarms. LoA 2 also makes no claim about transparency, duplicity detection, or recovery from compromise.
 
 ### 2.5 LoA 3: Robust governance (the LE vLEI)
 
-**Business need.** LoA 3 is for the cases where trust is doing the most work: cross-border finance, M&A, regulated activity, evidence that must remain verifiable for years. It requires cryptographic proof that the organization's entire identity-management program operates under an externally audited governance framework.
+**Business need.** LoA 3 is for the cases where trust is doing the most work: potential examples such as cross-border finance, M&A, regulated activity, evidence that must remain verifiable for years. It requires cryptographic proof that the organization's entire identity-management program operates under an externally audited governance framework.
 
 **Vetting process.** LoA 3 includes everything below it and adds adherence to a published governance framework. The reference implementation is GLEIF's vLEI Ecosystem Governance Framework [11], under which issuance happens via a versioned, publicly transparent policy set. The organization must demonstrate practical competence: AIDs configured with weighted multi-signature thresholds, independent witnesses for compromise detection, and pre-rotation of keys [12, 17]. Multi-signature authority for high-stakes acts is not a novel idea — it appears in legal codes from the Code of Hammurabi forward [1] — but X.509 cannot express it.
 
@@ -190,7 +197,7 @@ A progressive assurance model needs a credential that can serve as a stable, lon
 
 ACDCs differ from W3C Verifiable Credentials and SD-JWTs in three ways that matter here [15]:
 
-- **Identifier-based signing.** ACDCs are issued by and to AIDs — autonomic identifiers from KERI, derived cryptographically from their initial public keys [17]. The credential is bound to the identifier, not to a specific keypair. Issuers can rotate keys, change algorithms, or upgrade governance without invalidating credentials issued under a previous key state. This is what makes a durable audit trail possible.
+- **Anchored, identifier-based signing.** ACDCs are issued by and to AIDs — autonomic identifiers from KERI, derived cryptographically from their initial public keys [17]. The credential is provably bound to the identifier's keystate at a particular sequence number, not to a specific keypair or to an identifier's keystate at an implicit point in time that is only safe to evaluate in the present. Issuers can rotate keys, change algorithms, or upgrade governance without invalidating credentials issued under a previous key state. This is what makes a durable audit trail possible. [19]
 
 - **Cryptographic chaining.** Every ACDC is sealed by a Self-Addressing Identifier (SAID) — a cryptographic hash of its content. ACDCs from different issuers can be chained into verifiable graphs. An LoA 2 credential can link to the LoA 1 credential it builds on, which links to the entity's reference data, which links to GLEIF. A verifier traverses the chain without consulting an external trust registry [15].
 
@@ -198,9 +205,9 @@ ACDCs differ from W3C Verifiable Credentials and SD-JWTs in three ways that matt
 
 ### 4.2 Derivative evidence: SD-JWTs and others
 
-Different contexts want different formats. SD-JWTs extend the familiar JSON Web Token format with selective disclosure [19] and are gaining ground in web-native authentication [20]. Other formats — ISO mDL, W3C VCs [c] — have their own niches.
+Different contexts want different formats. SD-JWTs extend the familiar JSON Web Token format with selective disclosure [20] and are gaining ground in web-native authentication [21]. Other formats — ISO mDL, W3C VCs [c] — have their own niches.
 
-The model treats ACDCs as the source of truth and other formats as derivable presentations. An organization holds its identity as an ACDC. When transacting with a system that consumes SD-JWTs, the holder issues a short-lived SD-JWT derived from the ACDC. The SD-JWT inherits its authority from the foundational credential but does not carry its permanence: SD-JWTs are signed by keys, not by identifiers, and lack native chaining for delegation [12, 21].
+The model treats ACDCs as the source of truth and other formats as derivable presentations. An organization holds its identity as an ACDC. When transacting with a system that consumes SD-JWTs, the holder issues a short-lived SD-JWT derived from the ACDC. The SD-JWT inherits its authority from the foundational credential but does not carry its permanence: SD-JWTs are signed by keys, not by identifiers, and lack native chaining for delegation [12, 22].
 
 The analogy is photographic. A RAW file is the archival source, lossless and reusable; a JPEG is exported for a specific use [15]. You don't archive in JPEG. You don't anchor durable identity in a credential format that cannot reproduce its own history.
 
@@ -208,9 +215,10 @@ The analogy is photographic. A RAW file is the archival source, lossless and reu
 
 ## 5. Conclusion
 
-The lack of a flexible, reliable method for proving organizational identity has forced businesses into a bad choice: low-assurance X.509 certificates designed for a different problem, or high-assurance specialty systems whose vetting demands are too heavy for everyday use. The middle ground — most actual business interactions — has been left to operate without a fit-for-purpose tool.
+The lack of a flexible, reliable method for proving organizational identity has forced businesses into a bad choice: low-assurance X.509 certificates designed for a different problem, or high-assurance specialty systems whose vetting demands may incur more friction than needed for many everyday uses. The middle ground — most actual business interactions — has been left to operate without a fit-for-purpose tool.
 
-Progressive Assurance addresses the gap with four levels of control assurance, each layered on the same cryptographic substrate, riding on top of GLEIF's three levels of reference assurance. An organization adopts the level its risk profile justifies and climbs as needs change. The same identifier persists. The same evidence chain extends.
+Progressive assurance addresses the gap with four levels of control assurance, each layered on the same cryptographic substrate, working best with the LEI being used
+consistently throughout the levels. An organization adopts the level its risk profile justifies and climbs as needs change. The same identifier persists. The same evidence chain extends.
 
 The model rests on three properties that together distinguish it from the systems it replaces: an open ecosystem, independent verification, and durable evidence. None of these is decorative. Each addresses a structural failure of the existing landscape. Each is enabled by credential formats — ACDCs first, derivatives second — that were designed for the post-PKI world rather than retrofitted into it.
 
@@ -224,12 +232,11 @@ Strong organizational identity is a precondition for the trust layer the digital
 
 [b] Rich Communication Services (RCS) and the US 10-Digit Long Code (10DLC) regime for Application-to-Consumer SMS are two further telecom-flavored examples of the same pattern. RCS sender verification is administered by Google and mobile operators; 10DLC verification is administered by The Campaign Registry through designated vetting providers like Aegis and Numeracle. In both cases, the verification is a permission to use a channel, not a portable credential the business can present elsewhere.
 
-[c] The W3C Verifiable Credentials Data Model 2.0 [22] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. The trade is examined in more detail in [15].
+[c] The W3C Verifiable Credentials Data Model 2.0 [23] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. The trade is examined in more detail in [15].
 
 ---
 
 ## References
-
 [1] Hardman, D. 2024. Why X509 Certs Should Be Secondary Evidence of Org Identity. *Codecraft Papers*. https://dhh1128.github.io/papers/x509-prob.html
 
 [2] Hardman, D. 2025. Verifiable Voice Protocol. IETF Internet-Draft draft-hardman-verifiable-voice-protocol. https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html
@@ -266,10 +273,12 @@ Strong organizational identity is a precondition for the trust layer the digital
 
 [18] ATIS. 2020. Signature-based Handling of Asserted Information using toKENs (SHAKEN): Governance Model. ATIS-1000080.v002. https://cstga.ca/wp-content/uploads/2020/07/ATIS-1000080.v002_SHAKEN-Governance-Model.pdf
 
-[19] IETF. 2024. Selective Disclosure for JWTs (SD-JWT). draft-ietf-oauth-selective-disclosure-jwt. https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt
+[19] Hardman, D. 2025. Why Anchored Signatures. "Codecraft Papers". https://dhh1128.github.io/papers/was.html
 
-[20] IETF. 2024. SD-JWT-based Verifiable Credentials (SD-JWT VC). draft-ietf-oauth-sd-jwt-vc. https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html
+[20] IETF. 2024. Selective Disclosure for JWTs (SD-JWT). draft-ietf-oauth-selective-disclosure-jwt. https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt
 
-[21] Hardman, D. 2024. How SD-JWT and ACDC Are Similar and Different. *Codecraft Papers*. https://dhh1128.github.io/papers/sdjwt-acdc.html
+[21] IETF. 2024. SD-JWT-based Verifiable Credentials (SD-JWT VC). draft-ietf-oauth-sd-jwt-vc. https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html
 
-[22] W3C. 2023. Verifiable Credentials Data Model v2.0. https://www.w3.org/TR/vc-data-model-2.0/
+[22] Hardman, D. 2024. How SD-JWT and ACDC Are Similar and Different. *Codecraft Papers*. https://dhh1128.github.io/papers/sdjwt-acdc.html
+
+[23] W3C. 2023. Verifiable Credentials Data Model v2.0. https://www.w3.org/TR/vc-data-model-2.0/
