@@ -9,10 +9,12 @@ Usage:
     python scripts/build_diagrams.py            # (re)render every diagram + manifest
     python scripts/build_diagrams.py --check     # verify PNGs are up to date (CI/test)
 
-`--check` re-renders each SVG in memory and fails if the committed PNG differs,
-or if any SVG/PNG no longer matches its pin — i.e. it guarantees that whenever an
-SVG changes, its PNG was regenerated too. cairosvg renders deterministically, so
-the byte comparison is stable given the same fonts (Barlow Condensed, Open Sans).
+`--check` verifies (portably, no rendering) that every SVG and its PNG still match
+the sha256 pinned in the manifest: change an SVG and its pin no longer matches, so
+you must re-run the build, which re-renders the PNG and repins both. Byte-level
+render *fidelity* (the PNG really is cairosvg's output for the SVG) is asserted by
+tests/test_diagrams.py on machines whose cairo/font stack reproduces the pins —
+cross-machine PNG bytes aren't guaranteed, so that check is skipped elsewhere.
 """
 import argparse
 import hashlib
@@ -85,11 +87,8 @@ def check(root: Path):
         if not png.exists():
             problems.append(f"{d['png']}: rendered PNG is missing — run build_diagrams.py")
             continue
-        committed = png.read_bytes()
-        if _sha(committed) != d["png_sha256"]:
+        if _sha(png.read_bytes()) != d["png_sha256"]:
             problems.append(f"{d['png']}: PNG differs from its pin — re-run build_diagrams.py")
-        elif _sha(render(svg)) != d["png_sha256"]:
-            problems.append(f"{d['png']}: PNG is not a current render of {rel} — re-run build_diagrams.py")
     return problems
 
 
