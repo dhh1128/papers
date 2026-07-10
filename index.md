@@ -43,6 +43,8 @@ layout: meta
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 
 ## Primers
+- [Opaque Identifier Aliases](oia.md) (2026-07-09)
+- [Identity Facets](if.md) (2026-07-09)
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)
 - [The Evidence Lifecycle in Telco](ev-life.md) (2025-08-07)
 - [Why Anchored Signatures?](was.md) (2025-02-20)
