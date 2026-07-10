@@ -15,12 +15,12 @@ sources:
 - local: assets/amp-diff/fig-hero.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-hero.png
-  sha256: 3e450ae463d642d7d2b724c1641c9f9b9d3bc262ee02591da2b60faf477a25ab
+  sha256: 4e3e9b207275db89e9e04f3cd8887b9d10738000a67ddedeee61998e6f0c1db4
   severity: fail
 - local: assets/amp-diff/fig-comparison.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-comparison.png
-  sha256: ed2d87ee560af05bab17e8e2259ec7eac9f1973f01ffe50f9cb7d83856a57d1a
+  sha256: 7d48c80c00dcd0e2aa421a38effc5ea326ecb5b114cfb0ea856027d5e46e34a4
   severity: fail
 - local: assets/amp-diff/fig-4a-cell-anatomy.png
   upstream_repo: ../entviz
@@ -30,7 +30,7 @@ sources:
 - local: assets/amp-diff/fig-4b-surround-avalanche.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4b-surround-avalanche.png
-  sha256: 770bc773bf9eed1ecfe070244249c7dbea264ae7f98711dd806037764c94f5fa
+  sha256: 24a0805eed3a2dd0c748dbccb0e04de1b75b74f797bf9f4f0c596377789ecc4b
   severity: fail
 - local: assets/amp-diff/fig-4c-palette.png
   upstream_repo: ../entviz
@@ -45,17 +45,17 @@ sources:
 - local: assets/amp-diff/fig-4e-ellipse.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4e-ellipse.png
-  sha256: 1188a25eac1d920f5c1098e0306612bb0634d382af0e618a6f7510f107b92a4c
+  sha256: 970e4df0ec5b1162dc36c5f0555b631810ee98750cf3cbdf5ad7120bdf06034f
   severity: fail
 - local: assets/amp-diff/fig-4f-crc.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4f-crc.png
-  sha256: a4765a82fbbe969f897979cbe801809b955e59d743b7d7902c7e8b0fe1b2ac67
+  sha256: e9beb5711f8a7a72319216bff400ad998e8f006475b707fff3b1cdc13045aeb3
   severity: fail
 - local: assets/amp-diff/fig-4g-large-input.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4g-large-input.png
-  sha256: 38f4c60ec02519ee1c120a09471305dfc8a194710ddbc09f02b778cfaa1e467c
+  sha256: 76ca9aa3a7f299ab0fe1e171bacb4c3f538273f07dcbafc02d8b6ee6e4f06e4a
   severity: fail
 - local: m-glance.md
   upstream_repo: ../entviz-adversarial
@@ -65,5 +65,5 @@ sources:
 - local: (external) entviz spec — .external-items.yml
   upstream_repo: ../entviz
   upstream_path: docs/spec.md
-  sha256: db4f7dc56fff31eb06276a889bd8d650b87f8652a281a2b10f7844a04d47c669
+  sha256: 123c3ac050a8c4baf848c7038471400fe25bd30f14f5dcf9db3acaa4f6a4a59e
   severity: warn
