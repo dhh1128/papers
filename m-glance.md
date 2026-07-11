@@ -7,8 +7,8 @@ doi: 6979878
 category: Papers
 item_id: CC-PAP-260602
 language: "en"
-version: "1.0"
-revision_date: 2026-06-22
+version: "1.1"
+revision_date: 2026-07-11
 pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/6979878.pdf?abstractid=6979878&mirid=1
 keywords: "perceptual entropy, habituated verification, adversarial estimation, hash visualization, entviz, SSH randomart, drunken bishop, just-noticeable difference, visual search, near-collision resistance, usable security"
 abstract: |
@@ -412,7 +412,7 @@ exactly where a verification protocol, not a prettier picture, has to do the wor
 
 [3] Hsiao, H.-C., Lin, Y.-H., Studer, A., Studer, C., Wang, K.-H., Kikuchi, H., Perrig, A., Sun, H.-M. and Yang, B.-Y. 2009. A Study of User-Friendly Hash Comparison Schemes. In *Proceedings of the 2009 Annual Computer Security Applications Conference (ACSAC '09)*. IEEE, 105–114. https://doi.org/10.1109/ACSAC.2009.20
 
-[4] Hardman, D. 2026. *entviz — Algorithm Specification.* Version 10. https://dhh1128.github.io/entviz/spec
+[4] Hardman, D. 2026. *entviz — Algorithm Specification.* Version 15. https://dhh1128.github.io/entviz/spec
 
 [5] Machado, G. M., Oliveira, M. M. and Fernandes, L. A. F. 2009. A Physiologically-Based Model for Simulation of Color Vision Deficiency. *IEEE Transactions on Visualization and Computer Graphics* 15, 6 (2009), 1291–1298. https://doi.org/10.1109/TVCG.2009.113
 

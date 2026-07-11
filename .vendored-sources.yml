@@ -10,7 +10,7 @@ sources:
 - local: amp-diff.md
   upstream_repo: ../entviz
   upstream_path: docs/entviz-paper.md
-  sha256: 84ae45f892e345d258f9fb67a66dbcbc2d4157d646bc1059e99bf77ead6ef76a
+  sha256: 6286d17721d3ba047523f1c6b5ceeab7f9ae750780d5356275bd2e83c1db9b23
   severity: fail
 - local: assets/amp-diff/fig-hero.png
   upstream_repo: ../entviz
@@ -55,7 +55,7 @@ sources:
 - local: assets/amp-diff/fig-4g-large-input.png
   upstream_repo: ../entviz
   upstream_path: docs/assets/paper/fig-4g-large-input.png
-  sha256: 76ca9aa3a7f299ab0fe1e171bacb4c3f538273f07dcbafc02d8b6ee6e4f06e4a
+  sha256: 449c2d3adbe60a5da1bc886c8d1c7e8d1cf80de48cdf051c8a620738b0e85983
   severity: fail
 - local: m-glance.md
   upstream_repo: ../entviz-adversarial
@@ -65,5 +65,5 @@ sources:
 - local: (external) entviz spec — .external-items.yml
   upstream_repo: ../entviz
   upstream_path: docs/spec.md
-  sha256: 123c3ac050a8c4baf848c7038471400fe25bd30f14f5dcf9db3acaa4f6a4a59e
+  sha256: 888beff877c4314be54b6441b5f523b5f4281729a898360d012ff2d1894350c2
   severity: warn
