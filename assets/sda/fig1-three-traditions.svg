@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="Open Sans, sans-serif">
-  <rect width="720" height="560" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 500" width="720" height="500" font-family="Open Sans, sans-serif">
+  <rect width="720" height="500" fill="#ffffff"/>
 
   <!-- title -->
   <text x="360" y="34" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="27" fill="#491705">One old art, three reductions</text>
@@ -53,7 +53,4 @@
   <text x="45" y="402" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="20" fill="#914f37">What all three let fall</text>
   <text x="45" y="436" font-size="15" fill="#444444"><tspan font-weight="600" fill="#914f37">1</tspan>&#160;&#160;bound the full <tspan font-weight="600">act surface</tspan> &#8212; not just interactions, but tool manipulations too</text>
   <text x="45" y="466" font-size="15" fill="#444444"><tspan font-weight="600" fill="#914f37">2</tspan>&#160;&#160;an explicit <tspan font-weight="600">on whose behalf</tspan> &#183; in whose interest &#183; who bears the obligation</text>
-
-  <!-- caption -->
-  <text x="360" y="512" text-anchor="middle" font-style="italic" font-size="12.5" fill="#777777">Each modern field kept one facet of an art that once held both together.</text>
 </svg>
