@@ -11,6 +11,9 @@ category: Comparisons
 citations: acm
 item_id: CC-COM-260327
 revision_date: 2026-06-08
+ed_review_on: 2026-06-08
+ed_review_version: "1.7"
+ed_review_depth: rigorous
 version: "1.7"
 description: "The internet has no native identity layer. To fill that gap, the community built Public Key Infrastructure (PKI) — an administrative model in which Certificate Authorities (CAs) vouch for the binding between cryptographic keys and entities, and Certificate Transparency (CT) logs provide after-the-fact auditability. CT was a genuine improvement in PKI: it made the CA ecosystem more accountable. But it redistributes administrative trust rather than eliminating it, and it runs on cryptographic foundations that are now under an explicit deprecation timeline. The Key Event Receipt Infrastructure (KERI) takes a different approach, shifting the root of trust from administrators to self-certifying identifiers. This paper compares CT with KERI's decentralized witnesses and watchers — their shared commitments, their real differences, and their respective trajectories as the quantum transition moves from planning exercise to engineering deadline."
 image: /assets/cards/wtbo.png

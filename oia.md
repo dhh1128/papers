@@ -9,6 +9,9 @@ item_id: CC-PRI-260702
 language: "en"
 version: "0.10"
 revision_date: 2026-07-11
+ed_review_on: 2026-07-11
+ed_review_version: "0.10"
+ed_review_depth: rigorous
 pdf_url: https://dhh1128.github.io/papers/oia.pdf
 abstract: |
   Cryptographic identifiers — the keys, DIDs, and autonomic identifiers that anchor digital identity — are strings no human can remember, compare, or choose between. This primer, a companion to Zooko and Houdini and to the COIA naming convention, is about the humble tool that makes them livable: the alias, a friendly local label a person attaches to an opaque string. It argues that an alias is best understood as a private nickname — non-unique, changeable, meaningful only to its creator, and never to be mistaken for the identifier itself — and it examines the properties that follow, the reason a shared naming convention beats ad-hoc labels, and the single most dangerous mistake in the whole design: confusing what you have *proved* about the party behind an identifier with what you have merely *guessed*. It closes by showing how good aliases let software choose the right identifier for a person most of the time without asking, ask a sensible question when it cannot, and connect people to one another one facet at a time.

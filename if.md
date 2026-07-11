@@ -9,6 +9,9 @@ item_id: CC-PRI-260701
 language: "en"
 version: "0.11"
 revision_date: 2026-07-11
+ed_review_on: 2026-07-11
+ed_review_version: "0.11"
+ed_review_depth: rigorous
 pdf_url: https://dhh1128.github.io/papers/if.pdf
 abstract: |
   A single person is a mother, a CEO, a patient, and a citizen at once — and the law, the market, and good sense all insist that these be kept distinct. This primer argues that identity is fundamentally about *sameness*, and that a person's sameness runs in two directions: across time, and across the many *facets* of a life. Crucially, the sameness across facets is meant to be perceptible only to its owner — a facet is a unit of isolation, and only the owner may choose, one relationship at a time, to reveal that two facets are one person. Facets are minted by *relationships*, not by organizations as such — though organizations, being the most prolific source of our relationships, account for most of them (every entry in a password manager is one). The piece develops the less-examined half of the story. Organizational relationships carry formal *capacity* — signing as a citizen versus signing as a CEO — which is the hinge of who is liable when something goes wrong. That is why credentials have an *affinity* for a facet rather than belonging to the whole person (even as some legitimately span several), and why the opaque cryptographic identifiers that anchor each facet need two tools to be livable: one that names them and one that lets a human verify their sameness by eye.
