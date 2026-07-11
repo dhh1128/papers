@@ -21,10 +21,11 @@ def test_citation_style_defaults_to_acm():
 
 def test_acm_documents_selects_only_acm():
     urls = {it.url for it in archive.acm_documents()}
-    # A well-cited ACM paper is in; a hyperlinks doc and an author-date paper are out.
+    # Well-cited ACM papers are in; a hyperlinks doc and a none doc are out.
     assert "sda.md" in urls
+    assert "kspqs.md" in urls              # converted from author-date to acm
     assert "x509-prob.md" not in urls      # citations: hyperlinks
-    assert "kspqs.md" not in urls          # citations: author-date
+    assert "ppred.md" not in urls          # citations: none
 
 
 def test_every_internal_doc_declares_a_valid_citation_style():

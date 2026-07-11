@@ -38,7 +38,7 @@ for a per-field coverage punch-list.
 | `revision_date` | ERROR¹ | date | Date of last revision (= publication date until first errata). |
 | `abstract` | ERROR² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
 | `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
-| `citations` | ERROR | enum | Citation discipline: `acm` \| `hyperlinks` \| `author-date` \| `none`. Single source of truth for whether the ref-number guard applies (only `acm`). See below. |
+| `citations` | ERROR | enum | Citation discipline: `acm` \| `hyperlinks` \| `none`. Single source of truth for whether the ref-number guard applies (only `acm`). See below. |
 | `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
 | `listed` | — | bool | Defaults to `true`. Set `false` to keep an otherwise-valid document (e.g. a not-yet-ready draft) out of `index.md`; the document still validates and builds. |
@@ -114,8 +114,6 @@ field (one of four values):
 - **`acm`** — the house style: ACM-style inline numbers (`[1]`, `[2, 3]`) with a
   matching `References` (or `Works Cited` / `Endnotes`) section at the end.
 - **`hyperlinks`** — sources are cited inline as hyperlinks, no numbered References.
-- **`author-date`** — a name-year bibliography (e.g. a `Works Cited` list), with no
-  inline `[n]` markers.
 - **`none`** — the document makes no source claims / needs no formal citations.
 
 Only `acm` documents are checked by `scripts/fix_ref_nums.py`, which verifies:

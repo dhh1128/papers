@@ -133,9 +133,8 @@ def load_yaml_front_matter(md_path) -> dict:
 # (they replace the old `.hyperlinks-only` sidecar).
 #   acm          ACM-style numbered inline cites [1] + a numbered References section
 #   hyperlinks   sources cited inline as hyperlinks (no numbered References)
-#   author-date  a name-year bibliography (Works Cited), no inline [n] markers
 #   none         makes no source claims / needs no formal citations
-CITATION_STYLES = ('acm', 'hyperlinks', 'author-date', 'none')
+CITATION_STYLES = ('acm', 'hyperlinks', 'none')
 DEFAULT_CITATION_STYLE = 'acm'
 
 def citation_style(item) -> str:
