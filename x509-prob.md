@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2024-11-15
 revision_date: 2026-06-08
 category: Positions
+citations: hyperlinks
 item_id: CC-POS-241104
 pdf_url: https://dhh1128.github.io/papers/x509-prob.pdf
 abstract: |

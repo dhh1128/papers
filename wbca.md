@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2020-04-05
 tags: [privacy, credentials]
 category: Analyses
+citations: none
 original_publication: "https://web.archive.org/web/20201030011232/https://www.evernym.com/blog/well-be-correlated-anyway/"
 item_id: CC-ANA-200401
 pdf_url: https://dhh1128.github.io/papers/wbca.pdf

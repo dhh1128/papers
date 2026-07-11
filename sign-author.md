@@ -6,6 +6,7 @@ abstract: "Introduces some nuance about the assumption common in decentralized i
 keywords: "intent, digital signatures, authenticity, delegation"
 language: "en"
 category: Analyses
+citations: acm
 item_id: CC-ANA-260203
 pdf_url: https://dhh1128.github.io/papers/sign-author.pdf
 description: "Introduces some nuance about the assumption common in decentralized identity circles, that a digital signature is a claim of authoriship. This is sometimes the intended meaning, but numerous use cases provide counter examples."

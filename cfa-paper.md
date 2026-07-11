@@ -5,6 +5,7 @@ thanks: "daniel.hardman@gmail.com"
 date: 2025-12-18
 doi: 5940195
 category: Papers
+citations: acm
 item_id: CC-PAP-251208
 version: "1.0"
 revision_date: 2025-12-18

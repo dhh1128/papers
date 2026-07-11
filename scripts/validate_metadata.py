@@ -2,8 +2,10 @@
 
 Tiers:
   ERROR (fails CI): title, date, category, item_id, abstract, keywords,
-    author/authors, version, revision_date. Every internal document is
-    versioned (1.0 baseline); content edits bump it as errata.
+    author/authors, version, revision_date, citations. Every internal document is
+    versioned (1.0 baseline); content edits bump it as errata. `citations` declares
+    the citation discipline (acm|hyperlinks|author-date|none) and is the single
+    source of truth for whether the fix_ref_nums guard applies (only `acm`).
   WARN  (advisory): none currently. (abstract/keywords graduated from WARN to
     ERROR once the Phase 2 backfill completed.)
 
@@ -15,7 +17,7 @@ import sys
 
 import archive
 from archive import (internal_items, external_items, indexed_items, cat_index,
-                     complain, exit_with_status, repo_root)
+                     complain, exit_with_status, repo_root, CITATION_STYLES)
 
 CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords']
 SOFT_REQUIRED = []                             # (abstract/keywords graduated to ERROR)
@@ -39,6 +41,12 @@ def field_problems(meta):
     for f in VERSION_FIELDS:
         if not meta.get(f):
             errors.append(f"missing required field '{f}'")
+    cit = meta.get('citations')
+    if not cit:
+        errors.append("missing required field 'citations'")
+    elif cit not in CITATION_STYLES:
+        errors.append(f"invalid 'citations' value {cit!r} "
+                      f"(must be one of {', '.join(CITATION_STYLES)})")
     warnings = [f"missing field '{f}'" for f in SOFT_REQUIRED if not meta.get(f)]
     return errors, warnings
 
@@ -47,7 +55,7 @@ def report():
     """Print a per-field coverage punch-list. Never fails (exit 0)."""
     docs = sorted(internal_items(), key=lambda i: i.url)
     n = len(docs)
-    fields = CORE_REQUIRED + ['author/authors'] + SOFT_REQUIRED + VERSION_FIELDS
+    fields = CORE_REQUIRED + ['author/authors'] + SOFT_REQUIRED + VERSION_FIELDS + ['citations']
     print(f"Metadata coverage — {n} internal documents\n")
     for f in fields:
         if f == 'author/authors':

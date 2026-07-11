@@ -29,7 +29,12 @@ jobs:
       - name: Social cards present
         run: python scripts/make_cards.py --check-only
       - name: Reference/citation numbering is consistent
-        run: python scripts/fix_ref_nums.py --check-only --except .hyperlinks-only *.md
+        # The file list comes from archive.acm_documents() (docs whose frontmatter
+        # declares `citations: acm`); fix_ref_nums.py stays a dumb file-list checker.
+        # No untrusted input: FILES is derived from repo files, not github.event.*.
+        run: |
+          FILES=$(python -c "import sys; sys.path.insert(0,'scripts'); import archive; print(' '.join(it.url for it in archive.acm_documents()))")
+          python scripts/fix_ref_nums.py --check-only $FILES
       - name: Index is up to date
         run: python scripts/generate_index.py --check-only
       - name: Run tests

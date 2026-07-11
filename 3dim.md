@@ -9,6 +9,7 @@ keywords: "identity, SSI, agents, relationships, data, privacy, key management, 
 pdf_url: https://dhh1128.github.io/papers/3dim.pdf
 language: "en"
 category: Primers
+citations: none
 item_id: CC-PRI-190101
 description: "This article explores the three fundamental dimensions of digital identity—relationships, attributes, and agents—showing how each contributes to privacy, trust, and security. It explains how identity models must account for these dimensions to be complete, and discusses the implications for key management, privacy, and user autonomy."
 image: /assets/cards/3dim.png

@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2023-06-01
 language: "en"
 category: Positions
+citations: hyperlinks
 item_id: CC-POS-230603
 pdf_url: https://dhh1128.github.io/papers/ai-coca.pdf
 abstract: |

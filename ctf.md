@@ -1,5 +1,6 @@
 ---
 category: Guidance
+citations: none
 title: The Coming Tsunami of Falsehood
 author: "Daniel Hardman"
 date: 2024-06-01

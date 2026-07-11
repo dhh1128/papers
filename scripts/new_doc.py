@@ -47,6 +47,7 @@ def frontmatter_stub(title, category, date, item_id, author=DEFAULT_AUTHOR):
              f'author: "{author}"',
              f"date: {date}",
              f"category: {category}",
+             "citations: acm",
              f"item_id: {item_id}",
              'language: "en"',
              'version: "1.0"',

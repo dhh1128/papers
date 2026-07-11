@@ -3,6 +3,7 @@ title: "What Does Telco Need? Requirements for Organizational Identity Evidence"
 author: "Daniel Hardman"
 date: 2026-03-11
 category: Positions
+citations: none
 item_id: CC-POS-260304
 pdf_url: https://dhh1128.github.io/papers/telco-ev-reqs.pdf
 abstract: |

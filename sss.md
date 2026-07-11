@@ -5,6 +5,7 @@ date: 2021-03-12
 tags: [identity, ssi, didcomm, agents, privacy]
 original_publication: "https://daniel-hardman.medium.com/security-silos-and-sovereignty-522e30bb8eb4"
 category: Analyses
+citations: hyperlinks
 item_id: CC-ANA-210302
 pdf_url: https://dhh1128.github.io/papers/sss.pdf
 abstract: |

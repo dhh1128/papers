@@ -8,6 +8,7 @@ keywords: "ACDC, Merkle Tree Certificates, digital identity, cryptography, verif
 pdf_url: https://dhh1128.github.io/papers/acdc-and-mtc.pdf
 language: "en"
 category: Comparisons
+citations: acm
 item_id: CC-COM-260101
 description: "This paper compares ACDCs and Merkle Tree Certificates, analyzing their design, use cases, and implications for digital trust."
 image: /assets/cards/acdc-and-mtc.png

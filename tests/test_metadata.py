@@ -17,6 +17,7 @@ COMPLETE_PAPER = {
     "keywords": "a, b",
     "version": 1.0,
     "revision_date": "2026-01-01",
+    "citations": "acm",
 }
 
 

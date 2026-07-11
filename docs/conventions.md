@@ -38,9 +38,13 @@ for a per-field coverage punch-list.
 | `revision_date` | ERROR¹ | date | Date of last revision (= publication date until first errata). |
 | `abstract` | ERROR² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
 | `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
+| `citations` | ERROR | enum | Citation discipline: `acm` \| `hyperlinks` \| `author-date` \| `none`. Single source of truth for whether the ref-number guard applies (only `acm`). See below. |
 | `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
 | `language` | — | string | Defaults to `en`. |
 | `listed` | — | bool | Defaults to `true`. Set `false` to keep an otherwise-valid document (e.g. a not-yet-ready draft) out of `index.md`; the document still validates and builds. |
+| `ed_review_on` | — | date | Date an editorial-panel review was completed. See below. |
+| `ed_review_version` | — | str | The `version` that was reviewed — lets a later revision reveal a review as stale. |
+| `ed_review_depth` | — | enum | `rigorous` (full multi-persona panel) or `stylistic` (typo/consistency pass). |
 
 ¹ `version` + `revision_date` are required (ERROR) on **every internal
 document**, regardless of category — the whole archive is citable, versioned
@@ -104,12 +108,35 @@ distinguishable: **papers** ids always carry a 3-letter category segment
 
 ## Reference / citation numbering
 
-Documents that cite sources use ACM-style inline numbers (`[1]`, `[2, 3]`) with a
-matching `References` (or `Works Cited` / `Endnotes`) section at the end.
-`scripts/fix_ref_nums.py` checks and renumbers these:
+Every document declares its citation discipline in the `citations` frontmatter
+field (one of four values):
+
+- **`acm`** — the house style: ACM-style inline numbers (`[1]`, `[2, 3]`) with a
+  matching `References` (or `Works Cited` / `Endnotes`) section at the end.
+- **`hyperlinks`** — sources are cited inline as hyperlinks, no numbered References.
+- **`author-date`** — a name-year bibliography (e.g. a `Works Cited` list), with no
+  inline `[n]` markers.
+- **`none`** — the document makes no source claims / needs no formal citations.
+
+Only `acm` documents are checked by `scripts/fix_ref_nums.py`, which verifies:
 
 - every inline citation has a matching expanded entry and vice versa;
 - numbering has no gaps and is in first-cited order.
 
-Documents that are link-only (no formal references) are listed in
-[.hyperlinks-only](../.hyperlinks-only) and skipped by the check.
+The set of `acm` documents is `archive.acm_documents()` — the **single source of
+truth** consumed by both `publish.py` and CI. `fix_ref_nums.py` itself is a
+repo-agnostic file-list checker; the repo-aware selection lives in `archive.py`.
+(This replaced the former `.hyperlinks-only` sidecar file; the exemption now
+travels with each document in its frontmatter.) **Papers** are expected to use
+`acm`; a Paper on any other value is an editorial exception worth revisiting.
+
+## Editorial review
+
+A document that has passed an editorial-panel review records it in three optional
+frontmatter fields: `ed_review_on` (the completion date), `ed_review_version` (the
+`version` reviewed), and `ed_review_depth` (`rigorous` for a full multi-persona
+panel, `stylistic` for a lighter typo/consistency pass). Recording the reviewed
+version is deliberate: when a later errata bumps `version` past `ed_review_version`,
+the review is visibly stale and a re-review is due. These fields are advisory
+(no tier), and adding or updating them is metadata — not errata — so it does **not**
+bump the document version.

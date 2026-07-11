@@ -8,6 +8,7 @@ keywords: "KERI, X509, CT, administrative trust, post-quantum, PKI, DPKI"
 pdf_url: https://dhh1128.github.io/papers/wtbo.pdf
 language: "en"
 category: Comparisons
+citations: acm
 item_id: CC-COM-260327
 revision_date: 2026-06-08
 version: "1.7"

@@ -6,6 +6,7 @@ abstract: "This paper analyzes the heartbeat mechanism in the did:cel method and
 keywords: "did:cel, heartbeat, KERI, retrograde attack, decentralized identity"
 language: "en"
 category: Analyses
+citations: acm
 item_id: CC-ANA-251209
 pdf_url: https://dhh1128.github.io/papers/heartbeat-and-witnesses.pdf
 description: "This paper analyzes the heartbeat mechanism in the did:cel method and its relevance to KERI's approach to retrograde attack defense."

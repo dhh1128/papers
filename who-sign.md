@@ -6,6 +6,7 @@ abstract: "Explores the reasons why a simple answer to the question of which ent
 keywords: "intent, digital signatures, authenticity, delegation"
 language: "en"
 category: Analyses
+citations: acm
 item_id: CC-ANA-260202
 pdf_url: https://dhh1128.github.io/papers/who-sign.pdf
 description: "Explores the reasons why a simple answer to the question of which entity is in control of cryptographic keys may limit our insight."

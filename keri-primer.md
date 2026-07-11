@@ -7,6 +7,7 @@ keywords: "KERI, ACDC, CESR, decentralized identity, verifiable credentials, cry
 pdf_url: https://dhh1128.github.io/papers/keri-primer.pdf
 language: "en"
 category: Primers
+citations: acm
 item_id: CC-PRI-251208
 description: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
 image: /assets/cards/keri-primer.png

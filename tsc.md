@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 thanks: "daniel.hardman@gmail.com"
 date: 2026-07-03
 category: Papers
+citations: hyperlinks
 item_id: CC-PAP-260701
 language: "en"
 version: "0.5"

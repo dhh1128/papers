@@ -126,6 +126,33 @@ def load_yaml_front_matter(md_path) -> dict:
     yaml_str = ''.join(yaml_lines)
     return yaml.safe_load(yaml_str)
 
+# Citation-style taxonomy. A document's `citations:` frontmatter declares which
+# citation discipline it uses; this is the single source of truth for whether the
+# ACM reference-number guard (fix_ref_nums.py) applies. Only `acm` is checked; the
+# other values name the deliberate alternative so the choice is explicit per-doc
+# (they replace the old `.hyperlinks-only` sidecar).
+#   acm          ACM-style numbered inline cites [1] + a numbered References section
+#   hyperlinks   sources cited inline as hyperlinks (no numbered References)
+#   author-date  a name-year bibliography (Works Cited), no inline [n] markers
+#   none         makes no source claims / needs no formal citations
+CITATION_STYLES = ('acm', 'hyperlinks', 'author-date', 'none')
+DEFAULT_CITATION_STYLE = 'acm'
+
+def citation_style(item) -> str:
+    """The declared citation style of an internal Item; defaults to 'acm'.
+
+    'acm' is the strict default so a doc is checked unless it explicitly opts out —
+    the same safe posture as the old sidecar (checked unless listed)."""
+    return item.meta.get('citations') or DEFAULT_CITATION_STYLE
+
+def acm_documents():
+    """Internal Items whose citation style is 'acm' — the set fix_ref_nums checks.
+
+    The repo-aware selection lives here (not in the standalone fix_ref_nums.py):
+    callers pass this list of files to the dumb checker. internal_items() already
+    excludes project meta-docs, so AGENTS.md/ROADMAP.md are never handed in."""
+    return [it for it in internal_items() if citation_style(it) == 'acm']
+
 _cats = None
 _comparable_cats = None
 def categories():

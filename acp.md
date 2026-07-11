@@ -7,6 +7,7 @@ keywords: "cybersecurity, privacy, password management, antivirus, 2FA, best pra
 pdf_url: https://dhh1128.github.io/papers/acp.pdf
 language: "en"
 category: Guidance
+citations: hyperlinks
 item_id: CC-GUI-230604
 description: "A practical guide to cybersecurity and privacy for non-experts, offering distilled advice on browsers, passwords, antivirus, software installation, two-factor authentication, and more."
 image: /assets/cards/acp.png

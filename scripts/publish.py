@@ -21,7 +21,6 @@ Modes:
 """
 import argparse
 import datetime
-import glob
 import hashlib
 import json
 import os
@@ -30,7 +29,8 @@ import sys
 
 import yaml
 
-from archive import (internal_items, repo_root, normalize_version, bump_version)
+from archive import (internal_items, acm_documents, repo_root, normalize_version,
+                     bump_version)
 
 SCRIPTS = os.path.join(repo_root, "scripts")
 # Records the hash of each doc's PDF-relevant inputs at last build, so a PDF is
@@ -150,15 +150,17 @@ def changed_docs():
 
 def validate():
     """Run the read-only guards + tests; return overall ok."""
-    mds = sorted(os.path.basename(p) for p in glob.glob(os.path.join(repo_root, "*.md")))
+    # The repo-aware selection lives in archive.acm_documents(): only docs whose
+    # `citations:` frontmatter is `acm` get the ref-num check. fix_ref_nums.py stays
+    # a dumb file-list checker (no repo knowledge, no --except sidecar).
+    acm_mds = sorted(it.url for it in acm_documents())
     print("validate:")
     rcs = [
         run("metadata schema + PDF/card present", ["validate_metadata.py"]),
         run("descriptions in sync", ["sync_descriptions.py", "--check-only"]),
         run("social cards present", ["make_cards.py", "--check-only"]),
         run("index up to date", ["generate_index.py", "--check-only"]),
-        run("reference numbering", ["fix_ref_nums.py", "--check-only",
-                                    "--except", ".hyperlinks-only", *mds]),
+        run("reference numbering", ["fix_ref_nums.py", "--check-only", *acm_mds]),
         run("vendored sources not drifted", ["check_drift.py", "--check-only"]),
     ]
     pt = subprocess.run([sys.executable, "-m", "pytest", "-q"], cwd=repo_root,

@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 date: 2024-06-20
 tags: [identity, ux]
 category: Primers
+citations: hyperlinks
 original_publication: "https://www.didas.swiss/2024/11/26/dice-2024-shaping-the-future-of-digital-trust/"
 item_id: CC-PRI-240602
 pdf_url: https://dhh1128.github.io/papers/zh.pdf

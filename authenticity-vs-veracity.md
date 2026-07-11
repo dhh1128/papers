@@ -7,6 +7,7 @@ keywords: "authenticity, veracity, digital identity, philosophy, law, KERI, ACDC
 pdf_url: https://dhh1128.github.io/papers/authenticity-vs-veracity.pdf
 language: "en"
 category: Analyses
+citations: hyperlinks
 item_id: CC-ANA-251210
 description: "This article distinguishes between authenticity (truth of origin) and veracity (truth of content), clarifying their roles in philosophy, law, and digital identity."
 image: /assets/cards/authenticity-vs-veracity.png

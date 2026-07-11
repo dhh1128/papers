@@ -7,6 +7,7 @@ keywords: "agentic AI, multi-agent systems, digital intent, human-agent interact
 pdf_url: https://dhh1128.github.io/papers/syntelos.pdf
 language: "en"
 category: Papers
+citations: acm
 item_id: CC-PAP-251206
 version: "1.1"
 revision_date: 2026-07-11

@@ -5,6 +5,7 @@ date: 2023-01-18
 tags: [identity, architecture, didcomm, tutorial]
 original_publication: "https://daniel-hardman.medium.com/sentries-confessionals-vaults-and-envelopes-4a58cf4f8a5a"
 category: Primers
+citations: hyperlinks
 item_id: CC-PRI-230101
 pdf_url: https://dhh1128.github.io/papers/svce.pdf
 abstract: |

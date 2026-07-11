@@ -7,6 +7,7 @@ keywords: "digital signatures, retrograde attack, cryptography, key management, 
 pdf_url: https://dhh1128.github.io/papers/was.pdf
 language: "en"
 category: Primers
+citations: hyperlinks
 item_id: CC-PRI-250201
 description: "This article explains why simple digital signatures are insufficient for strong evidence, describes the retrograde attack problem, and explores mitigations and their limitations."
 image: /assets/cards/was.png

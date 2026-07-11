@@ -4,6 +4,7 @@ author: "Daniel Hardman"
 thanks: "daniel.hardman@gmail.com"
 date: 2026-07-09
 category: Primers
+citations: acm
 item_id: CC-PRI-260701
 language: "en"
 version: "0.11"
