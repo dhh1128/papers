@@ -8,8 +8,8 @@ category: Papers
 pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5909382.pdf?abstractid=5909382&mirid=1
 doi: 10.2139/ssrn.5909382
 item_id: CC-PAP-251207
-version: "1.0"
-revision_date: 2025-12-11
+version: "1.1"
+revision_date: 2026-07-11
 description: "In the physical world, human intent is signaled through a rich context of body language, tone, and environment. In the digital realm, however, complex purposes are often compressed into low-fidelity signals, such as a single mouse click. This reduction creates a 'semantic void' where users and systems frequently misalign, leading to manipulation, error, and eroded trust. This paper defines a rigorous model of 'intent' and introduces the concept of intent boundaries—specific thresholds where an external observer’s knowledge of an actor’s purpose becomes inadequate. By synthesizing principles from bioethics, psychology, and design theory, we propose a framework for recognizing and respecting these boundaries, ensuring that future digital architectures—particularly those driving agentic AI—preserve human agency rather than subvert it."
 image: /assets/cards/intent-monograph.png
 ---
@@ -95,7 +95,7 @@ This principle aligns with Cavoukian’s concept of **Privacy by Design**, speci
 ## 5. Conclusion
 Mishandled intent boundaries are at the heart of the modern trust crisis in technology. As we build the next generation of digital agents, we must do better. We cannot treat intent as a binary switch that is either "on" or "off." We must build architectures that recognize the semantic void between a click and a commitment.
 
-The best systems will be those that see intent boundaries not as obstacles to conversion, but as the necessary borders of human autonomy.
+The best systems will be those that see intent boundaries not as obstacles to conversion, but as the necessary borders of human autonomy. One such border runs through every act of delegation — the point past which a delegate's grasp of a principal's intent can no longer be trusted, and a fresh approval is owed. *The Shape of Delegated Authority* [6] builds a model of delegated authority around exactly that boundary, placing its human-in-the-loop gates where knowledge of intent lapses.
 
 ---
 
@@ -110,3 +110,5 @@ The best systems will be those that see intent boundaries not as obstacles to co
 [4] Norman, D.A. 2013. *The Design of Everyday Things*. Basic Books.
 
 [5] Cavoukian, A. 2009. *Privacy by Design: The 7 Foundational Principles*. Information and Privacy Commissioner of Ontario.
+
+[6] Hardman, D. 2026. The Shape of Delegated Authority. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/sda.html

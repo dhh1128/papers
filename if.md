@@ -6,7 +6,7 @@ date: 2026-07-09
 category: Primers
 item_id: CC-PRI-260701
 language: "en"
-version: "0.10"
+version: "0.11"
 revision_date: 2026-07-11
 pdf_url: https://dhh1128.github.io/papers/if.pdf
 abstract: |
@@ -90,13 +90,13 @@ Blur capacity and you get the corporate-law equivalent of the fraud-or-nonsense 
 
 Once you see facets as the unit that carries accountability, a pattern that used to look arbitrary comes into focus: **a credential tends to have an affinity for one facet.**
 
-Cecilia's employee badge is a credential of Cecilia-the-employee. Quit the job and the badge goes back — it was never hers as a private individual. Her authority to sign that €100,000 invoice has an affinity for Cecilia-the-CEO, and would be worthless attached to her parent-facet or her patient-facet. Much of the time the pull is this strong, and a good system respects it: hand a credential to the wrong facet and it is either useless or dangerous. Attach Cecilia's authority to sign for Acme to her private facet, and her personal affairs could suddenly bind the company — the very confusion of capacity that the law exists to prevent.
+Cecilia's employee badge is a credential of Cecilia-the-employee. Quit the job and the badge goes back — it was never hers as a private individual. Her authority to sign that €100,000 invoice has an affinity for Cecilia-the-CEO, and would be worthless attached to her parent-facet or her patient-facet. Much of the time the pull is this strong, and a good system respects it: hand a credential to the wrong facet and it is either useless or dangerous. Attach Cecilia's authority to sign for Acme to her private facet, and her personal affairs could suddenly bind the company — the very confusion of capacity that the law exists to prevent. Which facet may perform which act — and bind whom — is where any model of *delegated authority* must begin; one such model [6] pairs every act with the facet that performs it and the capacity it is performed in.
 
 But *affinity* is the right word, not *ownership* — because the pull is a tendency, not a law. Two things keep it from being absolute.
 
 First, some credentials genuinely cross facets. Suppose a notary attests that I signed a document in their presence on a certain day. Which facet does that attestation belong to? It records an *act*, not a role; it travels with whatever capacity I signed in, and might be equally at home in several. To pin it to one facet by fiat would discard information the credential never committed to.
 
-Second, it is a mistake to think a credential is *owned* by whoever issued it, or bound to the single context the issuer had in mind. Utah's State-Endorsed Digital Identity (SEDI) makes the point vividly: the identity is *created and controlled by the individual*, and the state merely *endorses* certain verified attributes — name, birth date, residence — which the holder then carries into many unrelated contexts, from forming a company to seeing a doctor [6]. Withdraw the endorsement and the identity persists, because the citizen, not the state, holds the key. Such a credential has affinities, but it is neither the property of its issuer nor the captive of one facet.
+Second, it is a mistake to think a credential is *owned* by whoever issued it, or bound to the single context the issuer had in mind. Utah's State-Endorsed Digital Identity (SEDI) makes the point vividly: the identity is *created and controlled by the individual*, and the state merely *endorses* certain verified attributes — name, birth date, residence — which the holder then carries into many unrelated contexts, from forming a company to seeing a doctor [7]. Withdraw the endorsement and the identity persists, because the citizen, not the state, holds the key. Such a credential has affinities, but it is neither the property of its issuer nor the captive of one facet.
 
 So a good identity system does not model a person as a single bucket of credentials — nor does it pretend every credential slots neatly into exactly one facet. It models a person as a set of facets, keeps each credential with the facet it has affinity for, and stays honest about the credentials that legitimately span more than one.
 
@@ -104,11 +104,11 @@ So a good identity system does not model a person as a single bucket of credenti
 
 The concept I'm calling a *facet* travels under several names, and it's worth being explicit about the choice, because the words are not interchangeable.
 
-Some in the decentralized-identity world call it a **persona**. Anonyome Labs builds its MySudo product around exactly this idea — situational, activity-based partitions, one for work, one for selling, one for social life, each holding its own keys and credentials [7]. Even the W3C's Decentralized Identifiers specification speaks, in passing, of "separation of identities, personas, and interactions" [8]. So "persona" is defensible, and it has real intuitive pull — we already talk about the persona we wear at work versus the one at home.
+Some in the decentralized-identity world call it a **persona**. Anonyome Labs builds its MySudo product around exactly this idea — situational, activity-based partitions, one for work, one for selling, one for social life, each holding its own keys and credentials [8]. Even the W3C's Decentralized Identifiers specification speaks, in passing, of "separation of identities, personas, and interactions" [9]. So "persona" is defensible, and it has real intuitive pull — we already talk about the persona we wear at work versus the one at home.
 
-I avoid it for two reasons. First, in the neighbouring world of agentic AI, "persona" already means something else: an agent's *behavioral character* — its tone, its priorities, the way it talks — not a partition of its identity [9]. A term meant to span people, organizations, *and* software agents cannot afford to mean "identity partition" in one room and "personality" in the next. Second, "persona" in ordinary usage leans toward a public mask, a face put on for an audience — and facets are not masks. Cecilia-the-CEO is not a performance; she is really the CEO.
+I avoid it for two reasons. First, in the neighbouring world of agentic AI, "persona" already means something else: an agent's *behavioral character* — its tone, its priorities, the way it talks — not a partition of its identity [10]. A term meant to span people, organizations, *and* software agents cannot afford to mean "identity partition" in one room and "personality" in the next. Second, "persona" in ordinary usage leans toward a public mask, a face put on for an audience — and facets are not masks. Cecilia-the-CEO is not a performance; she is really the CEO.
 
-A related term worth knowing is **pseudonym**. The European Union's digital-identity framework uses it for a facet-like partition that is deliberately unlinkable — a separate handle for each party you deal with, so that even colluding services cannot stitch your dealings back together [10]. A pseudonym is finer-grained than a facet — you might present the same CEO facet to many counterparties — but the family resemblance is clear.
+A related term worth knowing is **pseudonym**. The European Union's digital-identity framework uses it for a facet-like partition that is deliberately unlinkable — a separate handle for each party you deal with, so that even colluding services cannot stitch your dealings back together [11]. A pseudonym is finer-grained than a facet — you might present the same CEO facet to many counterparties — but the family resemblance is clear.
 
 I use **facet** because it is neutral. A gem has facets whether it is worn by a person, held by a company, or wielded by a machine. The word carries no whiff of performance and no collision with a second meaning. It says exactly what it means: one face of a single, unchanged whole.
 
@@ -118,9 +118,9 @@ There is a practical catch. In a digital system, each facet has to be anchored t
 
 Two tools make the anchors livable, and they answer the two questions a human ever asks about an identifier.
 
-The first question is *"which one is this?"* — the problem of selecting, remembering, and searching. The answer is a friendly, local **alias**: a label the owner attaches to the opaque string, so that `me-as-ceo-at-acme` stands in for the 44-character key. Aliases are the subject of a companion piece, Opaque Identifier Aliases [11], and of a naming convention, COIA [12], that generates them consistently.
+The first question is *"which one is this?"* — the problem of selecting, remembering, and searching. The answer is a friendly, local **alias**: a label the owner attaches to the opaque string, so that `me-as-ceo-at-acme` stands in for the 44-character key. Aliases are the subject of a companion piece, Opaque Identifier Aliases [12], and of a naming convention, COIA [13], that generates them consistently.
 
-The second question is *"is this the same one?"* — the problem of verifying, comparing, and defeating the impostor who swaps in a look-alike key. Here the answer is to change the *modality* of the task — the sensory channel it runs on: render the identifier as a picture a person can compare at a glance, so a substituted key jumps out instead of hiding the way a single altered character hides when you try to check two 44-character strings letter by letter. That is the job of entviz [13], whose perceptual limits have been estimated [14].
+The second question is *"is this the same one?"* — the problem of verifying, comparing, and defeating the impostor who swaps in a look-alike key. Here the answer is to change the *modality* of the task — the sensory channel it runs on: render the identifier as a picture a person can compare at a glance, so a substituted key jumps out instead of hiding the way a single altered character hides when you try to check two 44-character strings letter by letter. That is the job of entviz [14], whose perceptual limits have been estimated [15].
 
 The two tools divide the labour cleanly, and each maps to one of the ideas in this primer. Naming serves *facets*: it tells you which face you are dealing with. Visual comparison serves *sameness*: it lets a human confirm that this identifier is the same one they saw before — the very definition we started with. One tool for telling the faces apart; one tool for confirming an identifier is unchanged.
 
@@ -141,20 +141,22 @@ The right response is not to flatten identity but to model it honestly — one w
 
 [5] Uniform Commercial Code. 2002. § 3-402. Signature by Representative. Legal Information Institute, Cornell Law School. Retrieved July 9, 2026 from https://www.law.cornell.edu/ucc/3/3-402
 
-[6] State of Utah, Department of Government Operations. 2026. State-Endorsed Digital Identity (SEDI). Utah Code Title 63A, Chapter 20 (effective May 6, 2026). Retrieved July 9, 2026 from https://sedi.utah.gov
+[6] Hardman, D. 2026. The Shape of Delegated Authority. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/sda.html
 
-[7] Anonyome Labs, Inc. 2022. U.S. Patent No. 11,507,943 B1. U.S. Patent and Trademark Office (granted November 22, 2022). Retrieved from https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11507943
+[7] State of Utah, Department of Government Operations. 2026. State-Endorsed Digital Identity (SEDI). Utah Code Title 63A, Chapter 20 (effective May 6, 2026). Retrieved July 9, 2026 from https://sedi.utah.gov
 
-[8] World Wide Web Consortium (W3C). 2022. Decentralized Identifiers (DIDs) v1.0. W3C Recommendation (July 19, 2022). Retrieved from https://www.w3.org/TR/did-1.0/
+[8] Anonyome Labs, Inc. 2022. U.S. Patent No. 11,507,943 B1. U.S. Patent and Trademark Office (granted November 22, 2022). Retrieved from https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11507943
 
-[9] Amin, D., Salminen, J., and Jansen, B. J. 2026. How to Model AI Agents as Personas?: Applying the Persona Ecosystem Playground to 41,300 Posts on Moltbook for Behavioral Insights. arXiv:2603.03140. Retrieved from https://arxiv.org/abs/2603.03140
+[9] World Wide Web Consortium (W3C). 2022. Decentralized Identifiers (DIDs) v1.0. W3C Recommendation (July 19, 2022). Retrieved from https://www.w3.org/TR/did-1.0/
 
-[10] European Commission. 2024. EU Digital Identity Wallet Architecture and Reference Framework — Topic E (Pseudonyms and User Authentication). Retrieved from https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/discussions/375
+[10] Amin, D., Salminen, J., and Jansen, B. J. 2026. How to Model AI Agents as Personas?: Applying the Persona Ecosystem Playground to 41,300 Posts on Moltbook for Behavioral Insights. arXiv:2603.03140. Retrieved from https://arxiv.org/abs/2603.03140
 
-[11] Hardman, D. 2026. Opaque Identifier Aliases. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/oia.html
+[11] European Commission. 2024. EU Digital Identity Wallet Architecture and Reference Framework — Topic E (Pseudonyms and User Authentication). Retrieved from https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/discussions/375
 
-[12] Hardman, D. 2025. Conventions for Opaque Identifier Aliases (COIA). Retrieved from https://dhh1128.github.io/coia
+[12] Hardman, D. 2026. Opaque Identifier Aliases. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/oia.html
 
-[13] Hardman, D. 2026. Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/amp-diff.html (SSRN DOI: https://doi.org/10.2139/ssrn.6979798)
+[13] Hardman, D. 2025. Conventions for Opaque Identifier Aliases (COIA). Retrieved from https://dhh1128.github.io/coia
 
-[14] Hardman, D. 2026. Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/m-glance.html (SSRN DOI: https://doi.org/10.2139/ssrn.6979878)
+[14] Hardman, D. 2026. Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/amp-diff.html (SSRN DOI: https://doi.org/10.2139/ssrn.6979798)
+
+[15] Hardman, D. 2026. Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/m-glance.html (SSRN DOI: https://doi.org/10.2139/ssrn.6979878)

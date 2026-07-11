@@ -8,8 +8,8 @@ pdf_url: https://dhh1128.github.io/papers/syntelos.pdf
 language: "en"
 category: Papers
 item_id: CC-PAP-251206
-version: "1.0"
-revision_date: 2025-12-11
+version: "1.1"
+revision_date: 2026-07-11
 description: "The transition from direct human-computer interaction to an economy of agentic AI highlights an inadequacy that's always permeated digital architecture: the dissociation of mechanical action from human purpose. Proximate intents (e.g., clicking a button) are conflated with ultimate intents (e.g., consuming entertainment or entering a contract), rendering signaling mechanisms brittle and unsuitable for automated policy. Existing classification standards such as NAICS, UNSPSC, and FIPA ACL categorize actors, objects, and message envelopes, but say too little about high-level intent. Drawing on Activity Theory and Commitment Protocols, this paper proposes a taxonomy for intent that's rooted in shared outcomes rather than unilateral actions. This provides a rich, rigorous, machine-readable standard for constraining delegation and negotiating interactions. Principals can reference the taxonomy when creating policy for AI and human agents."
 image: /assets/cards/syntelos.png
 ---
@@ -660,7 +660,7 @@ Result: The Tutor Agent sends a proposal: "I can teach guitar. Here is my rate."
 
 The transition from an "Attention Economy" to an "Intention Economy" requires a new grammar. We cannot rely on the static nouns of industrial codes or the empty verbs of communication protocols. We must adopt a Taxonomy of Interactive Activity that categorizes the shared outcome of our digital engagements.
 
-By structuring intent into relate, share, care, serve, align, trade, operate, and govern, and differentiating between the Activity (Ultimate Intent) and the Action (Proximate Means), we provide the stable scaffolding necessary for AI agents to reason, filter, and negotiate on our behalf. This structure satisfies the core requirements of machine-readability, hierarchy, and role-agnosticism.
+By structuring intent into relate, share, care, serve, align, trade, operate, and govern, and differentiating between the Activity (Ultimate Intent) and the Action (Proximate Means), we provide the stable scaffolding necessary for AI agents to reason, filter, and negotiate on our behalf. This structure satisfies the core requirements of machine-readability, hierarchy, and role-agnosticism. A companion paper, *The Shape of Delegated Authority* [40], builds directly on this scaffolding: it takes these telos-paths as one axis of a full model of delegated authority, adds an orthogonal axis of effect and a relation/obligation facet, and shows where a grammar of intent must hand off to them.
 
 This is not merely a classification system; it is the protocol for digital agency. It restores the "contract" to the "interaction," ensuring that when we click "Watch," answer a call, or authorize an agent, we know exactly what we are agreeing to do. It transforms the "Unknown Caller" into a known quantity and the "passive user" into an empowered principal. This is the architecture of a respectful digital future.
 
@@ -745,3 +745,5 @@ This is not merely a classification system; it is the protocol for digital agenc
 [38] Hyperledger Aries. n.d. RFC 0519: Goal Codes. GitHub. Retrieved December 1, 2025 from https://github.com/hyperledger/aries-rfcs/blob/master/concepts/0519-goal-codes/README.md
 
 [39] Ziegler, C. and Welpe, I. 2022. A Taxonomy of Decentralized Autonomous Organizations. In Proceedings of the 43rd International Conference on Information Systems (ICIS 2022). Association for Information Systems. Retrieved from https://mediatum.ub.tum.de/doc/1709396/document.pdf
+
+[40] Hardman, D. 2026. The Shape of Delegated Authority. Codecraft Papers. Retrieved from https://dhh1128.github.io/papers/sda.html
