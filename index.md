@@ -9,6 +9,7 @@ layout: meta
 [About This Archive](about.md)
 
 ## Papers
+- [The Shape of Delegated Authority](sda.md) (2026-07-11)
 - [A Theory of System Coherence](tsc.md) (2026-07-03)
 - [Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations](amp-diff.md) (2026-06-22)
 - [Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart](m-glance.md) (2026-06-22)

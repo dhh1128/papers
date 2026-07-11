@@ -24,6 +24,24 @@
       "png": "assets/oia/aliases.png",
       "svg_sha256": "3e4e8243b939a61bf5bf060ff0a76e4c6981e68bc8d7e52cb2825c72ebd9a218",
       "png_sha256": "d95e73fb7ab1893011b0e98990ad1c1fd395fb4b58db4215723c849489302751"
+    },
+    {
+      "svg": "assets/sda/fig1-three-traditions.svg",
+      "png": "assets/sda/fig1-three-traditions.png",
+      "svg_sha256": "dd1cad25c30cf380c4992b4416757d219acaa160c442360f1f788d26c834b0ca",
+      "png_sha256": "0d80cd444e589f9375c3222448c0995aacfa0356ed9c7a4a940c2edc948c726f"
+    },
+    {
+      "svg": "assets/sda/fig2-act-coordinates.svg",
+      "png": "assets/sda/fig2-act-coordinates.png",
+      "svg_sha256": "4881ec91bd750cc9ce26704f80fc75c59f4104dbf25a3e3f206dfedc3c184e2c",
+      "png_sha256": "9f3322412e4100619a819e5abc16c13da31031b6ee0ae607cfd70ab3429e73ae"
+    },
+    {
+      "svg": "assets/sda/fig3-authority-graph.svg",
+      "png": "assets/sda/fig3-authority-graph.png",
+      "svg_sha256": "08fce79d7185c0e0f473574d4185a4cdf588184ac11899bcf212487c9bfd272f",
+      "png_sha256": "209a27f5643d3629877341febef02a205c63e6869ec3e2583ba2c24ce9c75874"
     }
   ]
 }
