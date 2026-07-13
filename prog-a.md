@@ -13,8 +13,8 @@ pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 citations: acm
 listed: false
-version: "0.9.2"
-revision_date: 2026-07-01
+version: "0.9.3"
+revision_date: 2026-07-13
 keywords:
   - organizational identity
   - progressive assurance
@@ -96,8 +96,6 @@ A further nuance extends into the life of the LEI and concerns how recently some
 So, taking this all into account, the meaningful assurance considerations for the LEI as an identifier are whether the entity has been revalidated as an active going concern along with its reference data or whether the LEI has lapsed.
 
 **Control assurance** asks: how strongly is *control* of the identifier bound to the entity, an accountable human, or a governed program? This is the axis the rest of this paper develops, in four levels (LoA 0 through LoA 3).
-
-The two axes are independent in principle but related in practice. An LoA 0 affidavit issued against a fully corroborated LEI is meaningfully stronger than the same affidavit issued against an entity-supplied-only LEI, even though both occupy LoA 0 on the control axis. At the top end, GLEIF's Ecosystem Governance Framework presupposes a fully corroborated and actively registered LEI as input [11]; LoA 3 therefore implies maximum reference assurance by construction. LoA 0 through LoA 2 can ride on top of any reference assurance level.
 
 The remainder of section 2 holds reference assurance fixed and develops the four levels of control assurance.
 
