@@ -135,5 +135,5 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: codecraft-papers-pdfs
-          path: build/pdfs/*.pdf
+          path: .build.tmp/pdfs/*.pdf
           if-no-files-found: error

@@ -76,7 +76,7 @@ multi-author/affiliations; version+revision_date required for Papers+Specs only
       wrapped failures mod 256 → a failed render reported success). _(red→green)_
 - [x] Build-time **webp → png** conversion (xelatex can't embed webp; 5 docs use
       it). Non-destructive: converts in a temp dir, leaves web assets untouched.
-- [x] `scripts/build_pdfs.py`: build one PDF per internal doc into `build/pdfs/`
+- [x] `scripts/build_pdfs.py`: build one PDF per internal doc into `.build.tmp/pdfs/`
       (gitignored); exits nonzero if any doc fails — the CI gate.
 - [x] `.github/workflows/build-pdfs.yml`: installs pandoc/xelatex/fonts/
       ImageMagick, builds the whole corpus, uploads the PDFs as an artifact

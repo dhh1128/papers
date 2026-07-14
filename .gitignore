@@ -5,7 +5,7 @@ __pycache__/
 env/
 venv/
 ENV/
-build/
+.build.tmp/
 develop-eggs/
 dist/
 downloads/

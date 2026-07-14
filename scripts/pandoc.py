@@ -242,7 +242,7 @@ def build_pdf(item, out_dir):
 
 
 def main(item, out_dir=None):
-    out_dir = out_dir or os.path.join(repo_root, 'build', 'pdfs')
+    out_dir = out_dir or os.path.join(repo_root, '.build.tmp', 'pdfs')
     rc, log, output_path = build_pdf(item, out_dir)
     if rc:
         sys.stderr.write(log)

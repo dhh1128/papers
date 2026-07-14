@@ -1,4 +1,4 @@
-"""Build a PDF for every internal document into build/pdfs/ (gitignored).
+"""Build a PDF for every internal document into .build.tmp/pdfs/ (gitignored).
 
 This is the CI gate that proves the whole corpus is renderable: it exits nonzero
 if any document fails to build. Build a single document instead with:
@@ -15,8 +15,8 @@ import pandoc
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--out', default=os.path.join(repo_root, 'build', 'pdfs'),
-                        help='Output directory (default: build/pdfs).')
+    parser.add_argument('--out', default=os.path.join(repo_root, '.build.tmp', 'pdfs'),
+                        help='Output directory (default: .build.tmp/pdfs).')
     parser.add_argument('--only', nargs='*',
                         help='Limit to these slugs (e.g. --only kspqs 3dim).')
     args = parser.parse_args()
