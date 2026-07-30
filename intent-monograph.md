@@ -6,7 +6,7 @@ abstract: "In the physical world, human intent is signaled through a rich contex
 keywords: "Intent, Agentic AI, Human-Computer Interaction (HCI), Digital Agency, Ethics, Dark Patterns, User Experience (UX), Identity"
 category: Papers
 citations: acm
-pdf_url: https://papers.ssrn.com/sol3/Delivery.cfm/5909382.pdf?abstractid=5909382&mirid=1
+pdf_url: https://dhh1128.github.io/papers/intent-monograph.pdf
 doi: 10.2139/ssrn.5909382
 item_id: CC-PAP-251207
 version: "1.1"

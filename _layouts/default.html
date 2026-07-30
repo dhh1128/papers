@@ -47,7 +47,16 @@ richer than jekyll-seo-tag's generic Article. Both share the same @id so a
 consumer can merge them into one node.
 {%- endcomment -%}
 
-{% assign canonical_pdf_url = page.canonical_pdf_url | default: page.pdf_url %}
+{%- comment -%}
+`pdf_url` is always the copy this site serves (/papers/<slug>.pdf) — the one
+citation_pdf_url and contentUrl must name, because Google Scholar and other
+crawlers have to be able to fetch it directly. For a work with an external
+version of record (SSRN), the pointer to that is `doi`, rendered above; do not
+aim pdf_url at it. (An earlier `canonical_pdf_url` override existed for this and
+did the opposite — it fed citation_pdf_url from a Cloudflare-gated SSRN
+Delivery.cfm URL that serves HTML to crawlers. No document ever set it.)
+{%- endcomment -%}
+{% assign pdf_url = page.pdf_url %}
 {% assign has_identifiers = false %}
 {% if page.item_id or doi %}{% assign has_identifiers = true %}{% endif %}
 {%- assign seo_keywords = page.keywords -%}
@@ -101,11 +110,11 @@ consumer can merge them into one node.
   {%- if page.version -%},
   "version": {{ page.version | jsonify }}
   {%- endif -%}
-  {%- if canonical_pdf_url -%},
+  {%- if pdf_url -%},
   "encoding": {
     "@type": "MediaObject",
     "encodingFormat": "application/pdf",
-    "contentUrl": {{ canonical_pdf_url | absolute_url | jsonify }}
+    "contentUrl": {{ pdf_url | absolute_url | jsonify }}
   }
   {%- endif -%}
 }
@@ -148,8 +157,8 @@ consumer can merge them into one node.
     {% else %}
     <meta name="citation_journal_title" content="Codecraft Papers">
     {% endif %}
-    {% if canonical_pdf_url %}
-      <meta name="citation_pdf_url" content="{{ canonical_pdf_url }}">
+    {% if pdf_url %}
+      <meta name="citation_pdf_url" content="{{ pdf_url }}">
     {% endif %}
     {% if page.abstract %}
     <meta name="citation_abstract" content="{{ page.abstract | escape }}">
@@ -206,13 +215,13 @@ consumer can merge them into one node.
       <p class="byline">{{ page.author }}</p>
         {%- endif -%}
       {%- endif -%}
-      {% if doi or page.item_id or page.version or canonical_pdf_url %}
+      {% if doi or page.item_id or page.version or pdf_url %}
       <div class="pubmeta">
         <p>
           {% if doi %}
             <span class="meta-label">DOI:</span>
             <a href="{{ doi_url }}" rel="external">{{ doi }}</a>
-            {% if page.item_id or page.version or canonical_pdf_url %}
+            {% if page.item_id or page.version or pdf_url %}
               <span class="meta-sep"> · </span>
             {% endif %}
           {% endif %}
@@ -220,7 +229,7 @@ consumer can merge them into one node.
           {% if page.item_id %}
             <span class="meta-label">item ID:</span>
             <span class="meta-mono">{{ page.item_id }}</span>
-            {% if page.version or canonical_pdf_url %}
+            {% if page.version or pdf_url %}
               <span class="meta-sep"> · </span>
             {% endif %}
           {% endif %}
@@ -228,14 +237,14 @@ consumer can merge them into one node.
           {% if page.version %}
             <span class="meta-label">version:</span>
             <span class="meta-mono">{{ page.version }}</span>
-            {% if canonical_pdf_url %}
+            {% if pdf_url %}
               <span class="meta-sep"> · </span>
             {% endif %}
           {% endif %}
 
-          {% if canonical_pdf_url %}
-            <span class="meta-label">canonical PDF:</span>
-            <a href="{{ canonical_pdf_url | absolute_url }}">download</a>
+          {% if pdf_url %}
+            <span class="meta-label">PDF:</span>
+            <a href="{{ pdf_url | absolute_url }}">download</a>
           {% endif %}
         </p>
       </div>
