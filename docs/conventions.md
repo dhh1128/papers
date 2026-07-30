@@ -39,7 +39,8 @@ for a per-field coverage punch-list.
 | `abstract` | ERROR² | string | One-paragraph summary. Feeds meta description / PDF subject. The body must not repeat it. |
 | `keywords` | ERROR² | list/string | For SEO and PDF metadata. |
 | `citations` | ERROR | enum | Citation discipline: `acm` \| `hyperlinks` \| `none`. Single source of truth for whether the ref-number guard applies (only `acm`). See below. |
-| `pdf_url` | rec³ | string | Path/URL of the rendered PDF. Becoming a CI-built, validated field. |
+| `pdf_url` | ERROR³ | string | Absolute URL of **this site's** copy of the rendered PDF: `https://dhh1128.github.io/papers/<slug>.pdf`. |
+| `doi` | —⁴ | string | A full DOI (`10.<prefix>/<suffix>`) when the work has one. Omit otherwise. |
 | `language` | — | string | Defaults to `en`. |
 | `listed` | — | bool | Defaults to `true`. Set `false` to keep an otherwise-valid document (e.g. a not-yet-ready draft) out of `index.md`; the document still validates and builds. |
 | `ed_review_on` | — | date | Date an editorial-panel review was completed. See below. |
@@ -56,8 +57,22 @@ recorded, never a plain hand-edit. Pure-metadata fixes are not errata.
 ² `abstract` + `keywords` are required (ERROR). They were WARN-tier during the
 Phase 2 backfill and graduated to ERROR once every document carried them.
 
-³ `pdf_url` is *recommended* (warn-only) until the Phase 3 PDF build lands; it
-will then be validated against an actually-produced artifact.
+³ `pdf_url` graduated from warn-only to ERROR once Phase 3/4 landed (PDFs are
+built reproducibly and committed at the repo root, so every document has one).
+It is now checked for *value*, not just presence: it must be exactly this site's
+own `<slug>.pdf`. The layout feeds it to `citation_pdf_url` and the JSON-LD
+`contentUrl`, and Google Scholar has to be able to fetch that URL and get a PDF.
+**Never point it at an external version of record.** Four SSRN documents did,
+using a `papers.ssrn.com/sol3/Delivery.cfm/…` link that is Cloudflare-gated and
+returns HTML to any crawler; the external pointer belongs in `doi`.
+
+⁴ `doi` is optional — most documents have none — but when present it is
+format-checked as a real DOI: registrant prefix, slash, suffix. A bare SSRN
+abstract id (`6979798`) is **not** a DOI; SSRN's DOI for that paper is
+`10.2139/ssrn.6979798`. Three documents carried the bare id, which made the
+rendered `https://doi.org/<id>` link a 404 and the `citation_doi` invalid.
+Do not write the `https://doi.org/…` URL form either — the layout builds that
+link itself from the bare DOI.
 
 **Author convention:** use the singular `author` (a string) for single-author
 documents — the norm. Use the plural `authors` (a list of `{name, affiliation}`

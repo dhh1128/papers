@@ -7,6 +7,15 @@ import datetime
 external_url_pat = re.compile('^https?://.*')
 repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Where the live site serves this archive (matches url + baseurl in _config.yml).
+# Single source of truth for the tools that build or check absolute site URLs.
+SITE_BASE = 'https://dhh1128.github.io/papers/'
+
+
+def site_pdf_url(slug):
+    """The canonical `pdf_url` for a document: this site's own copy of its PDF."""
+    return f'{SITE_BASE}{slug}.pdf'
+
 class Item:
     """
     Class representing an item in the archive.

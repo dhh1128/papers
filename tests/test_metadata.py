@@ -18,7 +18,9 @@ COMPLETE_PAPER = {
     "version": 1.0,
     "revision_date": "2026-01-01",
     "citations": "acm",
+    "pdf_url": "https://dhh1128.github.io/papers/a-title.pdf",
 }
+SLUG = "a-title.md"  # the url `pdf_url` is checked against
 
 
 def _drop(d, *keys):
@@ -26,8 +28,56 @@ def _drop(d, *keys):
 
 
 def test_complete_paper_has_no_errors():
-    errors, _ = vm.field_problems(COMPLETE_PAPER)
+    errors, _ = vm.field_problems(COMPLETE_PAPER, SLUG)
     assert errors == [], errors
+
+
+def test_missing_pdf_url_is_error():
+    errors, _ = vm.field_problems(_drop(COMPLETE_PAPER, "pdf_url"), SLUG)
+    assert any("pdf_url" in e for e in errors), errors
+
+
+def test_pdf_url_pointing_offsite_is_error():
+    """citation_pdf_url must be fetchable by crawlers, so pdf_url stays local.
+
+    Regression: four SSRN documents aimed pdf_url at a Cloudflare-gated
+    papers.ssrn.com Delivery.cfm URL that serves HTML, not a PDF, to Scholar.
+    """
+    meta = {**COMPLETE_PAPER,
+            "pdf_url": "https://papers.ssrn.com/sol3/Delivery.cfm/1.pdf?abstractid=1"}
+    errors, _ = vm.field_problems(meta, SLUG)
+    assert any("pdf_url" in e for e in errors), errors
+
+
+def test_pdf_url_for_wrong_slug_is_error():
+    meta = {**COMPLETE_PAPER, "pdf_url": "https://dhh1128.github.io/papers/other.pdf"}
+    errors, _ = vm.field_problems(meta, SLUG)
+    assert any("pdf_url" in e for e in errors), errors
+
+
+def test_full_doi_is_accepted():
+    meta = {**COMPLETE_PAPER, "doi": "10.2139/ssrn.6979798"}
+    errors, _ = vm.field_problems(meta, SLUG)
+    assert errors == [], errors
+
+
+def test_bare_ssrn_abstract_id_as_doi_is_error():
+    """Regression: `doi: 6979798` rendered a 404 doi.org link + invalid citation_doi."""
+    meta = {**COMPLETE_PAPER, "doi": 6979798}
+    errors, _ = vm.field_problems(meta, SLUG)
+    assert any("doi" in e for e in errors), errors
+
+
+def test_doi_as_url_is_error():
+    meta = {**COMPLETE_PAPER, "doi": "https://doi.org/10.2139/ssrn.6979798"}
+    errors, _ = vm.field_problems(meta, SLUG)
+    assert any("doi" in e for e in errors), errors
+
+
+def test_absent_doi_is_fine():
+    """Most documents have no DOI; the field is optional, only format-checked."""
+    errors, _ = vm.field_problems(COMPLETE_PAPER, SLUG)
+    assert not any("doi" in e for e in errors), errors
 
 
 def test_missing_core_field_is_error():

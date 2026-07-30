@@ -19,7 +19,7 @@ import re
 import sys
 
 import archive
-from archive import next_item_id, categories, repo_root
+from archive import next_item_id, categories, repo_root, site_pdf_url
 
 DEFAULT_AUTHOR = "Daniel Hardman"
 
@@ -36,11 +36,14 @@ def canonical_category(name):
     return None
 
 
-def frontmatter_stub(title, category, date, item_id, author=DEFAULT_AUTHOR):
+def frontmatter_stub(title, category, date, item_id, author=DEFAULT_AUTHOR,
+                     slug=None):
     """Return the YAML frontmatter (with `---` fences) for a new document.
 
     abstract/keywords are non-empty TODO placeholders, so the stub is
-    schema-valid; the author replaces them with real content.
+    schema-valid; the author replaces them with real content. `pdf_url` points at
+    this site's own copy of the PDF (the artifact build_pdfs.py will produce) —
+    never at an external version of record; see docs/conventions.md.
     """
     lines = ["---",
              f'title: "{title}"',
@@ -50,6 +53,7 @@ def frontmatter_stub(title, category, date, item_id, author=DEFAULT_AUTHOR):
              "citations: acm",
              f"item_id: {item_id}",
              'language: "en"',
+             f"pdf_url: {site_pdf_url(slug or slugify(title))}",
              'version: "1.0"',
              f"revision_date: {date}"]
     lines += ['keywords: "TODO, replace, with, real, keywords"',
@@ -82,7 +86,8 @@ def main():
 
     item_id = next_item_id(category, date)
     with open(path, "w", encoding="utf-8") as f:
-        f.write(frontmatter_stub(args.title, category, date, item_id, args.author))
+        f.write(frontmatter_stub(args.title, category, date, item_id, args.author,
+                                 slug=slug))
 
     print(f"Created {slug}.md  (item_id {item_id}, category {category})")
     print("NEXT: write the body, then replace the TODO 'abstract' and 'keywords'.")

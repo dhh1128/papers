@@ -101,10 +101,17 @@ few committed PDFs are dead weight nothing links to.
       committed at repo root as `<slug>.pdf`; fixes the ~12 live 404s.
 - [x] Reconcile `pdf_url`: absolute site URL on all 30 non-SSRN docs; the 2 SSRN
       docs keep `pdf_url` → SSRN (version of record) and also publish a local copy.
+      _(Revised 2026-07-30 — the SSRN carve-out was wrong: `pdf_url` feeds
+      `citation_pdf_url`, and SSRN's `Delivery.cfm` link is Cloudflare-gated and
+      serves HTML to crawlers. All 4 SSRN docs now point `pdf_url` at their local
+      copy; the version of record is the `doi`. The unused `canonical_pdf_url`
+      layout override is retired.)_
 - [x] Removed the stale `rendered/intent-monograph.pdf`; regenerated the other
       committed PDFs from current source (now reproducible via `SOURCE_DATE_EPOCH`).
 - [x] `validate_metadata.py` requires a committed `<slug>.pdf` per document +
       `tests/test_metadata.py` test. _(red→green)_
+- [x] `pdf_url` graduated warn-only → ERROR, and is now value-checked (must be
+      this site's own `<slug>.pdf`), not merely present. `sda` was missing it.
 - [ ] _(nice-to-have)_ a `.gitattributes` to pin `*.md` to LF (ai-coca was CRLF).
 
 ## Phase 5 — SEO / scholarly-indexing hardening (Jekyll)
@@ -129,6 +136,12 @@ test-first (JSON-LD validated with `json.loads`). `Gemfile.lock` is gitignored.
       across single/multi-author, DOI, and no-version docs.
 - [x] **og/meta `description`** now per-page (mirrors the abstract via
       `sync_descriptions.py`); `url`/`baseurl` set so og:image/canonical are absolute.
+
+- [x] **DOI correctness (2026-07-30):** `amp-diff`, `m-glance`, and `cfa-paper`
+      carried a bare SSRN abstract id in `doi:`, so the rendered `doi.org` link
+      404'd and `citation_doi`/`dc.identifier` were invalid. Now full DOIs
+      (`10.2139/ssrn.<id>`, confirmed against Crossref). `validate_metadata.py`
+      + `check_seo.py` now format-check the field so it cannot recur.
 
 **Medium:**
 - [x] `robots.txt`: advertise `Sitemap:`.

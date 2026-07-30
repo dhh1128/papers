@@ -51,7 +51,7 @@ def test_slugify():
 
 def test_stub_is_schema_valid_for_non_paper():
     text = new_doc.frontmatter_stub("My Title", "Primers", "2099-07-01", "CC-PRI-990701")
-    errors, _ = vm.field_problems(_fm(text))
+    errors, _ = vm.field_problems(_fm(text), "my-title.md")
     assert errors == [], errors
 
 
@@ -59,5 +59,14 @@ def test_stub_is_schema_valid_for_paper_with_version():
     text = new_doc.frontmatter_stub("My Paper", "Papers", "2099-07-01", "CC-PAP-990701")
     fm = _fm(text)
     assert fm.get("version") and fm.get("revision_date"), fm
-    errors, _ = vm.field_problems(fm)
+    errors, _ = vm.field_problems(fm, "my-paper.md")
+    assert errors == [], errors
+
+
+def test_stub_pdf_url_follows_explicit_slug():
+    """An explicit --slug, not the title, decides the filename and so the PDF URL."""
+    text = new_doc.frontmatter_stub("My Paper", "Papers", "2099-07-01",
+                                    "CC-PAP-990701", slug="mp")
+    assert _fm(text)["pdf_url"] == archive.site_pdf_url("mp")
+    errors, _ = vm.field_problems(_fm(text), "mp.md")
     assert errors == [], errors

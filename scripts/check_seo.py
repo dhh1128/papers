@@ -16,10 +16,11 @@ import os
 import re
 import sys
 
-from archive import internal_items, complain, exit_with_status
+from archive import internal_items, complain, exit_with_status, SITE_BASE
+from validate_metadata import DOI_PAT
 
 SITE_DESC = "scholarly and technical writings by Daniel Hardman"
-BASE = "https://dhh1128.github.io/papers/"
+BASE = SITE_BASE
 
 
 def meta_contents(html, key):
@@ -52,6 +53,11 @@ def expected_authors(meta):
 
 
 def check_doc(slug, meta, html):
+    """Return a list of problems with one built page's <head>.
+
+    Returns rather than complains so the rules are unit-testable against a
+    synthetic <head>; main() is what turns findings into CI failures.
+    """
     cat = str(meta.get("category", ""))
     want_type = "ScholarlyArticle" if cat == "Papers" else "TechArticle"
     nauthors = expected_authors(meta)
@@ -74,8 +80,16 @@ def check_doc(slug, meta, html):
     ca = meta_contents(html, "citation_author")
     if len(ca) != nauthors:
         errs.append(f"citation_author count {len(ca)} != {nauthors} authors")
-    if not meta_contents(html, "citation_pdf_url"):
+    # Scholar has to be able to fetch this, so it must be our own PDF — not an
+    # external version of record (that is what citation_doi is for).
+    cpdf = meta_contents(html, "citation_pdf_url")
+    if not cpdf:
         errs.append("citation_pdf_url missing")
+    elif cpdf[0] != f"{BASE}{slug}.pdf":
+        errs.append(f"citation_pdf_url not our own copy: {cpdf[0]}")
+    doi = meta_contents(html, "citation_doi")
+    if doi and not DOI_PAT.match(doi[0]):
+        errs.append(f"citation_doi is not a DOI: {doi[0]}")
 
     nodes = ld_nodes(html)
     bad = [n["__bad__"] for n in nodes if "__bad__" in n]
@@ -96,8 +110,7 @@ def check_doc(slug, meta, html):
         if meta.get("item_id") and meta["item_id"] not in ident:
             errs.append("JSON-LD identifier missing item_id")
 
-    for e in errs:
-        complain(f"{slug}.html: {e}")
+    return errs
 
 
 def main():
@@ -109,7 +122,8 @@ def main():
         if not os.path.isfile(path):
             complain(f"{slug}: not built at {path}")
             continue
-        check_doc(slug, it.meta, open(path, encoding="utf-8").read())
+        for e in check_doc(slug, it.meta, open(path, encoding="utf-8").read()):
+            complain(f"{slug}.html: {e}")
 
     idx = os.path.join(site, "index.html")
     if os.path.isfile(idx):

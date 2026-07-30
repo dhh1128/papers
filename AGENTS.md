@@ -85,23 +85,23 @@ as a blog. The governing editorial policy is [about.md](about.md).
   metadata (JSON-LD, Highwire `citation_*`) already lives in `_layouts/`, and
   the PDF story is handled on Jekyll. Revisit only if Jekyll becomes a blocker.
 - **PDFs:** built reproducibly by `scripts/build_pdfs.py` (Phase 3), produced in
-  CI, and embedding full XMP + `/Info` metadata. *How they reach the live site*
-  (commit vs Actions-deploy) is the one open decision — see ROADMAP Phase 4;
-  `pdf_url`/`canonical_pdf_url` reconciliation rides on it.
+  CI, embedding full XMP + `/Info` metadata, and **committed at the repo root**
+  so plain Jekyll serves them (Phase 4). `pdf_url` therefore always names this
+  site's own `/papers/<slug>.pdf` — it drives `citation_pdf_url`, which crawlers
+  must be able to fetch. A work's external version of record goes in `doi`, never
+  in `pdf_url`; the vestigial `canonical_pdf_url` override is gone.
 - **External items:** specs published elsewhere are declared in
   [.external-items.yml](.external-items.yml) and merged into `index.md`.
 
 ## Open questions (decide when relevant, don't assume)
 
-- **PDF publication model on Jekyll.** Built PDFs currently upload as a CI
-  artifact only; they are not on the live site, so ~12 `pdf_url`s 404. Decide how
-  they get served on plain GitHub Pages Jekyll: commit the built PDFs, or switch
-  Pages to an Actions build+deploy. This gates retiring the committed `*.pdf`
-  blobs and the `pdf_url`/`canonical_pdf_url` reconciliation. See ROADMAP Phase 4.
+_(None open.)_
 
 _(Resolved earlier: platform = Jekyll; `author` singular with `authors` only for
 multi-author docs; `version`/`revision_date` required on every internal document
-(1.0 baseline) — all recorded in [docs/conventions.md](docs/conventions.md).)_
+(1.0 baseline); PDF publication model = commit the built PDFs, which settled the
+`pdf_url`/`canonical_pdf_url` reconciliation in favour of a single local
+`pdf_url` — all recorded in [docs/conventions.md](docs/conventions.md).)_
 
 ## Repository layout
 
@@ -126,7 +126,7 @@ Canonical definition in [docs/conventions.md](docs/conventions.md). In brief,
 each document's YAML frontmatter carries `title`, `date`, `category` (one MECE
 category), `item_id` (`CC-XXX-YYMMOO`), `abstract`, `keywords`, and `author` (or
 `authors`), plus `version` + `revision_date` (every internal document is
-versioned, `1.0` baseline); Papers additionally aim for `pdf_url`.
+versioned, `1.0` baseline) and `pdf_url` (this site's own `<slug>.pdf`).
 The body must **not** repeat the title or abstract — the layout renders those.
 
 ## How to add, edit, or re-publish a document

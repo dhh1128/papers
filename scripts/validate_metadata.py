@@ -1,38 +1,52 @@
 """Validate every document's frontmatter against the docs/conventions.md schema.
 
 Tiers:
-  ERROR (fails CI): title, date, category, item_id, abstract, keywords,
+  ERROR (fails CI): title, date, category, item_id, abstract, keywords, pdf_url,
     author/authors, version, revision_date, citations. Every internal document is
     versioned (1.0 baseline); content edits bump it as errata. `citations` declares
     the citation discipline (acm|hyperlinks|author-date|none) and is the single
     source of truth for whether the fix_ref_nums guard applies (only `acm`).
   WARN  (advisory): none currently. (abstract/keywords graduated from WARN to
-    ERROR once the Phase 2 backfill completed.)
+    ERROR once the Phase 2 backfill completed; pdf_url once Phase 3/4 landed —
+    it is now format-checked against this site's own copy, not just present.)
+
+Format checks: `doi` must be a real DOI, and `pdf_url` must be this site's copy
+of the document's PDF — see DOI_PAT below and archive.site_pdf_url for why each
+matters.
 
 Run `validate_metadata.py --report` for a per-field coverage punch-list.
 """
 import argparse
 import os
+import re
 import sys
 
 import archive
 from archive import (internal_items, external_items, indexed_items, cat_index,
-                     complain, exit_with_status, repo_root, CITATION_STYLES)
+                     complain, exit_with_status, repo_root, site_pdf_url,
+                     CITATION_STYLES)
 
-CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords']
+CORE_REQUIRED = ['title', 'date', 'category', 'item_id', 'abstract', 'keywords',
+                 'pdf_url']
 SOFT_REQUIRED = []                             # (abstract/keywords graduated to ERROR)
 VERSION_FIELDS = ['version', 'revision_date']  # required on every internal document
 EXTERNAL_REQUIRED = ['category', 'title', 'date']
+
+# A DOI is a registrant prefix + suffix, e.g. 10.2139/ssrn.6979798 for SSRN. A
+# bare SSRN abstract id is NOT a DOI: it makes https://doi.org/<id> a 404 and an
+# invalid citation_doi. Three documents carried one until 2026-07-30.
+DOI_PAT = re.compile(r'^10\.\d{4,9}/\S+$')
 
 
 def has_author(meta):
     return bool(meta.get('author') or meta.get('authors'))
 
 
-def field_problems(meta):
+def field_problems(meta, url=None):
     """Return (errors, warnings) for one internal document's metadata.
 
-    Pure function over a dict so it is unit-testable without the filesystem.
+    Pure function over a dict (plus the document's `url`, e.g. 'amp-diff.md',
+    where a check needs the slug) so it is unit-testable without the filesystem.
     """
     errors = [f"missing required field '{f}'"
               for f in CORE_REQUIRED if not meta.get(f)]
@@ -47,6 +61,21 @@ def field_problems(meta):
     elif cit not in CITATION_STYLES:
         errors.append(f"invalid 'citations' value {cit!r} "
                       f"(must be one of {', '.join(CITATION_STYLES)})")
+    doi = meta.get('doi')
+    if doi is not None and not DOI_PAT.match(str(doi).strip()):
+        errors.append(f"invalid 'doi' value {doi!r} — must be a full DOI "
+                      f"(prefix/suffix, e.g. 10.2139/ssrn.6979798), not a bare "
+                      f"SSRN abstract id or a URL")
+    # pdf_url names the copy THIS site serves, because citation_pdf_url and the
+    # JSON-LD contentUrl must be directly fetchable by crawlers. An external
+    # version of record belongs in `doi`, never here. See _layouts/default.html.
+    pdf = meta.get('pdf_url')
+    if pdf and url:
+        want = site_pdf_url(url[:-3])
+        if str(pdf).strip() != want:
+            errors.append(f"'pdf_url' is {pdf!r}; it must be this site's own "
+                          f"copy, {want} (an external version of record goes in "
+                          f"'doi')")
     warnings = [f"missing field '{f}'" for f in SOFT_REQUIRED if not meta.get(f)]
     return errors, warnings
 
@@ -92,7 +121,7 @@ def main():
         if not meta:
             complain(f"Could not load metadata for: {item.url}")
             continue
-        errors, warnings = field_problems(meta)
+        errors, warnings = field_problems(meta, item.url)
         for e in errors:
             complain(f"{item.url}: {e}")
         for w in warnings:
