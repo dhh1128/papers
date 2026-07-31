@@ -5,43 +5,43 @@
       "svg": "assets/if/boundary.svg",
       "png": "assets/if/boundary.png",
       "svg_sha256": "48d3677ccc2f65f179fc1b4a6f8891c1d1279ddd624f10b90b6d0e909c6c5972",
-      "png_sha256": "094409d01042ac0185425ed998e1ef2cb8cd4c89f1a707830420f671a4537056"
+      "png_sha256": "90be1e8b9a4e41e092c7ff29069bb782c74175c7b585c8e883b25132bb649c51"
     },
     {
       "svg": "assets/if/gem.svg",
       "png": "assets/if/gem.png",
       "svg_sha256": "0d9c3b9a951f707fe6bcf30bcc709cc13173e1e04f7956ee1400f0e6255771b3",
-      "png_sha256": "0d5887d68d024eb7e7e3f910e77803df347d7d64b9ae1292656123fbf0ad35ae"
+      "png_sha256": "1d4ba36a67a61294ef9778b8e75d60d7776b5b631d6aaa9cd241b40cb91311ca"
     },
     {
       "svg": "assets/if/signatures.svg",
       "png": "assets/if/signatures.png",
       "svg_sha256": "69ced6fa9538a2795fd1eb7a59d329968bd746e763fba07980a075172677c5de",
-      "png_sha256": "ae8f3c63bd6634ac2362b76a6681490ef67c1327ed1a60765444b2b0cf37bd1c"
+      "png_sha256": "df50e26e01695b84ce1b144072103749399c1effdb2118a71108343500d6b93b"
     },
     {
       "svg": "assets/oia/aliases.svg",
       "png": "assets/oia/aliases.png",
       "svg_sha256": "3e4e8243b939a61bf5bf060ff0a76e4c6981e68bc8d7e52cb2825c72ebd9a218",
-      "png_sha256": "d95e73fb7ab1893011b0e98990ad1c1fd395fb4b58db4215723c849489302751"
+      "png_sha256": "621ddfaa2a5e2c3420c39a4aa9c6e65b1426ab8099c7101af7dbff085e53457b"
     },
     {
       "svg": "assets/sda/fig1-three-traditions.svg",
       "png": "assets/sda/fig1-three-traditions.png",
       "svg_sha256": "b55e5535dac33f710cc3613a882e730c9d8350bc6b3249370282accef48cd25d",
-      "png_sha256": "4ba9255a1662f57a677cc200114903dee8e4b28bb0d8d4dfc3f566137f714cf4"
+      "png_sha256": "28501a726689a4f97cd519288107f07a7f1443097db501dc6a2f24a5dff58beb"
     },
     {
       "svg": "assets/sda/fig2-act-coordinates.svg",
       "png": "assets/sda/fig2-act-coordinates.png",
       "svg_sha256": "4881ec91bd750cc9ce26704f80fc75c59f4104dbf25a3e3f206dfedc3c184e2c",
-      "png_sha256": "9f3322412e4100619a819e5abc16c13da31031b6ee0ae607cfd70ab3429e73ae"
+      "png_sha256": "0cf31057a48796c3a152731877214726949977495347876d56575f6bf57934a7"
     },
     {
       "svg": "assets/sda/fig3-authority-graph.svg",
       "png": "assets/sda/fig3-authority-graph.png",
       "svg_sha256": "08fce79d7185c0e0f473574d4185a4cdf588184ac11899bcf212487c9bfd272f",
-      "png_sha256": "209a27f5643d3629877341febef02a205c63e6869ec3e2583ba2c24ce9c75874"
+      "png_sha256": "ea714b79e2eb81bfabebdd20af9301066a59f5320f442a479092aebae7ba87af"
     }
   ]
 }

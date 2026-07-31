@@ -1,6 +1,22 @@
 # Toolkit + test dependencies for the Codecraft Papers archive.
 pyyaml
 pytest
-# Social-card rendering (scripts/make_cards.py). Imported lazily, only when
-# generating cards; the CI `--check-only` guard does not need it.
-cairosvg
+# SVG -> PNG rendering (scripts/make_cards.py, scripts/build_diagrams.py).
+# Imported lazily in make_cards.py, so the CI `--check-only` guard does not
+# need it.
+#
+# These two are PINNED while the rest of this file is not, because they are
+# the only deps whose output is committed to the repo as bytes. The generated
+# PNGs under assets/cards/, assets/if/, assets/oia/ and assets/sda/ are
+# checked in, and any change in the rasterizer -- font hinting, antialiasing,
+# gamma -- rewrites every one of them even when no SVG changed. Unpinned, that
+# drift lands in whatever unrelated commit happens to run a regeneration.
+# Moving these pins is therefore a deliberate act that gets its own re-render
+# commit.
+cairosvg==2.9.0
+cairocffi==1.7.1
+# The system libcairo underneath cairocffi cannot be pinned from pip. The
+# committed PNGs were rendered against libcairo 1.18.4 (Debian libcairo2
+# 1.18.4-3). If a regeneration produces diffs on files whose SVG did not
+# change, check that version first:
+#   python -c "import cairocffi; print(cairocffi.cairo_version_string())"
