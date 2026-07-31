@@ -10,7 +10,7 @@ sources:
 - local: amp-diff.md
   upstream_repo: ../entviz
   upstream_path: docs/entviz-paper.md
-  sha256: 6286d17721d3ba047523f1c6b5ceeab7f9ae750780d5356275bd2e83c1db9b23
+  sha256: 1ef14a090b1bc106b6c637e90d1ada32baaf6497c0bcef6b88581c29a089228f
   severity: fail
 - local: assets/amp-diff/fig-hero.png
   upstream_repo: ../entviz
@@ -60,10 +60,10 @@ sources:
 - local: m-glance.md
   upstream_repo: ../entviz-adversarial
   upstream_path: paper/measuring-the-glance.md
-  sha256: 31d4fffc3beed6062f64475cfa1e9b3a512067fff069abd35c093a862976e44f
+  sha256: 4b28c9312628b2f5a71c631aea9404082ba1e79baa9ea33f47bb132e567a6556
   severity: fail
 - local: (external) entviz spec — .external-items.yml
   upstream_repo: ../entviz
   upstream_path: docs/spec.md
-  sha256: 888beff877c4314be54b6441b5f523b5f4281729a898360d012ff2d1894350c2
+  sha256: 846d9b090ab553b367c81dcbb68df5f413f6e45e024cf78373b3a78d753c1fd3
   severity: warn

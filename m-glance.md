@@ -8,14 +8,14 @@ category: Papers
 citations: acm
 item_id: CC-PAP-260602
 language: "en"
-version: "1.1"
-revision_date: 2026-07-11
+version: "1.2"
+revision_date: 2026-07-30
 pdf_url: https://dhh1128.github.io/papers/m-glance.pdf
 keywords: "perceptual entropy, habituated verification, adversarial estimation, hash visualization, entviz, SSH randomart, drunken bishop, just-noticeable difference, visual search, near-collision resistance, usable security"
 abstract: |
-  An entropy visualization is only as strong as the part of it a person actually checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so verifies the whole value, from a *habituated* one, who recognizes a few landmarks and trusts the rest — and names the bits a habituated glance carries (estimated at twenty to forty) as its central open problem. We estimate that quantity from the adversary's side: a render-model reimplementation, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is not a number but a *curve*. The habituated glance is parallel — a bundle of global channels taken in at once, the low-to-mid teens of bits — and it rises with deliberate attention toward the lossless text ceiling, the whole value. We measure the same way for SSH randomart, the drunken bishop, yielding the first habituated figure for any randomart: the two are comparable at the bare glance, but entviz is decisively more robust at the careful ceiling and, by design, along the habituation path a deployment would cultivate. Every perceptual tolerance and salience weight here is modeled, not measured on people, and was hardened by two rounds of independent adversarial expert review before the numbers were locked; the human study the design paper calls for remains what would turn these models into measurements.
+  An entropy visualization is only as strong as the part of it a person checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so checks the whole value, from a *habituated* one, who has seen the right figure many times and now recognizes a few landmarks and trusts the rest. Habituation is the steady state of any frequently-repeated check, and it is the reader an attacker designs for; the design paper estimates the bits a habituated glance carries only analytically, calls its range deliberately wide, and names its measurement the central open problem. We estimate it from the adversary's side. A reimplementation of the render model, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is not a number but a **curve**, and three facts shape it. The habituated glance is *parallel*: it takes in a bundle of global channels (background, the cell-color field, the color bar, the ellipse, the blank-location pattern) at once, the way it takes in randomart's blob — so entviz's involuntary one-glance read is the low-to-mid teens of bits, not the two of a single channel. The task is *discrimination* (detecting a difference), not *recognition* (judging familiarity, which the design rejects as a goal and which is far looser) — so under the guided spot-check the tolerances are tight comparison thresholds, only modestly looser when the reference is remembered. And the operating point is *artifact-dependent*, so a matched-budget comparison is the wrong one: each visualization sits where its design puts the habit, climbing from the glance toward its ceiling. We measure the same way for SSH randomart (the drunken bishop) — the first habituated number for any randomart — and the comparison is honest in three parts: at the involuntary glance the two are comparable (low-to-mid teens each); at the *careful ceiling* entviz is far more robust, a structural fact — its text is lossless, so it can be read down to the whole value, while the bishop is capped near its ~22-bit field; and along the habituation path entviz is more robust by design, affording structure, reading-aloud, and the guided spot-check that randomart cannot. The sole published randomart perceptual-entropy figure (~22 bits) is a whole-image number, not a habituated one, and entviz is too new to have been compared to anything — so this is the first like-for-like habituated comparison, not a verdict on a prior belief. Every perceptual tolerance and salience weight here is modeled, not measured on people; the human study the design paper calls for is still what would turn these models into measurements. ---
 image: /assets/cards/m-glance.png
-description: "An entropy visualization is only as strong as the part of it a person actually checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so verifies the whole value, from a *habituated* one, who recognizes a few landmarks and trusts the rest — and names the bits a habituated glance carries (estimated at twenty to forty) as its central open problem. We estimate that quantity from the adversary's side: a render-model reimplementation, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is not a number but a *curve*. The habituated glance is parallel — a bundle of global channels taken in at once, the low-to-mid teens of bits — and it rises with deliberate attention toward the lossless text ceiling, the whole value. We measure the same way for SSH randomart, the drunken bishop, yielding the first habituated figure for any randomart: the two are comparable at the bare glance, but entviz is decisively more robust at the careful ceiling and, by design, along the habituation path a deployment would cultivate. Every perceptual tolerance and salience weight here is modeled, not measured on people, and was hardened by two rounds of independent adversarial expert review before the numbers were locked; the human study the design paper calls for remains what would turn these models into measurements."
+description: "An entropy visualization is only as strong as the part of it a person checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so checks the whole value, from a *habituated* one, who has seen the right figure many times and now recognizes a few landmarks and trusts the rest. Habituation is the steady state of any frequently-repeated check, and it is the reader an attacker designs for; the design paper estimates the bits a habituated glance carries only analytically, calls its range deliberately wide, and names its measurement the central open problem. We estimate it from the adversary's side. A reimplementation of the render model, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is not a number but a **curve**, and three facts shape it. The habituated glance is *parallel*: it takes in a bundle of global channels (background, the cell-color field, the color bar, the ellipse, the blank-location pattern) at once, the way it takes in randomart's blob — so entviz's involuntary one-glance read is the low-to-mid teens of bits, not the two of a single channel. The task is *discrimination* (detecting a difference), not *recognition* (judging familiarity, which the design rejects as a goal and which is far looser) — so under the guided spot-check the tolerances are tight comparison thresholds, only modestly looser when the reference is remembered. And the operating point is *artifact-dependent*, so a matched-budget comparison is the wrong one: each visualization sits where its design puts the habit, climbing from the glance toward its ceiling. We measure the same way for SSH randomart (the drunken bishop) — the first habituated number for any randomart — and the comparison is honest in three parts: at the involuntary glance the two are comparable (low-to-mid teens each); at the *careful ceiling* entviz is far more robust, a structural fact — its text is lossless, so it can be read down to the whole value, while the bishop is capped near its ~22-bit field; and along the habituation path entviz is more robust by design, affording structure, reading-aloud, and the guided spot-check that randomart cannot. The sole published randomart perceptual-entropy figure (~22 bits) is a whole-image number, not a habituated one, and entviz is too new to have been compared to anything — so this is the first like-for-like habituated comparison, not a verdict on a prior belief. Every perceptual tolerance and salience weight here is modeled, not measured on people; the human study the design paper calls for is still what would turn these models into measurements. ---"
 ---
 ## 1. Introduction
 
@@ -29,9 +29,10 @@ recognizes a handful of landmarks and trusts the rest. Habituation is not a fail
 of discipline but the steady state of any verification a person performs often, and
 it is the reader an attacker designs for. The security of the scheme rests on a
 quantity the design paper estimates but does not measure: how many bits a
-habituated glance carries. Its Table 3 puts the figure at roughly twenty to forty
-bits, calls the range deliberately wide, and makes the measurement the central open
-problem.
+habituated glance carries. Its Table 3 put the figure at roughly twenty to forty
+bits when this work began, called the range deliberately wide, and made the
+measurement the central open problem; the design paper has since been revised in
+light of what follows.
 
 We approach it from the side that cares about the answer. An attacker does not
 estimate perceptual entropy; he grinds against it. Every channel a glance can check
@@ -66,9 +67,12 @@ conformance corpus field-for-field; the lean projection the grinder runs is pinn
 to that certified model, and the check earns its place by catching a real rounding
 discrepancy before it could bias a measurement. And because the perceptual half of
 the model — how loosely a glance reads each channel — is the half a grinder cannot
-certify, we submitted it to two independent adversarial expert reviews, one in
-vision science, one in security usability, before locking any number. They changed
-the work materially, and §10 records how.
+certify, we ran two adversarial review passes over it, one in a vision-science lens,
+one in security usability, before locking any number. Those passes were conducted by
+AI models prompted to argue from a named lens, not by human domain experts; the
+author directed them and adjudicated every disagreement. They are a structured way
+to attack one's own assumptions, not independent validation — but they changed the
+work materially, and §10 records how.
 
 The same machinery measures a competitor. SSH randomart — the drunken bishop [2] — has
 a single published perceptual-entropy figure, about twenty-two bits [3], and it is a
@@ -341,11 +345,11 @@ clean combinatorics imply the *human* defense is established: the walk's securit
 conditional on the user following the seeded order, which is exactly the diligence
 habituation erodes, and that compliance is unmeasured.
 
-## 10. What the reviews changed, and the limits that remain
+## 10. What the review passes changed, and the limits that remain
 
-We submitted the modeling to two independent adversarial reviews — vision-science and
+We put the modeling through two adversarial review passes — vision-science and
 security-usability — before locking numbers, and they changed the work. The headline
-became a salience-ordered curve rather than a summed point (both reviewers' blocking
+became a salience-ordered curve rather than a summed point (both passes' blocking
 finding). The bishop's primary read became an ensemble silhouette-and-centroid model
 rather than a nine-level density map, which the vision-science review judged a
 near-ceiling rather than a glance; its density banding moved from scene-max to
@@ -357,8 +361,8 @@ entropy; agreement with the design paper's estimate is consistency between two m
 by the same author, not independent validation.
 
 A second, focused round reviewed the entviz tolerances specifically, and a third
-correction — from the design owner — overrode part of it, which is worth recording
-honestly because the numbers moved both ways. The review proposed that habituation is
+correction — the author's, overriding part of it — is worth recording
+honestly because the numbers moved both ways. That round proposed that habituation is
 *recognition against memory*, two to three times looser than comparison, and on that
 basis we briefly dropped the casual figure to about four to six bits. That was wrong:
 the security task is *discrimination* (detecting a difference), which the design

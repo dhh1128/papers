@@ -11,11 +11,11 @@ layout: meta
 ## Papers
 - [The Shape of Delegated Authority](sda.md) (2026-07-11)
 - [A Theory of System Coherence](tsc.md) (2026-07-03)
-- [Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations](amp-diff.md) (2026-06-22)
 - [Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart](m-glance.md) (2026-06-22)
+- [Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations](amp-diff.md) (2026-06-22)
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
-- [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
+- [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
 - [KERI's Strategy for Post-Quantum Security](kspqs.md) (2025-11-01)
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
 - [Privacy-Preserving Discovery (PPreD)](ppred.md) (2017-01-01)
