@@ -60,7 +60,7 @@ sources:
 - local: m-glance.md
   upstream_repo: ../entviz-adversarial
   upstream_path: paper/measuring-the-glance.md
-  sha256: 4b28c9312628b2f5a71c631aea9404082ba1e79baa9ea33f47bb132e567a6556
+  sha256: d049df1cb521b292c90e2b148d5ec8be0c3e4640c181f52303e9d5f0cf4936d8
   severity: fail
 - local: (external) entviz spec — .external-items.yml
   upstream_repo: ../entviz
