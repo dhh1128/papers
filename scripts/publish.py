@@ -141,6 +141,25 @@ def stale_pdf_slugs(mode, manifest):
     return out
 
 
+def rebuild_pdfs(mode):
+    """Rebuild whichever PDFs are stale.
+
+    Returns True when the manifest may be updated — i.e. every PDF that needed
+    building was built. A failed build MUST leave the manifest alone: recording
+    inputs we did not actually render would make the next run report "PDFs up to
+    date" over stale files on disk.
+    """
+    stale = stale_pdf_slugs(mode, load_manifest())
+    if not stale:
+        print("  PDFs up to date")
+        return True
+    print(f"  rebuilding {len(stale)} PDF(s): {', '.join(stale)}")
+    if run("PDFs", ["build_pdfs.py", "--out", ".", "--only", *stale]) != 0:
+        print("       manifest NOT updated — the PDFs above are still stale")
+        return False
+    return True
+
+
 def changed_docs():
     r = subprocess.run(["git", "diff", "--name-only", "--", "*.md"],
                        cwd=repo_root, capture_output=True, text=True)
@@ -202,13 +221,8 @@ def main():
     run("social cards", ["make_cards.py"])
     run("descriptions <- abstracts", ["sync_descriptions.py"])
     run("index.md", ["generate_index.py"])
-    stale = stale_pdf_slugs(args.pdfs, load_manifest())
-    if stale:
-        print(f"  rebuilding {len(stale)} PDF(s): {', '.join(stale)}")
-        run("PDFs", ["build_pdfs.py", "--out", ".", "--only", *stale])
-    else:
-        print("  PDFs up to date")
-    save_manifest()  # record current inputs so unchanged docs aren't rebuilt next time
+    if rebuild_pdfs(args.pdfs):
+        save_manifest()  # record inputs so unchanged docs aren't rebuilt next time
 
     print()
     ok = validate()

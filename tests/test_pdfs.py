@@ -97,3 +97,35 @@ def test_rewrite_webp_refs_noop_when_none():
     text = "no images here, just assets/foo.png"
     new, pairs = pandoc.rewrite_webp_refs(text)
     assert new == text and pairs == []
+
+
+# --- publish.py must not record a build it did not perform -------------------
+# Regression: publish.main() called save_manifest() unconditionally after the
+# PDF step, so a FAILED build (e.g. ImageMagick's `convert` missing) still
+# recorded the current inputs as built. The next run then reported "PDFs up to
+# date" while the files on disk were weeks stale. Scripts must fail honestly.
+
+def _publish_with_stale(monkeypatch, returncode):
+    import publish
+    monkeypatch.setattr(publish, "load_manifest", lambda: {})
+    monkeypatch.setattr(publish, "stale_pdf_slugs", lambda mode, m: ["amp-diff"])
+    monkeypatch.setattr(publish, "run", lambda label, args: returncode)
+    return publish
+
+
+def test_manifest_not_recorded_when_pdf_build_fails(monkeypatch):
+    publish = _publish_with_stale(monkeypatch, 1)
+    assert publish.rebuild_pdfs("stale") is False
+
+
+def test_manifest_recorded_when_pdf_build_succeeds(monkeypatch):
+    publish = _publish_with_stale(monkeypatch, 0)
+    assert publish.rebuild_pdfs("stale") is True
+
+
+def test_manifest_recorded_when_nothing_is_stale(monkeypatch):
+    import publish
+    monkeypatch.setattr(publish, "load_manifest", lambda: {})
+    monkeypatch.setattr(publish, "stale_pdf_slugs", lambda mode, m: [])
+    monkeypatch.setattr(publish, "run", lambda label, args: 1)  # must not be called
+    assert publish.rebuild_pdfs("stale") is True
