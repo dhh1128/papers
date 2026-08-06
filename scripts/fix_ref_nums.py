@@ -167,11 +167,18 @@ def find_ref_points(body):
         points.append(RefPoint(m, [int(n) for n in nums]))
     return points
 
-def fix_gaps(filename, new):
-    with open(filename, 'r', encoding='utf-8') as f:
-        content = f.read()
+def renumber(content, label='<text>', verbose=True):
+    """Return `content` with references renumbered in order of first citation.
+
+    Pure string in, string out — no filesystem. `fix_gaps` is the file-level
+    wrapper; `generate_vendored.py` calls this one directly, because a generated
+    document is renumbered in memory before it is ever written to disk.
+    """
     body, end_section = split_body_and_end(content)
     expanded_entries, prefix, suffix = extract_expanded_entries(end_section)
+    if prefix is None:
+        complain(f"No expanded reference entries found in {label}; cannot renumber.")
+        return content
     remapped = {}
     fixed_body = ''
     body_offset = 0
@@ -188,20 +195,26 @@ def fix_gaps(filename, new):
                 i += 1
             else:
                 new_num = remapped[entry]
-            if (new_num != old_num):
-                print(f"Remapped {old_num} to {new_num} in {filename}.")
+            if new_num != old_num and verbose:
+                print(f"Remapped {old_num} to {new_num} in {label}.")
             nums_at_this_point.append(new_num)
         fixed_body += f"[{', '.join(str(n) for n in nums_at_this_point)}]"
         body_offset = point.m.end()
     fixed_body += body[body_offset:]
+    tuples = sorted(remapped.items(), key=lambda x: x[1])
+    return (fixed_body + prefix
+            + '\n\n'.join(f"[{item[1]}] {item[0]}" for item in tuples)
+            + suffix)
+
+
+def fix_gaps(filename, new):
+    with open(filename, 'r', encoding='utf-8') as f:
+        content = f.read()
+    fixed = renumber(content, filename)
     outfile = filename + '.new' if new else filename
     with open(outfile, 'w', encoding='utf-8') as f:
-        f.write(fixed_body)
-        f.write(prefix)
-        tuples = sorted(remapped.items(), key=lambda x: x[1])
-        f.write('\n\n'.join(f"[{item[1]}] {item[0]}" for item in tuples))
-        f.write(suffix)
-        print(f"Fixed ref numbering in {outfile}.")
+        f.write(fixed)
+    print(f"Fixed ref numbering in {outfile}.")
 
 def main():
     parser = argparse.ArgumentParser(description="Check/fix reference numbers in markdown files.")
