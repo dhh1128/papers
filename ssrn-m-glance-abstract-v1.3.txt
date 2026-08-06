@@ -1,0 +1,24 @@
+SSRN abstract revision - Measuring the Glance (DOI 10.2139/ssrn.6979878)
+Paper version 1.3, revised 2026-07-31.
+
+TWO CHANGES since the version currently on SSRN:
+
+1. LENGTH. The previous abstract ran 446 words / 2761 characters, over SSRN's
+   limit. This one is 240 words / 1472 characters -- in line with the companion
+   paper's abstract (203 words), which submitted without trouble.
+
+2. ACCURACY. The old text described the modeling as hardened by "two rounds of
+   independent adversarial expert review". Those were AI reviewer personas
+   directed by the author, not human domain experts. The claim is withdrawn
+   rather than restated; sections 1 and 10 of the paper now disclose what the
+   review passes actually were. A stale cross-reference to the design paper's
+   "twenty to forty bits" is also gone.
+
+Also upload the rebuilt PDF. The companion paper (amp-diff, DOI
+10.2139/ssrn.6979798) needs its rebuilt PDF too, but NOT an abstract change --
+its abstract is unchanged and still accurate.
+
+REPLACE THE SSRN ABSTRACT WITH THE TEXT BELOW THE LINE
+------------------------------------------------------------------------
+
+A figure meant for a person is only as strong as the part the person checks. The entviz design paper separates a *careful* reader, who reads the figure's lossless text and so checks the whole value, from a *habituated* one, who recognizes a few landmarks and trusts the rest — and names the bits a habituated glance carries as its central open problem. We estimate that quantity from the adversary's side. A reimplementation of the render model, certified field-for-field against the reference by a differential oracle, drives a grinder that counts the hashing work to forge each casually-checkable channel. The central result is a *curve* rather than a single figure. A habituated glance is parallel: it takes in a bundle of global channels at once, so entviz's involuntary one-glance read is the low-to-mid teens of bits, and it climbs with deliberate attention toward the lossless text ceiling — the whole value. The tolerances along it are discrimination thresholds, far tighter than the recognition the design disavows. Measured the same way, SSH randomart yields the first habituated figure for any randomart. The two are comparable at the bare glance, but entviz reads down to certainty where the bishop is capped near its field, and its structure and guided spot-check afford a habit the bishop cannot. Every perceptual tolerance here is modeled, not measured on people; the human study the design paper calls for is what would turn these models into measurements.
