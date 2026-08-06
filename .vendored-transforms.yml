@@ -1,0 +1,112 @@
+# How each GENERATED vendored document is derived from its upstream.
+#
+# `.vendored-sources.yml` says *what* is vendored and pins the upstream hash.
+# This file says *how* a generated entry is produced, and is the whole of the
+# transform: scripts/generate_vendored.py reads the upstream file, applies the
+# steps below, and writes the local copy. Nothing else may touch that copy —
+# a hand edit is reverted by the next `publish.py`, and CI fails on it.
+#
+#   python scripts/generate_vendored.py               # regenerate
+#   python scripts/generate_vendored.py --check-only   # CI guard
+#
+# Hand-edited. Kept separate from the ledger because `check_drift.py --repin`
+# rewrites the ledger through yaml.safe_dump, which would reflow the prose
+# below and drop these comments.
+transforms:
+
+- local: amp-diff.md
+  upstream_repo: ../entviz
+  upstream_path: docs/entviz-paper.md
+  # The tag CI checks out (.github/workflows/ci.yml). Keep it and the ledger's
+  # sha256 for this entry in lockstep: the pin should be the paper's hash AT
+  # this ref, so a local `check_drift.py` still reports an upstream that has run
+  # ahead of what we publish.
+  upstream_ref: v0.17.0
+
+  # The upstream file opens with a title/author/email block that this archive
+  # carries in YAML frontmatter instead. Shape asserted, not assumed: an
+  # upstream that changes it fails the build rather than losing a heading.
+  strip_title_block: true
+
+  # Frontmatter is PRESERVED from the existing local file rather than stored
+  # here, because publish.py owns it: --revise writes `version`/`revision_date`,
+  # sync_descriptions.py writes `description`, normalize_versions() quotes
+  # `version`. Those edits survive regeneration; the body never does.
+  frontmatter: preserve-local
+
+  # Upstream ships SVG figures under docs/assets/paper/; this archive publishes
+  # PNGs (a different font stack — see .diagram-manifest.json) under
+  # assets/amp-diff/. `expect` is a tripwire: a figure added or dropped upstream
+  # fails the build instead of silently going unmapped. Every image target in
+  # the generated file is checked to exist.
+  rewrites:
+  - id: figure-paths
+    pattern: '\(assets/paper/(fig-[0-9a-z-]+)\.svg\)'
+    replacement: '(assets/amp-diff/\1.png)'
+    expect: 9
+
+  # The spec revision reference [8] cites. NOT derived from upstream's
+  # SPEC_VERSION on purpose: a published paper analyzes the spec it was written
+  # against and may deliberately lag (which is why the ledger's spec entry is
+  # severity `warn`). generate_vendored.py prints an advisory when upstream's
+  # SPEC_VERSION has moved past this; bumping it is an editorial act — do it
+  # when re-vendoring the paper against a newer spec, and revise the version.
+  spec_version: "15"
+  spec_version_source:
+    path: src/entviz/__init__.py
+    pattern: 'SPEC_VERSION\s*=\s*"v?(\d+)'
+
+  # Text this archive publishes differently from upstream. Each `old` must occur
+  # exactly once in the upstream body or the build fails, so an upstream rewrite
+  # of the same passage can never be silently discarded. Reference numbers here
+  # are in UPSTREAM numbering; `renumber_refs` runs afterwards.
+  #
+  #   backport: true  -> upstream should adopt this text; until it does, the
+  #                      override is the only thing keeping it published.
+  #   backport: false -> correct as a publication-layer difference; upstream's
+  #                      own wording is right for upstream.
+  overrides:
+
+  - id: ref-8-spec-citation
+    backport: false
+    reason: >-
+      A citation in a DOI'd paper has to be stable. Upstream cites its own spec
+      by repo path on a moving branch, which is fine in-repo and useless in a
+      bibliography; the published copy cites the versioned docs-site URL. The
+      version comes from `spec_version` above.
+    old: |-
+      [8] Hardman, D. 2026. *entviz — Algorithm Specification (draft).* `docs/spec.md` on the `main` branch. https://github.com/dhh1128/entviz/blob/main/docs/spec.md
+    new: |-
+      [8] Hardman, D. 2026. *entviz — Algorithm Specification.* Version ${spec_version}. https://dhh1128.github.io/entviz/spec
+
+  - id: ref-mglance-companion-url
+    backport: false
+    reason: >-
+      The companion paper is published in this archive, so cite this archive's
+      copy rather than the SSRN DOI record. Upstream, which is not co-located
+      with it, is right to cite the DOI.
+    old: |-
+      Codecraft Papers. https://doi.org/10.2139/ssrn.6979878
+    new: |-
+      Codecraft Papers. https://dhh1128.github.io/papers/m-glance.html
+
+  - id: s6-companion-finding
+    backport: true
+    reason: >-
+      The published copy describes what the companion paper actually found — the
+      curve framing, the method, and the caveat that its tolerances are modeled
+      — where upstream only says it "reaches the same range". This text was
+      written here (papers 32d2d43, 2026-06-22) and never flowed upstream;
+      upstream should adopt it. See the report accompanying the commit that
+      introduced this file.
+    old: |-
+      **The habituated perceptual-entropy of entviz is the single most important unknown.** Section 4.3.9 puts the operative figure between a few bits and the low teens, against a summed ceiling of roughly 28–50, and a companion paper reaches the same range from the adversary's side [40] — but all of these are models awaiting a result.
+    new: |-
+      **The habituated perceptual-entropy of entviz is the single most important unknown.** Section 4.3.9 puts the operative figure between a few bits and the low teens, against a summed ceiling of roughly 28–50, but those are models, not results. A companion paper [40] takes up the same quantity from the adversary's side — grinding the hashing work needed to forge each casually-checkable channel — and argues it is better described as a *curve*, rising from an involuntary one-glance gestalt to the lossless text ceiling, than as a single figure; it corroborates the low-to-mid range of the glance while stressing that its perceptual tolerances are themselves modeled, not measured on people.
+
+  # Renumber references in order of first citation (scripts/fix_ref_nums.py).
+  # This archive inserts the m-glance companion into the sequence, so upstream's
+  # [40] becomes [35] here and [35]–[39] shift down one. Doing it here is what
+  # keeps `fix_ref_nums.py --check-only` green in CI without a human touching
+  # the file.
+  renumber_refs: true

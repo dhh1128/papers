@@ -180,6 +180,7 @@ def validate():
         run("social cards present", ["make_cards.py", "--check-only"]),
         run("index up to date", ["generate_index.py", "--check-only"]),
         run("reference numbering", ["fix_ref_nums.py", "--check-only", *acm_mds]),
+        run("vendored documents regenerate", ["generate_vendored.py", "--check-only"]),
         run("vendored sources not drifted", ["check_drift.py", "--check-only"]),
     ]
     pt = subprocess.run([sys.executable, "-m", "pytest", "-q"], cwd=repo_root,
@@ -217,6 +218,12 @@ def main():
     normalize_versions()
     if args.revise:
         revise(args.revise, args.major, today)
+    # Before anything reads the documents: amp-diff.md is a build artifact of
+    # ../entviz (.vendored-transforms.yml). Regenerating first means a hand edit
+    # to its body is reverted here rather than published, and the descriptions /
+    # index / PDF steps below see the real text. Frontmatter is preserved, so
+    # --revise and sync_descriptions still own it.
+    run("vendored documents <- upstream", ["generate_vendored.py"])
     run("diagrams", ["build_diagrams.py"])
     run("social cards", ["make_cards.py"])
     run("descriptions <- abstracts", ["sync_descriptions.py"])

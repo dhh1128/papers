@@ -25,7 +25,30 @@ Every quality goal pairs a script here with a prover test in
 | `check_seo.py` | Validate the RENDERED `<head>` SEO/scholarly metadata of a built site (scheduled `seo-check.yml`) | (read-only) |
 | `generate_index.py` | Regenerate the categorized `index.md` | ✓ |
 | `fix_ref_nums.py` | Normalize inline/expanded reference numbering (ACM style) | ✓ |
+| `generate_vendored.py` | Rebuild each **generated** vendored document from its upstream sibling, per `.vendored-transforms.yml` | ✓ |
+| `check_drift.py` | Report when a **copied** vendored source's upstream has run ahead of its pin in `.vendored-sources.yml` | ✓ |
 | `pandoc.py` | Render a document to PDF | — |
 
 Planned (see [../ROADMAP.md](../ROADMAP.md)):
 `build_pdfs.py`, a citation/link reconciler.
+
+## Vendored documents: generated vs copied
+
+Some documents here are vendored from sibling repos. Two postures, and the
+difference matters:
+
+* **Copied** (`m-glance.md`, the `assets/amp-diff/` figures). `check_drift.py`
+  pins the upstream's sha256 and reports when it moves; reconciling is a human
+  edit. Because the pin is of the *upstream*, this can only ever catch drift in
+  one direction — an edit made **here** is invisible to it.
+* **Generated** (`amp-diff.md`). The local file is a build artifact:
+  `generate_vendored.py` reads `../entviz/docs/entviz-paper.md` and applies the
+  transform declared in `.vendored-transforms.yml` (strip the upstream title
+  block, keep this archive's frontmatter, rewrite figure paths, apply the few
+  reviewed text overrides, renumber references). **Never edit a generated file** —
+  `publish.py` reverts it and CI fails. Reverse drift is impossible rather than
+  merely detected.
+
+Every step of the transform is asserted, so nothing is dropped in silence: an
+upstream that changes its title block, adds a figure, or rewrites a passage this
+archive publishes differently fails the build and asks for a decision.

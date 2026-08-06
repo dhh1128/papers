@@ -30,6 +30,15 @@ Usage::
 ``--repin`` only updates the pins; it never touches the vendored copies. The
 workflow is report-and-repin: review the upstream diff, reconcile the prose by
 hand (respecting propose-don't-silently-edit), then re-pin.
+
+**Generated entries.** An entry with ``generated_by`` has no prose to reconcile:
+its local file is produced from the upstream by ``generate_vendored.py``. This
+guard still reports forward drift for it (upstream ran ahead of the pinned
+``upstream_ref``), but the resolution is to move the ref, regenerate, and re-pin
+— and the message says so. Note what this guard structurally cannot see for
+*any* entry: it hashes the upstream, so an edit made **here** is invisible to it.
+That hole is what generating the file closes, and what
+``generate_vendored.py --check-only`` verifies in CI.
 """
 import argparse
 import hashlib
@@ -45,11 +54,19 @@ LEDGER = os.path.join(archive.repo_root, ".vendored-sources.yml")
 _HEADER = """\
 # Provenance ledger for vendored upstream sources (the "drift guard").
 #
-# Each entry is an artifact copied in from a sibling repo and published here as a
-# self-contained work. `sha256` pins the UPSTREAM file at vendoring time;
+# Each entry is an artifact vendored in from a sibling repo and published here as
+# a self-contained work. `sha256` pins the UPSTREAM file at vendoring time;
 # scripts/check_drift.py fails (severity: fail) or warns (severity: warn) when the
 # current upstream no longer matches. Regenerate the pins with:
 #   python scripts/check_drift.py --repin
+#
+# An entry carrying `generated_by` is NOT hand-copied: its local file is a build
+# artifact produced from the upstream by that script, per the transform declared
+# in `transform`. Never edit such a local file — regenerate it. For those entries
+# this ledger is a forward-drift signal only (upstream ran ahead of the pinned
+# `upstream_ref`); the guard against a REVERSE edit made here is the regeneration
+# check, `generate_vendored.py --check-only`, which CI runs.
+#
 # Managed by check_drift.py — comments above the `sources:` key are preserved.
 """
 
@@ -142,7 +159,9 @@ def main(argv=None):
             print(f"SKIP  {label}: sibling {entry['upstream_repo']} not checked out "
                   f"— drift unchecked")
         elif status == "missing-local":
-            archive.complain(f"DRIFT {label}: the vendored copy is missing from this repo")
+            archive.complain(f"DRIFT {label}: the vendored copy is missing from this repo"
+                             + (f"\n      -> python {entry['generated_by']}"
+                                if entry.get("generated_by") else ""))
         else:  # drift
             pin = str(entry.get("sha256") or "")[:8]
             cur = sha256_file(_upstream_abspath(entry, args.root))[:8]
@@ -153,6 +172,20 @@ def main(argv=None):
                 warned += 1
                 print(f"WARN  {base} — advisory; re-pin once you've confirmed the "
                       f"published analysis still holds")
+            elif entry.get("generated_by"):
+                # Generated: there is no prose to reconcile by hand. Move the
+                # pinned ref forward, regenerate, and review the resulting diff.
+                ref = entry.get("upstream_ref")
+                archive.complain(
+                    f"DRIFT {base}\n"
+                    f"      -> this copy is GENERATED; do not edit it. Move "
+                    f"`upstream_ref`" + (f" (now {ref})" if ref else "") + " in "
+                    f"{entry.get('transform', '.vendored-transforms.yml')} and "
+                    f".github/workflows/ci.yml to the new upstream tag, then:\n"
+                    f"         python {entry['generated_by']}\n"
+                    f"         python scripts/check_drift.py --repin\n"
+                    f"      Review the regenerated diff and `publish.py --revise` "
+                    f"if the published text changed.")
             else:
                 archive.complain(
                     f"DRIFT {base}\n      -> reconcile the change here (errata: "

@@ -299,7 +299,6 @@ We now make the main quantitative claim explicit, and we are careful about its s
 | Edge color | 3 fingerprint cells × 4 | 6 | 4–6 | v10: deterministic for most cells, fingerprint-driven on three singletons |
 | Entviz background | 4 | 2 | 2 | very salient; only 2 bits |
 | Color bar | order + skew of 4 bands | 4–6 | 3–5 | most habituation-relied; letters aid CVD/mono |
-
 | Color-bar markers | 2 × K fixed slots | 6–8 | 5–7 | discrete, always present; domain-separated digest |
 | Ellipse overlay | anchor × rx × ry × rotation | 6–10 | 4–7 | coverage/location/aspect; ≈0.5–2.2% collision per audit |
 | Blank positions + map | placements + 2 landmark cells | 4–8 | 3–6 | CRC; high salience |
@@ -317,9 +316,7 @@ Two different quantities hide inside the phrase "how many bits". One is the chan
 A companion paper measures the cost directly, grinding a certified reimplementation of the render model, and finds it lower than Table 3 implies [35]. Three regimes have to be kept apart, and we give all three because they disagree:
 
 - A **cheapest-subset** glance — background plus the dominant color-bar band — is forged in **22 attempts**, about four bits.
-
 - A **one-glance gestalt**, the parallel bundle of global channels a habituated reader takes in involuntarily, measures in the **low-to-mid teens** of bits; a three-landmark read (background, dominant band, ellipse silhouette) is about 2¹⁹, sub-second on a multicore machine.
-
 - Summing Table 3's habituated column gives **28–50 bits**. That is a *ceiling*: it prices a reader who attends every gestalt channel at once, which is the opposite of habituation. We report it as a bound, never as the operative number.
 
 The spread is itself a finding, and its low end is unsettled. Every tolerance behind these estimates is *modeled* — drawn from the psychophysics literature, not measured on people — and the largest single modeling choice is which regime a habituated reader is in. If she is performing same/different *discrimination* against a reference, the thresholds are tight and the figures above hold. If she is instead performing *recognition* against a remembered gist, the literature puts the thresholds two to three times looser, which would pull a three-landmark read toward nine or ten bits. We take the discrimination reading, because the security task is detecting that a value differs, and because the design disavows familiarity as a goal. But that is an assumption, and the study of §6.3 would settle it first.

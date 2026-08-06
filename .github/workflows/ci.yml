@@ -14,6 +14,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+
+      # amp-diff.md is GENERATED from this repo's docs/entviz-paper.md
+      # (.vendored-transforms.yml), so the regeneration check below needs the
+      # upstream present — the drift guard's long-standing blind spot in cloud CI
+      # was that it isn't. PINNED to v0.17.0, the same tag the four entviz ports
+      # pin: bumping it here means re-vendoring the paper, so it must move in
+      # lockstep with `upstream_ref` in .vendored-transforms.yml and the sha256
+      # in .vendored-sources.yml. Sparse-checkout only the paper and the module
+      # that declares SPEC_VERSION (used for the stale-citation advisory).
+      - name: Check out the entviz reference (canonical paper source)
+        uses: actions/checkout@v6
+        with:
+          repository: dhh1128/entviz
+          ref: v0.17.0
+          path: _upstream/entviz
+          sparse-checkout: |
+            docs/entviz-paper.md
+            src/entviz/__init__.py
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -28,6 +49,15 @@ jobs:
         run: python scripts/sync_descriptions.py --check-only
       - name: Social cards present
         run: python scripts/make_cards.py --check-only
+      - name: Vendored documents regenerate from upstream
+        # The teeth behind "amp-diff.md is a build artifact, not a copy": if the
+        # committed file is not what the transform produces from the pinned
+        # upstream, someone edited it here (or upstream moved and the pin was
+        # bumped without regenerating) and this fails. --require-upstream turns a
+        # mis-wired second checkout into a failure instead of a vacuous skip.
+        run: |
+          python scripts/generate_vendored.py --check-only \
+            --upstream-root _upstream --require-upstream
       - name: Reference/citation numbering is consistent
         # The file list comes from archive.acm_documents() (docs whose frontmatter
         # declares `citations: acm`); fix_ref_nums.py stays a dumb file-list checker.

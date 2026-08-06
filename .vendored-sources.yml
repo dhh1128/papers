@@ -10,6 +10,9 @@ sources:
 - local: amp-diff.md
   upstream_repo: ../entviz
   upstream_path: docs/entviz-paper.md
+  upstream_ref: v0.17.0
+  generated_by: scripts/generate_vendored.py
+  transform: .vendored-transforms.yml
   sha256: 1ef14a090b1bc106b6c637e90d1ada32baaf6497c0bcef6b88581c29a089228f
   severity: fail
 - local: assets/amp-diff/fig-hero.png
