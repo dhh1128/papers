@@ -18,7 +18,6 @@ layout: meta
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
 - [KERI's Strategy for Post-Quantum Security](kspqs.md) (2025-11-01)
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
-- [Privacy-Preserving Discovery (PPreD)](ppred.md) (2017-01-01)
 
 ## Specifications
 - [entviz — Algorithm Specification](https://dhh1128.github.io/entviz/spec) (2026-05-27)

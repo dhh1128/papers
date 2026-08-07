@@ -25,7 +25,7 @@ def test_acm_documents_selects_only_acm():
     assert "sda.md" in urls
     assert "kspqs.md" in urls              # converted from author-date to acm
     assert "x509-prob.md" not in urls      # citations: hyperlinks
-    assert "ppred.md" not in urls          # citations: none
+    assert "3dim.md" not in urls           # citations: none
 
 
 def test_every_internal_doc_declares_a_valid_citation_style():
