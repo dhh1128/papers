@@ -13,8 +13,8 @@ abstract: |
 keywords: "privacy, oversight, accountability, verifiable encryption, key escrow, provisional anonymity, digital watermarks, lawful access, self-sovereign identity"
 description: "Debates about privacy and oversight usually sort people into three camps — privacy zealots, watchdogs, and pragmatists who split the difference — and assume any gain for one side is a loss for the other. This paper rejects that framing. The tradeoff, it argues, rests on a flawed assumption: that the world holds only suspects and enforcers, with accountability imposed from outside. If most people would willingly support enforcement they could trust and audit, privacy and oversight can both be strong at once. The paper sketches three techniques for what the author calls reciprocal negotiated accountability — tamper-evident watermarks that bind terms of service to shared data; provisional anonymity backed by verifiable encryption and independent escrow; and opt-in 'front-door' decryption keys, created by the data owner and released from blinded escrow only under watermarked legal conditions. In each, accountability runs both ways, so neither privacy nor oversight need be sacrificed to gain the other."
 image: /assets/cards/crna.png
-version: "1.0"
-revision_date: 2021-01-15
+version: "1.1"
+revision_date: 2026-08-13
 ---
 
 >Thanks to [John Phillips](https://github.com/JohnOnGH) for some helpful feedback. 
@@ -129,3 +129,5 @@ Such a system for reciprocal accountability has some additional benefits that ma
 I’m calling this family of techniques “reciprocal negotiated accountability,” because auditors and those they audit negotiate some compromises that hold one another accountable. The fact that accountability flows both directions is crucial — privacy zealots can’t enable crime, and law enforcement can’t impose surveillance without recourse. And these are not grit-your-teeth compromises for either side; rather, they’re clever ways to split apart concerns, letting minor concessions on one side produce big benefits for the other. They’re win-win.
 
 I’m sure the three techniques I described do not embody all the possibilities. Other clever ideas await our discovery. Instead of viewing privacy and oversight as a strict tradeoff, let’s put our heads together and find ways to have both.
+
+*Added August 2026.* The three techniques above were sketches, and I have since worked out what it takes to build one of them. [Building Active Discovery](active-discovery.html) applies provisional anonymity to the problem of letting two strangers find each other without either learning a route to the other, using a matching architecture from Microsoft Research, Tor v3 onion services, and verifiable attestations. The result depends less on new invention than I expected and more on governance — which is the argument of this paper, arriving somewhere I did not anticipate when I wrote it.

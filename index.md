@@ -59,6 +59,7 @@ layout: meta
 - [How SD-JWT and ACDC are similar and different](sdjwt-acdc.md) (2024-11-15)
 
 ## Guidance
+- [Building Active Discovery](active-discovery.md) (2026-08-12)
 - [The Coming Tsunami of Falsehood](ctf.md) (2024-06-01)
 - [Advice About Cybersecurity and Privacy](acp.md) (2023-06-06)
 
