@@ -7,8 +7,8 @@ citations: acm
 item_id: CC-GUI-260801
 language: "en"
 pdf_url: https://dhh1128.github.io/papers/active-discovery.pdf
-version: "1.0"
-revision_date: 2026-08-12
+version: "1.1"
+revision_date: 2026-08-14
 keywords: "discovery, privacy, unlinkability, rendezvous, Tor onion services, KERI, ACDC, verifiable credentials, accountability, escrow, attribute matching"
 abstract: |
   Finding a stranger online requires an index, and an index requires that somebody catalog everyone in advance. That is why our discovery systems are surveillance systems. This document describes a way to build the alternative I have advocated for years &mdash; discovery that requires the active participation of the party being discovered &mdash; from architectures that already exist and have been implemented, measured, and in one case machine-verified. The design borrows its shape from a double-blind trial: matching is split between two parties, one holding names and attribute values but not which belongs to whom, the other holding the linkage but neither the names nor the values, so that neither can reconstruct the pairing alone, and the blind can be broken only by a defined procedure that leaves a record. Tor v3 onion services carry the conversation that follows, so neither party learns a route to the other. A verifiable attestation lets the person being sought judge whether the seeker deserves an answer, and provisional anonymity makes the seeker answerable for abuse without making them identifiable for merely asking. The document is explicit about what the design does not deliver: it does not eliminate a trusted party, it assumes honest-but-curious infrastructure, and it inherits Tor's stated limits against a global adversary.
@@ -18,9 +18,9 @@ image: /assets/cards/active-discovery.png
 
 ## The bind we are in
 
-You can find almost anyone on the internet, provided somebody has already written them down. That proviso is the whole problem. An index earns its reach by covering people who never asked to be covered, which means somebody collected an entry for every person who might ever be sought. The collecting is the part we say we object to. So we object to it, and then we use the index, because the alternative on offer is that nobody can find anybody.
+You can find almost anyone on the internet, provided somebody has already written them down. That proviso is the whole problem. An index delivers value by covering people who never asked to be covered, which means somebody collected an entry for every person who might ever be sought. The collecting is the part that privacy advocates object to. We echo the objection, and use the index anyway, because the alternative is that nobody can find anybody.
 
-What follows is narrower than the index it replaces, and the narrowing is the point rather than a defect I am hiding. Only people who have chosen to be findable can be found this way, and someone who has registered nothing is unreachable no matter how badly you want to reach them. For a process server or a debt collector that is a fatal limitation. For everyone whose safety depends on not being enumerable, it is the whole benefit.
+A much more restrictive posture is imaginable as an alternative: only people who have chosen to be findable can be found, and someone who has registered nothing is unreachable no matter how badly you want to reach them. For a process server or a debt collector that is a fatal limitation. For everyone whose safety depends on not being enumerable, it sounds very attractive.
 
 I have argued in several places that this is a false choice. In a parable about Zooko's triangle, I suggested that people should discover identifiers through attributes they choose for themselves, and resolve to a secure, decentralized identifier only when a protocol actually runs [1]. In a piece about identity facets, I argued that the sameness between two facets of a life should be perceptible only to the person who owns them, revealed one relationship at a time [2]. In an analysis of correlation, I argued that the useful questions are not whether correlation happens but how expensive it is, who can do it, and how completely it links a person's separate contexts [3]. Each of those asserts a property. None of them says how to build it.
 
