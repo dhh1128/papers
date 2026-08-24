@@ -20,11 +20,11 @@ layout: meta
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
 
 ## Specifications
+- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2026-08-24)
 - [entviz — Algorithm Specification](https://dhh1128.github.io/entviz/spec) (2026-05-27)
 - [Verifiable Dossiers](https://trustoverip.github.io/kswg-dossier-specification) (2025-10-01)
 - [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
 - [Verifiable Voice Protocol (VVP)](https://dhh1128.github.io/vvp) (2025-02-01)
-- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2023-06-01)
 - [Cross-File Associations](https://dhh1128.github.io/cfa) (2022-09-01)
 - [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/) (2022-05) — co-inventor and one of two principal authors (DIF)
 - [W3C DID Method Rubric](https://w3c.github.io/did-rubric/) (2021) — co-editor
