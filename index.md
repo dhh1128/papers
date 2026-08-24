@@ -20,7 +20,7 @@ layout: meta
 - [Bytewise and Externalized SAIDs](bes.md) (2024-08-01)
 
 ## Specifications
-- [Canonical Quoted Text](https://dhh1128.github.io/canonical-quoted-text) (2026-08-24)
+- [Canonical Quoted Text (CQT)](https://dhh1128.github.io/canonical-quoted-text) (2026-08-24)
 - [entviz — Algorithm Specification](https://dhh1128.github.io/entviz/spec) (2026-05-27)
 - [Verifiable Dossiers](https://trustoverip.github.io/kswg-dossier-specification) (2025-10-01)
 - [Conventions for Opaque Identifier Aliases (COIA)](https://dhh1128.github.io/coia) (2025-08-28)
