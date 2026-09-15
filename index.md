@@ -13,6 +13,7 @@ layout: meta
 - [A Theory of System Coherence](tsc.md) (2026-07-03)
 - [Measuring the Glance: An Adversarial Estimate of Habituated Perceptual Entropy in entviz and SSH Randomart](m-glance.md) (2026-06-22)
 - [Amplifying Difference: Perceptual Design and Verification of Human-Centric Entropy Visualizations](amp-diff.md) (2026-06-22)
+- [Progressive Assurance: Flexible Organizational Identity in the Digital Economy](prog-a.md) (2026-05-05)
 - [Cross-File Associations (CFAs): A Lightweight, Decentralized Model for Expressing File Relationships](cfa-paper.md) (2025-12-18)
 - [Intent and Boundaries: A Framework for Digital Agency](intent-monograph.md) (2025-12-11)
 - [Syntelos: A Hierarchical Taxonomy of Intent in Digital Interactions](syntelos.md) (2025-12-11)
