@@ -2,7 +2,7 @@
 title: "Why X509 Certs Should Be Secondary Evidence of Org Identity"
 author: "Daniel Hardman"
 date: 2024-11-15
-revision_date: 2026-06-08
+revision_date: 2026-09-22
 category: Positions
 citations: hyperlinks
 item_id: CC-POS-241104
@@ -12,7 +12,7 @@ abstract: |
 keywords: "X.509, PKI, organizational identity, ACDC, vLEI, certificate authorities, prerotation, post-quantum, key rotation, STIR/SHAKEN, decentralized identity"
 description: "X.509 certificates and PKI have secured the web for forty years, but this paper argues they are the wrong primary evidence for organizational identity — a supporting role suits them better, with Authentic Chained Data Containers (ACDCs), such as vLEIs, carrying the primary weight. The mismatch is structural. Certificates are dynamic privilege mechanisms whose lifespans are shrinking toward weeks, while organizational identity is stable and measured in decades; their security rests on a single, opaquely managed secret; their governance is centralized and jurisdiction-bound; and they lack prerotation, multi-signature control, sequenced signatures, and a graceful post-quantum path. The paper works through each gap, along with the maintenance burden and revocation disincentives that ephemerality breeds, and shows how binding evidence to a rotating identity rather than to a key — as ACDCs do — resolves them. Renewing an identity is a non-sequitur; infrastructure for organizational identity deserves a better building block than the certificate."
 image: /assets/cards/x509-prob.png
-version: "1.3"
+version: "1.4"
 ---
 
 The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.
@@ -90,7 +90,7 @@ And harvest-now-decrypt-later is just one aspect of post-quantum risk. There are
 
 This is a scary enough issue that [NIST](https://csrc.nist.gov/projects/post-quantum-cryptography), [ENISA](https://enisa.europa.eu/sites/default/files/2024-11/2024%20Report%20on%20the%20State%20of%20Cybersecurity%20in%20the%20Union%20-%20Condensed%20version.pdf), and [other authorities](https://www.tec.gov.in/pdf/TR/Final%20technical%20report%20on%20migration%20to%20PQC%2028-03-25.pdf) have issued strongly worded guidance about beginning post-quantum transitions *now*. Governments are beginning to impose deadlines. 
 
-RFC 9881 tells how X509 certificates may be adapted to use post-quantum primitives. However, the standard was just released in October 2025; so far it has only limited adoption. Given the inertia and variety in the world's cert technologies, upgrades are sure to be slow, expensive, and inconsistent, with the need to accommodate a long tail of late adopters. This makes certs a dangerous way to protect identities that must stay safe into the post-quantum era.
+RFC 9881 tells how X509 certificates may be adapted to use post-quantum primitives. However, the standard was just released in October 2025; so far it has only limited adoption. Given the inertia and variety in the world's cert technologies, upgrades are sure to be slow, expensive, and inconsistent, with the need to accommodate a long tail of late adopters. This makes certs a dangerous way to protect identities that must stay safe into the post-quantum era. Apple's root program found the problem sharper than slow adoption: in [testing ahead of a September 2026 policy announcement](https://groups.google.com/a/chromium.org/g/ct-policy/c/QGZw2ADMXvk/m/pR3A5uRZCAAJ), extending X.509 chains with post-quantum signatures degraded TLS handshakes badly enough that Apple is building a new certificate format (Merkle Tree Certificates) rather than adapting X.509 further — evidence that the graceful path RFC 9881 gestures at may not be graceful enough.
 
 ## One key isn't realistic
 Regular headlines about socially engineered hacks tell us that organizations need nuanced signing policies to spend large amounts, file a report with regulators, release a press announcement on social media, authorize a merger, or fire a CEO. But we already knew this. Almost 3800 years ago, the <cite>Code of Hammurabi</cite> required more than one attestation of certain high-stakes transactions (see, for example, [law 7](https://www.gutenberg.org/files/17150/17150-h/17150-h.htm)). The law of Moses had similar requirements (see, for example, [Deuteronomy 19:15](https://www.sefaria.org/Deuteronomy.19.15?lang=bi&aliyot=0)). Double-entry accounting was [invented in medieval Italy](https://monily.com/blog/double-entry-accounting-explained) to formalize such checks and balances, and is an accepted best practice for all modern bookkeeping.

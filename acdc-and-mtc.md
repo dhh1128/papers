@@ -12,8 +12,8 @@ citations: acm
 item_id: CC-COM-260101
 description: "This paper compares ACDCs and Merkle Tree Certificates, analyzing their design, use cases, and implications for digital trust."
 image: /assets/cards/acdc-and-mtc.png
-version: "1.0"
-revision_date: 2026-01-06
+version: "1.1"
+revision_date: 2026-09-22
 ---
 
 ## 1. Introduction and scope
@@ -187,7 +187,7 @@ These efforts treat ACDCs as a stable substrate rather than as an application pr
 
 ### 7.2 Merkle Tree Certificates
 
-Merkle Tree Certificates are being developed as an evolution of WebPKI infrastructure. They are specified as an IETF Internet-Draft and explored through controlled experiments by browser and infrastructure operators [5, 9].
+Merkle Tree Certificates are being developed as an evolution of WebPKI infrastructure. They are specified as an IETF Internet-Draft and explored through controlled experiments by browser and infrastructure operators [5, 9]. In September 2026, Apple's root program moved past experimentation, publishing a draft MTC policy with a concrete operator-onboarding timeline — the first commitment of its kind from a major root program. [15]
 
 Compatibility with existing trust anchors and fallback paths is a core design requirement.
 
@@ -237,3 +237,5 @@ If this paper succeeds, it leaves the reader with clearer mental models, not a v
 [13] Rescorla, E. (2018). *The Transport Layer Security (TLS) Protocol Version 1.3*. RFC 8446. https://doi.org/10.17487/RFC8446
 
 [14] National Institute of Standards and Technology. (2024). *FIPS 204: Module-Lattice-Based Digital Signature Standard*. NIST.
+
+[15] Hollenback, D. (2026). *Apple Root Program PQC Announcement*. Chromium ct-policy Google Group (Apple Root Program). https://groups.google.com/a/chromium.org/g/ct-policy/c/QGZw2ADMXvk/m/pR3A5uRZCAAJ
