@@ -2,7 +2,7 @@
 title: "ACDCs and W3C VCs: Lossless vs. Lossy"
 author: "Daniel Hardman"
 date: 2025-11-24
-revision_date: 2026-01-14
+revision_date: 2026-11-04
 tags: [acdc, keri, verifiable-credentials, w3c]
 abstract: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
@@ -11,7 +11,7 @@ language: "en"
 category: Comparisons
 citations: hyperlinks
 item_id: CC-COM-251105
-version: "1.1"
+version: "1.2"
 description: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 image: /assets/cards/acdc-vc-diff.png
 ---
@@ -96,7 +96,9 @@ W3C VCs have no normative support for pre-rotation, witness-and-watcher-based co
 
 ### Loss 6: Schema Stability
 
-W3C VCs depend on `@context` properties to define terms — typically URLs pointing to JSON-LD files on the web. If the server hosting the context goes offline, verification fails. If the file changes — say, "bankAccount" is redefined to mean "savingsAccount" — the semantic meaning of signed data changes retroactively without breaking the cryptographic signature. This is "link rot," a [documented vulnerability](https://www.researchgate.net/publication/364530933_A_Prospective_Analysis_of_Security_Vulnerabilities_within_Link_Traversal-Based_Query_Processing_Extended_Version).
+W3C VCs depend on `@context` properties to define terms — typically URLs pointing to JSON-LD files on the web. If the server hosting the context goes offline, verification fails. If the file changes — say, "bankAccount" is redefined to mean "savingsAccount" — the outcome depends on how the credential was secured. Under RDF canonicalization (the `eddsa-rdfc-2022` Data Integrity suite), the content of the context is folded into what gets signed, so the changed definition breaks the signature and the credential stops verifying. Under JSON canonicalization (`eddsa-jcs-2022`) or a JOSE/COSE envelope, only the context's URL is signed, so the semantic meaning of signed data can change retroactively without breaking the cryptographic signature ([Fujie and Suzuki 2026](https://arxiv.org/abs/2611.04461) argue this from what each suite signs, and leave a demonstration to future work). Either way, the meaning of the evidence rests on a file that can disappear or be altered. This is "link rot," a [documented vulnerability](https://www.researchgate.net/publication/364530933_A_Prospective_Analysis_of_Security_Vulnerabilities_within_Link_Traversal-Based_Query_Processing_Extended_Version).
+
+Fetching contexts at verification time is also an attack surface in its own right. When [Fujie and Suzuki](https://arxiv.org/abs/2611.04461) ran a widely used JSON-LD library at its default settings, a remotely resolved context redefined a signed term to point at an attacker's vocabulary, and a malicious context URL steered the verifier toward a cloud metadata endpoint. The Data Integrity specification defines a context validation algorithm that would block both; none of the libraries they tested applies it by default.
 
 ACDCs embed the schema (or its SAID) directly in the credential. The schema is referenced by its cryptographic content, not its location. If the schema is available anywhere — local cache, IPFS, a mirror — it can be verified against the SAID. The meaning is as immutable as the signature. There is no link that can rot.
 

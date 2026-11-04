@@ -11,8 +11,8 @@ citations: acm
 item_id: CC-PRI-251208
 description: "An introduction to KERI, ACDCs, and CESR, explaining their roles in decentralized identity and verifiable data."
 image: /assets/cards/keri-primer.png
-version: "1.2"
-revision_date: 2026-06-08
+version: "1.3"
+revision_date: 2026-11-04
 ---
 
 ## 1. Administrative trust failure
@@ -231,7 +231,7 @@ The final pillar of the stack is Composable Event Streaming Representation (CESR
 ### 4.1 The engineering bottleneck: text vs. binary
 
 Engineers often face a choice between text formats (JSON, XML) and binary formats (Protobuf, ASN.1, CBOR).
-* *JSON:* Human-readable and easy to debug, but verbose and lacking native canonicalization. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [37].
+* *JSON:* Human-readable and easy to debug, but verbose and lacking native canonicalization. `{ "a": 1, "b": 2 }` and `{ "b": 2, "a": 1 }` are semantically identical but have different cryptographic hashes. While standards like JCS (RFC 8785) attempt to standardize this, the resulting normalization logic is brittle. In complex environments like JSON-LD, this fragility has led to "term redefinition" vulnerabilities, where the meaning of a signed credential can be altered without invalidating the signature [37]. Canonicalizing JSON-LD's RDF form is also expensive enough to attack: a 527-byte document with no valid signature has been shown to cost a verifier 278 times the work of a normal credential, almost all of it spent before the signature is examined [38].
 * *Binary:* Compact and efficient, but opaque. You cannot look at a raw binary stream and know what it means without an external schema.
 
 CESR bridges this gap using concatenation composability. It allows cryptographic primitives (keys, signatures, hashes) to be encoded in a text-safe way (Base64) that can be seamlessly converted to raw binary and back without breaking the signature.
@@ -255,7 +255,7 @@ Making CESR primitives self-describing enables pipelining. Imagine a high-speed 
 
 ### 4.3 Cryptographic agility
 
-CESR's master code table provides *crypto agility*. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [38, 39].
+CESR's master code table provides *crypto agility*. Standard PKI struggles to upgrade algorithms (e.g., moving from RSA to ECC). Because the algorithm identifier is a signed attribute in X.509, an algorithm upgrade requires revoking and re-issuing entirely new certificates, a difficult process exemplified by the chaotic migration from SHA-1 to SHA-2 [39, 40].
 
 In CESR, upgrading the ecosystem to post-quantum cryptography is as simple as associating new meaning to an unused prefix slot in an existing code table. Existing parsers will already know how many bytes this prefix consumes in the following stream, so they don't need to be re-released. A CESR implementation that predates the assignment of the `D` prefix to post-quantum Falcon-512 public keys will still handle the stream correctly: Read Code &rarr; Lookup Length &rarr; Read Bytes. Hybrid multisig can prevent surprise quantum attacks from assuming even temporary control of identifiers with some hackable key material. Witnesses and watchers guarantee that unauthorized usage is detected. Prerotation at a minimum guarantees that vulnerable identifiers have a recovery mechanism. The ecosystem has a straightforward, calm response to any quantum apocalypse [29].
 
@@ -352,6 +352,8 @@ Engineers must shift their mental models. We stop thinking about certificates (s
 
 [37] W3C Verifiable Credentials Working Group. 2024. Multiple significant security vulnerabilities in the design of data integrity. Issue #272. GitHub. Retrieved December 18, 2024 from https://github.com/w3c/vc-data-integrity/issues/272
 
-[38] Google. 2014. Gradually sunsetting SHA-1. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2014/09/gradually-sunsetting-sha-1.html
+[38] Fujie, N. and Suzuki, S. 2026. A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc. arXiv:2611.04461. Retrieved November 4, 2026 from https://arxiv.org/abs/2611.04461
 
-[39] Cobb, M. 2017. All you need to know about the move from SHA-1 to SHA-2 encryption. CSO Online. IDG Communications. Retrieved December 18, 2024 from https://www.csoonline.com/article/550478/all-you-need-to-know-about-the-move-from-sha1-to-sha2-encryption.html
+[39] Google. 2014. Gradually sunsetting SHA-1. Google Security Blog. Retrieved December 18, 2024 from https://security.googleblog.com/2014/09/gradually-sunsetting-sha-1.html
+
+[40] Cobb, M. 2017. All you need to know about the move from SHA-1 to SHA-2 encryption. CSO Online. IDG Communications. Retrieved December 18, 2024 from https://www.csoonline.com/article/550478/all-you-need-to-know-about-the-move-from-sha1-to-sha2-encryption.html

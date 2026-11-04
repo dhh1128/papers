@@ -13,8 +13,8 @@ item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 citations: acm
-version: "0.9"
-revision_date: 2026-09-15
+version: "0.10"
+revision_date: 2026-11-04
 keywords:
   - organizational identity
   - progressive assurance
@@ -231,7 +231,7 @@ Strong organizational identity is a precondition for the trust layer the digital
 
 [b] Rich Communication Services (RCS) and the US 10-Digit Long Code (10DLC) regime for Application-to-Consumer SMS are two further telecom-flavored examples of the same pattern. RCS sender verification is administered by Google and mobile operators; 10DLC verification is administered by The Campaign Registry through designated vetting providers like Aegis and Numeracle. In both cases, the verification is a permission to use a channel, not a portable credential the business can present elsewhere.
 
-[c] The W3C Verifiable Credentials Data Model 2.0 [23] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. The trade is examined in more detail in [15].
+[c] The W3C Verifiable Credentials Data Model 2.0 [23] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. Context-by-URL is also an attack surface: verifiers that fetch contexts at default settings have been shown to accept injected term definitions and to issue requests to attacker-chosen URLs [24]. The trade is examined in more detail in [15].
 
 ---
 
@@ -281,3 +281,5 @@ Strong organizational identity is a precondition for the trust layer the digital
 [22] Hardman, D. 2024. How SD-JWT and ACDC Are Similar and Different. *Codecraft Papers*. https://dhh1128.github.io/papers/sdjwt-acdc.html
 
 [23] W3C. 2023. Verifiable Credentials Data Model v2.0. https://www.w3.org/TR/vc-data-model-2.0/
+
+[24] Fujie, N. and Suzuki, S. 2026. A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc. arXiv:2611.04461. https://arxiv.org/abs/2611.04461

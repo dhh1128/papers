@@ -2,7 +2,7 @@
 title: Bytewise and Externalized SAIDs
 author: Daniel Hardman
 date: 2024-08-01
-revision_date: 2026-06-02
+revision_date: 2026-11-04
 abstract: | 
     Self-certifying identifiers enable decentralized, tamper-evident references to data and support the construction of authenticated graphs with strong integrity and caching properties. Existing self-addressing identifier (SAID) mechanisms, including those defined in the CESR specification, assume data structures that can be canonically serialized and safely rewritten after hashing. However, many widely used file formats—such as documents, media files, and proprietary application artifacts—are opaquely structured and cannot be modified or normalized without specialized tooling.
 
@@ -12,7 +12,7 @@ pdf_url: https://dhh1128.github.io/papers/bes.pdf
 language: "en"
 category: Papers
 citations: acm
-version: "1.6"
+version: "1.7"
 item_id: CC-PAP-240803
 description: "Self-certifying identifiers enable decentralized, tamper-evident references to data and support the construction of authenticated graphs with strong integrity and caching properties. Existing self-addressing identifier (SAID) mechanisms, including those defined in the CESR specification, assume data structures that can be canonically serialized and safely rewritten after hashing. However, many widely used file formats—such as documents, media files, and proprietary application artifacts—are opaquely structured and cannot be modified or normalized without specialized tooling. This paper introduces two generic algorithms that extend self-addressing identifiers to arbitrary files treated as byte streams. The first embeds a self-certifying identifier directly within file content using a delimiter-based placeholder scheme, while the second externalizes the identifier to a constrained filename when in-place modification is impractical. Together, these approaches allow most file types to participate in authenticated, content-addressable data graphs, provided that authors can introduce an insertion point (or exsertion instruction) at creation time and that subsequent handling preserves the file’s bytes (or else any byte-changing transformation is treated as producing a new identity)."
 image: /assets/cards/bes.png
@@ -37,7 +37,7 @@ We could imagine adding a custom field to hold a SAID in an opaquely structured 
 
 ## 3. Solution
 ### 3.1 Byte array
-The first step toward a solution is to embrace the opacity of these formats and simply view them as byte arrays (or alternatively, as a 3-field data structure: bytes-before, SAID, bytes-after). This completely eliminates canonicalization problems — any bytewise difference is significant — and it gives us an easy and wholly generic, robust saidification algorithm. Rather than traversing structure to find a field in the data, we simply scan the byte stream for the placeholder:
+The first step toward a solution is to embrace the opacity of these formats and simply view them as byte arrays (or alternatively, as a 3-field data structure: bytes-before, SAID, bytes-after). This completely eliminates canonicalization problems — any bytewise difference is significant — and those problems are not merely inconvenient: in at least one credential format, canonicalization has been shown to be a denial-of-service surface that an attacker can trigger without a valid signature [12]. Viewing the data as bytes also gives us an easy and wholly generic, robust saidification algorithm. Rather than traversing structure to find a field in the data, we simply scan the byte stream for the placeholder:
 
 <a id="fig2"></a>
 ![Figure 2: naïve algorithm for a SAID in a byte array](assets/opaque-SAD-to-SAID-trivial.png)
@@ -71,7 +71,7 @@ base64url-43   = 43base64url-char
 base64url-86   = 86base64url-char
 ```
 
-The `base64url` productions above follow the unpadded base64url encoding defined in RFC 4648, Section 5. [12] Padding characters (`=`) are not permitted, and the encoded length is fixed by the selected CESR digest code.
+The `base64url` productions above follow the unpadded base64url encoding defined in RFC 4648, Section 5. [13] Padding characters (`=`) are not permitted, and the encoded length is fixed by the selected CESR digest code.
 
 A regex that correctly matches insertion points in an arbitrary byte stream is:
 
@@ -103,18 +103,18 @@ It may seem like inserting our SAID with a library/API is a troublesome new requ
 
 3. We are only imposing this library requirement on writers, not readers. Readers can discover the SAID value with a generic, naive byte scan, written once for all file types.
 
-An additional benefit of this approach is that many metadata schemes for opaquely structured data already recognize a particular metadata item that maps to the "identifier" concept in Dublin Core (ISO 15836, a metadata standard). [13] This happens to be the very semantic that SAIDs express. So, by setting metadata for the identifier concept using the `SAID:<value>` convention, we are simultaneously giving the document a SAID, and giving it a permanent identifier that existing, SAID-ignorant metadata features will accept. This is an interoperability and backward compatibility win, and it introduces a huge audience to SAIDs without any special effort, tooling, or documentation from SAID proponents.
+An additional benefit of this approach is that many metadata schemes for opaquely structured data already recognize a particular metadata item that maps to the "identifier" concept in Dublin Core (ISO 15836, a metadata standard). [14] This happens to be the very semantic that SAIDs express. So, by setting metadata for the identifier concept using the `SAID:<value>` convention, we are simultaneously giving the document a SAID, and giving it a permanent identifier that existing, SAID-ignorant metadata features will accept. This is an interoperability and backward compatibility win, and it introduces a huge audience to SAIDs without any special effort, tooling, or documentation from SAID proponents.
 
-A few opaquely structured data formats lack explicit metadata support. For example, source code written by programmers could be considered opaquely structured data, and there is no universal metadata mechanism for source code. Markdown is another format without metadata (unless you count YAML prefixes [14]). If a format doesn't support metadata, then we give the fallback answer: insert the SAID as a comment, using whatever commenting mechanism the format recognizes. This answer works even if the comment is as primitive as a parenthetical note in ordinary, human-editable sentences that comprise the text of a file. For example, if a chef had software for recording recipes, one per file artifact, and it lacked metadata support, the chef could simply put a note at the end of every recipe's instructions: "(SAID: &lt;SAID value&gt;)".
+A few opaquely structured data formats lack explicit metadata support. For example, source code written by programmers could be considered opaquely structured data, and there is no universal metadata mechanism for source code. Markdown is another format without metadata (unless you count YAML prefixes [15]). If a format doesn't support metadata, then we give the fallback answer: insert the SAID as a comment, using whatever commenting mechanism the format recognizes. This answer works even if the comment is as primitive as a parenthetical note in ordinary, human-editable sentences that comprise the text of a file. For example, if a chef had software for recording recipes, one per file artifact, and it lacked metadata support, the chef could simply put a note at the end of every recipe's instructions: "(SAID: &lt;SAID value&gt;)".
 
 ### 3.4 Externalized SAIDs
 For many opaquely structured data formats, the bytewise SAID algorithm is simple and sufficient.
 
-However, in certain cases a difficulty remains. Some file types are compressed, encrypted, or have their own internal integrity checks. If so, using native tools to insert a placeholder somewhere before a file is saved may be easy. However, using non-native tools to poke a SAID value into the byte stream later may be impossible. Either encryption/compression renders the delim+placeholder byte sequence unrecognizable, or an arbitrary change to the bytes of the file breaks the integrity checks and make the file invalid. Microsoft’s `.docx` files (a `.zip` container holding XML documents, media assets, and metadata) exhibit this challenge because rewriting arbitrary bytes after save can invalidate internal structure unless container semantics are preserved. [15]  
+However, in certain cases a difficulty remains. Some file types are compressed, encrypted, or have their own internal integrity checks. If so, using native tools to insert a placeholder somewhere before a file is saved may be easy. However, using non-native tools to poke a SAID value into the byte stream later may be impossible. Either encryption/compression renders the delim+placeholder byte sequence unrecognizable, or an arbitrary change to the bytes of the file breaks the integrity checks and make the file invalid. Microsoft’s `.docx` files (a `.zip` container holding XML documents, media assets, and metadata) exhibit this challenge because rewriting arbitrary bytes after save can invalidate internal structure unless container semantics are preserved. [16]  
 
-PDF files present a related difficulty for post-save bytewise modification. The PDF file format relies on cross-reference tables that record absolute byte offsets for objects, along with a trailer and a `startxref` pointer that locates the most recent cross-reference section. As a result, arbitrary byte insertions or replacements in an already-written PDF can invalidate object offsets unless the cross-reference and trailer structures are also updated—typically via a format-aware, incremental update process. Consequently, safely inserting new content into a PDF after save generally requires native or format-specific tooling rather than naïve byte patching. [16, 17]
+PDF files present a related difficulty for post-save bytewise modification. The PDF file format relies on cross-reference tables that record absolute byte offsets for objects, along with a trailer and a `startxref` pointer that locates the most recent cross-reference section. As a result, arbitrary byte insertions or replacements in an already-written PDF can invalidate object offsets unless the cross-reference and trailer structures are also updated—typically via a format-aware, incremental update process. Consequently, safely inserting new content into a PDF after save generally requires native or format-specific tooling rather than naïve byte patching. [17, 18]
 
-For these cases, we take advantage of one additional location that is always an option for writing, without special tools: the filename. Writing the SAID there lets us saidify any opaquely structured file that can't be modified after it's written, by simply renaming it. This resembles an approach proposed for self-certifying pathnames in SFS, except that the input to the hash is content, where SFS's was a server and public key. [18]
+For these cases, we take advantage of one additional location that is always an option for writing, without special tools: the filename. Writing the SAID there lets us saidify any opaquely structured file that can't be modified after it's written, by simply renaming it. This resembles an approach proposed for self-certifying pathnames in SFS, except that the input to the hash is content, where SFS's was a server and public key. [19]
 
 This may seem like a futile exercise. The same flexibility that allows us to embed a SAID in a filename will allow someone else to remove the SAID. However, before saidifying, we can insert into the file content a regex to express a constraint on the file's name. This makes such a rename tamper-evident, much as an edit to a saidified JSON file is. 
 
@@ -191,16 +191,18 @@ Using these techniques, we can — without changing file formats or tools at all
 
 [11] git-lfs. Git Large File Storage. https://git-lfs.com/.
 
-[12] Josefsson, S. 2006. *The Base16, Base32, and Base64 Data Encodings*. RFC 4648. IETF. https://doi.org/10.17487/RFC4648
+[12] Fujie, N. and Suzuki, S. 2026. A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc. arXiv:2611.04461. https://arxiv.org/abs/2611.04461
 
-[13] Dublin Core Metadata Initiative. 2024. Dublin Core Metadata Element Set, Version 1.1. http://dublincore.org/documents/dces/.
+[13] Josefsson, S. 2006. *The Base16, Base32, and Base64 Data Encodings*. RFC 4648. IETF. https://doi.org/10.17487/RFC4648
 
-[14] Oren, B. K., Evans, C., and I döt Net. 2009. YAML Ain’t Markup Language (YAML™) Version 1.2. https://yaml.org/spec/1.2/spec.html.
+[14] Dublin Core Metadata Initiative. 2024. Dublin Core Metadata Element Set, Version 1.1. http://dublincore.org/documents/dces/.
 
-[15] ISO and IEC. 2016. ISO/IEC 29500-1:2016. Information technology — Document description and processing languages — Office Open XML File Formats — Part 1: Fundamentals and Markup Language Reference. https://www.iso.org/standard/71691.html.
+[15] Oren, B. K., Evans, C., and I döt Net. 2009. YAML Ain’t Markup Language (YAML™) Version 1.2. https://yaml.org/spec/1.2/spec.html.
 
-[16] International Organization for Standardization. 2008. *ISO 32000-1:2008 — Document management — Portable document format — Part 1: PDF 1.7*. ISO. Available at https://www.iso.org/standard/51502.html
+[16] ISO and IEC. 2016. ISO/IEC 29500-1:2016. Information technology — Document description and processing languages — Office Open XML File Formats — Part 1: Fundamentals and Markup Language Reference. https://www.iso.org/standard/71691.html.
 
-[17] Adobe Systems Incorporated. 2006. *PDF Reference, Sixth Edition: Adobe Portable Document Format Version 1.7*. Adobe Systems Incorporated. Available at https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.0.pdf
+[17] International Organization for Standardization. 2008. *ISO 32000-1:2008 — Document management — Portable document format — Part 1: PDF 1.7*. ISO. Available at https://www.iso.org/standard/51502.html
 
-[18] Mazières, D., Kaashoek, M. F. Sep 1998. Escaping the Evils of Centralized Control with self-certifying pathnames. Proceedings of the 8th ACM SIGOPS European workshop: Support for composing distributed applications. Sintra, Portugal: MIT. https://dl.acm.org/doi/pdf/10.1145/319195.319213.
+[18] Adobe Systems Incorporated. 2006. *PDF Reference, Sixth Edition: Adobe Portable Document Format Version 1.7*. Adobe Systems Incorporated. Available at https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.0.pdf
+
+[19] Mazières, D., Kaashoek, M. F. Sep 1998. Escaping the Evils of Centralized Control with self-certifying pathnames. Proceedings of the 8th ACM SIGOPS European workshop: Support for composing distributed applications. Sintra, Portugal: MIT. https://dl.acm.org/doi/pdf/10.1145/319195.319213.
