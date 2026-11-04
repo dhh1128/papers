@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" font-family="Open Sans, sans-serif">
+  <rect width="720" height="400" fill="#ffffff"/>
+
+  <!-- leader lines from the two bindings and the header to their notes -->
+  <g fill="none" stroke="#c9b8ab" stroke-width="1.2">
+    <path d="M330 86 C410 86 440 90 500 90"/>
+    <path d="M232 197 C360 197 420 208 500 208"/>
+    <path d="M300 325 C400 325 430 320 500 320"/>
+  </g>
+
+  <!-- outer envelope -->
+  <rect x="30" y="30" width="440" height="340" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="52" y="62" font-size="12" font-weight="300" fill="#777777" letter-spacing="0.4">from</text>
+  <text x="52" y="92" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#491705">AID_A</text>
+  <text x="250" y="62" font-size="12" font-weight="300" fill="#777777" letter-spacing="0.4">to</text>
+  <text x="250" y="92" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#491705">AID_B</text>
+  <text x="448" y="62" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">in the clear</text>
+  <line x1="52" y1="112" x2="448" y2="112" stroke="#e5e5e5" stroke-width="1"/>
+
+  <!-- inner sealed letter -->
+  <rect x="52" y="130" width="396" height="150" rx="12" fill="#f4e9df" stroke="#c9b8ab" stroke-width="1.2"/>
+  <text x="68" y="154" font-size="12" font-weight="300" fill="#777777" letter-spacing="0.4">ciphertext, sealed to B's current key</text>
+  <rect x="68" y="178" width="164" height="38" rx="19" fill="#e7cdb8" stroke="#914f37" stroke-width="1.8"/>
+  <text x="150" y="202" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="15" fill="#914f37">from AID_A</text>
+  <text x="68" y="256" font-family="Barlow Condensed, sans-serif" font-size="22" fill="#444444">the message itself</text>
+
+  <!-- outer signature -->
+  <rect x="52" y="300" width="396" height="50" rx="12" fill="#ffffff" stroke="#765043" stroke-width="1.2"/>
+  <text x="68" y="331" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="19" fill="#765043">A's signature</text>
+  <text x="168" y="330" font-size="12" font-weight="300" fill="#777777">over both names and the ciphertext</text>
+
+  <!-- notes -->
+  <g font-size="13" fill="#444444">
+    <text x="508" y="76">Receiver named under the</text>
+    <text x="508" y="94">signature: B can't claim A</text>
+    <text x="508" y="112">sent some other plaintext.</text>
+
+    <text x="508" y="194">Sender named inside: a</text>
+    <text x="508" y="212">thief who re-signs the</text>
+    <text x="508" y="230">outside contradicts it.</text>
+
+    <text x="508" y="316">Checkable before decrypting,</text>
+    <text x="508" y="334">so junk is dropped cheaply.</text>
+  </g>
+</svg>

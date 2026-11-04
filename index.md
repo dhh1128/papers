@@ -44,6 +44,7 @@ layout: meta
 - [The Dangerous Half-Truth of “We’ll Be Correlated Anyway”](wbca.md) (2020-04-05)
 
 ## Primers
+- [A Primer on SPAC and TSP](spac-tsp.md) (2026-11-03)
 - [Opaque Identifier Aliases](oia.md) (2026-07-09)
 - [Identity Facets](if.md) (2026-07-09)
 - [A Primer on KERI, ACDCs, and CESR](keri-primer.md) (2025-12-19)

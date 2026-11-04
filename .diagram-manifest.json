@@ -42,6 +42,24 @@
       "png": "assets/sda/fig3-authority-graph.png",
       "svg_sha256": "08fce79d7185c0e0f473574d4185a4cdf588184ac11899bcf212487c9bfd272f",
       "png_sha256": "ea714b79e2eb81bfabebdd20af9301066a59f5320f442a479092aebae7ba87af"
+    },
+    {
+      "svg": "assets/spac-tsp/essr.svg",
+      "png": "assets/spac-tsp/essr.png",
+      "svg_sha256": "d6027ec4339d88c237a92cb724afc2348f8fe33c04b0935c5ed3a79d5ee230b4",
+      "png_sha256": "b8c7291fe2c4be317ddba08e7524b214202f13e8879f873e964409d1a1c5ed79"
+    },
+    {
+      "svg": "assets/spac-tsp/nesting.svg",
+      "png": "assets/spac-tsp/nesting.png",
+      "svg_sha256": "52ee20b7821d19eccca2b19284afb4c59c333cc052f3f20510f4787c29e18a02",
+      "png_sha256": "b24e3adad5835d34e7ffdd49b4fbb004470c6d1554b369f29b40a197015d0247"
+    },
+    {
+      "svg": "assets/spac-tsp/route.svg",
+      "png": "assets/spac-tsp/route.png",
+      "svg_sha256": "034b44ea8e41c92da506b8ef21f4195a6d7ae7145a5ec422dff22e1ec96b890a",
+      "png_sha256": "b533ad48c9e481628ff30057abbda234479a1ee67f91f49b3bed919eae483997"
     }
   ]
 }

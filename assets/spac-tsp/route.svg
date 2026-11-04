@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" font-family="Open Sans, sans-serif">
+  <rect width="720" height="330" fill="#ffffff"/>
+
+  <!-- what each hop shows the wire -->
+  <g fill="none" stroke="#8a6f5c" stroke-width="1.2">
+    <line x1="126" y1="70" x2="254" y2="70"/>
+    <line x1="326" y1="70" x2="414" y2="70"/>
+    <line x1="486" y1="70" x2="594" y2="70"/>
+  </g>
+  <g font-family="DejaVu Sans Mono, monospace" font-size="12" fill="#765043" text-anchor="middle">
+    <text x="190" y="58">a1 &#8594; p1</text>
+    <text x="370" y="58">p0 &#8594; q0</text>
+    <text x="540" y="58">q1 &#8594; b1</text>
+  </g>
+
+  <!-- the four parties -->
+  <g fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8">
+    <rect x="54" y="44" width="72" height="52" rx="16"/>
+    <rect x="254" y="44" width="72" height="52" rx="16"/>
+    <rect x="414" y="44" width="72" height="52" rx="16"/>
+    <rect x="594" y="44" width="72" height="52" rx="16"/>
+  </g>
+  <g font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="26" fill="#491705" text-anchor="middle">
+    <text x="90" y="79">A</text>
+    <text x="290" y="79">P</text>
+    <text x="450" y="79">Q</text>
+    <text x="630" y="79">B</text>
+  </g>
+  <g font-size="11" font-weight="300" fill="#777777" text-anchor="middle">
+    <text x="90" y="116">source</text>
+    <text x="290" y="116">A's intermediary</text>
+    <text x="450" y="116">B's intermediary</text>
+    <text x="630" y="116">destination</text>
+  </g>
+
+  <!-- layer 2: P and Q open the hop envelope and see this -->
+  <rect x="54" y="170" width="612" height="34" rx="17" fill="#f4e9df" stroke="#c9b8ab" stroke-width="1.2"/>
+  <text x="74" y="192" font-size="12" font-weight="300" fill="#777777">endpoint-to-endpoint</text>
+  <text x="360" y="192" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#491705">VID_a2 &#8594; VID_b2</text>
+  <text x="646" y="192" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">visible to A, P, Q, and B</text>
+  <g fill="none" stroke="#c9b8ab" stroke-width="1.1">
+    <path d="M290 124 C290 140 290 155 290 170"/>
+    <path d="M450 124 C450 140 450 155 450 170"/>
+  </g>
+
+  <!-- layer 3: passes P and Q unread (focal) -->
+  <rect x="54" y="256" width="612" height="34" rx="17" fill="#e7cdb8" stroke="#914f37" stroke-width="1.8"/>
+  <text x="74" y="278" font-size="12" font-weight="300" fill="#777777">private context</text>
+  <text x="360" y="278" text-anchor="middle" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#914f37">VID_a3 &#8594; VID_b3</text>
+  <text x="646" y="278" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">visible to A and B only</text>
+  <g font-size="11" font-style="italic" font-weight="300" fill="#777777" text-anchor="middle">
+    <text x="290" y="314">still sealed at P</text>
+    <text x="450" y="314">still sealed at Q</text>
+  </g>
+</svg>

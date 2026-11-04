@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" font-family="Open Sans, sans-serif">
+  <rect width="720" height="420" fill="#ffffff"/>
+
+  <!-- layer 1: hop envelope, A to its intermediary P -->
+  <rect x="30" y="24" width="660" height="372" rx="16" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8"/>
+  <text x="52" y="58" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#491705">VID_a1 &#8594; VID_p1</text>
+  <text x="668" y="58" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">seen on the wire between A and P</text>
+  <text x="52" y="84" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#765043">route: VID_q0, VID_b1</text>
+  <text x="668" y="84" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">read by P, inside its ciphertext</text>
+
+  <!-- layer 2: endpoint-to-endpoint relationship -->
+  <rect x="58" y="102" width="604" height="250" rx="14" fill="#f4e9df" stroke="#c9b8ab" stroke-width="1.2"/>
+  <text x="78" y="134" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#491705">VID_a2 &#8594; VID_b2</text>
+  <text x="642" y="134" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">read by P and Q, who must not store it</text>
+
+  <!-- layer 3: private contextual relationship (focal) -->
+  <rect x="86" y="154" width="548" height="150" rx="12" fill="#e7cdb8" stroke="#914f37" stroke-width="1.8"/>
+  <text x="106" y="186" font-family="DejaVu Sans Mono, monospace" font-size="16" fill="#914f37">VID_a3 &#8594; VID_b3</text>
+  <text x="614" y="186" text-anchor="end" font-size="12" font-style="italic" font-weight="300" fill="#777777">read only by A and B</text>
+  <text x="106" y="252" font-family="Barlow Condensed, sans-serif" font-size="24" fill="#444444">the message itself</text>
+  <text x="614" y="290" text-anchor="end" font-size="11" font-weight="300" fill="#765043">sealed and signed, ESSR</text>
+
+  <text x="642" y="340" text-anchor="end" font-size="11" font-weight="300" fill="#765043">sealed and signed, ESSR</text>
+  <text x="668" y="384" text-anchor="end" font-size="11" font-weight="300" fill="#765043">sealed and signed, ESSR</text>
+</svg>
