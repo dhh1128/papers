@@ -7,7 +7,7 @@ citations: acm
 item_id: CC-PRI-261101
 language: "en"
 pdf_url: https://dhh1128.github.io/papers/spac-tsp.pdf
-version: "1.1"
+version: "1.2"
 revision_date: 2026-11-04
 keywords: "SPAC, TSP, Trust Spanning Protocol, ESSR, authenticated encryption, metadata privacy, KERI, DIDComm, secure messaging"
 abstract: |
@@ -116,7 +116,9 @@ Metadata privacy depends on operators. The specification says so outright: "The 
 
 Traffic analysis is out of scope. "Timing, size, and frequency survive encryption, nesting, and routing alike" [8], and TSP itself doesn't batch, reorder, or delay messages.
 
-There is no forward secrecy. "TSP does not provide forward secrecy: an adversary that has recorded earlier messages and later obtains the decryption key can read them" [8]. Rotation helps less than one might hope. In every implementation I inspected, the receiver's decryption key is derived from its current signing key, so it changes only when the identifier rotates. The most rotation could offer is forward secrecy one key state at a time, and only if retired private keys were destroyed. The default keystores don't do that. keripy erases retired keys one rotation late, and its default salty keystore, like signify-ts's, can re-derive every key an identifier has ever had from one stored salt [17, 18]. Neither SPAC nor DIDComm requires forward secrecy either. TSP is simply the most direct about it.
+The receiver has no forward secrecy, though the gap is narrower than it sounds. Every ESSR message is sealed under a fresh ephemeral key that the sender discards, which is why the sender can't decrypt what it just sent [10]. So a thief who later takes the sender's keys, or an intermediary's, recovers no recorded content, and in routed mode an intermediary's key opens only the layer that intermediary could already read. Only the receiver's decryption key unlocks the past, and there TSP is plain: "TSP does not provide forward secrecy: an adversary that has recorded earlier messages and later obtains the decryption key can read them" [8]. Rotation helps less than one might hope. In every implementation I inspected, the receiver's decryption key is derived from its current signing key, so it changes only when the identifier rotates. The most rotation could offer is forward secrecy one key state at a time, and only if retired private keys were destroyed. The default keystores don't do that. keripy erases retired keys one rotation late, and its default salty keystore, like signify-ts's, can re-derive every key an identifier has ever had from one stored salt [17, 18]. Neither SPAC nor DIDComm requires forward secrecy either. TSP is simply the most direct about it.
+
+Recovery from compromise is coarse. TSP claims the reverse of forward secrecy, which it calls post-compromise security: an endpoint that rotates a compromised key restores the security of what it sends afterward [8]. For a KERI AID, pre-rotation makes that recovery hard to subvert, since a thief holding the current keys can't produce the next ones. That holds only if the thief hasn't also taken what the next keys come from, and a salty keystore derives them from the same salt as the current ones [17, 18]. Recovery also moves at the speed of rotation, not of messages. Signal's ratchet replaces keys with every exchange and heals without anyone having to notice a theft. A TSP peer is protected only after it learns the new key state, and until then a message signed with the stolen key "verifies without any indication of error" [8].
 
 Freshness belongs to the layer above. An application that needs ordering, delivery, or freshness, and therefore replay protection, "obtains them from the layer that understands what its messages mean" [8].
 
