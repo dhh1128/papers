@@ -7,8 +7,8 @@ citations: acm
 item_id: CC-PRI-261101
 language: "en"
 pdf_url: https://dhh1128.github.io/papers/spac-tsp.pdf
-version: "1.0"
-revision_date: 2026-11-03
+version: "1.1"
+revision_date: 2026-11-04
 keywords: "SPAC, TSP, Trust Spanning Protocol, ESSR, authenticated encryption, metadata privacy, KERI, DIDComm, secure messaging"
 abstract: |
   Secure messaging between identifiers that can rotate their keys faces questions an ordinary encrypted channel never has to answer. This primer explains SPAC, Samuel Smith's design for secure, private, authentic, and confidential messaging between KERI identifiers, and the Trust Spanning Protocol (TSP) that the Trust Over IP Foundation built from many of the same ideas. It traces the evolution of thinking from DIDComm's DID-bound envelopes, explains the ESSR construction that both SPAC and TSP use to bind sender and receiver, and shows how nested envelopes and routing through separate intermediaries provide metadata privacy. It closes with where TSP's guarantees differ from SPAC's and what has been implemented.
@@ -116,7 +116,7 @@ Metadata privacy depends on operators. The specification says so outright: "The 
 
 Traffic analysis is out of scope. "Timing, size, and frequency survive encryption, nesting, and routing alike" [8], and TSP itself doesn't batch, reorder, or delay messages.
 
-There is no forward secrecy. "TSP does not provide forward secrecy: an adversary that has recorded earlier messages and later obtains the decryption key can read them" [8]. Rotation protects what comes after a compromise, not the recorded past. Neither SPAC nor DIDComm requires forward secrecy either. TSP is simply the most direct about it.
+There is no forward secrecy. "TSP does not provide forward secrecy: an adversary that has recorded earlier messages and later obtains the decryption key can read them" [8]. Rotation helps less than one might hope. In every implementation I inspected, the receiver's decryption key is derived from its current signing key, so it changes only when the identifier rotates. The most rotation could offer is forward secrecy one key state at a time, and only if retired private keys were destroyed. The default keystores don't do that. keripy erases retired keys one rotation late, and its default salty keystore, like signify-ts's, can re-derive every key an identifier has ever had from one stored salt [17, 18]. Neither SPAC nor DIDComm requires forward secrecy either. TSP is simply the most direct about it.
 
 Freshness belongs to the layer above. An application that needs ordering, delivery, or freshness, and therefore replay protection, "obtains them from the layer that understands what its messages mean" [8].
 
@@ -124,9 +124,9 @@ None of this makes TSP a bad specification. Several of these sentences are the m
 
 ## 7. Where things stand
 
-The specification is labeled Release 1.0, and the label is the editors'. The repository I read records no ToIP approval or release date, and the same file still has draft furniture in it: a placeholder contributor list, a normative reference to an HPKE Internet-Draft, and a post-quantum signature code it calls provisional [8]. That code, `1AAQ`, is unassigned in CESR's `main` branch but already means something else in CESR `v1.1` [17], so the two will need to reconcile before either is final.
+The specification is labeled Release 1.0, and the label is the editors'. The repository I read records no ToIP approval or release date, and the same file still has draft furniture in it: a placeholder contributor list, a normative reference to an HPKE Internet-Draft, and a post-quantum signature code it calls provisional [8]. That code, `1AAQ`, is unassigned in CESR's `main` branch but already means something else in CESR `v1.1` [19], so the two will need to reconcile before either is final.
 
-The CESR specification already reserves the ESSR wrapper and payload codes, `-E##` and `-Z##`, along with codes for sealed-box and HPKE ciphertext [17]. Implementations exist, though none I inspected does more than direct ESSR. keripy has an ESSR send path for mailbox delivery and SPAC's payload-type tags, with no routing, relationship forming, or padding [18]. KERIA and signify-ts implement ESSR in both directions on one link, between a Signify client and its own KERIA agent, sealing whole HTTP requests and responses [19, 20]. healthKERI's `kept` library carries HTTP over ESSR-wrapped KERI exchange messages, sealing each payload to the receiver's current key and signing an outer message that names the recipient [21]. Each of these uses only the first current key of a multi-key identifier, so confidential messaging to a multisig group is still open. I found no implementation of TSP's routed mode in the code I read, which covered the KERI ecosystem only.
+The CESR specification already reserves the ESSR wrapper and payload codes, `-E##` and `-Z##`, along with codes for sealed-box and HPKE ciphertext [19]. Implementations exist, though none I inspected does more than direct ESSR. keripy has an ESSR send path for mailbox delivery and SPAC's payload-type tags, with no routing, relationship forming, or padding [17]. KERIA and signify-ts implement ESSR in both directions on one link, between a Signify client and its own KERIA agent, sealing whole HTTP requests and responses [20, 18]. healthKERI's `kept` library carries HTTP over ESSR-wrapped KERI exchange messages, sealing each payload to the receiver's current key and signing an outer message that names the recipient [21]. Each of these uses only the first current key of a multi-key identifier, so confidential messaging to a multisig group is still open. I found no implementation of TSP's routed mode in the code I read, which covered the KERI ecosystem only.
 
 ## 8. Conclusion
 
@@ -167,12 +167,12 @@ SPAC made the case for each of those steps, in an order I find persuasive: authe
 
 [16] Smith, S. M. 2025. TSP CESR Implementation. SmithSamuelM/Papers, whitepapers/TSP_CESR_Implementation.md, last revised July 9, 2025. https://github.com/SmithSamuelM/Papers/blob/b47f21597/whitepapers/TSP_CESR_Implementation.md
 
-[17] Smith, S. M. 2026. Composable Event Streaming Representation (CESR) Specification, main branch (commit bad6edd84) and v1.1 branch (commit 65fd751). Trust Over IP Foundation. https://github.com/trustoverip/kswg-cesr-specification
+[17] WebOfTrust. 2026. keripy, commit 927c0cb87, src/keri/app/forwarding.py, src/keri/app/keeping.py, and src/keri/spac/payloading.py. https://github.com/WebOfTrust/keripy
 
-[18] WebOfTrust. 2026. keripy, commit 927c0cb87, src/keri/app/forwarding.py and src/keri/spac/payloading.py. https://github.com/WebOfTrust/keripy
+[18] WebOfTrust. 2026. signify-ts, commit ffba8406e, src/keri/core/authing.ts and src/keri/core/keeping.ts. https://github.com/WebOfTrust/signify-ts
 
-[19] WebOfTrust. 2026. KERIA, commit 7e685edaa, src/keria/core/authing.py. https://github.com/WebOfTrust/keria
+[19] Smith, S. M. 2026. Composable Event Streaming Representation (CESR) Specification, main branch (commit bad6edd84) and v1.1 branch (commit 65fd751). Trust Over IP Foundation. https://github.com/trustoverip/kswg-cesr-specification
 
-[20] WebOfTrust. 2026. signify-ts, commit ffba8406e, src/keri/core/authing.ts. https://github.com/WebOfTrust/signify-ts
+[20] WebOfTrust. 2026. KERIA, commit 7e685edaa, src/keria/core/authing.py. https://github.com/WebOfTrust/keria
 
 [21] healthKERI. 2026. kept, commit d10cabd88, src/kept/hk/essring.py. https://github.com/healthKERI/kept
