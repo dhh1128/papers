@@ -13,8 +13,8 @@ item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 citations: acm
-version: "0.10"
-revision_date: 2026-11-04
+version: "0.11"
+revision_date: 2026-11-06
 keywords:
   - organizational identity
   - progressive assurance
@@ -172,7 +172,7 @@ Independent verification puts the proof in the verifier's hands. Anyone, anywher
 
 Because credentials are bound to stable identifiers that can rotate keys without invalidating issued credentials, evidence remains verifiable for as long as the underlying records are preserved [12, 15]. This solves an awkward X.509 problem: when a key rotates, the cryptographic continuity between the old certificate and the new one is weak, and CRLs and OCSP are designed for real-time status, not historical reconstruction [8].
 
-Other systems are more ephemeral still. The PASSporT token used in STIR/SHAKEN is created for a single phone call and is not designed to be stored in a publicly auditable log [18]. Historical analysis of attestations is, in practice, impossible.
+Other systems are more ephemeral still. The PASSporT token used in STIR/SHAKEN is created for a single phone call and is not designed to be stored in a publicly auditable log [18]. Its signature can be checked only while the certificate at its `x5u` URL remains available, and a signer can defeat later verification simply by taking that certificate down; in a year of production traffic, 11% of such URLs already returned no certificate [19]. Historical analysis of attestations is, in practice, impossible.
 
 Durable evidence matters for compliance, legal discovery, and supply chain provenance. A credential issued years ago can be proven with the same certainty as one issued today — and, equally important, can be proven *to have been valid at issuance time* even if subsequent events have changed the issuer's key state [15].
 
@@ -196,7 +196,7 @@ A progressive assurance model needs a credential that can serve as a stable, lon
 
 ACDCs differ from W3C Verifiable Credentials and SD-JWTs in three ways that matter here [15]:
 
-- **Anchored, identifier-based signing.** ACDCs are issued by and to AIDs — autonomic identifiers from KERI, derived cryptographically from their initial public keys [17]. The credential is provably bound to the identifier's keystate at a particular sequence number, not to a specific keypair or to an identifier's keystate at an implicit point in time that is only safe to evaluate in the present. Issuers can rotate keys, change algorithms, or upgrade governance without invalidating credentials issued under a previous key state. This is what makes a durable audit trail possible. [19]
+- **Anchored, identifier-based signing.** ACDCs are issued by and to AIDs — autonomic identifiers from KERI, derived cryptographically from their initial public keys [17]. The credential is provably bound to the identifier's keystate at a particular sequence number, not to a specific keypair or to an identifier's keystate at an implicit point in time that is only safe to evaluate in the present. Issuers can rotate keys, change algorithms, or upgrade governance without invalidating credentials issued under a previous key state. This is what makes a durable audit trail possible. [20]
 
 - **Cryptographic chaining.** Every ACDC is sealed by a Self-Addressing Identifier (SAID) — a cryptographic hash of its content. ACDCs from different issuers can be chained into verifiable graphs. An LoA 2 credential can link to the LoA 1 credential it builds on, which links to the entity's reference data, which links to GLEIF. A verifier traverses the chain without consulting an external trust registry [15].
 
@@ -204,9 +204,9 @@ ACDCs differ from W3C Verifiable Credentials and SD-JWTs in three ways that matt
 
 ### 4.2 Derivative evidence: SD-JWTs and others
 
-Different contexts want different formats. SD-JWTs extend the familiar JSON Web Token format with selective disclosure [20] and are gaining ground in web-native authentication [21]. Other formats — ISO mDL, W3C VCs [c] — have their own niches.
+Different contexts want different formats. SD-JWTs extend the familiar JSON Web Token format with selective disclosure [21] and are gaining ground in web-native authentication [22]. Other formats — ISO mDL, W3C VCs [c] — have their own niches.
 
-The model treats ACDCs as the source of truth and other formats as derivable presentations. An organization holds its identity as an ACDC. When transacting with a system that consumes SD-JWTs, the holder issues a short-lived SD-JWT derived from the ACDC. The SD-JWT inherits its authority from the foundational credential but does not carry its permanence: SD-JWTs are signed by keys, not by identifiers, and lack native chaining for delegation [12, 22].
+The model treats ACDCs as the source of truth and other formats as derivable presentations. An organization holds its identity as an ACDC. When transacting with a system that consumes SD-JWTs, the holder issues a short-lived SD-JWT derived from the ACDC. The SD-JWT inherits its authority from the foundational credential but does not carry its permanence: SD-JWTs are signed by keys, not by identifiers, and lack native chaining for delegation [12, 23].
 
 The analogy is photographic. A RAW file is the archival source, lossless and reusable; a JPEG is exported for a specific use [15]. You don't archive in JPEG. You don't anchor durable identity in a credential format that cannot reproduce its own history.
 
@@ -231,7 +231,7 @@ Strong organizational identity is a precondition for the trust layer the digital
 
 [b] Rich Communication Services (RCS) and the US 10-Digit Long Code (10DLC) regime for Application-to-Consumer SMS are two further telecom-flavored examples of the same pattern. RCS sender verification is administered by Google and mobile operators; 10DLC verification is administered by The Campaign Registry through designated vetting providers like Aegis and Numeracle. In both cases, the verification is a permission to use a channel, not a portable credential the business can present elsewhere.
 
-[c] The W3C Verifiable Credentials Data Model 2.0 [23] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. Context-by-URL is also an attack surface: verifiers that fetch contexts at default settings have been shown to accept injected term definitions and to issue requests to attacker-chosen URLs [24]. The trade is examined in more detail in [15].
+[c] The W3C Verifiable Credentials Data Model 2.0 [24] is the most familiar credential format in this space and would work as a starting point for some implementations, but its structural commitments — RDF semantics, context-by-URL, signing keys rather than identifiers — make it lossy in ways that matter for high-stakes, long-lived evidence. Context-by-URL is also an attack surface: verifiers that fetch contexts at default settings have been shown to accept injected term definitions and to issue requests to attacker-chosen URLs [25]. The trade is examined in more detail in [15].
 
 ---
 
@@ -272,14 +272,16 @@ Strong organizational identity is a precondition for the trust layer the digital
 
 [18] ATIS. 2020. Signature-based Handling of Asserted Information using toKENs (SHAKEN): Governance Model. ATIS-1000080.v002. https://cstga.ca/wp-content/uploads/2020/07/ATIS-1000080.v002_SHAKEN-Governance-Model.pdf
 
-[19] Hardman, D. 2025. Why Anchored Signatures. "Codecraft Papers". https://dhh1128.github.io/papers/was.html
+[19] Brown, J., Hardeman, M., and Grubbs, P. 2026. STIR/SHAKEN: A Cocktail of Cryptographic Clumsiness. In *2026 IEEE Symposium on Security and Privacy (SP)*. https://doi.org/10.1109/SP63933.2026.00093 (preprint: https://eprint.iacr.org/2026/2772)
 
-[20] IETF. 2024. Selective Disclosure for JWTs (SD-JWT). draft-ietf-oauth-selective-disclosure-jwt. https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt
+[20] Hardman, D. 2025. Why Anchored Signatures. "Codecraft Papers". https://dhh1128.github.io/papers/was.html
 
-[21] IETF. 2024. SD-JWT-based Verifiable Credentials (SD-JWT VC). draft-ietf-oauth-sd-jwt-vc. https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html
+[21] IETF. 2024. Selective Disclosure for JWTs (SD-JWT). draft-ietf-oauth-selective-disclosure-jwt. https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt
 
-[22] Hardman, D. 2024. How SD-JWT and ACDC Are Similar and Different. *Codecraft Papers*. https://dhh1128.github.io/papers/sdjwt-acdc.html
+[22] IETF. 2024. SD-JWT-based Verifiable Credentials (SD-JWT VC). draft-ietf-oauth-sd-jwt-vc. https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html
 
-[23] W3C. 2023. Verifiable Credentials Data Model v2.0. https://www.w3.org/TR/vc-data-model-2.0/
+[23] Hardman, D. 2024. How SD-JWT and ACDC Are Similar and Different. *Codecraft Papers*. https://dhh1128.github.io/papers/sdjwt-acdc.html
 
-[24] Fujie, N. and Suzuki, S. 2026. A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc. arXiv:2611.04461. https://arxiv.org/abs/2611.04461
+[24] W3C. 2023. Verifiable Credentials Data Model v2.0. https://www.w3.org/TR/vc-data-model-2.0/
+
+[25] Fujie, N. and Suzuki, S. 2026. A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc. arXiv:2611.04461. https://arxiv.org/abs/2611.04461

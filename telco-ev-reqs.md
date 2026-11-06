@@ -11,8 +11,8 @@ abstract: |
 keywords: "organizational identity, telecommunications, STIR/SHAKEN, verifiable evidence, delegation, jurisdiction, cryptographic agility, post-quantum, accountability, requirements"
 description: "Before engineers choose steel or concrete, they agree on what a bridge must carry. This paper applies the same discipline to organizational identity in telecommunications: instead of comparing candidate architectures, it sets out what the problem actually demands, so any proposal can be measured against a fair test. It argues for five essential properties — evidence over keys (portable, inspectable proof of relationships and authority, not just present-tense key validity); historical provability (answering 'what was valid then?', not only 'what is valid now?'); first-class support for complex, constrained, cooperative delegation; jurisdictional diversity, so verifiers can evaluate evidence without a single national root of trust; and cryptographic agility for key rotation, recovery, and post-quantum migration without a global flag day. An appendix expands these into detailed technical requirements, non-goals, and evaluation questions. The point is not to crown a winner, but to agree on the requirements first."
 image: /assets/cards/telco-ev-reqs.png
-version: "1.0"
-revision_date: 2026-03-11
+version: "1.1"
+revision_date: 2026-11-06
 ---
 
 Before debating whether a bridge should be steel or concrete, engineers agree on what it must carry, how far it must span, and what earthquakes it must survive. Only then do materials matter.
@@ -59,7 +59,7 @@ Can you prove what you actually authorized *then*? Or can the bank only prove th
 
 This is the difference between historical provability and present-state validation. It matters in telco just as much as it matters in banking.
 
-When a regulatory investigation asks "was this call center authorized on March 15, 2024?", the answer can't be "well, they're authorized today". When an enterprise rotates its cryptographic keys — maybe because of a compromise, maybe because of routine maintenance, maybe because of a post-quantum migration — the evidence about past communications must remain verifiable.
+When a regulatory investigation asks "was this call center authorized on March 15, 2024?", the answer can't be "well, they're authorized today". When an enterprise rotates its cryptographic keys — maybe because of a compromise, maybe because of routine maintenance, maybe because of a post-quantum migration — the evidence about past communications must remain verifiable. STIR/SHAKEN does not meet this bar. A PASSporT can be verified only while the certificate at its `x5u` URL can still be fetched, so a provider can repudiate its own attestations after the fact by taking the certificate down ([Brown, Hardeman, and Grubbs 2026](https://eprint.iacr.org/2026/2772)).
 
 Keys rotate. Algorithms change. Delegates are added and removed. Organizational structures evolve. The identity of the organization must remain stable through all of this, and historical evidence must remain checkable. Routine cryptographic maintenance should not erase history.
 

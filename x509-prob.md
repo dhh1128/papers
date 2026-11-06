@@ -2,7 +2,7 @@
 title: "Why X509 Certs Should Be Secondary Evidence of Org Identity"
 author: "Daniel Hardman"
 date: 2024-11-15
-revision_date: 2026-09-22
+revision_date: 2026-11-06
 category: Positions
 citations: hyperlinks
 item_id: CC-POS-241104
@@ -12,7 +12,7 @@ abstract: |
 keywords: "X.509, PKI, organizational identity, ACDC, vLEI, certificate authorities, prerotation, post-quantum, key rotation, STIR/SHAKEN, decentralized identity"
 description: "X.509 certificates and PKI have secured the web for forty years, but this paper argues they are the wrong primary evidence for organizational identity — a supporting role suits them better, with Authentic Chained Data Containers (ACDCs), such as vLEIs, carrying the primary weight. The mismatch is structural. Certificates are dynamic privilege mechanisms whose lifespans are shrinking toward weeks, while organizational identity is stable and measured in decades; their security rests on a single, opaquely managed secret; their governance is centralized and jurisdiction-bound; and they lack prerotation, multi-signature control, sequenced signatures, and a graceful post-quantum path. The paper works through each gap, along with the maintenance burden and revocation disincentives that ephemerality breeds, and shows how binding evidence to a rotating identity rather than to a key — as ACDCs do — resolves them. Renewing an identity is a non-sequitur; infrastructure for organizational identity deserves a better building block than the certificate."
 image: /assets/cards/x509-prob.png
-version: "1.4"
+version: "1.5"
 ---
 
 The technology in PKI and X509 certificates delivers value on the web every day. It has excellent tools, is widely adopted, and has a 40-year track record of solid cryptography. However, I am advocating that [ACDCs](https://trustoverip.github.io/kswg-acdc-specification/) — specifically [vLEIs](https://www.gleif.org/en/vlei/introducing-the-vlei-ecosystem-governance-framework) or credentials with similar schemas and governance — be used as longlived evidence of organizational identity, with certs used more in a supporting role.
@@ -58,7 +58,7 @@ Typically, cert ecosystems implement a combination of private, specialized CAs a
 
 >The challenge "token-authority" parameter is only used in cases where the VoIP telephone network requires the CA to identify the Token Authority. This is currently not the case for the Signature-based Handling of Asserted information using toKENs (SHAKEN) [ATIS-1000080] certificate framework governance but may be used by other frameworks. If a "token-authority" parameter is present, then the ACME client MAY use the "token-authority" value to identify the URL representing the Token Authority that will provide the TNAuthList Authority Token response to the challenge. *If the "token-authority" parameter is not present, then the ACME client MUST identify the Token Authority based on locally configured information or local policies.*
 
-Here is a certificate ecosystem purpose-built to achieve high assurance of "identity" in telco, and one of its foundational protections is abdicated to undefined local judgment. (Compare section 6 of [ATIS1000080](https://access.atis.org/higherlogic/ws/public/download/69428), which documents other, higher-level SHAKEN requirements. Can we reason confidently about trust?
+Here is a certificate ecosystem purpose-built to achieve high assurance of "identity" in telco, and one of its foundational protections is abdicated to undefined local judgment. (Compare section 6 of [ATIS1000080](https://access.atis.org/higherlogic/ws/public/download/69428), which documents other, higher-level SHAKEN requirements. Can we reason confidently about trust? Measurement suggests not. A year of SHAKEN certificates observed in production traffic showed that 46% of valid telecom certificates and 45% of CA certificates violate the SHAKEN specifications, and that when a misbehaving provider must be expelled, the policy administrator has no list of issued certificates to revoke; it has to ask each CA ([Brown, Hardeman, and Grubbs 2026](https://eprint.iacr.org/2026/2772)).
 
 In most analyses, we assume that certs are issued by certificate authorities. These are vetted orgs, earnest about security. Having carefully qualified certificate authorities (like eIDAS enforces with QTSPs) should help, right?
 
@@ -125,7 +125,7 @@ To alleviate the tension, the thinking is: *Let's make certs expire often, and d
 
 Setting aside the way this plays into the original argument about mismatched lifespans, is this effective?
 
-Suppose typical cert lifespan is 1 year, and PhonesRUs (a company that sells phone numbers and signs STIR/SHAKEN traffic on behalf of its customers) averages 1 cert key compromise every 2 years. This would mean that half of PhonesRUs's certs will be compromised during their lifespan, and if they are compromised on average halfway through their lifespan, then for 6 months out of every 2 years, PhonesRUs will be operating with a compromised cert. But if PhonesRUs has an average cert lifespan of 90 days (the recommendation from STI-GA), then on the 1 occasion in 2 years that a cert is compromised, it is likely to be rotated within 45 days. Operating for 45 days with bad security is clearly better than operating that way for 6 months.
+Suppose typical cert lifespan is 1 year, and PhonesRUs (a company that sells phone numbers and signs STIR/SHAKEN traffic on behalf of its customers) averages 1 cert key compromise every 2 years. This would mean that half of PhonesRUs's certs will be compromised during their lifespan, and if they are compromised on average halfway through their lifespan, then for 6 months out of every 2 years, PhonesRUs will be operating with a compromised cert. But if PhonesRUs has an average cert lifespan of 90 days (the recommendation from STI-GA; certs observed in production [average 64 days](https://eprint.iacr.org/2026/2772)), then on the 1 occasion in 2 years that a cert is compromised, it is likely to be rotated within 45 days. Operating for 45 days with bad security is clearly better than operating that way for 6 months.
 
 >Note: It might seem like I'm being overly pessimistic to posit a cert key compromise every 2 years. However, 2 years is the midpoint in guidance about a safe key cryptoperiod in [NIST 800-57 rev 5, section 5.3.4](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf). And "compromise" doesn't mean "known loss of control" but rather "meaningful risk that control could have been lost". Most IT teams experience staff turnover more than once every 2 years... And on top of that, we could consider the frequency of phishing, smishing, APTs, ransomware, bloatware, unpatched software,  social engineering, and other sources of compromise. The risk that confident control over a cert's key might decay in 2 years is *at least* "meaningful".
 
@@ -136,7 +136,7 @@ Suppose we shrink the lifespans of certs far more aggressively — i.e., to a we
 What's possibly worse is that by obsessively pursuing short-lived evidence, we've created a strong incentive to take the insecure and easy path: if there's a risk of a compromised key, just wait until the cert expires. Because the management burden is already so high, nobody in such an ecosystem wants to do the secure thing: act immediately, be transparent, and cancel all the evidence that's in active use. It's just more management bother.
 
 ## Scale and performance are constrained
-One of the fundamental challenges with current cert-based organizational security initiatives is that the signers and cert holders are often trusted third parties, because they are the ones with the certs. This is true of STIR/SHAKEN in secure voice, for example, where the signature on a call is affixed by an originating service provider, not by the enterprise that makes the call.
+One of the fundamental challenges with current cert-based organizational security initiatives is that the signers and cert holders are often trusted third parties, because they are the ones with the certs. This is true of STIR/SHAKEN in secure voice, for example, where the signature on a call is affixed by an originating service provider, not by the enterprise that makes the call. Often it isn't even affixed by the service provider: about half of the carriers surveyed by [Brown, Hardeman, and Grubbs](https://eprint.iacr.org/2026/2772) outsource signing or verification to a handful of vendors, which concentrates the call metadata of much of the US in a few companies.
 
 Proposals to improve this are on the table, and Provenant strongly supports the general idea. Signing must be done not by phone companies, but by holders of telephone numbers.
 
