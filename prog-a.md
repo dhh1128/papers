@@ -14,7 +14,7 @@ item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 citations: acm
-version: "0.12"
+version: "0.13"
 revision_date: 2026-11-20
 keywords:
   - organizational identity
@@ -239,7 +239,7 @@ Strong organizational identity is a precondition for the trust layer the digital
 ## References
 [1] Hardman, D. 2024. Why X509 Certs Should Be Secondary Evidence of Org Identity. *Codecraft Papers*. https://dhh1128.github.io/papers/x509-prob.html
 
-[2] Hardman, D. 2025. Verifiable Voice Protocol. IETF Internet-Draft draft-hardman-verifiable-voice-protocol. https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html
+[2] Hardman, D. 2025. Verifiable Voice Protocol. IETF Internet-Draft draft-hardman-verifiable-voice-protocol. https://provenant-dev.github.io/vvp/draft-hardman-verifiable-voice-protocol.html
 
 [3] Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and Polk, W. 2008. Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile. RFC 5280. IETF. https://doi.org/10.17487/RFC5280
 

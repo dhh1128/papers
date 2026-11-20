@@ -12,8 +12,8 @@ citations: acm
 item_id: CC-COM-260101
 description: "This paper compares ACDCs and Merkle Tree Certificates, analyzing their design, use cases, and implications for digital trust."
 image: /assets/cards/acdc-and-mtc.png
-version: "1.1"
-revision_date: 2026-09-22
+version: "1.2"
+revision_date: 2026-11-20
 ---
 
 ## 1. Introduction and scope
@@ -232,7 +232,7 @@ If this paper succeeds, it leaves the reader with clearer mental models, not a v
 
 [11] Cooper, D., et al. (2008). *Internet X.509 Public Key Infrastructure Certificate and CRL Profile*. RFC 5280. https://doi.org/10.17487/RFC5280
 
-[12] Hardman, D. (2023). *Verifiable Voice Protocol*. IETF Internet-Draft draft-hardman-verifiable-voice-protocol-02.
+[12] Hardman, D. (2023). *Verifiable Voice Protocol*. IETF Internet-Draft draft-hardman-verifiable-voice-protocol-02. https://provenant-dev.github.io/vvp/draft-hardman-verifiable-voice-protocol.html
 
 [13] Rescorla, E. (2018). *The Transport Layer Security (TLS) Protocol Version 1.3*. RFC 8446. https://doi.org/10.17487/RFC8446
 

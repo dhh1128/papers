@@ -12,8 +12,8 @@ citations: hyperlinks
 item_id: CC-PRI-250803
 description: "This article explores the evidence lifecycle in telecommunications, emphasizing the importance of comprehensive evidence for trust and accountability."
 image: /assets/cards/ev-life.png
-version: "1.0"
-revision_date: 2025-08-07
+version: "1.1"
+revision_date: 2026-11-20
 ---
 
 >This article is a guest post in [The Evidence Advantage](https://www.linkedin.com/pulse/part-1-evidence-advantage-building-trust-new-era-randy-warshaw-fpxpe/), a series by Randy Warshaw, CEO of Provenant, about how to transform telco by guaranteeing that all interactions are accompanied by comprehensive evidence. The series is strongly recommended as important context.
@@ -47,7 +47,7 @@ In a criminal trial, the source of each piece of evidence, and its chain of cust
 
 The same is true in telco. Assertions of fact must come from entities that are qualified to make those assertions, and they must be captured in a form that is tamper-proof and permanent. Furthermore, if facts change in a way that alters context or interpretation, there must be a way for the attesters to react and the world to find out.
 
-[Verifiable Voice Protocol](https://dhh1128.github.io/vvp/draft-hardman-verifiable-voice-protocol.html) (VVP) is a formal methodology for applying these principles in the context of phone calls. VVP can be used in both enterprise and consumer contexts, and it can provide evidence about both callers and callees. Let's focus on a B2C use case and follow how evidence is created.
+[Verifiable Voice Protocol](https://provenant-dev.github.io/vvp/draft-hardman-verifiable-voice-protocol.html) (VVP) is a formal methodology for applying these principles in the context of phone calls. VVP can be used in both enterprise and consumer contexts, and it can provide evidence about both callers and callees. Let's focus on a B2C use case and follow how evidence is created.
 
 ![evidence lifecycle](assets/evidence-lifecycle.png)
 

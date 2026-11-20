@@ -2,7 +2,7 @@
 title: "ACDCs and W3C VCs: Lossless vs. Lossy"
 author: "Daniel Hardman"
 date: 2025-11-24
-revision_date: 2026-11-04
+revision_date: 2026-11-20
 tags: [acdc, keri, verifiable-credentials, w3c]
 abstract: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 keywords: "ACDC, W3C Verifiable Credentials, digital trust, decentralized identity, cryptography"
@@ -11,7 +11,7 @@ language: "en"
 category: Comparisons
 citations: hyperlinks
 item_id: CC-COM-251105
-version: "1.2"
+version: "1.3"
 description: "This article compares the properties of ACDCs and W3C Verifiable Credentials, and discusses the phenomenon of lossiness with respect to evidence. It suggests that both formats have virtues but they specialize in different use cases."
 image: /assets/cards/acdc-vc-diff.png
 ---
@@ -120,7 +120,7 @@ The GLEIF verifiable Legal Entity Identifier ([vLEI](https://www.gleif.org/en/vl
 
 This is not a pilot. It is a production system, operating globally, across jurisdictions, without certificate authorities or blockchains.
 
-Consider also the [Verifiable Voice Protocol](https://datatracker.ietf.org/doc/draft-hardman-verifiable-voice-protocol/04/), which aims to improve upon STIR/SHAKEN for secure voice calls. SHAKEN depends on certificate authorities approved by a per-country governance ecosystem. This is why it is being implemented country by country, not globally. The Verifiable Voice Protocol uses ACDCs to chain trust back to a global root, crossing jurisdictional boundaries without requiring each country to approve intermediaries. The trust graph spans borders because it is self-certifying.
+Consider also the [Verifiable Voice Protocol](https://provenant-dev.github.io/vvp/draft-hardman-verifiable-voice-protocol.html), which aims to improve upon STIR/SHAKEN for secure voice calls. SHAKEN depends on certificate authorities approved by a per-country governance ecosystem. This is why it is being implemented country by country, not globally. The Verifiable Voice Protocol uses ACDCs to chain trust back to a global root, crossing jurisdictional boundaries without requiring each country to approve intermediaries. The trust graph spans borders because it is self-certifying.
 
 ## The Right Format for the Job
 
