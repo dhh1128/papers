@@ -102,6 +102,20 @@ def pdf_metadata(meta, fallback_mtime=None):
     }
 
 
+def author_args(meta):
+    """Pandoc `-M` args that put an `authors` list on the PDF title page.
+
+    Pandoc builds the byline from the `author` key alone and ignores `authors`,
+    so without these a multi-author document renders with no byline.
+    """
+    if meta.get('author') or not meta.get('authors'):
+        return []
+    args = []
+    for a in meta['authors']:
+        args += ['-M', 'author=' + (a['name'] if isinstance(a, dict) else str(a))]
+    return args
+
+
 def rewrite_webp_refs(text):
     """Return (text_with_webp_refs_as_png, [(name.webp, name.png), ...])."""
     pairs = [(f"{stem}.webp", f"{stem}.png") for stem in
@@ -231,6 +245,7 @@ def build_pdf(item, out_dir):
                '--include-in-header=' + os.path.join(hdr, 'pkgs.tex'),
                '--include-in-header=' + meta_tex,
                '--include-in-header=' + os.path.join(hdr, 'header.tex')]
+        cmd += author_args(item.meta)
         # Deterministic timestamps so committed PDFs are reproducible.
         env = dict(os.environ)
         env['SOURCE_DATE_EPOCH'] = str(_epoch(m['date']))

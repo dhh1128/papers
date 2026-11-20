@@ -129,3 +129,15 @@ def test_manifest_recorded_when_nothing_is_stale(monkeypatch):
     monkeypatch.setattr(publish, "stale_pdf_slugs", lambda mode, m: [])
     monkeypatch.setattr(publish, "run", lambda label, args: 1)  # must not be called
     assert publish.rebuild_pdfs("stale") is True
+
+
+def test_authors_list_reaches_pdf_title_page():
+    # pandoc renders the title-page byline from the `author` key only, so a
+    # document using `authors` (list of {name, affiliation}) must be passed its
+    # names explicitly or the PDF ships with no byline at all.
+    meta = {'authors': [{'name': 'A One', 'affiliation': 'X'}, {'name': 'B Two'}]}
+    assert pandoc.author_args(meta) == ['-M', 'author=A One', '-M', 'author=B Two']
+
+
+def test_author_string_needs_no_override():
+    assert pandoc.author_args({'author': 'A One'}) == []
