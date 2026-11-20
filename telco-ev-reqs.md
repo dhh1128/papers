@@ -1,6 +1,10 @@
 ---
 title: "What Does Telco Need? Requirements for Organizational Identity Evidence"
-author: "Daniel Hardman"
+authors:
+  - name: Daniel Hardman
+    affiliation: CTO, Provenant
+  - name: Randy Warshaw
+    affiliation: CEO, Provenant
 date: 2026-03-11
 category: Positions
 citations: none
@@ -11,8 +15,8 @@ abstract: |
 keywords: "organizational identity, telecommunications, STIR/SHAKEN, verifiable evidence, delegation, jurisdiction, cryptographic agility, post-quantum, accountability, requirements"
 description: "Before engineers choose steel or concrete, they agree on what a bridge must carry. This paper applies the same discipline to organizational identity in telecommunications: instead of comparing candidate architectures, it sets out what the problem actually demands, so any proposal can be measured against a fair test. It argues for five essential properties — evidence over keys (portable, inspectable proof of relationships and authority, not just present-tense key validity); historical provability (answering 'what was valid then?', not only 'what is valid now?'); first-class support for complex, constrained, cooperative delegation; jurisdictional diversity, so verifiers can evaluate evidence without a single national root of trust; and cryptographic agility for key rotation, recovery, and post-quantum migration without a global flag day. An appendix expands these into detailed technical requirements, non-goals, and evaluation questions. The point is not to crown a winner, but to agree on the requirements first."
 image: /assets/cards/telco-ev-reqs.png
-version: "1.1"
-revision_date: 2026-11-06
+version: "1.2"
+revision_date: 2026-11-20
 ---
 
 Before debating whether a bridge should be steel or concrete, engineers agree on what it must carry, how far it must span, and what earthquakes it must survive. Only then do materials matter.
