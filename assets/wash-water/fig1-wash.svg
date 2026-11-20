@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" width="720" height="460" font-family="Open Sans, sans-serif">
+  <rect width="720" height="460" fill="#ffffff"/>
+  <defs>
+    <clipPath id="channel">
+      <path d="M120,170 C150,170 160,360 200,372 L380,372 C420,360 430,170 460,170 Z"/>
+    </clipPath>
+    <clipPath id="floor"><rect x="0" y="318" width="720" height="80"/></clipPath>
+  </defs>
+
+  <!-- title -->
+  <text x="360" y="34" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="27" fill="#491705">Name the bed, not the water</text>
+
+  <!-- storm upstream -->
+  <path d="M52,96 C38,96 36,78 50,76 C50,62 70,58 78,68 C84,54 108,54 112,70 C126,68 134,82 124,94 C122,98 118,98 114,98 Z" fill="#ffffff" stroke="#8a6f5c" stroke-width="1.8" stroke-linejoin="round"/>
+  <g stroke="#c9b8ab" stroke-width="1.2" stroke-linecap="round">
+    <line x1="62" y1="106" x2="54" y2="124"/>
+    <line x1="80" y1="106" x2="72" y2="124"/>
+    <line x1="98" y1="106" x2="90" y2="124"/>
+    <line x1="116" y1="106" x2="108" y2="124"/>
+  </g>
+  <text x="140" y="80" font-style="italic" font-size="13" fill="#777777">a storm upstream,</text>
+  <text x="140" y="97" font-style="italic" font-size="13" fill="#777777">out of sight</text>
+
+  <!-- ground -->
+  <path d="M30,170 L120,170 C150,170 160,360 200,372 L380,372 C420,360 430,170 460,170 L500,170 L500,432 L30,432 Z" fill="#f4e9df" stroke="#8a6f5c" stroke-width="1.8" stroke-linejoin="round"/>
+
+  <!-- floodwater, in layers -->
+  <g clip-path="url(#channel)">
+    <rect x="100" y="206" width="380" height="180" fill="#ffffff"/>
+    <rect x="100" y="246" width="380" height="40" fill="#faf5f0"/>
+    <rect x="100" y="326" width="380" height="60" fill="#faf5f0"/>
+    <g fill="none" stroke="#c9b8ab" stroke-width="1">
+      <path d="M100,246 q20,-5 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+      <path d="M100,286 q20,-5 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+      <path d="M100,326 q20,-5 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+    </g>
+    <path d="M100,206 q20,-6 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0" fill="none" stroke="#765043" stroke-width="1.4"/>
+  </g>
+
+  <!-- storm feeds the top layer -->
+  <path d="M96,132 C104,170 140,200 196,218" fill="none" stroke="#765043" stroke-width="1.2" stroke-linecap="round"/>
+  <polygon points="190,212 202,220 190,224" fill="#765043"/>
+
+  <!-- high-water mark painted on the bank -->
+  <line x1="437" y1="186" x2="462" y2="186" stroke="#765043" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M464,184 C488,170 500,140 514,132" fill="none" stroke="#c9b8ab" stroke-width="1.1"/>
+  <text x="520" y="132" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="17" fill="#491705">high-water mark</text>
+  <text x="520" y="148" font-size="12" fill="#777777">model card, agent card</text>
+
+  <!-- layer labels -->
+  <g fill="none" stroke="#c9b8ab" stroke-width="1.1">
+    <path d="M400,226 C450,226 480,214 514,206"/>
+    <path d="M396,266 C450,266 480,256 514,250"/>
+    <path d="M390,306 C450,306 480,298 514,294"/>
+    <path d="M380,350 C450,350 480,342 514,338"/>
+  </g>
+  <g font-family="Barlow Condensed, sans-serif" font-size="16" fill="#444444">
+    <text x="520" y="206">injected text</text>
+    <text x="520" y="250">state</text>
+    <text x="520" y="294">configuration</text>
+    <text x="520" y="338">substrate</text>
+  </g>
+  <g font-size="12" fill="#777777">
+    <text x="520" y="222">words from anyone, anywhere</text>
+    <text x="520" y="266">context, compaction, memory</text>
+    <text x="520" y="310">prompt, effort, tools, skills</text>
+    <text x="520" y="354">model, version, server, load</text>
+  </g>
+
+  <!-- the bed (the single accent) -->
+  <path d="M120,170 C150,170 160,360 200,372 L380,372 C420,360 430,170 460,170" fill="none" stroke="#914f37" stroke-width="3" stroke-linecap="round" clip-path="url(#floor)"/>
+  <text x="290" y="400" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="18" fill="#914f37">the bed</text>
+  <text x="290" y="419" text-anchor="middle" font-size="12" fill="#491705">harness, charter, key history, accountable party</text>
+
+  <!-- the stake: the identifier is driven into the bed -->
+  <line x1="290" y1="152" x2="290" y2="374" stroke="#914f37" stroke-width="2"/>
+  <polygon points="285,372 295,372 290,384" fill="#914f37"/>
+  <rect x="244" y="126" width="92" height="26" rx="13" fill="#e7cdb8" stroke="#914f37" stroke-width="1.8"/>
+  <text x="290" y="144" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="500" font-size="16" fill="#491705">identifier</text>
+</svg>

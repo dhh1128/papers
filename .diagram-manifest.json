@@ -60,6 +60,12 @@
       "png": "assets/spac-tsp/route.png",
       "svg_sha256": "034b44ea8e41c92da506b8ef21f4195a6d7ae7145a5ec422dff22e1ec96b890a",
       "png_sha256": "b533ad48c9e481628ff30057abbda234479a1ee67f91f49b3bed919eae483997"
+    },
+    {
+      "svg": "assets/wash-water/fig1-wash.svg",
+      "png": "assets/wash-water/fig1-wash.png",
+      "svg_sha256": "a1f09e32182c5a12aed219a974d20d8ac7ddbb012432059d6c91c5f9ba649c96",
+      "png_sha256": "2f4f87d75df1b7c626523c457e9608cba198f71414e01544d74224fde8829430"
     }
   ]
 }

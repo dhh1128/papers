@@ -66,6 +66,7 @@ layout: meta
 - [Advice About Cybersecurity and Privacy](acp.md) (2023-06-06)
 
 ## Positions
+- [The Wash and the Water](wash-water.md) (2026-11-20)
 - [What Does Telco Need? Requirements for Organizational Identity Evidence](telco-ev-reqs.md) (2026-03-11)
 - [Why X509 Certs Should Be Secondary Evidence of Org Identity](x509-prob.md) (2024-11-15)
 - [AI User Code of Conduct](ai-coca.md) (2023-06-01)
