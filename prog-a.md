@@ -1,9 +1,10 @@
 ---
 title: "Progressive Assurance: Flexible Organizational Identity in the Digital Economy"
-author: Daniel Hardman
-# authors:
-#   - name: Daniel Hardman
-#     affiliation: CTO, Provenant
+authors:
+  - name: Daniel Hardman
+    affiliation: CTO, Provenant
+  - name: Randy Warshaw
+    affiliation: CEO, Provenant
 #   - name: Karla McKenna
 #     affiliation: Head of Standards, GLEIF
 abstract: |
@@ -13,8 +14,8 @@ item_id: CC-PAP-260501
 pdf_url: https://dhh1128.github.io/papers/prog-a.pdf
 category: Papers
 citations: acm
-version: "0.11"
-revision_date: 2026-11-06
+version: "0.12"
+revision_date: 2026-11-20
 keywords:
   - organizational identity
   - progressive assurance
