@@ -7,7 +7,7 @@ citations: acm
 item_id: CC-POS-261102
 language: "en"
 pdf_url: https://dhh1128.github.io/papers/wash-water.pdf
-version: "1.0"
+version: "1.1"
 revision_date: 2026-11-20
 keywords: "AI agents, identity, sameness, agentic AI, context compaction, prompt injection, delegation, governance, credentials"
 abstract: "An AI agent can be given an identifier, but the identifier invites a shorthand — same name, same agent — that is a useful model of people and a dangerous one for agents. Identity for an agent belongs to what persists between invocations: a harness, a charter, a key history, and a party who answers."
@@ -16,7 +16,7 @@ listed: true
 image: /assets/cards/wash-water.png
 ---
 
-Most of the washes in southern Utah have names, and on most days none of them has any water. A wash is a channel of sand and cobble that sits dry until a storm arrives somewhere above it. Then water comes down, fills it for an hour or a day, and drains away. The next storm brings different water, in a different volume, carrying different debris. Nobody is confused about what the name refers to. The name belongs to the bed. The water is an event.
+Many of the washes in southern Utah have names, and on most days none of them has any water. A wash is a channel of sand and cobble that sits dry until a storm arrives somewhere above it. Then water comes down, fills it for an hour or a day, and drains away. The next storm brings different water, in a different volume, carrying different debris. Nobody is confused about what the name refers to. The name belongs to the bed. The water is an event.
 
 What we call an AI agent is the water, not the wash.
 
