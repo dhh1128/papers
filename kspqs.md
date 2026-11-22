@@ -5,8 +5,8 @@ title: KERI's Strategy for Post-Quantum Security
 date: 2025-11-01
 item_id: CC-PAP-251104
 author: "Daniel Hardman"
-version: "1.2"
-revision_date: 2026-08-20
+version: "1.3"
+revision_date: 2026-11-21
 pdf_url: https://dhh1128.github.io/papers/kspqs.pdf
 abstract: |
   This whitepaper explains how the Key Event Receipt Infrastructure (KERI) provides a comprehensive defense against quantum computing threats to digital identity systems. KERI addresses both "Harvest Now, Decrypt Later" attacks on confidentiality and surprise quantum attacks on control and authenticity. Through its pre-rotation mechanism using quantum-safe hash commitments, KERI makes identity control resilient and recoverable even if signing keys are compromised. The paper demonstrates how KERI's architectural separation of identity management from communication encryption, combined with its foundational cryptographic agility, enables a practical bridge from classical to post-quantum cryptographic systems without premature commitment to unproven algorithms.
@@ -113,13 +113,15 @@ This hybrid model is not merely theoretical; it is already being deployed in the
 
 This approach effectively de-risks the transition to post-quantum cryptography. The new NIST-selected algorithms are promising, but they have not yet withstood the decades of intense public cryptanalysis that RSA and ECC have. The hybrid model provides a crucial safety net, ensuring that the early adoption of PQC to defend against future threats does not inadvertently introduce new risks from the novel algorithms themselves. For systems using KERI for identity, adopting a battle-tested, hybrid-capable communication protocol like the latest version of OpenSSH is a direct and effective way to secure the channel against HNDL attacks.
 
+Algorithm strength is only part of the picture. In October 2026, the Indian certificate authority eMudhra was found to have eight intermediate CA keys on P-384, a curve nobody doubts, whose private keys were integers smaller than 256 because of a flaw in its key ceremony. [26] The math was sound and the keys were worthless. A post-quantum migration changes the algorithms. It doesn't change how keys are generated and guarded, and that is where this failure happened.
+
 ## Conclusion: Crypto-Agility as the Ultimate Defense
 
 The history of cryptography is a story of continuous evolution, punctuated by occasional revolutions. The transition to a post-quantum world is the most significant of these revolutions in a generation. In such a dynamic and uncertain landscape, the ultimate defense is not a premature bet on a single algorithm, but an architecture built for adaptation. KERI's true quantum-readiness lies in its foundational cryptographic agility.
 
 KERI was designed from the outset to treat specific cryptographic algorithms as pluggable components, not as immutable dependencies. The protocol itself is an abstract state machine for managing keys; the signature and hashing schemes are simply the tools it uses. This means that as new, better tools become available, they can be incorporated with minimal effort. A proof-of-concept that integrated one of the NIST PQC finalist algorithms from the Open Quantum Safe (OQS) library into keripy, KERI's reference implementation in Python, took only a couple of hours to complete. (personal communication with Sam Smith, Oct. 7, 2025) This is not a happy accident; it is the result of a deliberate design philosophy that prioritizes architectural flexibility over algorithmic specificity.
 
-The EU has just shown what this looks like at the legal layer. Its 2026 amendment to the digital identity wallet regulations obliges providers to use only the cryptographic mechanisms named in Annex Ia — and Annex Ia names no mechanisms. It is a bare URL, undated and unversioned, pointing at a document ENISA maintains, while the same regulation pins an IETF draft to an exact revision. [26] A regulator can now revise its cryptographic requirements by editing a file; whether the systems underneath can follow is an architectural question.
+The EU has just shown what this looks like at the legal layer. Its 2026 amendment to the digital identity wallet regulations obliges providers to use only the cryptographic mechanisms named in Annex Ia — and Annex Ia names no mechanisms. It is a bare URL, undated and unversioned, pointing at a document ENISA maintains, while the same regulation pins an IETF draft to an exact revision. [27] A regulator can now revise its cryptographic requirements by editing a file; whether the systems underneath can follow is an architectural question.
 
 This approach allows KERI to avoid the twin perils of a premature switch to PQC: the significant performance overhead of larger keys and signatures, and the security risk of relying on algorithms that have not yet been fully "hardened" by years of rigorous analysis. Instead, it provides a multi-layered defense that is effective today and prepared for tomorrow:
 
@@ -182,4 +184,6 @@ KERI, therefore, offers a practical and secure bridge from the classical cryptog
 
 [25] Carlson, B., and Blau, T. 2025. Post-quantum security for SSH access on GitHub. https://t.ly/9VdOl
 
-[26] European Commission. 2026. Commission Implementing Regulation (EU) 2026/1731, Article 5a and Annex Ia. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1731
+[26] Mozilla. 2026. Bug 2083449: eMudhra: Private key compromise of Intermediate Certificates. Mozilla Bugzilla, comment 0 (incident report, October 18, 2026) and comment 5 (key analysis, October 18, 2026), both by D. Jackson. https://bugzilla.mozilla.org/show_bug.cgi?id=2083449#c5
+
+[27] European Commission. 2026. Commission Implementing Regulation (EU) 2026/1731, Article 5a and Annex Ia. https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1731
